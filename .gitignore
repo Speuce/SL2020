@@ -4,3 +4,5 @@ target/
 *.class
 src/.idea/
 *encodings.xml
+.*
+!/.gitignore

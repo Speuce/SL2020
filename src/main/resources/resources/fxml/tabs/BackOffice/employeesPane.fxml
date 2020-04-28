@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="employeesPane" prefHeight="930.0" prefWidth="1411.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lucia.fxml.controllers.impl.main.tabs.BackOffice.EmployeesController">
+   <children>
+      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="142.0" prefWidth="1422.0" style="-fx-background-color: #585858;">
+         <children>
+            <Line endX="1261.5" layoutX="154.0" layoutY="139.0" startX="-152.0" strokeWidth="3.0" />
+            <JFXButton fx:id="viewEmployeesButton" layoutX="14.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="View Employees">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="tipsButton" layoutX="295.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="Tips">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="scheduleButton" layoutX="576.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="Schedule">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="statisticsButton" layoutX="859.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="Statistics">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="dailyReportButton" layoutX="1141.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="Daily Report">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="dailyReport" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <Line endX="1833.0" endY="133.66668701171875" layoutX="-425.0" layoutY="-67.0" startX="425.0" startY="133.66668701171875" strokeWidth="3.0" />
+            <Label layoutX="19.0" layoutY="8.0" prefHeight="44.0" prefWidth="269.0" text="July 28th, 2019">
+               <font>
+                  <Font name="Calibri" size="38.0" />
+               </font>
+            </Label>
+            <Line endX="987.8333129882812" endY="843.0" layoutX="-415.0" layoutY="-55.0" startX="987.8333129882812" startY="122.16671752929688" strokeWidth="3.0" />
+            <Label layoutX="2.0" layoutY="65.0" prefHeight="44.0" prefWidth="211.0" text="Schedule">
+               <font>
+                  <Font name="Calibri" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="580.0" layoutY="71.0" prefHeight="44.0" prefWidth="211.0" text="Sales">
+               <font>
+                  <Font name="Calibri" size="28.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="1252.0" layoutY="7.0" opacity="0.85" prefHeight="2.0" prefWidth="149.0" style="-fx-background-color: #800000; -fx-background-radius: 20;" text="Calculate" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="382.0" layoutY="13.0" prefHeight="35.0" prefWidth="70.0" text="Dates:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="738.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pictures/theArrow.png" />
+               </image>
+            </ImageView>
+            <JFXDatePicker layoutX="490.0" layoutY="16.0" />
+            <JFXDatePicker layoutX="798.0" layoutY="16.0" />
+            <Label layoutX="582.0" layoutY="270.0" prefHeight="44.0" prefWidth="211.0" text="Pickup">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="1006.0" layoutY="270.0" prefHeight="44.0" prefWidth="211.0" text="Delivery">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="1003.0" layoutY="75.0" prefHeight="44.0" prefWidth="211.0" text="Tips">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="585.0" layoutY="636.0" prefHeight="44.0" prefWidth="211.0" text="Totals">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="1.0" layoutY="638.0" prefHeight="44.0" prefWidth="211.0" text="Totals">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="statistics" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <Line endX="1833.0" endY="133.66668701171875" layoutX="-425.0" layoutY="-67.0" startX="425.0" startY="133.66668701171875" strokeWidth="3.0" />
+            <JFXButton layoutX="1256.0" layoutY="7.0" opacity="0.85" prefHeight="2.0" prefWidth="149.0" style="-fx-background-color: #800000; -fx-background-radius: 20;" text="Calculate" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="18.0" layoutY="13.0" prefHeight="35.0" prefWidth="103.0" text="Employee">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="386.0" layoutY="13.0" prefHeight="35.0" prefWidth="70.0" text="Dates:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="742.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pictures/theArrow.png" />
+               </image>
+            </ImageView>
+            <JFXDatePicker layoutX="494.0" layoutY="16.0" />
+            <JFXDatePicker layoutX="802.0" layoutY="16.0" />
+            <JFXComboBox layoutX="110.0" layoutY="16.0" prefHeight="31.0" prefWidth="240.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="schedule" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <Line endX="1833.0" endY="133.66668701171875" layoutX="-425.0" layoutY="-67.0" startX="425.0" startY="133.66668701171875" strokeWidth="3.0" />
+            <JFXButton layoutX="1256.0" layoutY="7.0" opacity="0.85" prefHeight="2.0" prefWidth="149.0" style="-fx-background-color: #800000; -fx-background-radius: 20;" text="Calculate" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="18.0" layoutY="13.0" prefHeight="35.0" prefWidth="162.0" text="Employee/Driver">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="451.0" layoutY="13.0" prefHeight="35.0" prefWidth="70.0" text="Dates:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="807.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pictures/theArrow.png" />
+               </image>
+            </ImageView>
+            <JFXDatePicker layoutX="559.0" layoutY="16.0" />
+            <JFXDatePicker layoutX="867.0" layoutY="16.0" />
+            <JFXComboBox layoutX="179.0" layoutY="16.0" prefHeight="31.0" prefWidth="240.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="viewEmployees" layoutX="2.0" layoutY="141.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <Line endX="1833.0" endY="133.66668701171875" layoutX="-423.0" layoutY="112.0" startX="425.0" startY="133.66668701171875" strokeWidth="3.0" />
+            <Label layoutX="22.0" layoutY="10.0" prefHeight="35.0" prefWidth="140.0" text="Employee">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="employeeTypeList" layoutX="116.0" layoutY="13.0" prefHeight="31.0" prefWidth="240.0" />
+            <Line endX="1257.166748046875" endY="125.16668701171875" layoutX="-423.0" layoutY="122.0" startX="1257.166748046875" startY="664.0" strokeWidth="3.0" />
+            <Label layoutX="5.0" layoutY="249.0" prefHeight="43.0" prefWidth="216.0" text="Edit Employee">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="841.0" layoutY="248.0" prefHeight="43.0" prefWidth="245.0" text="Employee Hours">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="1194.0" layoutY="11.0" onAction="#createEmployee" onMouseClicked="#changePane" prefHeight="57.0" prefWidth="202.0" style="-fx-background-color: green;" text="Create Employee" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </JFXButton>
+            <Pane fx:id="createEmployeePane" layoutX="1.0" layoutY="248.0" prefHeight="543.0" prefWidth="1404.0" style="-fx-background-color: #D3D3D3;">
+               <children>
+                  <JFXButton layoutX="1196.0" layoutY="474.0" onAction="#finalizeEmployee" onMouseClicked="#changePane" prefHeight="57.0" prefWidth="202.0" style="-fx-background-color: green;" text="Create" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </JFXButton>
+                  <Label layoutX="32.0" layoutY="68.0" prefHeight="35.0" prefWidth="77.0" text="Name:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="116.0" prefHeight="35.0" prefWidth="138.0" text="Employee ID:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="161.0" prefHeight="35.0" prefWidth="138.0" text="Password:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="16.0" prefHeight="35.0" prefWidth="140.0" text="Type:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="employeeType" layoutX="93.0" layoutY="21.0" prefHeight="31.0" prefWidth="130.0" />
+                  <JFXTextField fx:id="CreateEmployeeName" layoutX="103.0" layoutY="72.0" prefWidth="147.0" />
+                  <JFXTextField fx:id="createEmployeeID" layoutX="164.0" layoutY="118.0" prefWidth="147.0" />
+                  <JFXTextField fx:id="createPassword" layoutX="137.0" layoutY="167.0" prefWidth="147.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="tips" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <Line endX="1833.0" endY="133.66668701171875" layoutX="-425.0" layoutY="-67.0" startX="425.0" startY="133.66668701171875" strokeWidth="3.0" />
+            <JFXButton layoutX="1256.0" layoutY="7.0" opacity="0.85" prefHeight="2.0" prefWidth="149.0" style="-fx-background-color: #800000; -fx-background-radius: 20;" text="Calculate" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="18.0" layoutY="13.0" prefHeight="35.0" prefWidth="105.0" text="Employee">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="386.0" layoutY="13.0" prefHeight="35.0" prefWidth="70.0" text="Dates:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="742.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pictures/theArrow.png" />
+               </image>
+            </ImageView>
+            <JFXDatePicker layoutX="494.0" layoutY="16.0" />
+            <JFXDatePicker layoutX="802.0" layoutY="16.0" />
+            <JFXComboBox layoutX="117.0" layoutY="16.0" prefHeight="31.0" prefWidth="240.0" />
+            <Line endX="1833.0" endY="133.66668701171875" layoutX="-425.0" layoutY="307.0" startX="425.0" startY="133.66668701171875" strokeWidth="3.0" />
+            <JFXButton layoutX="1256.0" layoutY="381.0" opacity="0.85" prefHeight="2.0" prefWidth="149.0" style="-fx-background-color: #800000; -fx-background-radius: 20;" text="Calculate" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="18.0" layoutY="387.0" prefHeight="43.0" prefWidth="194.0" text="See Tip Pool">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="386.0" layoutY="387.0" prefHeight="35.0" prefWidth="70.0" text="Dates:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="742.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pictures/theArrow.png" />
+               </image>
+            </ImageView>
+            <JFXDatePicker layoutX="494.0" layoutY="390.0" />
+            <JFXDatePicker layoutX="802.0" layoutY="390.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

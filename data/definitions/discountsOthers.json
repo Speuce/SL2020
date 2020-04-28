@@ -1,0 +1,20 @@
+{
+  "halfOffDiscounts": {
+    "nine": true,
+    "ten": true,
+    "thirteen": true,
+    "fifteen": true,
+    "eighteen": false,
+    "thirty": false
+  },
+  "pickupSpecials": {
+    "MONDAY": true,
+    "TUESDAY": false,
+    "WEDNESDAY": false,
+    "THURSDAY": false,
+    "FRIDAY": false,
+    "SATURDAY": false,
+    "SUNDAY": false
+  },
+  "deliveryFee": 350
+}

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="sidesPane" prefHeight="779.0" prefWidth="1339.0" style="-fx-background-color: #585858;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.SidesController">
+   <children>
+      <JFXButton fx:id="small_gravy" layoutX="46.0" layoutY="31.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Sm Gravy" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="large_gravy" layoutX="267.0" layoutY="31.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Lrg Gravy" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="small_coleslaw" layoutX="489.0" layoutY="31.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Sm Coleslaw" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="large_coleslaw" layoutX="704.0" layoutY="31.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Lrg Coleslaw" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="mustard" layoutX="46.0" layoutY="183.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Mustard" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="mayonnaise" layoutX="267.0" layoutY="183.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Mayo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="hot_sauce" layoutX="489.0" layoutY="183.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Hot" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="bbq" layoutX="704.0" layoutY="183.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="BBQ" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="marinara" layoutX="46.0" layoutY="338.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Marinara" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="honey_dill" layoutX="267.0" layoutY="338.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Honey Dill" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="honey_mustard" layoutX="489.0" layoutY="338.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Honey Mustard" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="sweet_chili" layoutX="704.0" layoutY="338.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Sweet Chili" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="caesar_dressing" layoutX="46.0" layoutY="495.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Caesar Dressing" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="greek_dressing" layoutX="267.0" layoutY="495.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Greek Dressing" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="ranch_dressing" layoutX="489.0" layoutY="495.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Ranch Dressing" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="raspberry_vinaigrette" layoutX="704.0" layoutY="495.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Rasp. Vin" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="suicidal" layoutX="46.0" layoutY="653.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Suicidal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="fire" layoutX="267.0" layoutY="653.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Fire" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="spicy_caesar" layoutX="489.0" layoutY="653.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Spicy Caesar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="cajun" layoutX="704.0" layoutY="653.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Cajun" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="parmesan" layoutX="920.0" layoutY="31.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Parmesan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="chili_flakes" layoutX="1134.0" layoutY="31.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Chili Flakes" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="honey_garlic" layoutX="920.0" layoutY="183.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Honey Garlic" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="meatsauce" layoutX="1134.0" layoutY="183.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Meatsauce" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="thousand_island_dressing" layoutX="920.0" layoutY="338.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="1000 isl. Dressing" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="italian_dressing" layoutX="1134.0" layoutY="338.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Italian Dressing" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="sour_cream" layoutX="920.0" layoutY="495.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Sour Cream" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="pineapple_curry" layoutX="1134.0" layoutY="495.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Pineapple Curry" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="tzaziki" layoutX="920.0" layoutY="653.0" onMouseClicked="#selectedDips" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="85.0" prefWidth="165.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Tzatziki" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="1141.0" layoutY="684.0" onMouseClicked="#addToOrderDips" prefHeight="87.0" prefWidth="185.0" style="-fx-background-color: #807f05; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="ToppingsDefaultGreen" text="Add to Order" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <font>
+            <Font name="Century" size="27.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

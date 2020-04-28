@@ -1,0 +1,2074 @@
+{
+  "PREMADE_PIZZAS": {
+    "CITI92": {
+      "PRICE": {
+        "TEN": 1600,
+        "THIRTEEN": 2330,
+        "FIFTEEN": 3030,
+        "EIGHTEEN": 3895,
+        "THIRTY": 9695
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Pepperoni",
+          "SIMPLE_NAME": "Pep",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Green_Pepper",
+          "SIMPLE_NAME": "GP",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Mushroom",
+          "SIMPLE_NAME": "Mush",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "CITI92",
+      "price": 0,
+      "discounted": false
+    },
+    "VEGGIE": {
+      "PRICE": {
+        "TEN": 1600,
+        "THIRTEEN": 2330,
+        "FIFTEEN": 3030,
+        "EIGHTEEN": 3895,
+        "THIRTY": 9695
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Green_Pepper",
+          "SIMPLE_NAME": "GP",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Mushroom",
+          "SIMPLE_NAME": "Mush",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Black_Olives",
+          "SIMPLE_NAME": "BO",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "VEGGIE",
+      "price": 0,
+      "discounted": false
+    },
+    "MEDITERRANEAN": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Artichoke",
+          "SIMPLE_NAME": "Arti",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Black_Olives",
+          "SIMPLE_NAME": "BO",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Sundried_Tomato",
+          "SIMPLE_NAME": "SunTom",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Feta",
+          "SIMPLE_NAME": "Feta",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "MEDITERRANEAN",
+      "price": 0,
+      "discounted": false
+    },
+    "ITALIAN": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "THIN",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Marinated_Eggplant",
+          "SIMPLE_NAME": "MEgg",
+          "TIER": "GOURMET",
+          "easy": false
+        },
+        {
+          "NAME": "PROSCIUTTO",
+          "SIMPLE_NAME": "Prosc",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        },
+        {
+          "NAME": "Chorizo",
+          "SIMPLE_NAME": "Chor",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        },
+        {
+          "NAME": "Red_Pepper",
+          "SIMPLE_NAME": "RP",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "ITALIAN",
+      "price": 0,
+      "discounted": false
+    },
+    "CHICKEN_SUPREME": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Chicken",
+          "SIMPLE_NAME": "Ckn",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        },
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Tomato",
+          "SIMPLE_NAME": "Tom",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Broccoli",
+          "SIMPLE_NAME": "Broc",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "CHICKEN_SUPREME",
+      "price": 0,
+      "discounted": false
+    },
+    "SLS": {
+      "PRICE": {
+        "TEN": 1600,
+        "THIRTEEN": 2330,
+        "FIFTEEN": 3030,
+        "EIGHTEEN": 3895,
+        "THIRTY": 9695
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Pepperoni",
+          "SIMPLE_NAME": "Pep",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Back_Bacon",
+          "SIMPLE_NAME": "BBac",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Green_Pepper",
+          "SIMPLE_NAME": "GP",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Mushroom",
+          "SIMPLE_NAME": "Mush",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "SLS",
+      "price": 0,
+      "discounted": false
+    },
+    "MONTENEGRO": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "PROSCIUTTO",
+          "SIMPLE_NAME": "Prosc",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        },
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Tomato",
+          "SIMPLE_NAME": "Tom",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Side_Bacon",
+          "SIMPLE_NAME": "Sbac",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "MONTENEGRO",
+      "price": 0,
+      "discounted": false
+    },
+    "MEAT_LOVER": {
+      "PRICE": {
+        "TEN": 1600,
+        "THIRTEEN": 2330,
+        "FIFTEEN": 3030,
+        "EIGHTEEN": 3895,
+        "THIRTY": 9695
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Pepperoni",
+          "SIMPLE_NAME": "Pep",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Back_Bacon",
+          "SIMPLE_NAME": "BBac",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Beef",
+          "SIMPLE_NAME": "Beef",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Salami",
+          "SIMPLE_NAME": "Sal",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "MEAT_LOVER",
+      "price": 0,
+      "discounted": false
+    },
+    "SANTA_FE": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "SALSA",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Chicken",
+          "SIMPLE_NAME": "Ckn",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        },
+        {
+          "NAME": "Black_Olives",
+          "SIMPLE_NAME": "BO",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Green_Pepper",
+          "SIMPLE_NAME": "GP",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "SANTA_FE",
+      "price": 0,
+      "discounted": false
+    },
+    "HEALTHY_CHOICE": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "WHOLE_WHEAT",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Green_Pepper",
+          "SIMPLE_NAME": "GP",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Tomato",
+          "SIMPLE_NAME": "Tom",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Spinach",
+          "SIMPLE_NAME": "Spin",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Chicken",
+          "SIMPLE_NAME": "Ckn",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [
+        "EASY_CHEESE"
+      ],
+      "alternativeItems": [],
+      "name": "HEALTHY_CHOICE",
+      "price": 0,
+      "discounted": false
+    },
+    "ALOHA": {
+      "PRICE": {
+        "TEN": 1600,
+        "THIRTEEN": 2330,
+        "FIFTEEN": 3030,
+        "EIGHTEEN": 3895,
+        "THIRTY": 9695
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Ham",
+          "SIMPLE_NAME": "Ham",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Ham",
+          "SIMPLE_NAME": "Ham",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Pineapple",
+          "SIMPLE_NAME": "PA",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Pineapple",
+          "SIMPLE_NAME": "PA",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "ALOHA",
+      "price": 0,
+      "discounted": false
+    },
+    "BBQ_CHICKEN": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "BARBEQUE",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Cheddar",
+          "SIMPLE_NAME": "Cheddar",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        },
+        {
+          "NAME": "Chicken",
+          "SIMPLE_NAME": "Ckn",
+          "TIER": "GOURMET_PLUS",
+          "easy": false
+        },
+        {
+          "NAME": "Red_Onion",
+          "SIMPLE_NAME": "RO",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Side_Bacon",
+          "SIMPLE_NAME": "Sbac",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "BBQ_CHICKEN",
+      "price": 0,
+      "discounted": false
+    },
+    "GREEK": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "GREEK_SAUCE",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Tomato",
+          "SIMPLE_NAME": "Tom",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Black_Olives",
+          "SIMPLE_NAME": "BO",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "GREEK",
+      "price": 0,
+      "discounted": false
+    },
+    "GYRO": {
+      "PRICE": {
+        "TEN": 1690,
+        "THIRTEEN": 2470,
+        "FIFTEEN": 3170,
+        "EIGHTEEN": 4095,
+        "THIRTY": 10195
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Tomato",
+          "SIMPLE_NAME": "Tom",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Beef",
+          "SIMPLE_NAME": "Beef",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "GYRO",
+      "price": 0,
+      "discounted": false
+    },
+    "HAL_JOE": {
+      "PRICE": {
+        "TEN": 1600,
+        "THIRTEEN": 2330,
+        "FIFTEEN": 3030,
+        "EIGHTEEN": 3895,
+        "THIRTY": 9695
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Pepperoni",
+          "SIMPLE_NAME": "Pep",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Mushroom",
+          "SIMPLE_NAME": "Mush",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Side_Bacon",
+          "SIMPLE_NAME": "Sbac",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [
+        "EXTRA_SAUCE"
+      ],
+      "alternativeItems": [],
+      "name": "HAL_JOE",
+      "price": 0,
+      "discounted": false
+    },
+    "MEXICAN": {
+      "PRICE": {
+        "TEN": 1600,
+        "THIRTEEN": 2330,
+        "FIFTEEN": 3030,
+        "EIGHTEEN": 3895,
+        "THIRTY": 9695
+      },
+      "justCheese": false,
+      "sauce": "REGULAR",
+      "crust": "REGULAR_CRUST",
+      "splitHalves": false,
+      "toppingList": [
+        {
+          "NAME": "Green_Pepper",
+          "SIMPLE_NAME": "GP",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Onion",
+          "SIMPLE_NAME": "Oni",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Beef",
+          "SIMPLE_NAME": "Beef",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Jalapeno",
+          "SIMPLE_NAME": "Jal",
+          "TIER": "NORMAL",
+          "easy": false
+        },
+        {
+          "NAME": "Tomato",
+          "SIMPLE_NAME": "Tom",
+          "TIER": "NORMAL",
+          "easy": false
+        }
+      ],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "MEXICAN",
+      "price": 0,
+      "discounted": false
+    }
+  },
+  "PREMADE_APPETIZERS": {
+    "WINGS": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Wings",
+      "price": 1295,
+      "discounted": false
+    },
+    "GARLIC_TOAST": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Garlic Toast",
+      "price": 150,
+      "discounted": false
+    },
+    "POUTINE": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Poutine",
+      "price": 875,
+      "discounted": false
+    },
+    "GARLIC_TOAST_THREE_PIECE": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Garlic Toast Three Piece",
+      "price": 400,
+      "discounted": false
+    },
+    "CHEESE_TOAST": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Cheese Toast",
+      "price": 700,
+      "discounted": false
+    },
+    "FRENCH_FRIES": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "French Fries",
+      "price": 475,
+      "discounted": false
+    },
+    "MOZZA_BREAD_STICKS": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [
+        {
+          "addonType": "DIPS",
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Marinara",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Mozza Bread Sticks",
+      "price": 895,
+      "discounted": false
+    },
+    "CHICKEN_STRIPS": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken Strips",
+      "price": 1095,
+      "discounted": false
+    },
+    "BREAD_STICKS": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [
+        {
+          "addonType": "DIPS",
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Marinara",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Bread Sticks",
+      "price": 725,
+      "discounted": false
+    }
+  },
+  "PREMADE_ITALIAN": {
+    "RAVIOLI": {
+      "sauce": "REGULAR",
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Ravioli",
+      "price": 1530,
+      "discounted": false
+    },
+    "MANICOTTI": {
+      "sauce": "REGULAR",
+      "SUB_ITEMS": [
+        {
+          "type": "Salad",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Starter Caesar Salad",
+          "price": 0,
+          "discounted": false
+        },
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Manicotti",
+      "price": 1500,
+      "discounted": false
+    },
+    "LASAGNA": {
+      "sauce": "REGULAR",
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Lasagna",
+      "price": 1530,
+      "discounted": false
+    },
+    "CHICKEN_DINNER": {
+      "sauce": "REGULAR",
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        },
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "alternativeItems": [
+            {
+              "alternativeItem": {
+                "type": "Appetizer",
+                "SUB_ITEMS": [],
+                "toppingList": [],
+                "addonList": [],
+                "specialInstructions": [],
+                "name": "Fries to Poutine",
+                "price": 400,
+                "discounted": false
+              },
+              "isInUse": false
+            },
+            {
+              "alternativeItem": {
+                "type": "Appetizer",
+                "SUB_ITEMS": [],
+                "toppingList": [],
+                "addonList": [],
+                "specialInstructions": [],
+                "name": "Fries to Rice",
+                "price": 0,
+                "discounted": false
+              },
+              "isInUse": false
+            },
+            {
+              "alternativeItem": {
+                "type": "Appetizer",
+                "SUB_ITEMS": [],
+                "toppingList": [],
+                "addonList": [],
+                "specialInstructions": [],
+                "name": "Fries to lemon Roasted Potato",
+                "price": 0,
+                "discounted": false
+              },
+              "isInUse": false
+            }
+          ],
+          "name": "French Fries",
+          "price": 0,
+          "discounted": false
+        },
+        {
+          "type": "Salad",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Coleslaw",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken Dinner",
+      "price": 1395,
+      "discounted": false
+    },
+    "SPAGHETTI": {
+      "sauce": "REGULAR",
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Spaghetti",
+      "price": 1530,
+      "discounted": false
+    },
+    "FETTUCCINE": {
+      "sauce": "REGULAR",
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Fettuccine",
+      "price": 1530,
+      "discounted": false
+    },
+    "CHICKEN_PARMESAN": {
+      "sauce": "REGULAR",
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        },
+        {
+          "type": "Italian",
+          "sauce": "REGULAR",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Small Alfredo",
+          "price": 0,
+          "discounted": false
+        },
+        {
+          "type": "Salad",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Starter Caesar Salad",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken Parmesan",
+      "price": 1895,
+      "discounted": false
+    }
+  },
+  "PREMADE_SALAD": {
+    "CHEESE_SALAD": {
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Cheese Salad",
+      "price": 1250,
+      "discounted": false
+    },
+    "CHEF_SALAD": {
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chef Salad",
+      "price": 1445,
+      "discounted": false
+    },
+    "CAESAR_SALAD": {
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Caesar Salad",
+      "price": 1095,
+      "discounted": false
+    },
+    "GREEK_SALAD": {
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Greek Salad",
+      "price": 1250,
+      "discounted": false
+    },
+    "SMALL_GARDEN_SALAD": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Small Garden Salad",
+      "price": 695,
+      "discounted": false
+    },
+    "STARTER_CAESAR_SALAD": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Starter Caesar Salad",
+      "price": 650,
+      "discounted": false
+    },
+    "LARGE_GARDEN_SALAD": {
+      "SUB_ITEMS": [
+        {
+          "type": "Appetizer",
+          "SUB_ITEMS": [],
+          "toppingList": [],
+          "addonList": [],
+          "specialInstructions": [],
+          "name": "Garlic Toast",
+          "price": 0,
+          "discounted": false
+        }
+      ],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Large Garden Salad",
+      "price": 1095,
+      "discounted": false
+    },
+    "STARTER_GREEK_SALAD": {
+      "SUB_ITEMS": [],
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Starter Greek Salad",
+      "price": 675,
+      "discounted": false
+    }
+  },
+  "PREMADE_BEVERAGE": {
+    "WATER_BOTTLE": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Water Bottle",
+      "price": 225,
+      "discounted": false
+    },
+    "CAN_COKE": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Can Coke",
+      "price": 125,
+      "discounted": false
+    },
+    "CAN_SPRITE": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Can Sprite",
+      "price": 125,
+      "discounted": false
+    },
+    "CAN_COKE_ZERO": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Can Coke Zero",
+      "price": 125,
+      "discounted": false
+    },
+    "CAN_ORANGE": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Can Orange",
+      "price": 125,
+      "discounted": false
+    },
+    "CAN_ROOTBEER": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Can Rootbeer",
+      "price": 125,
+      "discounted": false
+    },
+    "CAN_ICED_TEA": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Can Iced Tea",
+      "price": 125,
+      "discounted": false
+    },
+    "_2L_COKE": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "2L Coke",
+      "price": 350,
+      "discounted": false
+    },
+    "_2L_SPRITE": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "2L Sprite",
+      "price": 350,
+      "discounted": false
+    },
+    "_2L_COKE_ZERO": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "2L Coke Zero",
+      "price": 350,
+      "discounted": false
+    },
+    "_2L_ROOTBEER": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "2L Rootbeer",
+      "price": 350,
+      "discounted": false
+    },
+    "_2L_ICED_TEA": {
+      "addonType": "BEVERAGE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "2L Iced Tea",
+      "price": 350,
+      "discounted": false
+    }
+  },
+  "ADDONS": {
+    "MEATBALLS_PASTA": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Meatballs",
+      "price": 475,
+      "discounted": false
+    },
+    "MEATBALLS_APPETIZER": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Meatballs",
+      "price": 500,
+      "discounted": false
+    },
+    "CHICKEN_SALAD": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken",
+      "price": 495,
+      "discounted": false
+    },
+    "SHRIMP_SALAD": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Shrimp",
+      "price": 495,
+      "discounted": false
+    },
+    "CHICKEN_PASTA": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken",
+      "price": 495,
+      "discounted": false
+    },
+    "SHRIMP_PASTA": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Shrimp",
+      "price": 495,
+      "discounted": false
+    },
+    "MUSHROOM_PASTA": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Mushroom",
+      "price": 250,
+      "discounted": false
+    },
+    "CHEESE_TOAST_UPGRADE": {
+      "addonType": "UPGRADE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Cheese Toast",
+      "price": 250,
+      "discounted": false
+    },
+    "POUTINE_UPGRADE": {
+      "addonType": "UPGRADE",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Poutine",
+      "price": 400,
+      "discounted": false
+    },
+    "FULL_CHICKEN_CATERING": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken",
+      "price": 2950,
+      "discounted": false
+    },
+    "HALF_CHICKEN_CATERING": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken",
+      "price": 1550,
+      "discounted": false
+    },
+    "BBQ": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "BBQ Dip",
+      "price": 100,
+      "discounted": false
+    },
+    "LARGE_COLESLAW": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Large Coleslaw",
+      "price": 495,
+      "discounted": false
+    },
+    "SMALL_COLESLAW": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Small Coleslaw",
+      "price": 275,
+      "discounted": false
+    },
+    "ITALIAN_DRESSING": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Italian Dressing",
+      "price": 100,
+      "discounted": false
+    },
+    "SOUR_CREAM": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Sour Cream",
+      "price": 100,
+      "discounted": false
+    },
+    "SPICY_CAESAR": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Spicy Caesar",
+      "price": 100,
+      "discounted": false
+    },
+    "MAYONNAISE": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Mayonnaise Dip",
+      "price": 100,
+      "discounted": false
+    },
+    "LARGE_GRAVY": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Large Gravy",
+      "price": 395,
+      "discounted": false
+    },
+    "PARMESAN": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Side of Parmesan",
+      "price": 50,
+      "discounted": false
+    },
+    "RANCH_DRESSING": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Ranch Dressing",
+      "price": 100,
+      "discounted": false
+    },
+    "PINEAPPLE_CURRY": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Pineapple Curry",
+      "price": 100,
+      "discounted": false
+    },
+    "HONEY_GARLIC": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Honey Garlic",
+      "price": 100,
+      "discounted": false
+    },
+    "HONEY_MUSTARD": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Honey Mustard",
+      "price": 100,
+      "discounted": false
+    },
+    "TZATZIKI": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Tzatziki Dip",
+      "price": 100,
+      "discounted": false
+    },
+    "GREEK_DRESSING": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Greek Dressing",
+      "price": 100,
+      "discounted": false
+    },
+    "BLUE_CHEESE": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Blue Cheese",
+      "price": 100,
+      "discounted": false
+    },
+    "HOT_SAUCE": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Hot Sauce",
+      "price": 100,
+      "discounted": false
+    },
+    "CAJUN": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Cajun Sauce",
+      "price": 100,
+      "discounted": false
+    },
+    "RASPBERRY_VINAIGRETTE": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Raspberry Vinaigrette",
+      "price": 100,
+      "discounted": false
+    },
+    "OIL_VINEGAR": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Oil & Vinegar",
+      "price": 100,
+      "discounted": false
+    },
+    "MEATSAUCE": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Meat sauce Side",
+      "price": 100,
+      "discounted": false
+    },
+    "SWEET_CHILI": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Sweet Chili",
+      "price": 100,
+      "discounted": false
+    },
+    "SUICIDAL": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Suicidal Dip",
+      "price": 100,
+      "discounted": false
+    },
+    "SMALL_GRAVY": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Small Gravy",
+      "price": 195,
+      "discounted": false
+    },
+    "CHILI_FLAKES": {
+      "addonType": "SIDE_OF_TOPPING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chili Flakes",
+      "price": 50,
+      "discounted": false
+    },
+    "MUSTARD": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Mustard Dip",
+      "price": 100,
+      "discounted": false
+    },
+    "CAESAR_DRESSING": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Caesar Dressing",
+      "price": 100,
+      "discounted": false
+    },
+    "THOUSAND_ISLAND_DRESSING": {
+      "addonType": "DRESSING",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Thousand Island Dressing",
+      "price": 100,
+      "discounted": false
+    },
+    "HONEY_DILL": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Honey Dill",
+      "price": 100,
+      "discounted": false
+    },
+    "SALT_PEPPER": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Salt&Pepper",
+      "price": 100,
+      "discounted": false
+    },
+    "MARINARA": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Marinara",
+      "price": 100,
+      "discounted": false
+    },
+    "ALFREDO": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Alfredo",
+      "price": 100,
+      "discounted": false
+    },
+    "FIRE": {
+      "addonType": "DIPS",
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Fire Dip",
+      "price": 100,
+      "discounted": false
+    }
+  },
+  "XCHEESE": {
+    "addonType": "UPGRADE",
+    "toppingList": [],
+    "addonList": [],
+    "specialInstructions": [],
+    "alternativeItems": [],
+    "name": "XCheese",
+    "price": 250,
+    "discounted": false
+  },
+  "XXCHEESE": {
+    "addonType": "UPGRADE",
+    "toppingList": [],
+    "addonList": [],
+    "specialInstructions": [],
+    "alternativeItems": [],
+    "name": "XXCheese",
+    "price": 500,
+    "discounted": false
+  },
+  "NO_CHEESE": {
+    "addonType": "UPGRADE",
+    "toppingList": [],
+    "addonList": [],
+    "specialInstructions": [],
+    "alternativeItems": [],
+    "name": "No Cheese",
+    "price": 0,
+    "discounted": false
+  },
+  "PREMADE_CATERING": {
+    "SHRIMP_SKEWER": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Shrimp Skewer",
+      "price": 450,
+      "discounted": false
+    },
+    "HALF_CAESAR_SALAD": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Caesar Salad",
+      "price": 3600,
+      "discounted": false
+    },
+    "FULL_CAESAR_SALAD": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Caesar Salad",
+      "price": 7000,
+      "discounted": false
+    },
+    "FULL_CHICKEN_STRIP_CATERING": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Chicken Strips",
+      "price": 9500,
+      "discounted": false
+    },
+    "HALF_CHICKEN_STRIP_CATERING": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Chicken Strips",
+      "price": 4600,
+      "discounted": false
+    },
+    "FULL_GARDEN_SALAD": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Garden Salad",
+      "price": 7000,
+      "discounted": false
+    },
+    "CHICKEN_SOUVLAKI": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Chicken Souvlaki",
+      "price": 475,
+      "discounted": false
+    },
+    "FULL_FETTUCCINE": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Fettuccine",
+      "price": 8000,
+      "discounted": false
+    },
+    "HALF_FETTUCCINE": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Fettuccine",
+      "price": 3850,
+      "discounted": false
+    },
+    "FULL_LASAGNA": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Lasagna",
+      "price": 8000,
+      "discounted": false
+    },
+    "FULL_SPAGHETTI": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Spaghetti",
+      "price": 8000,
+      "discounted": false
+    },
+    "FULL_RAVIOLI": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Ravioli",
+      "price": 8000,
+      "discounted": false
+    },
+    "LEMON_POTATOES_FULL": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Lemon Potatoes Full",
+      "price": 5000,
+      "discounted": false
+    },
+    "FULL_GREEK_SALAD": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Greek Salad",
+      "price": 7500,
+      "discounted": false
+    },
+    "HALF_GARDEN_SALAD": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Garden Salad",
+      "price": 3300,
+      "discounted": false
+    },
+    "LEMON_POTATOES_HALF": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Lemon Potatoes Half",
+      "price": 2500,
+      "discounted": false
+    },
+    "HALF_RICE": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Rice Pilaf",
+      "price": 2100,
+      "discounted": false
+    },
+    "GARLIC_TOAST_CATERING": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Garlic Toast Catering",
+      "price": 1000,
+      "discounted": false
+    },
+    "FULL_MOUSAKA": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Mousaka",
+      "price": 9500,
+      "discounted": false
+    },
+    "HALF_MOUSAKA": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Mousaka",
+      "price": 4800,
+      "discounted": false
+    },
+    "SPANAKOPITA": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Spanakopita 24Pc",
+      "price": 5800,
+      "discounted": false
+    },
+    "HALF_GREEK_SALAD": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Greek Salad",
+      "price": 3600,
+      "discounted": false
+    },
+    "HALF_LASAGNA": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Lasagna",
+      "price": 3850,
+      "discounted": false
+    },
+    "HALF_SPAGHETTI": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Spaghetti",
+      "price": 3850,
+      "discounted": false
+    },
+    "HALF_RAVIOLI": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Ravioli",
+      "price": 3850,
+      "discounted": false
+    },
+    "FULL_RICE": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Rice",
+      "price": 4300,
+      "discounted": false
+    },
+    "MEATBALLS": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Meatballs",
+      "price": 150,
+      "discounted": false
+    },
+    "FULL_MANICOTTI": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Full Manicotti",
+      "price": 5500,
+      "discounted": false
+    },
+    "HALF_MANICOTTI": {
+      "toppingList": [],
+      "addonList": [],
+      "specialInstructions": [],
+      "alternativeItems": [],
+      "name": "Half Manicotti",
+      "price": 4600,
+      "discounted": false
+    }
+  }
+}

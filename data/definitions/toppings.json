@@ -1,0 +1,248 @@
+{
+  "BASE_PRICES": {
+    "TEN": 1080,
+    "THIRTEEN": 1570,
+    "FIFTEEN": 1990,
+    "EIGHTEEN": 2595,
+    "THIRTY": 8195
+  },
+  "MISC_PRICES": {
+    "GREEK_SAUCE": {
+      "TEN": 220,
+      "THIRTEEN": 330,
+      "FIFTEEN": 400,
+      "EIGHTEEN": 550,
+      "THIRTY": 1300
+    },
+    "GLUTEN_FREE": 200,
+    "KETO": 450,
+    "SALAD_CHICKEN": 495,
+    "SALAD_SHRIMP": 495,
+    "PASTA_SHRIMP": 495,
+    "PASTA_MUSHROOM": 250,
+    "PASTA_CHEESE": 250,
+    "PASTA_CHICKEN": 475,
+    "PASTA_SAUCE": 250
+  },
+  "PRICES_FOR_PIZZA_SIZES": {
+    "GOURMET": {
+      "TEN": 220,
+      "THIRTEEN": 330,
+      "FIFTEEN": 400,
+      "EIGHTEEN": 550,
+      "THIRTY": 1300
+    },
+    "NORMAL": {
+      "TEN": 130,
+      "THIRTEEN": 190,
+      "FIFTEEN": 260,
+      "EIGHTEEN": 325,
+      "THIRTY": 750
+    },
+    "CHILI_PEPPER": {
+      "TEN": 100,
+      "THIRTEEN": 150,
+      "FIFTEEN": 200,
+      "EIGHTEEN": 275,
+      "THIRTY": 600
+    }
+  },
+  "NORMAL_TOPPINGS": {
+    "MUSHROOM": {
+      "NAME": "Mushroom",
+      "SIMPLE_NAME": "Mush",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "BEEF": {
+      "NAME": "Beef",
+      "SIMPLE_NAME": "Beef",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "SIDE_BACON": {
+      "NAME": "Side_Bacon",
+      "SIMPLE_NAME": "Sbac",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "RED_PEPPER": {
+      "NAME": "Red_Pepper",
+      "SIMPLE_NAME": "RP",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "BLACK_OLIVES": {
+      "NAME": "Black_Olives",
+      "SIMPLE_NAME": "BO",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "TOMATO": {
+      "NAME": "Tomato",
+      "SIMPLE_NAME": "Tom",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "JALAPENO": {
+      "NAME": "Jalapeno",
+      "SIMPLE_NAME": "Jal",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "SAUSAGE": {
+      "NAME": "Sausage",
+      "SIMPLE_NAME": "Saus",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "BANANA_PEPPER": {
+      "NAME": "Banana_Pepper",
+      "SIMPLE_NAME": "BP",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "BACK_BACON": {
+      "NAME": "Back_Bacon",
+      "SIMPLE_NAME": "BBac",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "PEPPERONI": {
+      "NAME": "Pepperoni",
+      "SIMPLE_NAME": "Pep",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "GREEN_PEPPER": {
+      "NAME": "Green_Pepper",
+      "SIMPLE_NAME": "GP",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "PINEAPPLE": {
+      "NAME": "Pineapple",
+      "SIMPLE_NAME": "PA",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "BROCCOLI": {
+      "NAME": "Broccoli",
+      "SIMPLE_NAME": "Broc",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "ONION": {
+      "NAME": "Onion",
+      "SIMPLE_NAME": "Oni",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "SALAMI": {
+      "NAME": "Salami",
+      "SIMPLE_NAME": "Sal",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "RED_ONION": {
+      "NAME": "Red_Onion",
+      "SIMPLE_NAME": "RO",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "GREEN_OLIVES": {
+      "NAME": "Green_Olives",
+      "SIMPLE_NAME": "GO",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "HAM": {
+      "NAME": "Ham",
+      "SIMPLE_NAME": "Ham",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "SPINACH": {
+      "NAME": "Spinach",
+      "SIMPLE_NAME": "Spin",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "ARTICHOKE": {
+      "NAME": "Artichoke",
+      "SIMPLE_NAME": "Arti",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "SUNDRIED_TOMATO": {
+      "NAME": "Sundried_Tomato",
+      "SIMPLE_NAME": "SunTom",
+      "TIER": "NORMAL",
+      "easy": false
+    },
+    "SHRIMP": {
+      "NAME": "Shrimp",
+      "SIMPLE_NAME": "Shrimp",
+      "TIER": "NORMAL",
+      "easy": false
+    }
+  },
+  "GOURMET_TOPPINGS": {
+    "MARINATED_EGGPLANT": {
+      "NAME": "Marinated_Eggplant",
+      "SIMPLE_NAME": "MEgg",
+      "TIER": "GOURMET",
+      "easy": false
+    },
+    "PROSCIUTTO": {
+      "NAME": "PROSCIUTTO",
+      "SIMPLE_NAME": "Prosc",
+      "TIER": "GOURMET",
+      "easy": false
+    },
+    "CHICKEN": {
+      "NAME": "Chicken",
+      "SIMPLE_NAME": "Ckn",
+      "TIER": "GOURMET",
+      "easy": false
+    },
+    "CHEDDAR": {
+      "NAME": "Cheddar",
+      "SIMPLE_NAME": "Cheddar",
+      "TIER": "GOURMET",
+      "easy": false
+    },
+    "MOZZARELLA": {
+      "NAME": "Mozzarella",
+      "SIMPLE_NAME": "Mozza",
+      "TIER": "GOURMET",
+      "easy": false
+    },
+    "CHORIZO": {
+      "NAME": "Chorizo",
+      "SIMPLE_NAME": "Chor",
+      "TIER": "GOURMET",
+      "easy": false
+    },
+    "FETA": {
+      "NAME": "Feta",
+      "SIMPLE_NAME": "Feta",
+      "TIER": "GOURMET",
+      "easy": false
+    },
+    "ANCHOVIES": {
+      "NAME": "Anchovies",
+      "SIMPLE_NAME": "Anch",
+      "TIER": "GOURMET",
+      "easy": false
+    }
+  },
+  "MISC_TOPPINGS": {
+    "CHILI_PEPPER": {
+      "NAME": "Chili_Pepper",
+      "SIMPLE_NAME": "ChiliP",
+      "TIER": "CHILI_PEPPER",
+      "easy": false
+    }
+  }
+}

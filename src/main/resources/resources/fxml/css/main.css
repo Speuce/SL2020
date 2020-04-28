@@ -1,0 +1,153 @@
+.ToppingsEnableHover {
+    -fx-background-color: #401e1a;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsDefault {
+    -fx-background-color: #400D0D;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsDefaultCrustSauce {
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsEnableHoverGreen {
+    -fx-background-color: #1a3416;
+    -fx-background-radius: 15;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsDefaultGreen {
+    -fx-background-color: #003300;
+    -fx-background-radius: 15;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsSelected {
+    -fx-background-color: #871406;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsSelectedGreen {
+    -fx-background-color: #377a31;
+    -fx-background-radius: 15;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsSelectedCrustSauce {
+    -fx-background-color: rgba(53, 53, 53, 0.72);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-text-fill: WHITE;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsSelectedEZ {
+    -fx-background-color: #807f05;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: black;
+    -fx-border-width: 3;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsSelectedX {
+    -fx-background-color: #7a4507;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: black;
+    -fx-border-width: 3;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsSelectedXX {
+    -fx-background-color: #7a0075;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: black;
+    -fx-border-width: 3;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.BackgroundDefault {
+    -fx-background-color: #585858;
+}
+
+.BackgroundNeed {
+    -fx-background-color: #717516;
+}
+
+.PaymentDefault {
+    -fx-background-color:  #003300;
+    -fx-border-radius: 10;
+}
+
+.PaymentSelected {
+    -fx-background-color: #006f00;
+    -fx-border-radius: 10;
+}
+
+.ToppingsDefaultVeggieTopping {
+    -fx-background-color: #235623;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsDefaultMeatTopping {
+    -fx-background-color: #5E1005;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsDefaultCheeseTopping {
+    -fx-background-color: #7A3508;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsDefaultMiscTopping {
+    -fx-background-color: #532643;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.ToppingsDefaultGourmetTopping {
+    -fx-background-color: #1C1B9A;
+    -fx-background-radius: 5;
+    -fx-border-radius: 20;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+

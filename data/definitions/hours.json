@@ -1,0 +1,343 @@
+[
+  {
+    "STORE": "STMARYS",
+    "MONDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "TUESDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "1:00 AM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "1:00 AM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "SUNDAY": {
+      "opening": "12:00 PM",
+      "closing": "12:00 AM"
+    }
+  },
+  {
+    "STORE": "MAINSTREET",
+    "MONDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "TUESDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "2:00 AM"
+    },
+    "SUNDAY": {
+      "opening": "12:00 PM",
+      "closing": "2:00 AM"
+    }
+  },
+  {
+    "STORE": "PEMBINAHWY",
+    "MONDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "SUNDAY": {
+      "opening": "2:00 PM",
+      "closing": "10:00 PM"
+    }
+  },
+  {
+    "STORE": "CORYDON",
+    "MONDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "TUESDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "1:00 AM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "1:00 AM"
+    },
+    "SUNDAY": {
+      "opening": "12:00 PM",
+      "closing": "12:00 AM"
+    }
+  },
+  {
+    "STORE": "PORTAGE",
+    "MONDAY": {
+      "opening": "11:00 AM till 1:00 PM",
+      "closing": "4:00 PM till 11:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "11:00 AM till 1:00 PM",
+      "closing": "4:00 PM till 11:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM till 1:00 PM",
+      "closing": "4:00 PM till 11:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM till 1:00 PM",
+      "closing": "4:00 PM till 11:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM till 1:00 PM",
+      "closing": "4:00 PM till 12:00 AM"
+    },
+    "SATURDAY": {
+      "opening": "4:00 PM",
+      "closing": "12:00 AM"
+    },
+    "SUNDAY": {
+      "opening": "3:00 PM",
+      "closing": "11:00 PM"
+    }
+  },
+  {
+    "STORE": "HENDERSON",
+    "MONDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "SUNDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    }
+  },
+  {
+    "STORE": "REGENT",
+    "MONDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 AM"
+    },
+    "SUNDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    }
+  },
+  {
+    "STORE": "MORRIS_MANITOBA",
+    "MONDAY": {
+      "opening": "11:00 AM",
+      "closing": "8:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "11:00 AM",
+      "closing": "8:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "8:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "8:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "8:00 PM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "8:00 PM"
+    },
+    "SUNDAY": {
+      "opening": "11:00 AM",
+      "closing": "8:00 PM"
+    }
+  },
+  {
+    "STORE": "BRANDON_MANITOBA",
+    "MONDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 PM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 PM"
+    },
+    "SUNDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    }
+  },
+  {
+    "STORE": "SASKATOON_EAST",
+    "MONDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 PM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 PM"
+    },
+    "SUNDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    }
+  },
+  {
+    "STORE": "SASKATOON_WEST",
+    "MONDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "TUESDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    },
+    "WEDNESDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "THURSDAY": {
+      "opening": "11:00 AM",
+      "closing": "11:00 PM"
+    },
+    "FRIDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 PM"
+    },
+    "SATURDAY": {
+      "opening": "11:00 AM",
+      "closing": "12:00 PM"
+    },
+    "SUNDAY": {
+      "opening": "4:00 PM",
+      "closing": "11:00 PM"
+    }
+  }
+]

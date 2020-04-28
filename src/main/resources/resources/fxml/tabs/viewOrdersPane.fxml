@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="viewOrdersPane" prefHeight="1085.0" prefWidth="1700.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lucia.fxml.controllers.impl.main.tabs.ViewOrdersPane">
+   <children>
+      <Label fx:id="searchLabel" layoutX="1425.0" layoutY="180.0" text="Search by Phone #">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="searchBox" layoutX="1405.0" layoutY="228.0" maxWidth="251.0" minWidth="251.0" onKeyPressed="#searchTyped" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #FFFFFF;">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <Pane fx:id="viewOrdersInfoPane" layoutX="1353.0" layoutY="301.0" prefHeight="788.0" prefWidth="349.0" visible="false">
+         <children>
+            <Label layoutX="81.0" layoutY="9.0" text="Order Info">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="viewOrderButton" layoutX="61.0" layoutY="697.0" onMouseClicked="#viewOrder" prefHeight="69.0" prefWidth="232.0" style="-fx-background-color: #003300; -fx-background-radius: 20; -fx-border-radius: 20;" text="View Order" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century" size="33.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="viewOrderInfo1" layoutX="4.0" layoutY="100.0" text="Server: Matthew">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="viewOrderInfo2" layoutX="4.0" layoutY="150.0" text="Server: Matthew">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="viewOrderInfo3" layoutX="4.0" layoutY="200.0" text="Server: Matthew">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="-7.0" prefHeight="161.0" prefWidth="1700.0" style="-fx-background-color: #800000;">
+         <children>
+            <JFXButton fx:id="forward7" layoutX="1595.0" layoutY="39.0" prefHeight="87.0" prefWidth="83.0" text="">
+               <graphic>
+                  <ImageView fitHeight="97.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pictures/theArrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="back7" layoutX="1521.0" layoutY="39.0" prefHeight="87.0" prefWidth="83.0" text="">
+               <graphic>
+                  <ImageView fitHeight="97.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pictures/theArrowBack.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="24.0" layoutY="27.0" prefHeight="93.0" prefWidth="496.0" text="View Orders" textFill="WHITE">
+               <font>
+                  <Font name="Century" size="59.0" />
+               </font>
+            </Label>
+            <Line endX="1598.0" layoutX="102.0" layoutY="161.0" startX="-100.0" strokeWidth="3.0" />
+         </children>
+      </Pane>
+      <AnchorPane fx:id="viewOrdersAnchor" layoutX="3.0" layoutY="155.0" prefHeight="945.0" prefWidth="1349.0">
+         <children>
+            <Line endX="1350.0" layoutY="70.0" strokeWidth="3.0" />
+            <GridPane fx:id="viewOrderGridpane" layoutX="-3.0" layoutY="70.0" prefHeight="53.0" prefWidth="1353.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="102.66667175292969" minWidth="102.66667175292969" prefWidth="102.66667175292969" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="587.3333282470703" minWidth="96.22862243652344" prefWidth="179.0006103515625" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="493.62103271484375" minWidth="42.74432373046875" prefWidth="446.95654296875" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="493.62103271484375" minWidth="42.74432373046875" prefWidth="215.04345703125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="1079.7713775634766" minWidth="72.1055908203125" prefWidth="153.993896484375" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="280.002685546875" minWidth="24.9378662109375" prefWidth="152.006103515625" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="265.0" minWidth="60.5589599609375" prefWidth="177.2733154296875" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints fillHeight="false" maxHeight="55.250244140625" minHeight="50.0" prefHeight="55.250244140625" vgrow="NEVER" />
+               </rowConstraints>
+            </GridPane>
+            <Label layoutX="3.0" layoutY="23.0" text="Order #">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="121.0" layoutY="23.0" text="P/D">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="920.0" layoutY="23.0" text="Time">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="1067.0" layoutY="23.0" text="Total">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endY="870.0" layoutX="1350.0" layoutY="70.0" strokeWidth="3.0" />
+            <Label layoutX="309.0" layoutY="23.0" text="Name/Address">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="1206.0" layoutY="23.0" text="Pay Type">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="700.0" layoutY="23.0" text="Phone Number">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="orderInfoAnchor" layoutY="150.0" prefHeight="945.0" prefWidth="1700.0" visible="false">
+         <children>
+            <fx:include fx:id="orderDetailsPane" source="viewOrder/OrderDetails.fxml" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

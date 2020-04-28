@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="cateringPane" prefHeight="779.0" prefWidth="1337.0" style="-fx-background-color: #585858;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.CateringController">
+   <children>
+      <AnchorPane fx:id="cateringAnchor" layoutX="16.0" layoutY="7.0" prefHeight="759.0" prefWidth="1102.0">
+         <children>
+            <JFXButton fx:id="full_lasagna" alignment="CENTER" layoutX="13.0" layoutY="16.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full  Lasagna" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_lasagna" alignment="CENTER" layoutX="236.0" layoutY="16.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Lasagna" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_spaghetti" alignment="CENTER" layoutX="457.0" layoutY="16.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Spaghetti" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_ravioli" alignment="CENTER" layoutX="13.0" layoutY="165.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Ravioli" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_fettuccine" alignment="CENTER" layoutX="236.0" layoutY="169.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Alfredo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_fettuccine" alignment="CENTER" layoutX="457.0" layoutY="169.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Alfredo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_caesar_salad" alignment="CENTER" layoutX="13.0" layoutY="322.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Caesar Salad" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_caesar_salad" alignment="CENTER" layoutX="236.0" layoutY="322.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Caesar Salad" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_garden_salad" alignment="CENTER" layoutX="457.0" layoutY="322.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Garden Salad" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="HALF_CHICKEN_STRIP_CATERING" alignment="CENTER" layoutX="13.0" layoutY="471.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Chicken Strips" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_mousaka" alignment="CENTER" layoutX="236.0" layoutY="475.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Mousaka" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="spanakopita" alignment="CENTER" layoutX="457.0" layoutY="475.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Spanakopita" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="lemon_potatoes_full" alignment="CENTER" layoutX="13.0" layoutY="628.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Lemon Potato" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="lemon_potatoes_half" alignment="CENTER" layoutX="236.0" layoutY="628.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Lemon Potato" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_rice" alignment="CENTER" layoutX="457.0" layoutY="628.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Rice Pilaf" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_spaghetti" alignment="CENTER" layoutX="685.0" layoutY="16.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Spaghetti" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_ravioli" alignment="CENTER" layoutX="908.0" layoutY="16.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Ravioli" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="full_greek_salad" alignment="CENTER" layoutX="685.0" layoutY="165.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Greek Salad" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_greek_salad" alignment="CENTER" layoutX="908.0" layoutY="169.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Greek Salad" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_garden_salad" alignment="CENTER" layoutX="685.0" layoutY="322.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Garden Salad" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="FULL_CHICKEN_STRIP_CATERING" alignment="CENTER" layoutX="908.0" layoutY="322.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Chicken Strips" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="souvlaki_skewer" alignment="CENTER" layoutX="685.0" layoutY="471.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Souvlaki Skewer" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="shrimp_skewer" alignment="CENTER" layoutX="908.0" layoutY="475.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Shrimp Skewer" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="half_rice" alignment="CENTER" layoutX="685.0" layoutY="628.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Rice Pilaf" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="garlic_toast_catering" alignment="CENTER" layoutX="908.0" layoutY="628.0" onMouseClicked="#selectedCatering" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Garlic Toast 10 pc" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="1140.0" layoutY="684.0" onMouseClicked="#addToOrderCatering" prefHeight="87.0" prefWidth="185.0" style="-fx-background-color: #807f05; -fx-background-radius: 20; -fx-border-radius: 20;" text="Make" textAlignment="CENTER" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <font>
+            <Font name="Century" size="39.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="packages" alignment="CENTER" layoutX="1139.0" layoutY="482.0" onAction="#packagesSwitch" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Packages" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="27.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <Pane fx:id="cateringCustomPane" layoutX="8.0" layoutY="4.0" prefHeight="774.0" prefWidth="1119.0" style="-fx-background-color: #585858;" visible="false">
+         <children>
+            <JFXButton fx:id="firstDown" alignment="CENTER" layoutX="261.0" layoutY="135.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="First Down" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="fieldGoal" alignment="CENTER" layoutX="487.0" layoutY="135.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Field Goal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="touchDown" alignment="CENTER" layoutX="715.0" layoutY="135.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Touch Down" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="crowdPleaser" alignment="CENTER" layoutX="261.0" layoutY="309.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Crowd Pleaser" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="slSignature" alignment="CENTER" layoutX="487.0" layoutY="309.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="SL Signature" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="tasteOfGreece" alignment="CENTER" layoutX="715.0" layoutY="309.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Taste of Greece" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="halfItaly" alignment="CENTER" layoutX="263.0" layoutY="478.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Half Taste of Italy" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="fullItaly" alignment="CENTER" layoutX="489.0" layoutY="478.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Full Taste of Italy" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="simpleGathering" alignment="CENTER" layoutX="717.0" layoutY="478.0" onMouseClicked="#selectedCateringCustom" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="117.0" prefWidth="185.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Simple Gathering" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</Pane>

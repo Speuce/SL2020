@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="chickenPane" prefHeight="779.0" prefWidth="1337.0" style="-fx-background-color: #585858;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.ChickenController">
+   <children>
+      <Line endX="713.0" endY="782.0" startX="713.0" strokeWidth="3.0" />
+      <JFXButton fx:id="chickenDinner" layoutX="68.0" layoutY="80.0" onMouseClicked="#selectedChicken" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="159.0" prefWidth="271.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Chicken Finger Dinner" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="35.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <Pane fx:id="chickenCustomPane" layoutX="760.0" prefHeight="766.0" prefWidth="580.0" style="-fx-background-color: #585858;" visible="false">
+         <children>
+            <JFXButton fx:id="dipsChicken" layoutX="70.0" layoutY="43.0" onAction="#dipsPopup" onMouseClicked="#selectedChickenCustom" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="93.0" prefWidth="180.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Dips" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="POUTINE_UPGRADE" layoutX="321.0" layoutY="43.0" onMouseClicked="#selectedChickenCustom" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="93.0" prefWidth="180.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Poutine Upgrade" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="389.0" layoutY="684.0" onMouseClicked="#addToOrderChicken" prefHeight="87.0" prefWidth="185.0" style="-fx-background-color: #807f05; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="ToppingsDefaultGreen" text="Make" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century" size="39.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</Pane>

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="driverReport" prefHeight="837.0" prefWidth="1290.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lucia.fxml.controllers.impl.main.tabs.Driver.DriverReportController">
+   <children>
+      <Label layoutX="19.0" layoutY="-6.0" prefHeight="42.0" prefWidth="199.0" text="Totals" textAlignment="CENTER">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="3.0" layoutY="98.0" prefHeight="42.0" prefWidth="199.0" style="-fx-alignment: center;" text="Payment Info" textAlignment="CENTER">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Line endX="1155.0" layoutX="135.0" layoutY="443.0" startX="-135.0" strokeWidth="3.0" />
+      <Label layoutX="420.0" layoutY="32.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="536.0" layoutY="32.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="650.0" layoutY="32.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="762.0" layoutY="32.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="874.0" layoutY="32.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="421.0" layoutY="111.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="643.0" layoutY="111.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="758.0" layoutY="111.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="848.0" layoutY="111.0" prefHeight="42.0" prefWidth="54.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="949.0" layoutY="111.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="-50.0" layoutY="396.0" prefHeight="42.0" prefWidth="199.0" style="-fx-alignment: center;" text="Orders" textAlignment="CENTER">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="533.0" layoutY="111.0" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-image-width: 2;" />
+      <Label layoutX="503.0" layoutY="13.0" text="+">
+         <font>
+            <Font size="53.0" />
+         </font>
+      </Label>
+      <Label layoutX="618.0" layoutY="13.0" text="+">
+         <font>
+            <Font size="53.0" />
+         </font>
+      </Label>
+      <Label layoutX="737.0" layoutY="9.0" text="-">
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Label layoutX="850.0" layoutY="9.0" text="-">
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Label layoutX="398.0" layoutY="88.0" text="-">
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="88.0" text="-">
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Label layoutX="620.0" layoutY="88.0" text="-">
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Label layoutX="732.0" layoutY="88.0" text="-">
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Label layoutX="909.0" layoutY="93.0" text="=">
+         <font>
+            <Font size="51.0" />
+         </font>
+      </Label>
+      <Label layoutX="420.0" layoutY="5.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Cash Sales" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="536.0" layoutY="6.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Float" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="650.0" layoutY="6.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Tippool" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="758.0" layoutY="4.0" prefHeight="31.0" prefWidth="93.0" style="-fx-alignment: center;" text="Del Charge" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="874.0" layoutY="4.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Overs" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="421.0" layoutY="84.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Errands" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="533.0" layoutY="84.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Misc" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="641.0" layoutY="85.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Tips" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="757.0" layoutY="84.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Wages" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="831.0" layoutY="85.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Hours" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="948.0" layoutY="85.0" prefHeight="31.0" prefWidth="86.0" style="-fx-alignment: center;" text="Final Owe" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <GridPane gridLinesVisible="true" layoutX="19.0" layoutY="33.0" prefHeight="2.0" prefWidth="346.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Average" textAlignment="CENTER" GridPane.columnIndex="3">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Total" textAlignment="CENTER" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Number" textAlignment="CENTER" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Type" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane gridLinesVisible="true" layoutX="100.0" layoutY="174.0" prefHeight="210.0" prefWidth="273.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+         </rowConstraints>
+      </GridPane>
+      <ScrollPane layoutX="6.0" layoutY="447.0" prefHeight="387.0" prefWidth="1284.0" style="-fx-background-color: #D3D3D3;">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="1265.0" style="-fx-background-color: #D3D3D3;">
+               <children>
+                  <GridPane gridLinesVisible="true" layoutX="6.0" layoutY="7.0" prefHeight="32.0" prefWidth="1258.0">
+                     <columnConstraints>
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="116.66665649414062" minWidth="0.0" prefWidth="108.66665649414062" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="78.0" minWidth="78.0" prefWidth="78.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="78.0" minWidth="78.0" prefWidth="78.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="142.0" minWidth="110.0" prefWidth="142.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="164.0" style="-fx-alignment: center;" text="Total" textAlignment="CENTER" GridPane.columnIndex="9">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Phone #" textAlignment="CENTER" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="321.0" style="-fx-alignment: center;" text="Address" textAlignment="CENTER" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Time" textAlignment="CENTER" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Order #" textAlignment="CENTER" GridPane.columnIndex="8">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Time Out" textAlignment="CENTER" GridPane.columnIndex="7">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Driver" textAlignment="CENTER" GridPane.columnIndex="6">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Area" textAlignment="CENTER" GridPane.columnIndex="5">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Pay Method" textAlignment="CENTER" GridPane.columnIndex="4">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Type" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <GridPane gridLinesVisible="true" layoutX="6.0" layoutY="36.0" prefHeight="32.0" prefWidth="1258.0">
+                     <columnConstraints>
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="116.66665649414062" minWidth="0.0" prefWidth="108.66665649414062" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="78.0" minWidth="78.0" prefWidth="78.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="78.0" minWidth="78.0" prefWidth="78.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="142.0" minWidth="110.0" prefWidth="142.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <GridPane gridLinesVisible="true" layoutX="19.0" layoutY="139.0" prefHeight="245.0" prefWidth="80.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Cash" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Debit" textAlignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="MC" textAlignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Visa" textAlignment="CENTER" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Gift" textAlignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Cheque" textAlignment="CENTER" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Type" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane gridLinesVisible="true" layoutX="19.0" layoutY="67.0" prefHeight="2.0" prefWidth="346.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane gridLinesVisible="true" layoutX="100.0" layoutY="139.0" prefHeight="3.0" prefWidth="273.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Average" textAlignment="CENTER" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Total" textAlignment="CENTER" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="107.0" style="-fx-alignment: center;" text="Number" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Label layoutX="403.0" layoutY="184.0" prefHeight="42.0" prefWidth="199.0" text="Last Delivery Taken:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="403.0" layoutY="237.0" prefHeight="42.0" prefWidth="199.0" text="Checked In:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="404.0" layoutY="291.0" prefHeight="42.0" prefWidth="199.0" text="Started Shift:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="1086.0" layoutY="7.0" prefHeight="77.0" prefWidth="195.0" style="-fx-background-color: #377a31; -fx-background-radius: 20;" text="Leave Note" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1088.0" layoutY="102.0" prefHeight="77.0" prefWidth="195.0" style="-fx-background-color: #377a31; -fx-background-radius: 20;" text="Assign Next Deliveries" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1088.0" layoutY="197.0" prefHeight="77.0" prefWidth="195.0" style="-fx-background-color: #377a31; -fx-background-radius: 20;" text="Toggle Runs" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

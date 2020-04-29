@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="theMainBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.Master">
+
+   <children>
+      <ScrollPane fx:id="buttonScroll" hbarPolicy="NEVER" prefHeight="1080.0" prefWidth="243.0" style="-fx-background-color: #383838;">
+         <content>
+            <AnchorPane fx:id="buttonMap" minHeight="0.0" minWidth="0.0" prefHeight="1421.0" prefWidth="212.0" style="-fx-background-color: #585858;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXButton fx:id="pickupDelivery" layoutY="10.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="Pickup / Delivery">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/placeOrder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="pendingOrders" layoutY="110.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="  Pending Orders">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/pendingOrders.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="viewPreorders" layoutY="210.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="  View Preorders">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/preorder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="driverFrame" layoutY="810.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="    Driver Frame">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/drievrManager.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="manageTables" layoutY="410.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="  Manage Tables">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/manageTablesNew.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="backOffice" layoutY="510.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="      Back Office">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/backoffice.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="manager" layoutY="610.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="       Server Report">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/manager.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="dispatch" layoutY="710.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="       Dispatch   ">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/dispatchNew.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="viewOrders" layoutY="310.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="      View Orders">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/find.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="employeeLogin" layoutY="910.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="Employee Login">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/employeelogin.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="scheduleManager" layoutY="1010.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="Schedule Manager" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/schedule.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="customerDirectory" layoutY="1110.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="Customer Directory" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/usersNew.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="stat" layoutY="1210.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="       Statistics">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/statistics.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="settings" layoutY="1310.0" onAction="#changePane" prefHeight="87.0" prefWidth="208.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" text="       Settings">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../pictures/settingsNew.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <AnchorPane fx:id="paneMap" layoutX="220.0" prefHeight="1080.0" prefWidth="1636.0">
+         <children>
+            <fx:include fx:id="employeeLoginPane" source="tabs/employeeLoginPane.fxml" />
+            <fx:include fx:id="driverFramePane" source="tabs/DriverHub/driverFramePane.fxml" />
+            <fx:include fx:id="statPane" source="tabs/statsPane.fxml" />
+            <fx:include fx:id="pendingOrdersPane" source="tabs/pendingOrdersPane.fxml" />
+            <fx:include fx:id="manageTablesPane" source="tabs/manageTablesPane.fxml" />
+            <fx:include fx:id="backOfficePane" source="tabs/BackOffice/backOfficePane.fxml" />
+            <fx:include fx:id="managerPane" source="tabs/serverReportPane.fxml" />
+            <fx:include fx:id="dispatchPane" source="tabs/dispatchPane.fxml" />
+            <fx:include fx:id="scheduleManagerPane" source="tabs/scheduleManagerPane.fxml" />
+            <fx:include fx:id="customerDirectoryPane" source="tabs/customerDirectoryPane.fxml" />
+            <fx:include fx:id="settingsPane" source="tabs/settingsPane.fxml" />
+            <fx:include fx:id="viewPreordersPane" source="tabs/viewPreordersPane.fxml" />
+            <fx:include fx:id="viewOrdersPane" source="tabs/viewOrdersPane.fxml" />
+            <fx:include fx:id="pickupDeliveryPane" source="tabs/order/pickupDeliveryPane.fxml" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

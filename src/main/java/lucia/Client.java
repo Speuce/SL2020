@@ -43,6 +43,7 @@ public class Client {
             logger.info("Initializing " + ClientConstants.NAME);
             client = new ClientBuilder(new NetworkBuilder(), new InterfaceBuilder()).initialize();
         } catch (Exception e) {
+            e.printStackTrace();
             logger.error("An error occurred while initializing the server!", e);
         }
     }

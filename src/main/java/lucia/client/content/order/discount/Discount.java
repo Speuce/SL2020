@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.order.impl.discount;
+package main.java.lucia.client.content.order.discount;
 
 import main.java.lucia.client.content.order.Order;
 
@@ -12,6 +12,11 @@ public abstract class Discount {
      * The name of this discount
      */
     private String name;
+
+    /**
+     * Indicates whether this discount is active or not.
+     */
+    private boolean active;
 
     public Discount(String name) {
         this.name = name;

@@ -1,11 +1,10 @@
-package main.java.lucia.client.content.order.impl.discount;
+package main.java.lucia.client.content.order.discount.impl;
 
 
-import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.menu.size.Size;
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.order.discount.Discount;
 
 import java.util.*;
 
@@ -13,6 +12,7 @@ import java.util.*;
  * Object that represents the pizza double deal
  * Buy one pizza (10, 13, or 15) and get the
  * second pizza of equal or lesser value 50% off
+ * @author Matthew Kwiatkowski
  */
 public class PizzaDoubleDeal extends Discount {
 

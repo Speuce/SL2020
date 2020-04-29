@@ -1,0 +1,112 @@
+{
+  "menu": {
+    "appetizers": [
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 700,
+        "baseName": "cheese toast",
+        "id": 2
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 495,
+        "baseName": "french fries",
+        "id": 3
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1295,
+        "baseName": "wings",
+        "id": 6
+      }
+    ],
+    "Sauces": [
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "hot sauce",
+        "id": 4
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "bbq sauce",
+        "id": 5
+      }
+    ],
+    "sections": [
+      "appetizers",
+      "Sauces"
+    ]
+  },
+  "pizza": {
+    "sizes": [
+      10,
+      13,
+      15
+    ],
+    "pricingSchemes": [
+      {
+        "name": "basePizza",
+        "10": "999",
+        "13": "1399",
+        "15": "1999"
+      },
+      {
+        "name": "free",
+        "10": "0",
+        "13": "0",
+        "15": "0"
+      }
+    ],
+    "crusts": [
+      {
+        "displayName": "regular",
+        "name": "regular",
+        "id": 8,
+        "pricing": "free"
+      }
+    ],
+    "sauces": [
+      {
+        "displayName": "regular",
+        "name": "regular",
+        "id": 7,
+        "pricing": "free"
+      }
+    ],
+    "toppings": [
+      {
+        "name": "pepperoni",
+        "buttonColor": -65536,
+        "id": 9,
+        "pricing": "free",
+        "short": "pep"
+      }
+    ],
+    "regularPizza": "basePizza",
+    "regularSauce": 7,
+    "specials": [
+      {
+        "id": 10,
+        "name": "XPEPPizza",
+        "pricing": "basePizza",
+        "sauce": 7,
+        "crust": 8,
+        "toppings": [
+          {
+            "type": 9,
+            "amount": 3
+          }
+        ],
+        "specialInstructions": []
+      }
+    ]
+  }
+}

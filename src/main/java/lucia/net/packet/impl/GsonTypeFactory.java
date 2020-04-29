@@ -98,12 +98,24 @@ public class GsonTypeFactory {
    */
   private static Gson menuItemBuilder() {
     GsonBuilder b = new GsonBuilder();
+    b.setExclusionStrategies(new ExclusionStrategy() {
+      @Override
+      public boolean shouldSkipField(FieldAttributes f) {
+        return f.getAnnotation(Exclude.class) != null;
+      }
+
+      @Override
+      public boolean shouldSkipClass(Class<?> clazz) {
+        return false;
+      }
+    });
     b.setPrettyPrinting();
     b.serializeNulls();
     RuntimeTypeAdapterFactory<Descriptor> itemAdapter = RuntimeTypeAdapterFactory
             .of(Descriptor.class)
             .registerSubtype(AddonDescriptor.class)
             .registerSubtype(ItemModifiableDescriptor.class)
+            .registerSubtype(SimpleItemDescriptor.class)
             .registerSubtype(SimplePizzaDescriptor.class)
             .registerSubtype(SpecialtyPizzaDescriptor.class);
     b.registerTypeAdapterFactory(itemAdapter);

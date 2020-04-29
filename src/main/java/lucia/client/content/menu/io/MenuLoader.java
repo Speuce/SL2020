@@ -6,6 +6,7 @@ import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.io.deserializer.local.*;
 import main.java.lucia.client.content.menu.io.serializer.local.ToppingTypeSerializer;
+import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.pizza.Crust;
@@ -16,10 +17,7 @@ import main.java.lucia.consts.JavaConstants;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * A class to load the menu.
@@ -64,12 +62,13 @@ public class MenuLoader {
         SimpleItemDescriptor descriptor;
         for(JsonElement e: items){
             item = e.getAsJsonObject();
-            descriptor = deserializeItem(item);
-            if(descriptor != null){
-                ret.add(descriptor);
-            }else{
-                MLogger.parseError("Error parsing item: ***" + e.getAsString() + "***");
-            }
+                descriptor = deserializeItem(item);
+                if(descriptor != null){
+                    ret.add(descriptor);
+                }else{
+                    MLogger.parseError("Error parsing item: ***" + e.getAsString() + "***");
+                }
+
         }
         return ret;
     }
@@ -80,7 +79,7 @@ public class MenuLoader {
      * @return the item, parsed, or null if it it not parsable.
      */
     private SimpleItemDescriptor deserializeItem(JsonObject o){
-        return GsonTypeFactory.BASIC_GSON.fromJson(o, SimpleItemDescriptor.class);
+        return (SimpleItemDescriptor) GsonTypeFactory.MENU_ITEM_GSON.fromJson(o, Descriptor.class);
     }
 
     /**

@@ -48,8 +48,8 @@ public class MenuTemplateBuilder {
         Menu.get.addSection(sectionName2, itemList2);
 
         ItemModifiableDescriptor wings = new ItemModifiableDescriptor(6, "wings", 1295);
-        wings.getAppliableAddons().add(hotSauce);
-        wings.getAppliableAddons().add(bbqSauce);
+        wings.addAddon(hotSauce);
+        wings.addAddon(bbqSauce);
         itemList1.add(wings);
 
         //pizza menu things
@@ -98,7 +98,7 @@ public class MenuTemplateBuilder {
 
 
 
-        File menu = new File("src/main/resources/menu.json");
+        File menu = new File("src/main/resources/menutest.json");
         if(!menu.exists()){
             menu.createNewFile();
         }

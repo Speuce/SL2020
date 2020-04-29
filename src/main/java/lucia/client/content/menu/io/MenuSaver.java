@@ -4,10 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializer;
 import main.java.lucia.client.content.menu.io.serializer.local.*;
-import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
-import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
-import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
-import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.*;
+import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.pizza.Crust;
 import main.java.lucia.client.content.menu.pizza.Sauce;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
@@ -52,16 +50,17 @@ public class MenuSaver {
         JsonArray sectionArr = new JsonArray();
         for(SimpleItemDescriptor desc: items){
             //casting may be necessary if this does not work.
-            if(desc instanceof ItemModifiableDescriptor){
-                sectionArr.add(GsonTypeFactory.BASIC_GSON.toJsonTree(desc,
-                        ItemModifiableDescriptor.class));
-            }else if(desc instanceof AddonDescriptor){
-                sectionArr.add(GsonTypeFactory.BASIC_GSON.toJsonTree(desc,
-                        AddonDescriptor.class));
-            }else{
-                sectionArr.add(GsonTypeFactory.BASIC_GSON.toJsonTree(desc,
-                        SimpleItemDescriptor.class));
-            }
+            sectionArr.add(GsonTypeFactory.MENU_ITEM_GSON.toJsonTree(desc, Descriptor.class));
+//            if(desc instanceof ItemModifiableDescriptor){
+//                sectionArr.add(GsonTypeFactory.MENU_ITEM_GSON.toJsonTree(desc,
+//                        ItemModifiableDescriptor.class));
+//            }else if(desc instanceof AddonDescriptor){
+//                sectionArr.add(GsonTypeFactory.MENU_ITEM_GSON.toJsonTree(desc,
+//                        AddonDescriptor.class));
+//            }else{
+//                sectionArr.add(GsonTypeFactory.MENU_ITEM_GSON.toJsonTree(desc,
+//                        SimpleItemDescriptor.class));
+//            }
         }
         menuJson.add(section, sectionArr);
     }

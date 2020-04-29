@@ -7,6 +7,8 @@ import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
 import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.menu.item.descriptor.*;
+import main.java.lucia.client.content.menu.item.type.Addon;
+import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.io.*;
@@ -157,6 +159,12 @@ public class Menu {
                 }
                 sectionItems.put(section, items);
             }
+            //fill ALL mappings of appicable addons.
+            sectionItems.forEach((k,v) -> v.forEach(item ->{
+                if(item instanceof ItemModifiableDescriptor){
+                    ((ItemModifiableDescriptor)item).fillMappings();
+                }
+            }));
             pizza.load(loader, this);
             r.close();
         } catch (IOException e) {

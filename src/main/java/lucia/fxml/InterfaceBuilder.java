@@ -1,7 +1,10 @@
 package main.java.lucia.fxml;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -109,6 +112,7 @@ public class InterfaceBuilder extends Application {
     Thread.currentThread().setUncaughtExceptionHandler((thread, reason) -> {
       for(String ignored : FxmlConstants.IGNORED_FXML_EXCEPTIONS) {
         if(reason.getMessage().contains(ignored)) {
+          Client.logger.error(reason.getStackTrace());
           return;
         } else {
           Client.logger.error(reason.getStackTrace());
@@ -117,11 +121,11 @@ public class InterfaceBuilder extends Application {
 
       Client.logger.error("An error has occurred within the JavaFX thread!", reason);
     });
-
     try {
       InterfaceBuilder.primaryStage = primaryStage;
-      Parent loginScene = new FXMLLoader(getClass().getResource(FxmlConstants.LOGIN_FXML_DIRECTORY))
-          .load();
+      URL l = getClass().getClassLoader().getResource(FxmlConstants.LOGIN_FXML_DIRECTORY);
+      assert(l != null);
+      Parent loginScene = new FXMLLoader(l).load();
 
       addDragListeners(loginScene, primaryStage);
 
@@ -131,8 +135,10 @@ public class InterfaceBuilder extends Application {
       primaryStage.setOnCloseRequest((WindowEvent event) -> Client.shutdown(0));
       primaryStage.setResizable(false);
       primaryStage.show();
-    } catch (IOException e) {
-      Client.logger.error("An error has occurred while building the GUI!", e);
+    } catch (Exception e) {
+      Client.logger.error("An Exception has occurred while building the GUI!", e);
+    } catch(Error w){
+      Client.logger.error("An error has occurred while building the GUI!", w);
     }
   }
 

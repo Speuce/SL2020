@@ -92,7 +92,8 @@ public class NetworkBuilder implements Runnable {
    */
   @Override
   public void run() {
-    if (shutdown || connected || connecting) {
+
+    if (shutdown || connected || connecting || !ClientConstants.ENABLE_NET) {
       return;
     }
 

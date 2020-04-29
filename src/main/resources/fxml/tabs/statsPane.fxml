@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="statPane" prefHeight="1085.0" prefWidth="1700.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.212" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.StatPane">
+   <children>
+      <Pane layoutY="-7.0" prefHeight="161.0" prefWidth="1700.0" style="-fx-background-color: #800000;">
+         <children>
+            <JFXButton fx:id="forward4" layoutX="1595.0" layoutY="39.0" prefHeight="87.0" prefWidth="83.0" text="">
+               <graphic>
+                  <ImageView fitHeight="97.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pictures/theArrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="back4" layoutX="1521.0" layoutY="39.0" prefHeight="87.0" prefWidth="83.0" text="">
+               <graphic>
+                  <ImageView fitHeight="97.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pictures/theArrowBack.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="24.0" layoutY="27.0" prefHeight="93.0" prefWidth="429.0" text="Statistics" textFill="WHITE">
+               <font>
+                  <Font name="Century" size="59.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

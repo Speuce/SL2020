@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="viewPane" prefHeight="930.0" prefWidth="1411.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.BackOffice.ViewController">
+   <children>
+      <Pane fx:id="viewOrders" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <JFXTextField layoutX="167.0" layoutY="17.0" maxWidth="345.0" minWidth="270.0" prefHeight="47.0" prefWidth="270.0" />
+            <Label layoutX="28.0" layoutY="25.0" text="Search By Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="633.0" layoutY="17.0" maxWidth="345.0" minWidth="298.0" prefHeight="47.0" prefWidth="298.0" />
+            <Label layoutX="479.0" layoutY="25.0" text="Search by Address">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="1156.0" layoutY="17.0" maxWidth="345.0" minWidth="259.0" prefHeight="47.0" prefWidth="259.0" />
+            <Label layoutX="969.0" layoutY="25.0" text="Search by Phone Num">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="103.0" text="Set Day">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXDatePicker layoutX="110.0" layoutY="101.0" prefHeight="31.0" prefWidth="281.0" />
+            <Line endX="1273.0" layoutX="135.0" layoutY="164.0" startX="-135.0" strokeWidth="3.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="142.0" prefWidth="1422.0" style="-fx-background-color: #585858;">
+         <children>
+            <Line endX="1261.5" layoutX="154.0" layoutY="139.0" startX="-152.0" strokeWidth="3.0" />
+            <JFXButton fx:id="viewOrdersButton" layoutX="14.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="View Orders">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="viewInventoryButton" layoutX="295.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="View Inventory">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="576.0" layoutY="13.0" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="View Machines">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="viewComplaintsButton" layoutX="859.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="View Complaints">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="viewVoidsButton" layoutX="1141.0" layoutY="13.0" onMouseClicked="#changePane" prefHeight="110.0" prefWidth="260.0" style="-fx-background-color: #D3D3D3;" text="View Voids">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="viewVoids" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <JFXTextField layoutX="167.0" layoutY="17.0" maxWidth="345.0" minWidth="270.0" prefHeight="47.0" prefWidth="270.0" />
+            <Label layoutX="28.0" layoutY="25.0" text="Search By Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="633.0" layoutY="17.0" maxWidth="345.0" minWidth="298.0" prefHeight="47.0" prefWidth="298.0" />
+            <Label layoutX="479.0" layoutY="25.0" text="Search by Address">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="1156.0" layoutY="17.0" maxWidth="345.0" minWidth="259.0" prefHeight="47.0" prefWidth="259.0" />
+            <Label layoutX="969.0" layoutY="25.0" text="Search by Phone Num">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="103.0" text="Set Day">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXDatePicker layoutX="110.0" layoutY="101.0" prefHeight="31.0" prefWidth="281.0" />
+            <Line endX="1273.0" layoutX="135.0" layoutY="164.0" startX="-135.0" strokeWidth="3.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="viewInventory" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <GridPane layoutX="12.0" layoutY="143.0" prefHeight="35.0" prefWidth="1376.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="181.3333282470703" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="308.0" minWidth="10.0" prefWidth="308.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="250.0" minWidth="10.0" prefWidth="86.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="374.6666564941406" minWidth="10.0" prefWidth="84.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="576.3333740234375" minWidth="10.0" prefWidth="179.66668701171875" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane gridLinesVisible="true" layoutX="12.0" layoutY="36.0" prefHeight="35.0" prefWidth="1376.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="181.3333282470703" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="308.0" minWidth="10.0" prefWidth="308.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="250.0" minWidth="10.0" prefWidth="86.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="374.6666564941406" minWidth="10.0" prefWidth="84.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="576.3333740234375" minWidth="10.0" prefWidth="179.66668701171875" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" text="Type" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="373.0" style="-fx-alignment: center;" text="Name" textAlignment="CENTER" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" text="Item #" textAlignment="CENTER" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" text="Quant." textAlignment="CENTER" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="210.0" style="-fx-alignment: center;" text="Price" textAlignment="CENTER" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="218.0" style="-fx-alignment: center;" text="Grand Total" textAlignment="CENTER" GridPane.columnIndex="5">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="208.0" style="-fx-alignment: center;" text="Location" textAlignment="CENTER" GridPane.columnIndex="6">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="198.0" style="-fx-alignment: center;" text="Supplier" textAlignment="CENTER" GridPane.columnIndex="7">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Line endX="1260.5" layoutX="147.0" layoutY="131.0" startX="-147.0" strokeWidth="3.0" />
+            <GridPane gridLinesVisible="true" layoutX="12.0" layoutY="66.0" prefHeight="35.0" prefWidth="1376.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="181.3333282470703" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="308.0" minWidth="10.0" prefWidth="308.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="250.0" minWidth="10.0" prefWidth="86.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="374.6666564941406" minWidth="10.0" prefWidth="84.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="576.3333740234375" minWidth="10.0" prefWidth="179.66668701171875" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="373.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="210.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="218.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="5">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="208.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="6">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="198.0" style="-fx-alignment: center;" textAlignment="CENTER" GridPane.columnIndex="7">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox prefHeight="25.0" prefWidth="128.0" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="321.0" GridPane.columnIndex="1" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="2" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="3" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="212.0" GridPane.columnIndex="4" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="268.0" GridPane.columnIndex="5" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="6" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="7" />
+               </children>
+            </GridPane>
+            <Label layoutX="-1.0" layoutY="137.0" prefHeight="48.0" prefWidth="231.0" style="-fx-alignment: center;" text="Current Inventory" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="1181.0" layoutY="144.0" opacity="0.85" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #800000;" text="New List &amp; Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="954.0" layoutY="144.0" opacity="0.85" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #800000;" text="Past Inventory Lists" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <GridPane gridLinesVisible="true" layoutX="12.0" layoutY="203.0" prefHeight="35.0" prefWidth="1376.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="181.3333282470703" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="308.0" minWidth="10.0" prefWidth="308.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="250.0" minWidth="10.0" prefWidth="86.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="374.6666564941406" minWidth="10.0" prefWidth="84.33331298828125" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="576.3333740234375" minWidth="10.0" prefWidth="179.66668701171875" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="850.6666259765625" minWidth="10.0" prefWidth="195.66665649414062" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" text="Type" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="373.0" style="-fx-alignment: center;" text="Name" textAlignment="CENTER" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" text="Item #" textAlignment="CENTER" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="48.0" prefWidth="125.0" style="-fx-alignment: center;" text="Quant." textAlignment="CENTER" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="210.0" style="-fx-alignment: center;" text="Price" textAlignment="CENTER" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="218.0" style="-fx-alignment: center;" text="Grand Total" textAlignment="CENTER" GridPane.columnIndex="5">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="208.0" style="-fx-alignment: center;" text="Location" textAlignment="CENTER" GridPane.columnIndex="6">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="198.0" style="-fx-alignment: center;" text="Supplier" textAlignment="CENTER" GridPane.columnIndex="7">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <JFXButton layoutX="727.0" layoutY="143.0" opacity="0.85" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #800000;" text="Add List to Calculator" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="499.0" layoutY="143.0" opacity="0.85" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #800000;" text="Determine Next Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="271.0" layoutY="143.0" opacity="0.85" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: #800000;" text="What's Needed" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="viewComplaints" layoutX="2.0" layoutY="140.0" prefHeight="786.0" prefWidth="1408.0" style="-fx-background-color: #D3D3D3;">
+         <children>
+            <JFXTextField layoutX="167.0" layoutY="17.0" maxWidth="345.0" minWidth="270.0" prefHeight="47.0" prefWidth="270.0" />
+            <Label layoutX="28.0" layoutY="25.0" text="Search By Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="633.0" layoutY="17.0" maxWidth="345.0" minWidth="298.0" prefHeight="47.0" prefWidth="298.0" />
+            <Label layoutX="479.0" layoutY="25.0" text="Search by Address">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="1156.0" layoutY="17.0" maxWidth="345.0" minWidth="259.0" prefHeight="47.0" prefWidth="259.0" />
+            <Label layoutX="969.0" layoutY="25.0" text="Search by Phone Num">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="103.0" text="Set Day">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXDatePicker layoutX="110.0" layoutY="101.0" prefHeight="31.0" prefWidth="281.0" />
+            <Line endX="1273.0" layoutX="135.0" layoutY="164.0" startX="-135.0" strokeWidth="3.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

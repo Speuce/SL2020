@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="viewPreordersPane" prefHeight="1085.0" prefWidth="1700.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.ViewPreordersPane">
+   <children>
+      <Pane layoutY="-7.0" prefHeight="161.0" prefWidth="1700.0" style="-fx-background-color: #800000;">
+         <children>
+            <JFXButton fx:id="forward2" layoutX="1595.0" layoutY="39.0" prefHeight="87.0" prefWidth="83.0" text="">
+               <graphic>
+                  <ImageView fitHeight="97.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pictures/theArrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="back2" layoutX="1521.0" layoutY="39.0" prefHeight="87.0" prefWidth="83.0" text="">
+               <graphic>
+                  <ImageView fitHeight="97.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../pictures/theArrowBack.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="24.0" layoutY="27.0" prefHeight="93.0" prefWidth="429.0" text="Preorders" textFill="WHITE">
+               <font>
+                  <Font name="Century" size="59.0" />
+               </font>
+            </Label>
+            <Line endX="1598.0" layoutX="102.0" layoutY="161.0" startX="-100.0" strokeWidth="3.0" />
+         </children>
+      </Pane>
+      <Label fx:id="searchLabel" layoutX="1425.0" layoutY="292.0" text="Search by Phone #">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="searchBox" layoutX="1405.0" layoutY="340.0" maxWidth="251.0" minWidth="251.0" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #FFFFFF;">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <AnchorPane fx:id="viewOrdersAnchor" layoutX="17.0" layoutY="258.0" prefHeight="800.0" prefWidth="1352.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Line endX="1350.0" layoutY="70.0" strokeWidth="3.0" />
+            <ScrollPane layoutX="-3.0" layoutY="70.0">
+               <content>
+                  <GridPane fx:id="viewOrderGridpane" prefWidth="1353.0">
+                     <columnConstraints>
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="134.73646545410156" minWidth="102.66667175292969" prefWidth="133.06613159179688" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="587.3333282470703" minWidth="96.22862243652344" prefWidth="158.73648071289062" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="493.62103271484375" minWidth="42.74432373046875" prefWidth="405.2635192871094" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="493.62103271484375" minWidth="42.74432373046875" prefWidth="215.04345703125" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="1079.7713775634766" minWidth="72.1055908203125" prefWidth="153.993896484375" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="280.002685546875" minWidth="24.9378662109375" prefWidth="152.006103515625" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="265.0" minWidth="60.5589599609375" prefWidth="177.2733154296875" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints fillHeight="false" maxHeight="55.250244140625" minHeight="50.0" prefHeight="55.250244140625" vgrow="NEVER" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <Label layoutX="3.0" layoutY="23.0" text="Date">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="134.0" layoutY="23.0" text="P/D">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="920.0" layoutY="23.0" text="Time" underline="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label layoutX="1067.0" layoutY="23.0" text="Total">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="309.0" layoutY="23.0" text="Name/Address">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="1206.0" layoutY="23.0" text="Pay Type">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="700.0" layoutY="23.0" text="Phone Number">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="300.0" layoutY="165.0" onAction="#viewThisWeeksPreorders" opacity="0.8" prefHeight="82.0" prefWidth="251.0" style="-fx-background-color: #800000; -fx-background-radius: 10;" text="View This Week's Preorders" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="1001.0" layoutY="167.0" prefHeight="93.0" prefWidth="141.0" text="Enter Dates:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXDatePicker fx:id="firstDayPicker" layoutX="1131.0" layoutY="195.0" />
+      <ImageView fitHeight="28.0" fitWidth="30.0" layoutX="1367.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../pictures/theArrow.png" />
+         </image>
+      </ImageView>
+      <JFXDatePicker fx:id="secondDayPicker" layoutX="1414.0" layoutY="195.0" />
+      <JFXButton layoutX="25.0" layoutY="165.0" onAction="#viewTodaysPreorders" opacity="0.8" prefHeight="82.0" prefWidth="251.0" style="-fx-background-color: #800000; -fx-background-radius: 10;" text="View Today's Preorders" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="575.0" layoutY="165.0" onAction="#viewThisMonthsPreorders" opacity="0.8" prefHeight="82.0" prefWidth="251.0" style="-fx-background-color: #800000; -fx-background-radius: 10;" text="View This Months's Preorders" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

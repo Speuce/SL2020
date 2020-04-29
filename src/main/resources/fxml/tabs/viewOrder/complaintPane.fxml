@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="complaintPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.ComplaintPaneController">
+   <children>
+      <Pane fx:id="complaintInfoPane" prefHeight="749.0" prefWidth="779.0" visible="false">
+         <children>
+            <ChoiceBox fx:id="actionTakenBox" layoutX="100.0" layoutY="525.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" />
+            <Label layoutX="275.0" layoutY="15.0" prefHeight="50.0" text="Order Complaint">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="complaintTitle" layoutX="100.0" layoutY="125.0" prefWidth="350.0" style="-fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="100.0" layoutY="80.0" prefHeight="50.0" text="Complaint TItle (short summary)">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="complaintTextArea" layoutX="100.0" layoutY="250.0" prefHeight="200.0" prefWidth="575.0" style="-fx-background-color: #FFFFFF;" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXTextArea>
+            <Label layoutX="100.0" layoutY="200.0" prefHeight="50.0" text="Complaint Info">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="475.0" prefHeight="50.0" text="Action Taken">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="550.0" layoutY="600.0" onMouseClicked="#save" prefHeight="69.0" style="-fx-background-color: #003300; -fx-background-radius: 20; -fx-border-radius: 20;" text="Save" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century" size="33.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="actionInfoLabel" layoutX="100.0" layoutY="550.0" prefHeight="50.0" text="Action Info">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="actionInfoBox" layoutX="100.0" layoutY="600.0" prefWidth="350.0" style="-fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="500.0" layoutY="80.0" prefHeight="50.0" text="Created By:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="employeeNameLabel" layoutX="500.0" layoutY="125.0" prefHeight="50.0" text="Employee Name">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="complaintLoginPane" prefHeight="749.0" prefWidth="779.0">
+         <children>
+            <JFXTextField fx:id="employeeNumberBox" layoutX="400.0" layoutY="350.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="100.0" layoutY="350.0" prefHeight="50.0" text="Enter Employee #:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="300.0" layoutY="450.0" onMouseClicked="#continueButton" prefHeight="69.0" style="-fx-background-color: #003300; -fx-background-radius: 20; -fx-border-radius: 20;" text="Continue" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century" size="33.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="noPermissionMessage" layoutX="115.0" layoutY="300.0" prefHeight="50.0" text="You don't have permission to enter the complaint area!" textFill="#a43030" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

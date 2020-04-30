@@ -610,22 +610,22 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
 
     // ------ "HOVER" SERIES ------
     @FXML
-    void activateHover(MouseEvent event) {
+    public void activateHover(MouseEvent event) {
         if(parent == null){
             return;
         }
         parent.activateHover(event);
     }
     @FXML
-    void activateHoverGreen(MouseEvent event) {
+    public void activateHoverGreen(MouseEvent event) {
         parent.activateHoverGreen(event);
     }
     @FXML
-    void deactivateHover(MouseEvent event) {
+    public void deactivateHover(MouseEvent event) {
         Style.deactivateHover(event);
     }
     @FXML
-    void deactivateHoverGreen(MouseEvent event) {
+    public void deactivateHoverGreen(MouseEvent event) {
         Style.deactivateHoverGreen(event);
     }
 
@@ -725,7 +725,7 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
         currentPizza.setSize(Size.NINE);
     }
     @FXML
-    void selected(MouseEvent event) {
+    public void selected(MouseEvent event) {
         parent.setOptionPanesVisible(false);
         setButtonPane(pizzaButtons, "BackgroundNeed", "BackgroundDefault");
         JFXButton button = (JFXButton) event.getSource();
@@ -891,7 +891,7 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     @FXML
     void selectedSize30(MouseEvent event) {
         pizzaMenuDynamicLoad tester = new pizzaMenuDynamicLoad(this);
-        tester.test();
+        tester.createToppings();
         sizeSelected(Size.THIRTY);
     }
 

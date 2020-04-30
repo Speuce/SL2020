@@ -10,6 +10,8 @@ public class PizzaListConstants {
     private final int yMarginTopping = 90;
     private final int initX = 18;
     private final int initY = 5;
+    private final int toppingSizeX = 171;
+    private final int toppingSizeY = 80;
 
 
 
@@ -37,4 +39,11 @@ public class PizzaListConstants {
         return initY;
     }
 
+    public int getToppingSizeX() {
+        return toppingSizeX;
+    }
+
+    public int getToppingSizeY() {
+        return toppingSizeY;
+    }
 }

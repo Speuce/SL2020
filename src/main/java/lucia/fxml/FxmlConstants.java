@@ -9,19 +9,19 @@ import com.google.common.collect.ImmutableList;
  * @author Brett Downey
  */
 public class FxmlConstants {
-    public static final String LOGIN_FXML_DIRECTORY = "resources/fxml/loginWindow.fxml";
+    public static final String LOGIN_FXML_DIRECTORY = "fxml/loginWindow.fxml";
 
-    public static final String MAIN_FXML_DIRECTORY = "resources/fxml/mainGUI.fxml";
+    public static final String MAIN_FXML_DIRECTORY = "fxml/mainGUI.fxml";
 
-    public static final String HTML_MAPS_DIRECTORY = "resources/html/map/map.html";
+    public static final String HTML_MAPS_DIRECTORY = "html/map/map.html";
 
-    public static final String HTML_DRIVER_MAPS_DIRECTORY = "resources/html/map/driverMap.html";
+    public static final String HTML_DRIVER_MAPS_DIRECTORY = "html/map/driverMap.html";
 
-    public static final String JAVASCRIPT_MAPS_DIRECTORY = "resources/html/map/main.js";
+    public static final String JAVASCRIPT_MAPS_DIRECTORY = "html/map/main.js";
 
-    public static final String JAVASCRIPT_DRIVER_MAPS_DIRECTORY = "resources/html/map/driverMain.js";
+    public static final String JAVASCRIPT_DRIVER_MAPS_DIRECTORY = "html/map/driverMain.js";
 
-    public static final String BETA_FXML_DIRECTORY = "resources/fxml/testerGUI.fxml";
+    public static final String BETA_FXML_DIRECTORY = "fxml/testerGUI.fxml";
 
     public static final int LOGIN_WIDTH = 655;
 

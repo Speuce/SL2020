@@ -96,6 +96,12 @@
             <version>9.0.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>11</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.googlecode.libphonenumber/libphonenumber -->
         <dependency>
             <groupId>com.googlecode.libphonenumber</groupId>

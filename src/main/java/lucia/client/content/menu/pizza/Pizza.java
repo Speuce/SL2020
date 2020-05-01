@@ -351,9 +351,7 @@ public class Pizza extends Item{
                 ((SpecialtyPizzaDescriptor)super.getItemDescriptor()).getPrice(this.getSize()) :
                 ((SimpleItemDescriptor)super.getItemDescriptor()).getBasePrice();
         //add the price of the toppings
-        for(Topping t: toppings){
-            result+=t.calculatePrice(this.size);
-        }
+        result += getToppingPrice();
         //add the cost for sauce and crust
         if(isSpecialty()){
             //if the sauce/crust has changed, add the price difference
@@ -454,18 +452,41 @@ public class Pizza extends Item{
 
     /**
      * Calculates the price of all the toppings combined.
-     * For specialty pizzas, this is the specialty price - base price
-     * @return
+     * For specialty pizzas, this is the specialty price minus base pizza price
+     * @return the price for the toppings
      */
     public long getToppingPrice(){
         //get the base price
-        long result = 0;
+        long basePrice;
+        long result;
         if(isSpecialty()){
-            result += getPizzaDescriptor().getPrice(getSize()) - Menu.pizza.getBasePizza().getPrice(getSize());
+            basePrice = getPizzaDescriptor().getPrice(getSize());
+            //add the price of the toppings
+            result = basePrice;
+            for(Topping t: toppings){
+                if(getPizzaDescriptor().getToppings().containsKey(t.getType())){
+                    int amt = getPizzaDescriptor().getToppings().get(t.getType());
+                    if(amt != t.getAmount()){
+                        long topprice = t.getType().getPricingScheme().getPrice(getSize());
+                        result += (t.getAmount()-amt)*topprice;
+                    }
+                }else{
+                    result+=t.calculatePrice(this.size);
+                }
+                //make sure removing toppings from specialty hasn't decreased the price of the specialty
+                result = Math.max(result, basePrice);
+            }
+        }else{
+            //add the price of the toppings
+            basePrice = Menu.pizza.getBasePizza().getPrice(getSize());
+            result = basePrice;
+            for(Topping t: toppings){
+                //no negations in a b-y-o
+                assert(t.getAmount() > 0);
+                result+=t.calculatePrice(this.size);
+            }
         }
-        //add the price of the toppings
-        for(Topping t: toppings){
-            result+=t.calculatePrice(this.size);
-        }
+        result -= basePrice;
+        return result;
     }
 }

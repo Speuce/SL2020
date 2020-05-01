@@ -20,14 +20,35 @@ public class pizzaMenuDynamicLoad {
     private String[] toppingsList = pizzaListConstants.getToppingsList();
 
     public void createToppings() {
-        int getX = pizzaListConstants.getInitX();
-        int getY = pizzaListConstants.getInitY();
+        int getStartX = pizzaListConstants.getInitX();
+        int getStartY = pizzaListConstants.getInitY();
+        int currX = getStartX;
+        int currY = getStartY;
         int getSizeX = pizzaListConstants.getToppingSizeX();
         int getSizeY = pizzaListConstants.getToppingSizeY();
+        int getXMargin = pizzaListConstants.getxMarginTopping();
+        int getYMargin = pizzaListConstants.getyMarginTopping();
+        int getMaxY = pizzaListConstants.getMaxY() - getYMargin;
+        int getMaxX = pizzaListConstants.getMaxX() - getXMargin;
 
-        JFXButton button = createButton(getX, getY, "Test", getSizeX, getSizeY);
-        pizzaController.pizzaButtons.getChildren().add(button);
-        
+        JFXButton firstButton = createButton(getStartX, getStartY, toppingsList[0], getSizeX, getSizeY);
+        pizzaController.pizzaButtons.getChildren().add(firstButton);
+
+        for(int x = 1; x < toppingsList.length; x++) {
+            if(currX + getXMargin <= getMaxX)
+                currX += getXMargin;
+            else if((currY + getYMargin) <= getMaxY){
+                currX = getStartX;
+                currY += getYMargin;
+            }
+            //else
+
+            JFXButton button = createButton(currX, currY, toppingsList[x], getSizeX, getSizeY);
+            pizzaController.pizzaButtons.getChildren().add(button);
+
+            //todo rechange cheese methods
+        }
+
     }
 
     public JFXButton createButton(int getX, int getY, String name, int getSizeX, int getSizeY) {

@@ -12,7 +12,8 @@ public class PizzaListConstants {
     private final int initY = 5;
     private final int toppingSizeX = 171;
     private final int toppingSizeY = 80;
-
+    private final int maxX = 1341;
+    private final int maxY = 457;
 
 
     public void createLists() {
@@ -45,5 +46,13 @@ public class PizzaListConstants {
 
     public int getToppingSizeY() {
         return toppingSizeY;
+    }
+
+    public int getMaxX() {
+        return maxX;
+    }
+
+    public int getMaxY() {
+        return maxY;
     }
 }

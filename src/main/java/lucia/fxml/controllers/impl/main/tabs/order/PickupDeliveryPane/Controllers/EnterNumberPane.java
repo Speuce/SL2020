@@ -672,8 +672,8 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     Object source = event.getSource();
     if (source.equals(delivery) || source.equals(pickup)) {
       if (phoneField.getLength() >= MAX_PHONE_LENGTH) {
-        System.out.println("hey2");
-        CustomerFoundMessage.findCustomerByPhone(areaCodeField.getText() + phoneField.getText(), this::customerFound);
+        //System.out.println("hey2");
+        //CustomerFoundMessage.findCustomerByPhone(areaCodeField.getText() + phoneField.getText(), this::customerFound);
       }
     }
     if(source.equals(delivery))

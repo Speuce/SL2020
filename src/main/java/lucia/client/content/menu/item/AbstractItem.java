@@ -2,7 +2,11 @@ package main.java.lucia.client.content.menu.item;
 
 import com.google.gson.JsonObject;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.structures.Tuple;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * An abstract Item, contains mostly getters
@@ -36,6 +40,8 @@ public abstract class AbstractItem {
      */
     private Descriptor itemDescriptor;
 
+    private Set<Discount> appledDiscounts;
+
 
     @Deprecated
     public boolean isChickenDinner() {
@@ -57,6 +63,7 @@ public abstract class AbstractItem {
         this.itemDescriptor = is;
         this.discountedPrice = price;
         this.displayName = name;
+        this.appledDiscounts = new HashSet<>();
     }
 
     public AbstractItem(String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor) {
@@ -65,6 +72,7 @@ public abstract class AbstractItem {
         this.price = price;
         this.discountedPrice = discountedPrice;
         this.itemDescriptor = itemDescriptor;
+        this.appledDiscounts = new HashSet<>();
     }
 
     public AbstractItem(String name, Descriptor is) {
@@ -73,6 +81,7 @@ public abstract class AbstractItem {
         this.itemDescriptor = is;
         this.discountedPrice = -1;
         this.displayName = name;
+        this.appledDiscounts = new HashSet<>();
     }
 
     /**
@@ -174,5 +183,7 @@ public abstract class AbstractItem {
         o.addProperty("itemDescriptor", (itemDescriptor != null) ? itemDescriptor.getId() : 0);
     }
 
-
+    public Set<Discount> getAppledDiscounts() {
+        return appledDiscounts;
+    }
 }

@@ -6,10 +6,7 @@ import main.java.lucia.client.content.menu.pizza.Pizza;
 import main.java.lucia.client.content.payment.PaidBillable;
 import main.java.lucia.client.structures.Exclude;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -18,7 +15,7 @@ import java.util.stream.Collectors;
  * @author Matthew Kwiatkowski
  * @author Zachery Unrau
  */
-public abstract class ItemList extends PaidBillable {
+public abstract class ItemList extends PaidBillable implements Iterable<Item>{
 
     /**
      * The list of items
@@ -214,5 +211,10 @@ public abstract class ItemList extends PaidBillable {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return this.items.iterator();
     }
 }

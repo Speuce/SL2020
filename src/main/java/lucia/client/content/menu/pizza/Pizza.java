@@ -444,5 +444,11 @@ public class Pizza extends Item implements Comparable<Pizza>{
         return rowNum;
     }
 
-
+    /**
+     * Get the list of toppings applied
+     * @return the list of applied toppings
+     */
+    public List<Topping> getToppings() {
+        return toppings;
+    }
 }

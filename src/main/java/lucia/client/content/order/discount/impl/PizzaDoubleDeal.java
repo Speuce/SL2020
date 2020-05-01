@@ -1,11 +1,10 @@
-package main.java.lucia.client.content.order.impl.discount;
+package main.java.lucia.client.content.order.discount.impl;
 
 
-import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.menu.size.Size;
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.order.discount.Discount;
 
 import java.util.*;
 
@@ -22,7 +21,7 @@ public class PizzaDoubleDeal extends Discount {
     private Set<Integer> applicableSizes;
 
     public PizzaDoubleDeal() {
-        super("Double Deal");
+        super("DoubleDeal", 1);
         applicableSizes = new HashSet<>();
         loadApplicableSizes();
     }

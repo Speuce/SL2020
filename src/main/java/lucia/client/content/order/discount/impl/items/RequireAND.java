@@ -7,6 +7,7 @@ import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * 'AND' Connective for discount item requirement
@@ -50,7 +51,7 @@ public class RequireAND extends DiscountApplicable{
      */
     @Override
     public Set<Item> appliesTo(Set<Item> o) {
-        return a.appliesTo(b.appliesTo(o));
+        return Sets.intersection(a.appliesTo(o), b.appliesTo(o));
     }
 
 

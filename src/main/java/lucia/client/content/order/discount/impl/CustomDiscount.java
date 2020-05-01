@@ -1,15 +1,23 @@
 package main.java.lucia.client.content.order.discount.impl;
 
+import jdk.internal.jline.internal.Nullable;
+import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.IDAble;
+import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.discount.impl.amount.DiscountAmount;
+import main.java.lucia.client.content.order.discount.impl.items.AmountRequirement;
 import main.java.lucia.client.content.order.discount.impl.items.DiscountApplicable;
 import main.java.lucia.client.content.order.discount.impl.stacking.DiscountStacking;
 import main.java.lucia.client.content.order.discount.impl.times.DiscountTime;
+import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,14 +26,16 @@ import java.util.Set;
  */
 public class CustomDiscount extends Discount{
 
-    //TODO one applicable
     //TODO filter (in here) by items already with this discount before passing to subclasses.
     /**
      * The set of all item requirements
      * that an order must meet to have this discount be
      * applicable
+     * The list order is relevant. First requirements will
+     * be fulfilled first. so it is recommened to have requirements such as
+     * ANY at the end of the list
      */
-    private Set<DiscountApplicable> applicables;
+    private LinkedList<AmountRequirement> applicables;
 
     /**
      * Indicates when (time-wise) this discount applies
@@ -49,7 +59,7 @@ public class CustomDiscount extends Discount{
      */
     private boolean multiplies;
 
-    public CustomDiscount(String name, int id, Set<DiscountApplicable> applicables,
+    public CustomDiscount(String name, int id, LinkedList<AmountRequirement> applicables,
                           DiscountTime time, DiscountStacking stacking,
                           DiscountAmount amount, boolean multiplies) {
         super(name, id);
@@ -69,17 +79,54 @@ public class CustomDiscount extends Discount{
      */
     @Override
     public boolean isDiscountEligible(Order p) {
+        assert(p != null);
         //first see if this passes time check
         if(!time.applies(LocalDateTime.now())){
             return false;
         }
         //now see if it meets all of our item requirements
-        for(DiscountApplicable a: getApplicables()){
-            if(!a.canApply(p)){
+        Set<Item> items = getStackableItems(p);
+        if(items == null || items.isEmpty()){
+            return false;
+        }
+        Set<Item> used;
+        for(AmountRequirement a: getApplicables()){
+            used = a.canApply(items);
+            if(used == null || used.isEmpty()){
                 return false;
             }
+            items.removeAll(used);
         }
         return true;
+    }
+
+    /**
+     * Get all items from an order whose applied discounts stack
+     * with this one, i.e: they can have this discount added.
+     * @param p the order to get items from
+     * @return the set of items found
+     */
+    @Nullable
+    private Set<Item> getStackableItems(ItemList p){
+        Set<Item> items = new HashSet<>();
+        //first remove all non-discount-stackable items
+        boolean add;
+        for(Item i: p){
+            add = true;
+            for(Discount r: i.getAppledDiscounts()){
+                if(!multiplies && r == this){
+                    return null;
+                }
+                if(!this.stacking.canStack(r.getId())){
+                    add = false;
+                    break;
+                }
+            }
+            if(add){
+                items.add(i);
+            }
+        }
+        return items;
     }
 
     /**
@@ -108,7 +155,7 @@ public class CustomDiscount extends Discount{
      * that an order must meet to have this discount be
      * applicable
      */
-    public Set<DiscountApplicable> getApplicables() {
+    public LinkedList<AmountRequirement> getApplicables() {
         return applicables;
     }
 
@@ -117,7 +164,7 @@ public class CustomDiscount extends Discount{
      * that an order must meet to have this discount be
      * applicable
      */
-    public void setApplicables(Set<DiscountApplicable> applicables) {
+    public void setApplicables(LinkedList<AmountRequirement> applicables) {
         this.applicables = applicables;
     }
 

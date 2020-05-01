@@ -7,6 +7,7 @@ import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Implemented Discount Attribute to include a specific

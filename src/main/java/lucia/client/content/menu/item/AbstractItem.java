@@ -13,7 +13,7 @@ import java.util.Set;
  * and setters for an generic item
  * @author Matt Kwiatkowski
  */
-public abstract class AbstractItem {
+public abstract class AbstractItem{
 
     /**
      * The display name of this item

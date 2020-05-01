@@ -8,6 +8,7 @@ import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Contract for evaluating whether or not a certain order
@@ -20,15 +21,15 @@ public abstract class DiscountApplicable extends DiscountAttribute {
         super(o);
     }
 
-
-    /**
-     * Checks to see if a set of items can have this discount applied
-     * @param o the set of items to check
-     * @return true if the discount can be applied here, false otherwise
-     */
-    public boolean canApplyTo(Set<Item> o){
-        return canApply(o) != null;
-    }
+//
+//    /**
+//     * Checks to see if a set of items can have this discount applied
+//     * @param o the set of items to check
+//     * @return true if the discount can be applied here, false otherwise
+//     */
+//    public boolean canApplyTo(Set<Item> o){
+//        return canApply(o) != null;
+//    }
 
     /**
      * Indicates whether or not the order can have
@@ -48,7 +49,7 @@ public abstract class DiscountApplicable extends DiscountAttribute {
     /**
      * Gets all the items from the item list that can have this discount
      * @param o the set of items to check
-     * @return a
+     * @return a set of minimum size for which all requirements are met.
      */
     public abstract Set<Item> appliesTo(Set<Item> o);
 

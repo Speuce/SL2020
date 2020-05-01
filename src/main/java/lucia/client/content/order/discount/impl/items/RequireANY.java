@@ -3,12 +3,14 @@ package main.java.lucia.client.content.order.discount.impl.items;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 
+import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Implemented Discount attribute to include ANY item
  * This would be used for something like a blanket 10% off discount
- * @author Matthew Kwiatkowski 
+ * @author Matthew Kwiatkowski
  */
 public class RequireANY extends DiscountApplicable{
 
@@ -37,10 +39,11 @@ public class RequireANY extends DiscountApplicable{
      * Gets all the items from the item list that can have this discount
      *
      * @param o the set of items to check
-     * @return a
+     * @return a set of minimum size for which all requirements are met.
      */
     @Override
     public Set<Item> appliesTo(Set<Item> o) {
         return o;
     }
+
 }

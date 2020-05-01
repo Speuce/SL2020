@@ -6,6 +6,7 @@ import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Implemented discount attribute to include a minimum

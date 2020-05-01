@@ -22,7 +22,7 @@ import java.util.*;
  * item format
  * @author Matt Kwiatkowski
  */
-public class Pizza extends Item implements Comparable<Pizza>{
+public class Pizza extends Item{
 
     /**
      * The specific id of this pizza on the server.
@@ -431,14 +431,14 @@ public class Pizza extends Item implements Comparable<Pizza>{
         return (d==null) ? 0 : d.getId();
     }
 
-    /**
-     * Compares a pizza to the other.
-     * Larger sizes are considered 'infront' of smaller sizes.
-     */
-    @Override
-    public int compareTo(Pizza other) {
-        return this.size.compareTo(other.size);
-    }
+//    /**
+//     * Compares a pizza to the other.
+//     * Larger sizes are considered 'infront' of smaller sizes.
+//     */
+//    @Override
+//    public int compareTo(Pizza other) {
+//        return this.size.compareTo(other.size);
+//    }
 
     public int getRowNum() {
         return rowNum;

@@ -6,6 +6,7 @@ import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * 'OR' Connective for discount item requirement

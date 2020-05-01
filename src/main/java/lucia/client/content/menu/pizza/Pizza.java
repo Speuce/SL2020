@@ -78,10 +78,10 @@ public class Pizza extends Item{
      */
     public Pizza(Integer size, SpecialtyPizzaDescriptor is) {
         super(is.getBaseName(), is.getPricingScheme().getPrice(size), is);
-        this.toppings = new ArrayList<>(is.getToppings());
-        for(Topping t: toppings){
-            this.toppings.add(t.deepCopy());
-        }
+        this.toppings = new ArrayList<>(/*is.getToppings()*/);
+//        for(Topping t: toppings){
+//            this.toppings.add(t.deepCopy());
+//        }
         this.specialty = true;
         this.specialInstructions = new ArrayList<>(is.getSpecialInstructions());
         this.size = size;
@@ -151,8 +151,8 @@ public class Pizza extends Item{
         for(Topping top: toppings){
             if(top.getType() == t){
                 if(this.isSpecialty()){
-                    for(Topping top2: this.getPizzaDescriptor().getToppings()){
-                        if(top.getType() == top2.getType()){
+                    for(ToppingType top2: this.getPizzaDescriptor().getToppings().keySet()){
+                        if(top.getType() == top2){
                             //set to negation and return;
                             top.setAmount(0);
                             return;
@@ -450,5 +450,22 @@ public class Pizza extends Item{
      */
     public List<Topping> getToppings() {
         return toppings;
+    }
+
+    /**
+     * Calculates the price of all the toppings combined.
+     * For specialty pizzas, this is the specialty price - base price
+     * @return
+     */
+    public long getToppingPrice(){
+        //get the base price
+        long result = 0;
+        if(isSpecialty()){
+            result += getPizzaDescriptor().getPrice(getSize()) - Menu.pizza.getBasePizza().getPrice(getSize());
+        }
+        //add the price of the toppings
+        for(Topping t: toppings){
+            result+=t.calculatePrice(this.size);
+        }
     }
 }

@@ -28,8 +28,8 @@ public class ItemBundle extends Item{
 
     /**
      * Construct a new Item Bundle with the given properties
-     * @param n
-     * @param items
+     * @param n the descriptor of the bundle
+     * @param items the list of items in the bundle
      */
     public ItemBundle(ItemBundleDescriptor n, List<Item> items) {
         super(n.getBaseName(), n.getBasePrice(), n);
@@ -71,5 +71,13 @@ public class ItemBundle extends Item{
     @Override
     public ItemBundleDescriptor getItemDescriptor(){
         return (ItemBundleDescriptor)super.getItemDescriptor();
+    }
+
+    /**
+     * Get the items in this bundle
+     * @return a list of items included in this bundle
+     */
+    public List<Item> getItems() {
+        return items;
     }
 }

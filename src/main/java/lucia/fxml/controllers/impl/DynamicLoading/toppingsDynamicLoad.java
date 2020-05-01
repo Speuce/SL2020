@@ -4,32 +4,30 @@ import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import main.java.lucia.consts.PizzaListConstants;
+import main.java.lucia.consts.FoodConstants.PizzaToppingConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
-public class pizzaMenuDynamicLoad {
+public class toppingsDynamicLoad {
 
-    public pizzaMenuDynamicLoad(PizzaController pizzaController) {
+    public toppingsDynamicLoad(PizzaController pizzaController) {
         this.pizzaController = pizzaController;
     }
 
-    PizzaController pizzaController;
-
-
-    PizzaListConstants pizzaListConstants = new PizzaListConstants();
-    private String[] toppingsList = pizzaListConstants.getToppingsList();
+    private PizzaController pizzaController;
+    PizzaToppingConstants pizzaToppingConstants = new PizzaToppingConstants();
+    private String[] toppingsList = pizzaToppingConstants.getToppingsList();
 
     public void createToppings() {
-        int getStartX = pizzaListConstants.getInitX();
-        int getStartY = pizzaListConstants.getInitY();
+        int getStartX = pizzaToppingConstants.getInitX();
+        int getStartY = pizzaToppingConstants.getInitY();
         int currX = getStartX;
         int currY = getStartY;
-        int getSizeX = pizzaListConstants.getToppingSizeX();
-        int getSizeY = pizzaListConstants.getToppingSizeY();
-        int getXMargin = pizzaListConstants.getxMarginTopping();
-        int getYMargin = pizzaListConstants.getyMarginTopping();
-        int getMaxY = pizzaListConstants.getMaxY() - getYMargin;
-        int getMaxX = pizzaListConstants.getMaxX() - getXMargin;
+        int getSizeX = pizzaToppingConstants.getToppingSizeX();
+        int getSizeY = pizzaToppingConstants.getToppingSizeY();
+        int getXMargin = pizzaToppingConstants.getxMarginTopping();
+        int getYMargin = pizzaToppingConstants.getyMarginTopping();
+        int getMaxY = pizzaToppingConstants.getMaxY() - getYMargin;
+        int getMaxX = pizzaToppingConstants.getMaxX() - getXMargin;
 
         JFXButton firstButton = createButton(getStartX, getStartY, toppingsList[0], getSizeX, getSizeY);
         pizzaController.pizzaButtons.getChildren().add(firstButton);

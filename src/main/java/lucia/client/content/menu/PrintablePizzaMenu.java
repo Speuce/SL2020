@@ -4,11 +4,13 @@ import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor
 import main.java.lucia.client.content.menu.pizza.Crust;
 import main.java.lucia.client.content.menu.pizza.Sauce;
 import main.java.lucia.client.content.menu.pizza.Topping;
+import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Extended PizzaMenu with print functionality!
@@ -118,9 +120,10 @@ public class PrintablePizzaMenu extends PizzaMenu{
         });
     }
 
-    private void printToppingList(List<Topping> toppingList, PrintStream out){
+    private void printToppingList(Map<ToppingType, Integer> toppingList, PrintStream out){
         out.print("[");
-        toppingList.forEach(t -> out.printf("{%s:%d}", t.getName(), t.getAmount()));
+        toppingList.entrySet().forEach(t -> out.printf("{%s:%d}", t.getKey().getName(), t.getValue()));
+
         out.print("]");
     }
 

@@ -17,7 +17,9 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Creates a json template for the menu.
@@ -85,8 +87,8 @@ public class MenuTemplateBuilder {
         ToppingType someTopping = new ToppingType(9, "pepperoni","pep", Color.red, noExtraCharge);
         pizza.addTopping(someTopping);
 
-        List<Topping> toppings = new ArrayList<>();
-        toppings.add(someTopping.toTopping(3));
+        Map<ToppingType, Integer> toppings = new HashMap<>();
+        toppings.put(someTopping, 3);
 
         SpecialtyPizzaDescriptor specialty = new SpecialtyPizzaDescriptor(10,
                 "XPEPPizza", basePizza, regular, someCrust, toppings, new ArrayList<>());

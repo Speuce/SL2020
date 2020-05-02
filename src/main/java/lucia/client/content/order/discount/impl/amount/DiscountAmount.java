@@ -13,14 +13,19 @@ import java.util.Set;
  */
 public abstract class DiscountAmount extends DiscountAttribute {
 
+    /**
+     * Construct a new Discount Amount calculator for the given discount
+     * @param o the discount that this amount calculator is for.
+     */
     public DiscountAmount(CustomDiscount o) {
         super(o);
     }
 
     /**
      * Applies the discount to the given subset of the order
-     * @param list the itemlist to apply to
+     * @param list the set of items to apply to
+     * @param order the order being applied to.
      * @return the amount (in cents) saved by applying this discount
      */
-    public abstract long applyDiscount(Set<Item> list);
+    public abstract long applyDiscount(Set<Item> list, ItemList order);
 }

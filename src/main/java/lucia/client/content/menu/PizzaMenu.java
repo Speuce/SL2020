@@ -127,9 +127,10 @@ public class PizzaMenu {
      * @return the PricingScheme object, if found, null otherwise.
      */
     public PricingScheme getPricingScheme(String name){
-        PricingScheme ret = pricingSchemeMap.get(name.toLowerCase());
+        PricingScheme ret = pricingSchemeMap.get(name);
         if(ret == null){
             MLogger.logError("Pricing scheme search: " + name + " failed.");
+            Thread.dumpStack();
         }
         return ret;
     }

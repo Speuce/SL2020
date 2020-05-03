@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
  */
 public class TimeEveryDay extends DiscountTime{
 
-    public TimeEveryDay(CustomDiscount o) {
-        super(o);
+    public TimeEveryDay() {
     }
 
     /**

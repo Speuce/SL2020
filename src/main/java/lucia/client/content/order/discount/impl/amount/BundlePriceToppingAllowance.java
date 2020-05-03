@@ -18,8 +18,8 @@ public class BundlePriceToppingAllowance extends BundlePrice {
      */
     private long toppingAllowance;
 
-    public BundlePriceToppingAllowance(CustomDiscount o, ItemBundleDescriptor bundleDescriptor, long toppingAllowance) {
-        super(o, bundleDescriptor);
+    public BundlePriceToppingAllowance(ItemBundleDescriptor bundleDescriptor, long toppingAllowance) {
+        super(bundleDescriptor);
         this.toppingAllowance = toppingAllowance;
     }
 
@@ -31,7 +31,7 @@ public class BundlePriceToppingAllowance extends BundlePrice {
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(Set<Item> list, ItemList order) {
+    public long applyDiscount(CustomDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
         long allowanceLeft = toppingAllowance;
         order.getItems().removeAll(list);
@@ -45,9 +45,9 @@ public class BundlePriceToppingAllowance extends BundlePrice {
                 allowanceLeft = handlePizza((Pizza)i, allowanceLeft);
             }
             i.setDiscountedPrice(0);
-            i.getAppledDiscounts().add(getParent());
+            i.getAppledDiscounts().add(o);
         }
-        b.getAppledDiscounts().add(getParent());
+        b.getAppledDiscounts().add(o);
         order.addItem(b);
         return beforePrice - b.calcNameAndPrice().getVal2();
     }

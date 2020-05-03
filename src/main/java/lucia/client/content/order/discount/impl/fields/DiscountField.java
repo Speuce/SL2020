@@ -12,7 +12,7 @@ import main.java.lucia.client.content.order.discount.impl.DiscountAttribute;
 public class DiscountField extends DiscountAttribute {
 
 
-    public DiscountField(CustomDiscount o) {
-        super(o);
+    public DiscountField() {
+
     }
 }

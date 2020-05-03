@@ -1,15 +1,12 @@
 package main.java.lucia.client.content.order.discount.impl;
 
 import jdk.internal.jline.internal.Nullable;
-import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.item.IDAble;
+import jdk.vm.ci.meta.Local;
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.discount.impl.amount.DiscountAmount;
 import main.java.lucia.client.content.order.discount.impl.items.AmountRequirement;
-import main.java.lucia.client.content.order.discount.impl.items.DiscountApplicable;
 import main.java.lucia.client.content.order.discount.impl.stacking.DiscountStacking;
 import main.java.lucia.client.content.order.discount.impl.times.DiscountTime;
 import main.java.lucia.client.content.order.impl.ItemList;
@@ -17,7 +14,6 @@ import main.java.lucia.client.content.order.impl.ItemList;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -38,9 +34,10 @@ public class CustomDiscount extends Discount{
     private LinkedList<AmountRequirement> applicables;
 
     /**
-     * Indicates when (time-wise) this discount applies
+     * Indicates when (date) this discount applies
      */
-    private DiscountTime time;
+    private Set<DiscountTime> time;
+
 
     /**
      * Indicates if this discount can be stacked with other discounts
@@ -60,11 +57,11 @@ public class CustomDiscount extends Discount{
     private boolean multiplies;
 
     public CustomDiscount(String name, int id, LinkedList<AmountRequirement> applicables,
-                          DiscountTime time, DiscountStacking stacking,
+                          Set<DiscountTime> timeDay, DiscountStacking stacking,
                           DiscountAmount amount, boolean multiplies) {
         super(name, id);
         this.applicables = applicables;
-        this.time = time;
+        this.time = timeDay;
         this.stacking = stacking;
         this.amount = amount;
         this.multiplies = multiplies;
@@ -80,9 +77,12 @@ public class CustomDiscount extends Discount{
     @Override
     public boolean isDiscountEligible(Order p) {
         assert(p != null);
-        //first see if this passes time check
-        if(!time.applies(LocalDateTime.now())){
-            return false;
+        //first see if this passes time check(s)
+        LocalDateTime now = LocalDateTime.now();
+        for(DiscountTime ti: time){
+            if(!ti.applies(now)){
+                return false;
+            }
         }
         //now see if it meets all of our item requirements
         Set<Item> items = getStackableItems(p);
@@ -137,6 +137,7 @@ public class CustomDiscount extends Discount{
      */
     @Override
     public long calcDiscount(Order p) {
+        //TODO not implemented (idk how to do it efficiently as of now)
         return 0;
     }
 
@@ -147,6 +148,7 @@ public class CustomDiscount extends Discount{
      */
     @Override
     public void applyDiscount(Order p) {
+        Set<Item> items = getStackableItems(p);
 
     }
 
@@ -171,15 +173,8 @@ public class CustomDiscount extends Discount{
     /**
      * Indicates when (time-wise) this discount applies
      */
-    public DiscountTime getTime() {
+    public Set<DiscountTime> getTime() {
         return time;
-    }
-
-    /**
-     * Indicates when (time-wise) this discount applies
-     */
-    public void setTime(DiscountTime time) {
-        this.time = time;
     }
 
     /**

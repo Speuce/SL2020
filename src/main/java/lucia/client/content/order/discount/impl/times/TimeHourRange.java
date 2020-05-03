@@ -12,8 +12,7 @@ import java.time.LocalDateTime;
 public class TimeHourRange extends DiscountTime{
 
 
-    public TimeHourRange(CustomDiscount o) {
-        super(o);
+    public TimeHourRange() {
     }
 
     /**

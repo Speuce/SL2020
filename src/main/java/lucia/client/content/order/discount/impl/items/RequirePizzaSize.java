@@ -21,8 +21,7 @@ public class RequirePizzaSize extends DiscountApplicable{
      */
     private int size;
 
-    public RequirePizzaSize(CustomDiscount o, int size) {
-        super(o);
+    public RequirePizzaSize(int size) {
         this.size = size;
     }
 

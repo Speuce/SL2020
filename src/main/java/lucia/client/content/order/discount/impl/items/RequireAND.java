@@ -22,12 +22,12 @@ public class RequireAND extends DiscountApplicable{
 
     /**
      * Construct an 'and' connective
-     * @param o the discount that this applies to
      * @param a the first part that MUST be included
      * @param b the second part that MUSt be included
      */
-    public RequireAND(CustomDiscount o, DiscountApplicable a, DiscountApplicable b) {
-        super(o);
+    public RequireAND(DiscountApplicable a, DiscountApplicable b) {
+        this.a = a;
+        this.b = b;
     }
 
     /**

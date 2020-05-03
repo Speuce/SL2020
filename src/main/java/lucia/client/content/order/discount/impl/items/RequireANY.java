@@ -15,8 +15,7 @@ import java.util.TreeSet;
 public class RequireANY extends DiscountApplicable{
 
 
-    public RequireANY(CustomDiscount o) {
-        super(o);
+    public RequireANY(){
     }
 
     /**

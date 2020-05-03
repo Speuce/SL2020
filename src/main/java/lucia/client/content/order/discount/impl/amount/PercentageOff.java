@@ -22,8 +22,8 @@ public class PercentageOff extends DiscountAmount{
      */
     private float percent;
 
-    public PercentageOff(CustomDiscount o, float percent) {
-        super(o);
+    public PercentageOff(float percent) {
+        super();
         this.percent = percent;
     }
 
@@ -35,11 +35,11 @@ public class PercentageOff extends DiscountAmount{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(Set<Item> list, ItemList order) {
+    public long applyDiscount(CustomDiscount o, Set<Item> list, ItemList order) {
         long totalDis = 0;
         long discountAmt;
         for(Item i: list){
-            i.getAppledDiscounts().add(this.getParent());
+            i.getAppledDiscounts().add(o);
             discountAmt = (long)(i.getPrice()*percent);
             i.setDiscountedPrice(i.getDiscountedPrice() - discountAmt);
             totalDis+=discountAmt;

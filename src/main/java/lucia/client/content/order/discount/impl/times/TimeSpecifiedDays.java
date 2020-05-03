@@ -19,8 +19,7 @@ public class TimeSpecifiedDays extends DiscountTime{
      */
     private Set<LocalDate> dateApplies;
 
-    public TimeSpecifiedDays(CustomDiscount o, Set<LocalDate> dateApplies) {
-        super(o);
+    public TimeSpecifiedDays(Set<LocalDate> dateApplies) {
         this.dateApplies = dateApplies;
     }
 

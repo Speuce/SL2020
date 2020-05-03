@@ -22,8 +22,7 @@ public class RequireSpecialtyPizza extends DiscountApplicable{
      */
     private int pizzaId;
 
-    public RequireSpecialtyPizza(CustomDiscount o, int pizzaId) {
-        super(o);
+    public RequireSpecialtyPizza(int pizzaId) {
         this.pizzaId = pizzaId;
     }
 

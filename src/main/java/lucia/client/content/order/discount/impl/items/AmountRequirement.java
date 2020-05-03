@@ -26,11 +26,10 @@ public class AmountRequirement {
 
     /**
      * Creates a new amount requirement
-     * @param o the discount this is being applied to
      * @param subject the requirement that this applies to.
      * @param amt the amount of items to be required.
      */
-    public AmountRequirement(CustomDiscount o, DiscountApplicable subject, int amt) {
+    public AmountRequirement(DiscountApplicable subject, int amt) {
         this.subject = subject;
         this.amt = amt;
     }

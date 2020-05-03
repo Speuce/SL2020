@@ -16,8 +16,7 @@ public class TimeRange extends DiscountTime{
      */
     private LocalTimeRange range;
 
-    public TimeRange(CustomDiscount o, LocalTimeRange range) {
-        super(o);
+    public TimeRange(LocalTimeRange range) {
         this.range = range;
     }
 

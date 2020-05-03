@@ -19,8 +19,7 @@ public class TimeSpecificDatesAndTimes extends DiscountTime{
      */
     private HashMap<LocalDate, LocalTimeRange> valid;
 
-    public TimeSpecificDatesAndTimes(CustomDiscount o, HashMap<LocalDate, LocalTimeRange> valid) {
-        super(o);
+    public TimeSpecificDatesAndTimes(HashMap<LocalDate, LocalTimeRange> valid) {
         this.valid = valid;
     }
 

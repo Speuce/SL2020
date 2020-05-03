@@ -18,8 +18,7 @@ public class TimeDaysPerWeek extends DiscountTime{
      */
     private Set<DayOfWeek> daysApplied;
 
-    public TimeDaysPerWeek(CustomDiscount o, Set<DayOfWeek> daysApplied) {
-        super(o);
+    public TimeDaysPerWeek(Set<DayOfWeek> daysApplied) {
         this.daysApplied = daysApplied;
     }
 

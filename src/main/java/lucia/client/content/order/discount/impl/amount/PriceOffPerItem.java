@@ -18,8 +18,7 @@ public class PriceOffPerItem extends DiscountAmount{
      */
     private long amount;
 
-    public PriceOffPerItem(CustomDiscount o, long amount) {
-        super(o);
+    public PriceOffPerItem(long amount) {
         this.amount = amount;
     }
 
@@ -31,10 +30,10 @@ public class PriceOffPerItem extends DiscountAmount{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(Set<Item> list, ItemList order) {
+    public long applyDiscount(CustomDiscount o, Set<Item> list, ItemList order) {
         long totalDis = 0;
         for(Item i: list){
-            i.getAppledDiscounts().add(this.getParent());
+            i.getAppledDiscounts().add(o);
             i.setDiscountedPrice(i.getDiscountedPrice() - amount);
             totalDis+=amount;
         }

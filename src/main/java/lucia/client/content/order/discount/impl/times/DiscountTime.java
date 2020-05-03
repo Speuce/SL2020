@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 public abstract class DiscountTime extends DiscountAttribute {
 
 
-    public DiscountTime(CustomDiscount o) {
-        super(o);
+    public DiscountTime() {
+
     }
 
     /**

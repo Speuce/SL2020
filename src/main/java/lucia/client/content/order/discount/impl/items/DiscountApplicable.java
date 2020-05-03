@@ -17,8 +17,7 @@ import java.util.TreeSet;
  */
 public abstract class DiscountApplicable extends DiscountAttribute {
 
-    public DiscountApplicable(CustomDiscount o) {
-        super(o);
+    public DiscountApplicable() {
     }
 
 //

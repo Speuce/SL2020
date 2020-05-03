@@ -22,13 +22,11 @@ public class RequireOR extends DiscountApplicable{
     /**
      * Construct an 'or' connective
      * either a or b but be included.
-     * @param o the discount that this applies to
      * @param a the first part that may be included
      * @param b the second part that may be included
      *
      */
-    public RequireOR(CustomDiscount o, DiscountApplicable a, DiscountApplicable b) {
-        super(o);
+    public RequireOR(DiscountApplicable a, DiscountApplicable b) {
     }
 
     /**

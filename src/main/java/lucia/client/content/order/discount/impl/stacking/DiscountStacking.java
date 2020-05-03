@@ -18,8 +18,7 @@ public class DiscountStacking extends DiscountAttribute {
      */
     private Set<Integer> stackableDiscounts;
 
-    public DiscountStacking(CustomDiscount o) {
-        super(o);
+    public DiscountStacking() {
         stackableDiscounts = new HashSet<>();
     }
 
@@ -28,7 +27,7 @@ public class DiscountStacking extends DiscountAttribute {
      * @param id the id of the discount
      */
     public void addStackable(Integer id){
-        assert(id != getParent().getId());
+        //assert(id != getParent().getId());
         stackableDiscounts.add(id);
     }
 

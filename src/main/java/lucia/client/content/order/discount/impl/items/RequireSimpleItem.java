@@ -21,8 +21,7 @@ public class RequireSimpleItem extends DiscountApplicable{
      */
     private int itemId;
 
-    public RequireSimpleItem(CustomDiscount o, int itemId) {
-        super(o);
+    public RequireSimpleItem(int itemId) {
         this.itemId = itemId;
     }
 

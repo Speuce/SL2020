@@ -22,11 +22,9 @@ public class RequireNumToppings extends DiscountApplicable{
 
     /**
      * Construct a new minimum topping requirement
-     * @param o
      * @param numToppings the minimum number of toppings to include
      */
-    public RequireNumToppings(CustomDiscount o, int numToppings) {
-        super(o);
+    public RequireNumToppings(int numToppings) {
         this.numToppings = numToppings;
     }
 

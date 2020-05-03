@@ -28,9 +28,9 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
      */
     private long addonAllowance;
 
-    public BundlePriceAddonAllowance(CustomDiscount o, ItemBundleDescriptor bundleDescriptor
+    public BundlePriceAddonAllowance(ItemBundleDescriptor bundleDescriptor
             ,long toppingAllowance,long addonAllowance) {
-        super(o, bundleDescriptor, toppingAllowance);
+        super(bundleDescriptor, toppingAllowance);
         this.addonAllowance = addonAllowance;
     }
 
@@ -42,7 +42,7 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(Set<Item> list, ItemList order) {
+    public long applyDiscount(CustomDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
         long allowanceLeft = addonAllowance;
         long pizzaAllowance = getToppingAllowance();
@@ -58,8 +58,9 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
             }else if(i instanceof Pizza){
                 pizzaAllowance = handlePizza((Pizza)i, pizzaAllowance);
             }
+            i.getAppledDiscounts().add(o);
         }
-        b.getAppledDiscounts().add(getParent());
+        b.getAppledDiscounts().add(o);
         order.addItem(b);
         return beforePrice - b.calcNameAndPrice().getVal2();
     }

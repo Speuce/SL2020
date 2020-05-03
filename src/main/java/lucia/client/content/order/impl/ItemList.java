@@ -3,9 +3,12 @@ package main.java.lucia.client.content.order.impl;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.type.Addon;
 import main.java.lucia.client.content.menu.pizza.Pizza;
+import main.java.lucia.client.content.menu.pizza.Topping;
+import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.payment.PaidBillable;
 import main.java.lucia.client.structures.Exclude;
 
+import java.io.PrintStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,7 +23,7 @@ public abstract class ItemList extends PaidBillable implements Iterable<Item>{
     /**
      * The list of items
      */
-    private ArrayList<Item> items;
+    private List<Item> items;
 
     /**
      * A sorted list of the pizzas (used for double deal price calculations
@@ -193,4 +196,6 @@ public abstract class ItemList extends PaidBillable implements Iterable<Item>{
     public Iterator<Item> iterator() {
         return this.items.iterator();
     }
+
+
 }

@@ -53,31 +53,7 @@ public abstract class ItemList extends PaidBillable implements Iterable<Item>{
         return tot;
     }
 
-    /**
-     * Sorts the orders items by the defined ordering
-     * @return the ordered list
-     */
-    private ArrayList<Item> sortItems(){
-        List<Item> itemList = items;
-        ArrayList<Item> sortedList = new ArrayList<Item>();
 
-        /* Sort out pizzas and deal with them separately */
-        itemList.removeIf(i -> i instanceof Pizza);
-
-        /* Deal with the pizzas now*/
-        sortedList.addAll(getPizzaSorted());
-
-        /*Partition the remainder to addon and non-addon*/
-        Map<Boolean, List<Item>> parts = itemList.stream().collect(Collectors.partitioningBy(i -> i instanceof Addon));
-
-        /* Add the dinners */
-        sortedList.addAll(parts.get(false));
-
-        /* Add the addons */
-        sortedList.addAll(parts.get(true));
-
-        return sortedList;
-    }
 
 //    /**
 //     * Calculates double deals for pastas

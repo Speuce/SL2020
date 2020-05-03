@@ -27,6 +27,8 @@ public class RequireOR extends DiscountApplicable{
      *
      */
     public RequireOR(DiscountApplicable a, DiscountApplicable b) {
+        this.a = a;
+        this.b = b;
     }
 
     /**

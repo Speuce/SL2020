@@ -166,11 +166,11 @@ public class CustomDiscount extends Discount{
         Set<Item> bundle;
         Set<Item> curr;
         boolean cont = true;
-        while(cont){
+        while(cont && !items.isEmpty()){
             bundle = new HashSet<>();
             for(AmountRequirement r: this.getApplicables()){
                 curr = r.appliesTo(items);
-                if(curr == null) break;
+                if(curr == null) return;
                 items.removeAll(curr);
                 bundle.addAll(curr);
             }

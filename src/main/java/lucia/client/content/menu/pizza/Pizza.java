@@ -9,6 +9,7 @@ import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
+import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.size.Size;
@@ -353,7 +354,7 @@ public class Pizza extends Item{
         //get the base price
         long result = (isSpecialty()) ?
                 ((SpecialtyPizzaDescriptor)super.getItemDescriptor()).getPrice(this.getSize()) :
-                ((SimpleItemDescriptor)super.getItemDescriptor()).getBasePrice();
+                ((SimplePizzaDescriptor)super.getItemDescriptor()).getPrice(this.getSize());
         //add the price of the toppings
         result += getToppingPrice();
         //add the cost for sauce and crust

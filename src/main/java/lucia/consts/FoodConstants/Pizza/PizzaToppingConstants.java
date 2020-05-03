@@ -7,10 +7,16 @@ import main.java.lucia.consts.FoodConstants.FoodConstants;
 
 import java.util.List;
 
+/**
+ *  Constant Manager for the Topping Dynamic Loading
+ */
 public class PizzaToppingConstants extends FoodConstants {
 
     private List<ToppingType> toppings = createLists();
 
+    /**
+     *  Sets the constant values for the Toppings
+     */
     public PizzaToppingConstants() {
         setInitX(18);
         setInitY(5);
@@ -22,12 +28,17 @@ public class PizzaToppingConstants extends FoodConstants {
         setMaxY(457);
     }
 
-
+    /**
+     *  Creates the lists from the json system
+     */
     public List<ToppingType> createLists() {
         PizzaMenu menuInstance = Menu.pizza;
         return menuInstance.getDefinedToppings();
     }
 
+    /**
+     *  ACCESSOR for the toppings list
+     */
     public List<ToppingType> getToppingsList() {
         return toppings;
     }

@@ -7,9 +7,15 @@ import main.java.lucia.consts.FoodConstants.FoodConstants;
 
 import java.util.List;
 
+/**
+ *  Constant Manager for the Sauce Dynamic Loading
+ */
 public class SauceConstants extends FoodConstants {
     private List<Sauce> sauces = createLists();
 
+    /**
+     *  Sets the constant values for the Sauces
+     */
     public SauceConstants() {
         setInitX(10);
         setInitY(10);
@@ -19,11 +25,17 @@ public class SauceConstants extends FoodConstants {
         setMaxY(464);
     }
 
+    /**
+     *  Creates the lists from the json system
+     */
     public List<Sauce> createLists() {
         PizzaMenu menuInstance = Menu.pizza;
         return menuInstance.getDefinedSauces();
     }
 
+    /**
+     *  ACCESSOR for the sauce list
+     */
     public List<Sauce> getSauceList() {
         return sauces;
     }

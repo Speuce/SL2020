@@ -6,15 +6,26 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 
+/**
+ * Design Manager for Topping Selection in FXML
+ */
 public class ToppingDesigns {
-    private ToppingType topping;
-    private ToppingCoordinates toppingCoordinates;
+    private ToppingType topping; // information for the topping selection
+    private ToppingCoordinates toppingCoordinates; // information for the topping coordinates
 
     public ToppingDesigns(ToppingType topping) {
         this.topping = topping;
         toppingCoordinates = new ToppingCoordinates();
     }
 
+    /**
+     *  Creates the initial designs for the button that is being created
+     *
+     *  Was originally in the SceneBuilder features,
+     *  but is being moved from fxml features to java features
+     *
+     *  For original design components check SceneBuilder FXMLs
+     */
     public JFXButton initButtonDesign(JFXButton button, int getX, int getY, int getSizeX, int getSizeY) {
         button.setCursor(Cursor.OPEN_HAND);
         button.setTextFill(Paint.valueOf("white")); //todo

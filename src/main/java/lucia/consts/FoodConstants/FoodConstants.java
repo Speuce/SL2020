@@ -1,5 +1,8 @@
 package main.java.lucia.consts.FoodConstants;
 
+/**
+ *  Super Class for the Food Constants including Dinner, Special Instruction, and Pizza Constant Classes
+ */
 public class FoodConstants {
     private int xMargin;
     private int yMargin;
@@ -17,6 +20,11 @@ public class FoodConstants {
 //        return null;
 //    }
 
+    /**
+     *  GETTERS AND SETTERS
+     *
+     *  For all constant values needed for the food item constants
+     */
     public int getxMargin() {
         return xMargin;
     }

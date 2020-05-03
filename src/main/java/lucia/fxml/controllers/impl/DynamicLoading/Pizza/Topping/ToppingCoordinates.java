@@ -2,19 +2,22 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 
 import main.java.lucia.consts.FoodConstants.Pizza.PizzaToppingConstants;
 
+/**
+ *  Coordinate Manager for the Topping Selection in the FXML
+ */
 public class ToppingCoordinates {
 
-    private PizzaToppingConstants pizzaToppingConstants;
+    private PizzaToppingConstants pizzaToppingConstants; // calls the topping constants
 
-    private int currX;
-    private int currY;
-    private final int getSizeX;
+    private int currX; // current x value for the button
+    private int currY; // current y value for the button
+    private final int getSizeX; // size of the button
     private final int getSizeY;
-    private final int getXMargin;
+    private final int getXMargin; // length from where the new value is to be located where the current button is
     private final int getYMargin;
-    private final int getMaxY;
+    private final int getMaxY; // maximum value for the coordinates, stays in the pane that way
     private final int getMaxX;
-    private final int getStartX;
+    private final int getStartX; // initial starting coordinates for the first button
     private final int getStartY;
 
     public ToppingCoordinates() {
@@ -27,10 +30,11 @@ public class ToppingCoordinates {
         getSizeY = pizzaToppingConstants.getSizeY();
         getXMargin = pizzaToppingConstants.getxMargin();
         getYMargin = pizzaToppingConstants.getyMargin();
-        getMaxY = pizzaToppingConstants.getMaxY() - getYMargin;
+        getMaxY = pizzaToppingConstants.getMaxY() - getYMargin; // maximum value at which we can place the button
         getMaxX = pizzaToppingConstants.getMaxX() - getXMargin;
     }
 
+    /** ACCESSORS **/
     public int getGetStartX() {
         return getStartX;
     }
@@ -59,26 +63,49 @@ public class ToppingCoordinates {
         return currX;
     }
 
-    public void addToCurrX(int x) {
-        currX += x;
-    }
-
     public int getCurrY() {
         return currY;
     }
 
+    /**
+     *  Once checkLessThanMaxX is true,
+     *  then the current coordinate will move up as the button is created
+     */
+    public void addToCurrX(int x) {
+        currX += x;
+    }
+
+    /**
+     *  Once checkLessThanMaxY is true,
+     *  then the current coordinate will move up as the button is created
+     */
     public void addToCurrY(int y) {
         currY += y;
     }
 
+    /**
+     *  Returns true or false,
+     *  depending on whether the button can be placed or not
+     *  if the button does not exceed the maximum value
+     */
     public boolean checkLessThanMaxX() {
         return (currX + getXMargin) <= getMaxX;
     }
 
+    /**
+     *  Returns true or false,
+     *  depending on whether the button can be placed or not
+     *  if the button does not exceed the maximum value
+     */
     public boolean checkLessThanMaxY() {
         return (currY + getYMargin) <= getMaxY;
     }
 
+    /**
+     *  Resets the current x value to the starting point
+     *
+     *  Once a new row is iterated towards
+     */
     public void resetCurrX() {
         currX = getStartX;
     }

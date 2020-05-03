@@ -83,6 +83,8 @@ public class Pizza extends Item{
 //            this.toppings.add(t.deepCopy());
 //        }
         this.specialty = true;
+        this.crust = is.getCrust();
+        this.sauce = is.getSauce();
         this.specialInstructions = new ArrayList<>(is.getSpecialInstructions());
         this.size = size;
     }
@@ -512,4 +514,7 @@ public class Pizza extends Item{
         }
         return tp;
     }
+
+
+
 }

@@ -1,6 +1,6 @@
-package main.java.lucia.fxml.controllers.impl.DynamicLoading.Topping;
+package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 
-import main.java.lucia.consts.FoodConstants.PizzaToppingConstants;
+import main.java.lucia.consts.FoodConstants.Pizza.PizzaToppingConstants;
 
 public class ToppingCoordinates {
 

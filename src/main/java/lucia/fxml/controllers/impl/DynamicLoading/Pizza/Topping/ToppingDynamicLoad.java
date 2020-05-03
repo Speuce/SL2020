@@ -1,22 +1,20 @@
-package main.java.lucia.fxml.controllers.impl.DynamicLoading.Topping;
+package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 
 import com.jfoenix.controls.JFXButton;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
-import main.java.lucia.consts.FoodConstants.PizzaToppingConstants;
+import main.java.lucia.consts.FoodConstants.Pizza.PizzaToppingConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
 import java.util.List;
 
-public class ToppingsDynamicLoad {
+public class ToppingDynamicLoad {
 
     private PizzaController pizzaController;
     PizzaToppingConstants pizzaToppingConstants = new PizzaToppingConstants();
     ToppingCoordinates tC = new ToppingCoordinates();
-
-
     private List<ToppingType> toppingsList = pizzaToppingConstants.getToppingsList();
 
-    public ToppingsDynamicLoad(PizzaController pizzaController) {
+    public ToppingDynamicLoad(PizzaController pizzaController) {
         this.pizzaController = pizzaController;
     }
 

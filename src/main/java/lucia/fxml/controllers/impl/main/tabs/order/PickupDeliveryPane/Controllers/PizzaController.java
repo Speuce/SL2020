@@ -26,7 +26,7 @@ import main.java.lucia.client.content.menu.legacy.premade.impl.names.PremadePizz
 import main.java.lucia.client.content.menu.legacy.size.Size;
 import main.java.lucia.client.content.menu.legacy.toppings.Topping;
 import main.java.lucia.client.content.menu.legacy.toppings.names.GourmetToppingNames;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Topping.ToppingsDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping.ToppingDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Style;
@@ -899,7 +899,7 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
 
     @FXML
     void selectedSize30(MouseEvent event) {
-        ToppingsDynamicLoad tester = new ToppingsDynamicLoad(this);
+        ToppingDynamicLoad tester = new ToppingDynamicLoad(this);
         tester.createToppings();
         sizeSelected(Size.THIRTY);
     }

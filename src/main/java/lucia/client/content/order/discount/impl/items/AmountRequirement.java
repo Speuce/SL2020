@@ -68,7 +68,8 @@ public class AmountRequirement {
      * and null if no such set can be found
      */
     public Set<Item> appliesTo(Set<Item> o) {
-        TreeSet<Item> got = new TreeSet<>(subject.appliesTo(o));
+        TreeSet<Item> got = new TreeSet<>();
+        got.addAll(subject.appliesTo(o));
         if(got.size() >= amt){
             Set<Item> ret = new LinkedHashSet<>();
             Iterator<Item> iter = got.iterator();

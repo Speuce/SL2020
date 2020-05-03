@@ -1,9 +1,5 @@
 package main.java.lucia.consts.FoodConstants;
 
-import main.java.lucia.client.content.menu.pizza.ToppingType;
-
-import java.util.List;
-
 public class FoodConstants {
     private int xMarginTopping;
     private int yMarginTopping;
@@ -15,11 +11,11 @@ public class FoodConstants {
     private int maxY;
 
 
-    public List<ToppingType> createLists() {
-        // get from json
-       // System.out.println();
-        return null;
-    }
+//    public List<IDAble> createLists() {
+//        // get from json
+//       // System.out.println();
+//        return null;
+//    }
 
     public int getxMarginTopping() {
         return xMarginTopping;

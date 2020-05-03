@@ -1,27 +1,32 @@
 package main.java.lucia.consts.FoodConstants.Pizza;
 
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.Menu;
+import main.java.lucia.client.content.menu.PizzaMenu;
+import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.consts.FoodConstants.FoodConstants;
 
 import java.util.List;
 
 public class PizzaSpecialsConstants extends FoodConstants {
 
-    private String[] specialPizzas = {"Pep", "Salami", "Beef", "S.Bacon", "B.Bacon", "Sausage", "Ham", "Shrimp", "Mush",
-            "Tomato", "Pineapple", "GPepper", "Jalapeno", "Anch", "BOlive", "GOlive", "Banana", "Onion", "Red Onion",
-            "SunTom", "Artichoke", "Feta", "Cheese", "Cheddar", "Chorizo", "Chicken", "Prosciutto", "Spinach", "Broc",
-            "Eggplant", "RPepper", "ChiliP" };
+    private List<SpecialtyPizzaDescriptor> specialPizzas = createLists();
 
     public PizzaSpecialsConstants() {
-
+        setInitX(5);
+        setInitY(5);
+        setxMarginTopping(155);
+        setToppingSizeX(150);
+        setToppingSizeY(68);
+        setMaxX(3000);
+        //no need for other variables! Y not moving
     }
 
-    public List<ToppingType> createLists() {
-        //get from json
-        return null;
+    public List<SpecialtyPizzaDescriptor> createLists() {
+        PizzaMenu menuInstance = Menu.pizza;
+        return menuInstance.getSpecialties();
     }
 
-    public String[] getSpecialPizzas() {
+    public List<SpecialtyPizzaDescriptor> getSpecialPizzas() {
         return specialPizzas;
     }
 }

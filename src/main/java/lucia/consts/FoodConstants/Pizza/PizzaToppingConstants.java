@@ -14,10 +14,10 @@ public class PizzaToppingConstants extends FoodConstants {
     public PizzaToppingConstants() {
         setInitX(18);
         setInitY(5);
-        setxMarginTopping(189);
-        setyMarginTopping(90);
-        setToppingSizeX(171);
-        setToppingSizeY(80);
+        setxMargin(189);
+        setyMargin(90);
+        setSizeX(171);
+        setSizeY(80);
         setMaxX(1341);
         setMaxY(457);
     }

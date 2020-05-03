@@ -1,12 +1,12 @@
 package main.java.lucia.consts.FoodConstants;
 
 public class FoodConstants {
-    private int xMarginTopping;
-    private int yMarginTopping;
+    private int xMargin;
+    private int yMargin;
     private int initX;
     private int initY;
-    private int toppingSizeX;
-    private int toppingSizeY;
+    private int sizeX;
+    private int sizeY;
     private int maxX;
     private int maxY;
 
@@ -17,12 +17,12 @@ public class FoodConstants {
 //        return null;
 //    }
 
-    public int getxMarginTopping() {
-        return xMarginTopping;
+    public int getxMargin() {
+        return xMargin;
     }
 
-    public int getyMarginTopping() {
-        return yMarginTopping;
+    public int getyMargin() {
+        return yMargin;
     }
 
     public int getInitX() {
@@ -33,12 +33,12 @@ public class FoodConstants {
         return initY;
     }
 
-    public int getToppingSizeX() {
-        return toppingSizeX;
+    public int getSizeX() {
+        return sizeX;
     }
 
-    public int getToppingSizeY() {
-        return toppingSizeY;
+    public int getSizeY() {
+        return sizeY;
     }
 
     public int getMaxX() {
@@ -49,12 +49,12 @@ public class FoodConstants {
         return maxY;
     }
 
-    public void setxMarginTopping(int xMarginTopping) {
-        this.xMarginTopping = xMarginTopping;
+    public void setxMargin(int xMargin) {
+        this.xMargin = xMargin;
     }
 
-    public void setyMarginTopping(int yMarginTopping) {
-        this.yMarginTopping = yMarginTopping;
+    public void setyMargin(int yMargin) {
+        this.yMargin = yMargin;
     }
 
     public void setInitX(int initX) {
@@ -65,12 +65,12 @@ public class FoodConstants {
         this.initY = initY;
     }
 
-    public void setToppingSizeX(int toppingSizeX) {
-        this.toppingSizeX = toppingSizeX;
+    public void setSizeX(int sizeX) {
+        this.sizeX = sizeX;
     }
 
-    public void setToppingSizeY(int toppingSizeY) {
-        this.toppingSizeY = toppingSizeY;
+    public void setSizeY(int sizeY) {
+        this.sizeY = sizeY;
     }
 
     public void setMaxX(int maxX) {

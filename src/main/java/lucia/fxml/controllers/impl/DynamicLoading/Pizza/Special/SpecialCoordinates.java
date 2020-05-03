@@ -18,9 +18,9 @@ public class SpecialCoordinates {
         getStartX = pizzaSpecialsConstants.getInitX();
         getStartY = pizzaSpecialsConstants.getInitY();
         currX = getStartX;
-        getSizeX = pizzaSpecialsConstants.getToppingSizeX();
-        getSizeY = pizzaSpecialsConstants.getToppingSizeY();
-        getXMargin = pizzaSpecialsConstants.getxMarginTopping();
+        getSizeX = pizzaSpecialsConstants.getSizeX();
+        getSizeY = pizzaSpecialsConstants.getSizeY();
+        getXMargin = pizzaSpecialsConstants.getxMargin();
         getMaxX = pizzaSpecialsConstants.getMaxX() - getXMargin;
     }
 

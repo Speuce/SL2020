@@ -9,14 +9,14 @@ import java.util.List;
 
 public class PizzaSpecialsConstants extends FoodConstants {
 
-    private List<SpecialtyPizzaDescriptor> specialPizzas = createLists();
+    private List<SpecialtyPizzaDescriptor> specialPizzaList = createLists();
 
     public PizzaSpecialsConstants() {
         setInitX(5);
         setInitY(5);
-        setxMarginTopping(155);
-        setToppingSizeX(150);
-        setToppingSizeY(68);
+        setxMargin(155);
+        setSizeX(150);
+        setSizeY(68);
         setMaxX(3000);
         //no need for other variables! Y not moving
     }
@@ -26,7 +26,7 @@ public class PizzaSpecialsConstants extends FoodConstants {
         return menuInstance.getSpecialties();
     }
 
-    public List<SpecialtyPizzaDescriptor> getSpecialPizzas() {
-        return specialPizzas;
+    public List<SpecialtyPizzaDescriptor> getSpecialPizzaList() {
+        return specialPizzaList;
     }
 }

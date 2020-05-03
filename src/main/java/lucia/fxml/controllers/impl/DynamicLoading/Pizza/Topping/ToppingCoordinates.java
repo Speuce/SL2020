@@ -23,10 +23,10 @@ public class ToppingCoordinates {
         getStartY = pizzaToppingConstants.getInitY();
         currX = getStartX;
         currY = getStartY;
-        getSizeX = pizzaToppingConstants.getToppingSizeX();
-        getSizeY = pizzaToppingConstants.getToppingSizeY();
-        getXMargin = pizzaToppingConstants.getxMarginTopping();
-        getYMargin = pizzaToppingConstants.getyMarginTopping();
+        getSizeX = pizzaToppingConstants.getSizeX();
+        getSizeY = pizzaToppingConstants.getSizeY();
+        getXMargin = pizzaToppingConstants.getxMargin();
+        getYMargin = pizzaToppingConstants.getyMargin();
         getMaxY = pizzaToppingConstants.getMaxY() - getYMargin;
         getMaxX = pizzaToppingConstants.getMaxX() - getXMargin;
     }

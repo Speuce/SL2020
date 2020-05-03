@@ -1,20 +1,17 @@
 package main.java.lucia.client.content.menu.pizza;
 
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.io.serializer.server.PizzaSerializer;
 import main.java.lucia.client.content.menu.item.AbstractItem;
-import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.IDAble;
-import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
-import main.java.lucia.client.content.menu.size.Size;
+import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
-import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -442,6 +439,14 @@ public class Pizza extends Item implements Comparable<Pizza>{
 
     public int getRowNum() {
         return rowNum;
+    }
+
+    public List<Topping> getToppings(){
+        return toppings;
+    }
+
+    public boolean hasToppingType(ToppingType t){
+        return false;
     }
 
 

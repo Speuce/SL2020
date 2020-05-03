@@ -1,11 +1,14 @@
 package main.java.lucia.consts.FoodConstants;
 
+import main.java.lucia.client.content.menu.Menu;
+import main.java.lucia.client.content.menu.PizzaMenu;
+import main.java.lucia.client.content.menu.pizza.ToppingType;
+
+import java.util.List;
+
 public class PizzaToppingConstants extends FoodConstants {
 
-    private String[] toppings = {"Pep", "Salami", "Beef", "S.Bacon", "B.Bacon", "Sausage", "Ham", "Shrimp", "Mush",
-            "Tomato", "Pineapple", "GPepper", "Jalapeno", "Anch", "BOlive", "GOlive", "Banana", "Onion", "Red Onion",
-            "SunTom", "Artichoke", "Feta", "Cheese", "Cheddar", "Chorizo", "Chicken", "Prosciutto", "Spinach", "Broc",
-            "Eggplant", "RPepper", "ChiliP" };
+    private List<ToppingType> toppings = createLists();
 
     public PizzaToppingConstants() {
         setInitX(18);
@@ -19,11 +22,12 @@ public class PizzaToppingConstants extends FoodConstants {
     }
 
 
-    public void createLists() {
-        // get from json
+    public List<ToppingType> createLists() {
+        PizzaMenu menuInstance = Menu.pizza;
+        return menuInstance.getDefinedToppings();
     }
 
-    public String[] getToppingsList() {
+    public List<ToppingType> getToppingsList() {
         return toppings;
     }
 }

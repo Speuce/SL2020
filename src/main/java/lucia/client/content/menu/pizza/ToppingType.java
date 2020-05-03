@@ -1,13 +1,9 @@
 package main.java.lucia.client.content.menu.pizza;
 
-import com.google.gson.*;
-import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.io.JsonCustomSerializable;
 import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.awt.*;
-import java.lang.reflect.Type;
 
 /**
  * Represents any single topping that can be applied to a pizza.
@@ -28,7 +24,8 @@ public class ToppingType extends IDAble {
     /**
      * The color that this button should be in the menu
      */
-    private Color buttonColor;
+    private Color buttonColor, selectedColor;
+
 
     /**
      * The pricing scheme of this item
@@ -38,6 +35,7 @@ public class ToppingType extends IDAble {
 
     public ToppingType(int id, String name,String shortName,  Color buttonColor, PricingScheme pricingScheme) {
         super(id);
+        this.selectedColor = Color.MAGENTA;
         this.name = name;
         this.buttonColor = buttonColor;
         this.shortName = shortName;
@@ -62,6 +60,13 @@ public class ToppingType extends IDAble {
 
     public PricingScheme getPricingScheme() {
         return pricingScheme;
+    }
+
+    /**
+     * get the selected color
+     */
+    public Color getSelectedColor(){
+        return selectedColor;
     }
 
     /**

@@ -84,6 +84,15 @@ public class CustomDiscount extends Discount{
                 return false;
             }
         }
+        //now see if it can be stacked
+        if(!multiplies){
+            for(Item i: p){
+                if(i.getAppledDiscounts().contains(this)){
+                    return false;
+                }
+            }
+        }
+
         //now see if it meets all of our item requirements
         Set<Item> items = getStackableItems(p);
         if(items == null || items.isEmpty()){
@@ -148,8 +157,26 @@ public class CustomDiscount extends Discount{
      */
     @Override
     public void applyDiscount(Order p) {
+        //precondition: the order is actually eligible for the discount
+        assert(isDiscountEligible(p));
         Set<Item> items = getStackableItems(p);
+        if(items == null) return;
 
+        //current bundle
+        Set<Item> bundle;
+        Set<Item> curr;
+        boolean cont = true;
+        while(cont){
+            bundle = new HashSet<>();
+            for(AmountRequirement r: this.getApplicables()){
+                curr = r.appliesTo(items);
+                if(curr == null) break;
+                items.removeAll(curr);
+                bundle.addAll(curr);
+            }
+            cont = multiplies;
+            amount.applyDiscount(this, bundle, p);
+        }
     }
 
     /**

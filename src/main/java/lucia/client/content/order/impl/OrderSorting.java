@@ -20,7 +20,7 @@ public class OrderSorting {
      * Sorts the orders items by the defined ordering
      * @return the ordered list
      */
-    private List<Item> sortItems(Collection<Item> items){
+    public static List<Item> sortItems(Collection<Item> items){
         //Set<Item> itemList = items;
 
         /* Sort out item types and deal with them separately */

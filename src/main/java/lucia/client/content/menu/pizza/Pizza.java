@@ -489,4 +489,27 @@ public class Pizza extends Item{
         result -= basePrice;
         return result;
     }
+
+    /**
+     * Gets a map of ALL toppings on a pizza including those from the specialty
+     * (if applicable) (doesn't include negations)
+     */
+    public Map<ToppingType, Integer> getAllToppingsOnPizza(){
+        Map<ToppingType, Integer> tp = new HashMap<>();
+        //add all the specialty toppings
+        if(isSpecialty()){
+            for(Map.Entry<ToppingType, Integer> topping: getPizzaDescriptor().getToppings().entrySet()){
+                tp.put(topping.getKey(), topping.getValue());
+            }
+        }
+        //add the other toppings; handle negations
+        for(Topping t: this.toppings){
+            if(t.getAmount() == 0){
+                tp.remove(t.getType());
+            }else {
+                tp.put(t.getType(), t.getAmount());
+            }
+        }
+        return tp;
+    }
 }

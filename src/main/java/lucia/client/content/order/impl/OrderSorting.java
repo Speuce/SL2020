@@ -33,11 +33,11 @@ public class OrderSorting {
         while(iter.hasNext()){
             item = iter.next();
             if(item instanceof Pizza){
-                pizzas.add((Pizza) item);
+                pizzas.add(item);
             }else if(item instanceof ItemModifiable){
-                modifiables.add((ItemModifiable) item);
+                modifiables.add(item);
             }else if(item instanceof ItemBundle){
-                bundles.add((ItemBundle) item);
+                bundles.add(item);
             }else{
                 remainder.add(item);
             }

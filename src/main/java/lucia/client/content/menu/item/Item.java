@@ -22,6 +22,6 @@ public abstract class Item extends AbstractItem implements Comparable<Item> {
 
     @Override
     public int compareTo(Item item) {
-        return (int) (this.getPrice() - item.getPrice());
+        return (int) (item.getPrice() - this.getPrice());
     }
 }

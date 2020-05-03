@@ -188,7 +188,7 @@ public abstract class ItemList extends PaidBillable implements Iterable<Item>{
      */
     public abstract long calculateFees();
 
-    public ArrayList<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 

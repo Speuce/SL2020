@@ -82,6 +82,7 @@ public class MenuTemplateBuilder {
         pizza.setBasePizza(basePizza);
 
         Crust someCrust = new Crust(8, "regular", "regular", noExtraCharge);
+        pizza.setRegularCrust(someCrust);
         pizza.getDefinedCrusts().add(someCrust);
 
         ToppingType someTopping = new ToppingType(9, "pepperoni","pep", Color.red, noExtraCharge);

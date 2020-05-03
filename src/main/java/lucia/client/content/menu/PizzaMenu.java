@@ -66,6 +66,11 @@ public class PizzaMenu {
     protected Sauce regular;
 
     /**
+     * Regular crust
+     */
+    protected Crust regularCrust;
+
+    /**
      * The loaded base prices of pizza. Represents a cheese pizza of any size.
      */
     protected SimplePizzaDescriptor basePizza;
@@ -221,6 +226,7 @@ public class PizzaMenu {
 
         //load the default sauce/pizza
         regular = loader.loadRegularSauce();
+        regularCrust = loader.loadRegularCrust();
         basePizza = new SimplePizzaDescriptor(1, "", loader.loadBasePizzaPricing());
 
         specialties = loader.loadSpecialtyList();
@@ -241,6 +247,7 @@ public class PizzaMenu {
 
         saver.saveRegularPizza(this.basePizza.getPricingScheme());
         saver.saveRegularSauce(this.regular);
+        saver.saveRegularCrust(this.regularCrust);
 
         saver.saveSpecialtyList(specialties);
     }
@@ -250,7 +257,11 @@ public class PizzaMenu {
         this.toppingTypeMap.put(type.getName(), type);
     }
 
+    public Crust getRegularCrust() {
+        return regularCrust;
+    }
 
-
-
+    public void setRegularCrust(Crust regularCrust) {
+        this.regularCrust = regularCrust;
+    }
 }

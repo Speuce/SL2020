@@ -152,6 +152,14 @@ public class MenuSaver {
     }
 
     /**
+     * Saves the "regular" crust.
+     * @param regular the "regular" crust object
+     */
+    public void saveRegularCrust(Crust regular){
+        pizzaJson.addProperty(Property.REGULAR_CRUST, regular.getId());
+    }
+
+    /**
      * Saves the "regular" pizza pricing scheme.
      * @param s the pricing scheme of a regular cheese pizza.
      */

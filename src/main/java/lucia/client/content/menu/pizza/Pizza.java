@@ -98,6 +98,8 @@ public class Pizza extends Item{
                 Menu.pizza.getBasePizza());
         this.toppings = new ArrayList<>();
         this.specialty = false;
+        this.sauce = Menu.pizza.getRegularSauce();
+        this.crust = Menu.pizza.getRegularCrust();
         this.specialInstructions = new ArrayList<>();
         this.sauce = Menu.pizza.getRegularSauce();
         this.size = size;

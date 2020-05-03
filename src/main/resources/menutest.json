@@ -92,6 +92,7 @@
     ],
     "regularPizza": "basePizza",
     "regularSauce": 7,
+    "regularCrust": 8,
     "specials": [
       {
         "id": 10,

@@ -32,7 +32,7 @@ public class ItemListPrinter {
     }
 
     private void printBundle(ItemBundle b, PrintStream p){
-        p.print("BUNDLE: " + b.getName());
+        p.print("BUNDLE: '" + b.getName() + "'");
         p.print(" Price: " + b.getPrice());
         p.print(" DisplayPrice: " + b.getBundlePrice());
         p.println(" Items:");

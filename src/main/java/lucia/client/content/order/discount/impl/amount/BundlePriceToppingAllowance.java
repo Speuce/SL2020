@@ -44,7 +44,6 @@ public class BundlePriceToppingAllowance extends BundlePrice {
             if(i instanceof Pizza){
                 allowanceLeft = handlePizza((Pizza)i, allowanceLeft);
             }
-            i.setDiscountedPrice(0);
             i.getAppledDiscounts().add(o);
         }
         b.getAppledDiscounts().add(o);

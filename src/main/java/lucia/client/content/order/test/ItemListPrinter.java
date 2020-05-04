@@ -1,6 +1,7 @@
 package main.java.lucia.client.content.order.test;
 
 import main.java.lucia.client.content.menu.item.Item;
+import main.java.lucia.client.content.menu.item.ItemBundle;
 import main.java.lucia.client.content.menu.item.type.Addon;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
@@ -26,15 +27,33 @@ public class ItemListPrinter {
     public void printList(ItemList itemlis, PrintStream s){
         List<Item> items = OrderSorting.sortItems(itemlis.getItems());
         for(Item i: items){
-            if(i instanceof Pizza){
-                printPizzaItem((Pizza)i, s);
-            } else if(i instanceof ItemModifiable){
-                printModifiable((ItemModifiable)i, s);
-            } else if(i instanceof SimpleItem){
-                printSimpleItem((SimpleItem)i, s);
-            } else{
-                throw new IllegalArgumentException("Item: " + i.getName() + "was added to an order but is neither pizza, modifiable, or simple!");
-            }
+            printItem(i, s);
+        }
+    }
+
+    private void printBundle(ItemBundle b, PrintStream p){
+        p.print("BUNDLE: " + b.getName());
+        p.print(" Price: " + b.getPrice());
+        p.print(" DisplayPrice: " + b.getBundlePrice());
+        p.println(" Items:");
+        for(Item i: b){
+            p.print("     ");
+            printItem(i, p);
+            //p.println();
+        }
+    }
+
+    private void printItem(Item i, PrintStream s){
+        if(i instanceof Pizza){
+            printPizzaItem((Pizza)i, s);
+        } else if(i instanceof ItemModifiable){
+            printModifiable((ItemModifiable)i, s);
+        } else if(i instanceof SimpleItem) {
+            printSimpleItem((SimpleItem) i, s);
+        } else if (i instanceof ItemBundle){
+            printBundle((ItemBundle)i, s);
+        } else{
+            throw new IllegalArgumentException("Item: " + i.getName() + "was added to an order but is neither pizza, modifiable, or simple!");
         }
     }
 

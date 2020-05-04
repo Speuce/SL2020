@@ -4,6 +4,7 @@ import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
  * items.
  * @author Matthew Kwiatkowski
  */
-public class ItemBundle extends Item{
+public class ItemBundle extends Item implements Iterable<Item>{
 
     /**
      * The list of all items inside of this bundle
@@ -79,5 +80,10 @@ public class ItemBundle extends Item{
      */
     public List<Item> getItems() {
         return items;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return items.iterator();
     }
 }

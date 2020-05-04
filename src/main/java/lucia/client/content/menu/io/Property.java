@@ -16,5 +16,6 @@ public class Property {
     SPECIAL = "specials",
     PRICING = "pricingSchemes",
     REGULAR_SAUCE = "regularSauce",
-    REGULAR_PIZZA = "regularPizza";
+    REGULAR_PIZZA = "regularPizza",
+    REGULAR_CRUST = "regularCrust";
 }

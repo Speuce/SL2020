@@ -13,7 +13,9 @@ import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Deserializer for {@link SpecialtyPizzaDescriptor} objects (local)
@@ -29,7 +31,7 @@ public class SpecialtyPizzaDescriptorDeserializer implements JsonDeserializer<Sp
         Sauce sauce = new IDCaster<Sauce>().cast(obj.get("sauce").getAsInt());
         Crust crust = new IDCaster<Crust>().cast(obj.get("crust").getAsInt());
         JsonArray toppingArr = obj.getAsJsonArray("toppings");
-        List<Topping> toppings = new ArrayList<Topping>();
+        Map<ToppingType, Integer> toppings = new HashMap<>();
         JsonObject curr;
         int amt;
         ToppingType type;
@@ -38,7 +40,7 @@ public class SpecialtyPizzaDescriptorDeserializer implements JsonDeserializer<Sp
             amt = curr.get("amount").getAsInt();
             type = new IDCaster<ToppingType>().cast(curr.get("type").getAsInt());
             if(type != null){
-                toppings.add(type.toTopping(amt));
+                toppings.put(type, amt);
             }else{
                 MLogger.logError("Couldn't load topping: " + e.getAsString() + " on pizza: " + name);
             }

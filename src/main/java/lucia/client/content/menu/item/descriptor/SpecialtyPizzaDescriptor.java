@@ -11,6 +11,7 @@ import main.java.lucia.client.content.menu.size.PricingScheme;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Descriptor for a specialty/gourmet pizza, contains
@@ -22,7 +23,7 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
     /**
      * The toppings on this pizza
      */
-    private List<Topping> toppings;
+    private Map<ToppingType, Integer> toppings;
 
     /**
      * The special instructions for this pizza
@@ -41,7 +42,7 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
     private Crust crust;
 
     public SpecialtyPizzaDescriptor(int id, String baseName, PricingScheme pricingScheme,
-                                    Sauce sauce, Crust crust, List<Topping> toppings, List<String> specialInstructions) {
+                                    Sauce sauce, Crust crust, Map<ToppingType, Integer> toppings, List<String> specialInstructions) {
         super(id, baseName, pricingScheme);
         this.sauce = sauce;
         this.crust = crust;
@@ -53,7 +54,7 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
     /**
      * Get the toppings on this pizza
      */
-    public List<Topping> getToppings() {
+    public Map<ToppingType, Integer> getToppings() {
         return toppings;
     }
 
@@ -86,14 +87,8 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
     }
 
     public boolean hasToppingType(ToppingType type){
-        boolean result = false;
-        for(Topping top: toppings){
-            if(top.getType() == type){
-                result = true;
-                break;
-            }
-        }
-        return result;
+        return toppings.containsKey(type);
     }
+
 
 }

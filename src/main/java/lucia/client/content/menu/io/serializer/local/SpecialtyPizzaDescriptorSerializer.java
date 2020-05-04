@@ -3,8 +3,10 @@ package main.java.lucia.client.content.menu.io.serializer.local;
 import com.google.gson.*;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.pizza.Topping;
+import main.java.lucia.client.content.menu.pizza.ToppingType;
 
 import java.lang.reflect.Type;
+import java.util.Map;
 
 /**
  * Serializer for {@link SpecialtyPizzaDescriptor} objects (local)
@@ -22,10 +24,10 @@ public class SpecialtyPizzaDescriptorSerializer implements JsonSerializer<Specia
         ret.addProperty("crust", src.getCrust().getId());
         JsonArray toppingArr = new JsonArray();
         JsonObject add;
-        for(Topping t: src.getToppings()){
+        for(Map.Entry<ToppingType, Integer> t: src.getToppings().entrySet()){
             add = new JsonObject();
-            add.addProperty("type", t.getType().getId());
-            add.addProperty("amount", t.getAmount());
+            add.addProperty("type", t.getKey().getId());
+            add.addProperty("amount", t.getValue());
             toppingArr.add(add);
         }
         ret.add("toppings", toppingArr);

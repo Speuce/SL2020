@@ -63,6 +63,12 @@
         "10": "0",
         "13": "0",
         "15": "0"
+      },
+      {
+        "name": "normal",
+        "10": "100",
+        "13": "200",
+        "15": "300"
       }
     ],
     "crusts": [
@@ -88,10 +94,18 @@
         "id": 9,
         "pricing": "free",
         "short": "pep"
+      },
+      {
+        "name": "ham",
+        "buttonColor": -65536,
+        "id": 11,
+        "pricing": "normal",
+        "short": "ham"
       }
     ],
     "regularPizza": "basePizza",
     "regularSauce": 7,
+    "regularCrust": 8,
     "specials": [
       {
         "id": 10,

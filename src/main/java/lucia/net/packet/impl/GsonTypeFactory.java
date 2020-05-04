@@ -98,17 +98,7 @@ public class GsonTypeFactory {
    */
   private static Gson menuItemBuilder() {
     GsonBuilder b = new GsonBuilder();
-    b.setExclusionStrategies(new ExclusionStrategy() {
-      @Override
-      public boolean shouldSkipField(FieldAttributes f) {
-        return f.getAnnotation(Exclude.class) != null;
-      }
-
-      @Override
-      public boolean shouldSkipClass(Class<?> clazz) {
-        return false;
-      }
-    });
+    addExclusionPolicy(b);
     b.setPrettyPrinting();
     b.serializeNulls();
     RuntimeTypeAdapterFactory<Descriptor> itemAdapter = RuntimeTypeAdapterFactory
@@ -131,17 +121,7 @@ public class GsonTypeFactory {
   private static Gson orderBuilder(){
     GsonBuilder b = new GsonBuilder();
 
-    b.setExclusionStrategies(new ExclusionStrategy() {
-      @Override
-      public boolean shouldSkipField(FieldAttributes f) {
-        return f.getAnnotation(Exclude.class) != null;
-      }
-
-      @Override
-      public boolean shouldSkipClass(Class<?> clazz) {
-        return false;
-      }
-    });
+    addExclusionPolicy(b);
     b.setPrettyPrinting();
 //    b.registerTypeAdapterFactory(typeAdapter);
     //b.registerTypeAdapterFactory(typeAdapter);
@@ -170,17 +150,7 @@ public class GsonTypeFactory {
     RuntimeTypeAdapterFactory<EmployeeNote> typeAdapter2 = RuntimeTypeAdapterFactory
             .of(EmployeeNote.class)
             .registerSubtype(ManagerNote.class);
-    b.setExclusionStrategies(new ExclusionStrategy() {
-      @Override
-      public boolean shouldSkipField(FieldAttributes f) {
-        return f.getAnnotation(Exclude.class) != null;
-      }
-
-      @Override
-      public boolean shouldSkipClass(Class<?> clazz) {
-        return false;
-      }
-    });
+    addExclusionPolicy(b);
     b.setPrettyPrinting();
 //    b.registerTypeAdapterFactory(typeAdapter);
     b.registerTypeAdapterFactory(typeAdapter1);
@@ -199,6 +169,16 @@ public class GsonTypeFactory {
    */
   private static Gson basicBuilder(){
     GsonBuilder b = new GsonBuilder();
+    addExclusionPolicy(b);
+    b.setPrettyPrinting();
+    b.serializeNulls();
+    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonDeserializer());
+    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonSerializer());
+
+    return b.create();
+  }
+
+  public static void addExclusionPolicy(GsonBuilder b){
     b.setExclusionStrategies(new ExclusionStrategy() {
       @Override
       public boolean shouldSkipField(FieldAttributes f) {
@@ -210,12 +190,6 @@ public class GsonTypeFactory {
         return false;
       }
     });
-    b.setPrettyPrinting();
-    b.serializeNulls();
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonDeserializer());
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonSerializer());
-
-    return b.create();
   }
 
 

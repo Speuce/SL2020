@@ -3,6 +3,11 @@ package main.java.lucia.consts;
 public class ClientConstants {
 
     /**
+     * true to enable networking, false otherwise.
+     */
+    public static final boolean ENABLE_NET = false;
+
+    /**
      * The name of the game.
      */
     public static final String NAME = "Santa Lucia Main Client";

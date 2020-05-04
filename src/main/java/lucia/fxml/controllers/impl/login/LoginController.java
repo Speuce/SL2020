@@ -414,7 +414,7 @@ public class LoginController implements Controller {
         InterfaceBuilder.setSecondaryStage(primaryStage);
         Stage close = InterfaceBuilder.getPrimaryStage();
         FXMLLoader mainProgram = new FXMLLoader(
-            getClass().getResource(FxmlConstants.MAIN_FXML_DIRECTORY));
+            getClass().getClassLoader().getResource(FxmlConstants.MAIN_FXML_DIRECTORY));
         Pane root = mainProgram.load();
 
         primaryStage.setTitle(ClientConstants.NAME + " " + ClientConstants.VERSION);
@@ -431,8 +431,11 @@ public class LoginController implements Controller {
 
 
         /* Load all the orders off the server */
-        OrderManager.loadAllOrders();
-        OrderManager.loadAllPreOrders();
+        if(ClientConstants.ENABLE_NET){
+          OrderManager.loadAllOrders();
+          OrderManager.loadAllPreOrders();
+        }
+
 
       } catch (Exception e) {
         Client.logger.error("An error has occurred while switching to the main GUI!", e);

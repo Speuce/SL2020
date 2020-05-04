@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -182,7 +183,8 @@ public class DriverFramePane implements Controller {
   private String load(String directory) {
     String loaded = null;
     try (Stream<String> reader = Files
-            .lines(Paths.get(getClass().getResource(directory).toURI()))) {
+            .lines(Paths.get(Objects.requireNonNull(
+                    getClass().getClassLoader().getResource(directory)).toURI()))) {
       loaded = reader.collect(Collectors.joining());
     } catch (IOException | URISyntaxException e) {
       Client.logger.error("An error has occurred while loading the HTML maps information", e);

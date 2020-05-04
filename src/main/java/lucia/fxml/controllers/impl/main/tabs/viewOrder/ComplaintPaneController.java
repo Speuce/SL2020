@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import main.java.lucia.client.content.customer.Complaint;
 import main.java.lucia.client.content.customer.ComplaintAction;
 import main.java.lucia.client.content.employee.Employee;
+import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
@@ -86,11 +87,16 @@ public class ComplaintPaneController {
         Platform.runLater(() -> {
             complaintTextArea.setFont(new Font("Calibri", 20));
             complaintTextArea.setCache(false);
-            Region sp = (Region)complaintTextArea.getChildrenUnmodifiable().get(0);
-            sp.setCache(false);
-            for (Node n : sp.getChildrenUnmodifiable()) {
-                n.setCache(false);
+            if(!complaintTextArea.getChildrenUnmodifiable().isEmpty()){
+                Region sp = (Region)complaintTextArea.getChildrenUnmodifiable().get(0);
+                sp.setCache(false);
+                for (Node n : sp.getChildrenUnmodifiable()) {
+                    n.setCache(false);
+                }
+            }else{
+                MLogger.logError("Something is fishy in ComplaintPaneCntroller init.");
             }
+
         });
     }
 

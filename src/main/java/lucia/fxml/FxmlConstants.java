@@ -13,13 +13,13 @@ public class FxmlConstants {
 
     public static final String MAIN_FXML_DIRECTORY = "fxml/mainGUI.fxml";
 
-    public static final String HTML_MAPS_DIRECTORY = "html/map/map.html";
+    public static final String HTML_MAPS_DIRECTORY = "map/map.html";
 
-    public static final String HTML_DRIVER_MAPS_DIRECTORY = "html/map/driverMap.html";
+    public static final String HTML_DRIVER_MAPS_DIRECTORY = "map/driverMap.html";
 
-    public static final String JAVASCRIPT_MAPS_DIRECTORY = "html/map/main.js";
+    public static final String JAVASCRIPT_MAPS_DIRECTORY = "map/main.js";
 
-    public static final String JAVASCRIPT_DRIVER_MAPS_DIRECTORY = "html/map/driverMain.js";
+    public static final String JAVASCRIPT_DRIVER_MAPS_DIRECTORY = "map/driverMain.js";
 
     public static final String BETA_FXML_DIRECTORY = "fxml/testerGUI.fxml";
 

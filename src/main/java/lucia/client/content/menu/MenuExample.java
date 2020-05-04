@@ -38,6 +38,7 @@ public class MenuExample {
 
 
 
+
         //---Descriptors---
 
         //Now you can loop through the list or whatever you would like.
@@ -70,6 +71,7 @@ public class MenuExample {
         //THEN apply addons
         ItemModifiableDescriptor mod = (ItemModifiableDescriptor)item;
         ItemModifiable i2 = mod.getAsItem();
+        mod.getAppliableAddons();
         Addon addonToAdd = null; /* obviously this wouldnt be null */
         i2.addAddon(addonToAdd);
 

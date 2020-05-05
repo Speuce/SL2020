@@ -16,7 +16,7 @@ public class IDCaster<T extends IDAble> {
      * @return an object of type T with the id we wanted.
      */
     public T cast(int id){
-        IDAble d = Menu.get.getItemFromId(id);
+        IDAble d = IDManager.instance.getMapping(id);
         T result = null;
         if(d == null){
             MLogger.logError("Error casting id: " + id + " -- Id not found!");

@@ -1,5 +1,7 @@
 package main.java.lucia.client.content.utils;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ public class IDManager {
     /**
      * The current instance of idmanager
      */
-    private static IDManager instance = new IDManager();
+    public static IDManager instance = new IDManager();
 
 
     //-----------------
@@ -39,6 +41,18 @@ public class IDManager {
             addItems(id - map.size()+1);
         }
         map.set(id, idAble);
+    }
+
+    /**
+     * Get the given {@link IDAble} given the id
+     * @param id the Object, if found, null otherwise
+     */
+    @Nullable
+    public IDAble getMapping(int id){
+        if(id < map.size()){
+            return map.get(id);
+        }
+        return null;
     }
 
     /**

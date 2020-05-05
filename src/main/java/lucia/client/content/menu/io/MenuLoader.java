@@ -13,6 +13,7 @@ import main.java.lucia.client.content.menu.pizza.Crust;
 import main.java.lucia.client.content.menu.pizza.Sauce;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
+import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.consts.JavaConstants;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
@@ -170,14 +171,14 @@ public class MenuLoader {
      * Gets the "regular" sauce object
      */
     public Sauce loadRegularSauce(){
-        return (Sauce)Menu.get.getItemFromId(pizzaParser.getAsJsonPrimitive(Property.REGULAR_SAUCE).getAsInt());
+        return new IDCaster<Sauce>().cast((pizzaParser.getAsJsonPrimitive(Property.REGULAR_SAUCE).getAsInt()));
     }
 
     /**
      * Gets the "regular" crust object
      */
     public Crust loadRegularCrust(){
-        return (Crust)Menu.get.getItemFromId(pizzaParser.getAsJsonPrimitive(Property.REGULAR_CRUST).getAsInt());
+        return new IDCaster<Crust>().cast(pizzaParser.getAsJsonPrimitive(Property.REGULAR_CRUST).getAsInt());
     }
 
     /**

@@ -7,6 +7,7 @@ import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
 import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.menu.item.descriptor.*;
+import main.java.lucia.client.content.utils.IDManager;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.io.*;
@@ -39,12 +40,12 @@ public class Menu {
     /**
      * Maps integer ids to menu items.
      */
-    private Map<Integer, IDAble> menuItemMap;
+    //private Map<Integer, IDAble> menuItemMap;
 
     public Menu(){
         loadedSections = new ArrayList<>();
         sectionItems = new HashMap<>();
-        menuItemMap = new HashMap<>();
+        //menuItemMap = new HashMap<>();
         //registerMenuJsonSerializables();
     }
 
@@ -96,15 +97,17 @@ public class Menu {
      * @param id the id of the menu item
      * @return the associated {@link IDAble}
      */
+    @Deprecated
     public IDAble getItemFromId(Integer id){
-        return menuItemMap.get(id);
+        return IDManager.instance.getMapping(id);
     }
 
     /**
      * registers an item to the integer id table
      */
+    @Deprecated
     public void addMenuItem(IDAble t){
-        menuItemMap.put(t.getId(), t);
+       IDManager.instance.addMapping(t);
     }
 
     /**
@@ -120,7 +123,7 @@ public class Menu {
             items.add(item);
             sectionItems.put(section, items);
         }
-        addMenuItem(item);
+        IDManager.instance.addMapping(item);
     }
 
     /**
@@ -129,7 +132,6 @@ public class Menu {
     public void clearMenu(){
         sectionItems.clear();
         loadedSections.clear();
-        menuItemMap.clear();
         pizza.clear();
     }
 
@@ -153,7 +155,7 @@ public class Menu {
             for(String section: loadedSections){
                 items = loader.loadSectionItems(section);
                 for(SimpleItemDescriptor item: items){
-                    addMenuItem(item);
+                    IDManager.instance.addMapping(item);
                 }
                 sectionItems.put(section, items);
             }

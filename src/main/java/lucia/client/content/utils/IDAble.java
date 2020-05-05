@@ -56,7 +56,7 @@ public class IDAble implements JsonSerializable<IDAble> {
             @Override
             public IDAble deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 int id = json.getAsInt();
-                return Menu.get.getItemFromId(id);
+                return IDManager.instance.getMapping(id);
             }
         };
     }

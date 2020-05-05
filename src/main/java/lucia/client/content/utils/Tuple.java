@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.structures;
+package main.java.lucia.client.content.utils;
 
 /**
  * A class for an object holding 2 items

@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.order.discount.Discount;
-import main.java.lucia.client.content.structures.Tuple;
+import main.java.lucia.client.content.utils.Tuple;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,17 +1,14 @@
 package main.java.lucia.client.content.menu;
 
 import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.Topping;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintStream;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Extended PizzaMenu with print functionality!

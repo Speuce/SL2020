@@ -3,8 +3,8 @@ package main.java.lucia.client.content.menu.test;
 import com.google.gson.Gson;
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.io.ItemGson;
-import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 
 import java.io.File;
 

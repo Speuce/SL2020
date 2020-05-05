@@ -1,9 +1,9 @@
-package main.java.lucia.client.content.menu.pizza;
+package main.java.lucia.client.content.menu.item.type.pizza;
 
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonSerializer;
 import main.java.lucia.client.content.files.JsonSerializable;
-import main.java.lucia.client.content.menu.size.Size;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 
 public class Topping implements JsonSerializable {
 

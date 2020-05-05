@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.menu.io.serializer.local;
 
 import com.google.gson.*;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 
 import java.lang.reflect.Type;
 

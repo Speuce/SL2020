@@ -5,13 +5,11 @@ import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
-import main.java.lucia.client.content.menu.size.Size;
 
-import java.io.PrintStream;
 import java.util.*;
 
 /**

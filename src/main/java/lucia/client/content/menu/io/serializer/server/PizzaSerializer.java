@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import main.java.lucia.client.content.menu.pizza.Pizza;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 
 import java.lang.reflect.Type;
 

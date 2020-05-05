@@ -1,23 +1,20 @@
 package main.java.lucia.client.content.menu.io;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.io.deserializer.local.*;
-import main.java.lucia.client.content.menu.io.serializer.local.ToppingTypeSerializer;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.consts.JavaConstants;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
-import java.lang.reflect.Type;
 import java.util.*;
 
 /**

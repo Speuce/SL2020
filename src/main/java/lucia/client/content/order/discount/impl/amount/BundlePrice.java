@@ -1,14 +1,8 @@
 package main.java.lucia.client.content.order.discount.impl.amount;
 
-import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.ItemBundle;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
-import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 

@@ -2,8 +2,8 @@ package main.java.lucia.client.content.menu.test;
 
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.utils.IDCaster;
-import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 
 /**
  * class for creating certain menu items

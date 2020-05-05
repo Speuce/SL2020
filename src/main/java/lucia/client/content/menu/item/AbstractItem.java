@@ -17,6 +17,11 @@ import java.util.Set;
 public abstract class AbstractItem{
 
     /**
+     *
+     */
+    private int rowNum;
+
+    /**
      * The display name of this item
      */
     private String displayName;

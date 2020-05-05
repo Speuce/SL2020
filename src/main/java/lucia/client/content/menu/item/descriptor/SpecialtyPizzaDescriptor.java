@@ -1,6 +1,6 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
-import main.java.lucia.client.content.menu.pizza.*;
+import main.java.lucia.client.content.menu.item.type.pizza.*;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import org.jetbrains.annotations.NotNull;
 

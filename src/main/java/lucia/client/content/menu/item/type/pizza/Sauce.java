@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.menu.pizza;
+package main.java.lucia.client.content.menu.item.type.pizza;
 
 import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.menu.size.PricingScheme;

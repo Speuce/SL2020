@@ -1,9 +1,10 @@
-package main.java.lucia.client.content.menu.pizza;
+package main.java.lucia.client.content.menu.item.type.pizza;
 
 import com.google.gson.*;
 import main.java.lucia.client.content.menu.io.serializer.server.PizzaSerializer;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.Menu;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;

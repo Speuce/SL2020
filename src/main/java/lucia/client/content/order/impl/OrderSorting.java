@@ -2,12 +2,10 @@ package main.java.lucia.client.content.order.impl;
 
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.ItemBundle;
-import main.java.lucia.client.content.menu.item.type.Addon;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
-import main.java.lucia.client.content.menu.pizza.Pizza;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Provides the default sorting functionality

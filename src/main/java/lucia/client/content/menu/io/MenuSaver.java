@@ -5,10 +5,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializer;
 import main.java.lucia.client.content.menu.io.serializer.local.*;
 import main.java.lucia.client.content.menu.item.descriptor.*;
-import main.java.lucia.client.content.menu.item.type.ItemModifiable;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 

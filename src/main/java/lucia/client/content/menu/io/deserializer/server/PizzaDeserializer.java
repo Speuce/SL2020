@@ -2,9 +2,10 @@ package main.java.lucia.client.content.menu.io.deserializer.server;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
-import main.java.lucia.client.content.menu.pizza.*;
+import main.java.lucia.client.content.menu.item.type.pizza.*;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.utils.SerializationUtils;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;

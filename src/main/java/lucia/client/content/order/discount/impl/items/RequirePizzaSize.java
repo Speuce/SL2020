@@ -1,13 +1,10 @@
 package main.java.lucia.client.content.order.discount.impl.items;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
-import main.java.lucia.client.content.order.impl.ItemList;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Implemented Discount Attribute to include a specific

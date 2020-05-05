@@ -1,10 +1,7 @@
 package main.java.lucia.client.content.order.discount.impl.items;
 
-import com.google.common.collect.Sets;
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
-import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.*;

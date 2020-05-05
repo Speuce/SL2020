@@ -2,7 +2,7 @@ package main.java.lucia.client.content.order.discount.impl;
 
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.pizza.Pizza;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
 

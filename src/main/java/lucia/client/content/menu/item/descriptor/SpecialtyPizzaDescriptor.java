@@ -7,6 +7,7 @@ import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.pizza.*;
 import main.java.lucia.client.content.menu.size.Size;
 import main.java.lucia.client.content.menu.size.PricingScheme;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
      */
     private Crust crust;
 
-    public SpecialtyPizzaDescriptor(int id, String baseName, PricingScheme pricingScheme,
+    public SpecialtyPizzaDescriptor(int id, String baseName,@NotNull PricingScheme pricingScheme,
                                     Sauce sauce, Crust crust, Map<ToppingType, Integer> toppings, List<String> specialInstructions) {
         super(id, baseName, pricingScheme);
         this.sauce = sauce;
@@ -50,6 +51,16 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
         this.toppings = toppings;
     }
 
+    public SpecialtyPizzaDescriptor(int id, String baseName, String defaultColor,
+                                    String selectedColor, String hoverColor, String textColor,
+                                    @NotNull PricingScheme pricingScheme, Map<ToppingType, Integer> toppings,
+                                    List<String> specialInstructions, Sauce sauce, Crust crust) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor, pricingScheme);
+        this.toppings = toppings;
+        this.specialInstructions = specialInstructions;
+        this.sauce = sauce;
+        this.crust = crust;
+    }
 
     /**
      * Get the toppings on this pizza

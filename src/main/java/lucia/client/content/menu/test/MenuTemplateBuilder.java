@@ -85,7 +85,7 @@ public class MenuTemplateBuilder {
         pizza.setRegularCrust(someCrust);
         pizza.getDefinedCrusts().add(someCrust);
 
-        ToppingType someTopping = new ToppingType(9, "pepperoni","pep", Color.red, noExtraCharge);
+        ToppingType someTopping = new ToppingType(9, "pepperoni","pep", noExtraCharge);
         pizza.addTopping(someTopping);
 
         Map<ToppingType, Integer> toppings = new HashMap<>();

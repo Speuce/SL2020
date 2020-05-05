@@ -35,6 +35,12 @@ public class SpecialtyPizzaDescriptorSerializer implements JsonSerializer<Specia
         for(String s: src.getSpecialInstructions()){
             instructions.add(s);
         }
+
+        ret.addProperty("defaultColor", src.getDefaultColor());
+        ret.addProperty("selectedColor", src.getSelectedColor());
+        ret.addProperty("hoverColor", src.getHoverColor());
+        ret.addProperty("textColor", src.getTextColor());
+
         ret.add("specialInstructions", instructions);
         return ret;
     }

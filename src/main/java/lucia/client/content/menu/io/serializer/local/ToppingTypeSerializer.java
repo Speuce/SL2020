@@ -18,7 +18,10 @@ public class ToppingTypeSerializer implements JsonSerializer<ToppingType> {
     public JsonElement serialize(ToppingType src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject ret = new JsonObject();
         ret.addProperty("name", src.getName());
-        ret.addProperty("buttonColor", src.getButtonColor().getRGB());
+        ret.addProperty("defaultColor", src.getDefaultColor());
+        ret.addProperty("selectedColor", src.getSelectedColor());
+        ret.addProperty("hoverColor", src.getHoverColor());
+        ret.addProperty("textColor", src.getTextColor());
         ret.addProperty("id", src.getId());
         ret.addProperty("pricing", src.getPricingScheme().getName());
         ret.addProperty("short", src.getShortName());

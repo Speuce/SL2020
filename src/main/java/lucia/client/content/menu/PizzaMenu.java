@@ -227,7 +227,7 @@ public class PizzaMenu {
         //load the default sauce/pizza
         regular = loader.loadRegularSauce();
         regularCrust = loader.loadRegularCrust();
-        basePizza = new SimplePizzaDescriptor(1, "", loader.loadBasePizzaPricing());
+        basePizza = new SimplePizzaDescriptor(1, "", Objects.requireNonNull(loader.loadBasePizzaPricing()));
 
         specialties = loader.loadSpecialtyList();
     }

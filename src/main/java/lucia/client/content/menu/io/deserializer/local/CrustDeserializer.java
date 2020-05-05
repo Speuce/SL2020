@@ -19,7 +19,9 @@ public class CrustDeserializer implements JsonDeserializer<Crust> {
         int id = obj.get("id").getAsInt();
         String fullName = obj.get("name").getAsString();
         String displayName = obj.get("displayName").getAsString();
+
         PricingScheme pricing = Menu.pizza.getPricingScheme(obj.get("pricing").getAsString());
+
         return new Crust(id, displayName, fullName, pricing);
     }
 }

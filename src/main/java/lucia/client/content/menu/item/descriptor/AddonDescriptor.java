@@ -34,6 +34,11 @@ public class AddonDescriptor extends SimpleItemDescriptor {
         this.isDiscountable = discount;
     }
 
+    public AddonDescriptor(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, long price, boolean isDiscountable) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor, price);
+        this.isDiscountable = isDiscountable;
+    }
+
     /**
      * @return true if the item should receive a discount equal to the price
      *  of this addon when this addon is negated, false if no discount should

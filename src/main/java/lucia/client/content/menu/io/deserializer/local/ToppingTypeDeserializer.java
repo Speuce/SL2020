@@ -4,6 +4,7 @@ import com.google.gson.*;
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
+import main.java.lucia.consts.ColorUtils;
 
 import java.awt.*;
 import java.lang.reflect.Type;
@@ -21,11 +22,16 @@ public class ToppingTypeDeserializer implements JsonDeserializer<ToppingType> {
     public ToppingType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject obj = json.getAsJsonObject();
         int id = obj.get("id").getAsInt();
-        Color color = new Color(obj.get("buttonColor").getAsInt());
+
         String name = obj.get("name").getAsString();
         String shortName = obj.get("short").getAsString();
         PricingScheme pricing = Menu.pizza.getPricingScheme(obj.get("pricing").getAsString());
 
-        return new ToppingType(id, name,shortName, color, pricing);
+        String defaultColor = ColorUtils.parseHex(obj.get("defaultColor").getAsString());
+        String selectedColor = ColorUtils.parseHex(obj.get("selectedColor").getAsString());
+        String hoverColor = ColorUtils.parseHex(obj.get("hoverColor").getAsString());
+        String textColor = ColorUtils.parseHex(obj.get("textColor").getAsString());
+
+        return new ToppingType(id, name,shortName, defaultColor, selectedColor, hoverColor, textColor, pricing);
     }
 }

@@ -50,6 +50,16 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
         this.toppings = toppings;
     }
 
+    public SpecialtyPizzaDescriptor(int id, String baseName, String defaultColor,
+                                    String selectedColor, String hoverColor, String textColor,
+                                    PricingScheme pricingScheme, Map<ToppingType, Integer> toppings,
+                                    List<String> specialInstructions, Sauce sauce, Crust crust) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor, pricingScheme);
+        this.toppings = toppings;
+        this.specialInstructions = specialInstructions;
+        this.sauce = sauce;
+        this.crust = crust;
+    }
 
     /**
      * Get the toppings on this pizza

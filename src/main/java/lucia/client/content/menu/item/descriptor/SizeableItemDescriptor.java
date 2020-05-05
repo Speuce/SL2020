@@ -20,6 +20,11 @@ public abstract class SizeableItemDescriptor extends Descriptor{
         this.pricingScheme = pricingScheme;
     }
 
+    public SizeableItemDescriptor(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, PricingScheme pricingScheme) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor);
+        this.pricingScheme = pricingScheme;
+    }
+
     /**
      * Get the pricing scheme for the base price of this item
      */

@@ -4,6 +4,7 @@ import com.google.gson.*;
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.io.JsonCustomSerializable;
 import main.java.lucia.client.content.menu.item.IDAble;
+import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.lang.reflect.Type;
  * Represents any single topping that can be applied to a pizza.
  * @author Matt Kwiatkowski
  */
-public class ToppingType extends IDAble {
+public class ToppingType extends Descriptor {
 
     /**
      * The full name of this topping
@@ -26,24 +27,23 @@ public class ToppingType extends IDAble {
     private String shortName;
 
     /**
-     * The color that this button should be in the menu
-     */
-    private Color buttonColor;
-
-    /**
      * The pricing scheme of this item
      */
     private PricingScheme pricingScheme;
 
 
-    public ToppingType(int id, String name,String shortName,  Color buttonColor, PricingScheme pricingScheme) {
-        super(id);
+    public ToppingType(int id, String name,String shortName, PricingScheme pricingScheme) {
+        super(id, name);
         this.name = name;
-        this.buttonColor = buttonColor;
         this.shortName = shortName;
         this.pricingScheme = pricingScheme;
     }
 
+    public ToppingType(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, String shortName, PricingScheme pricingScheme) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor);
+        this.shortName = shortName;
+        this.pricingScheme = pricingScheme;
+    }
 
     /**
      * Get the short (abbreviated) name of this topping
@@ -54,10 +54,6 @@ public class ToppingType extends IDAble {
 
     public String getName() {
         return name;
-    }
-
-    public Color getButtonColor() {
-        return buttonColor;
     }
 
     public PricingScheme getPricingScheme() {

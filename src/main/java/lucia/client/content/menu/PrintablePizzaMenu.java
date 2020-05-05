@@ -6,6 +6,7 @@ import main.java.lucia.client.content.menu.pizza.Sauce;
 import main.java.lucia.client.content.menu.pizza.Topping;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintStream;
 import java.util.List;
@@ -147,7 +148,7 @@ public class PrintablePizzaMenu extends PizzaMenu{
      * Sets the base (cheese) pizza pricing scheme
      * @param r the pricng scheme to set
      */
-    public void setBasePizza(PricingScheme r){
+    public void setBasePizza(@NotNull PricingScheme r){
         this.basePizza = new SimplePizzaDescriptor(1, "", r);
     }
 }

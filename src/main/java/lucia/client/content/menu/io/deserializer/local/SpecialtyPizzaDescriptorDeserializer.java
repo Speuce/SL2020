@@ -29,6 +29,7 @@ public class SpecialtyPizzaDescriptorDeserializer implements JsonDeserializer<Sp
         int id = obj.get("id").getAsInt();
         String name = obj.get("name").getAsString();
         PricingScheme pricing = Menu.pizza.getPricingScheme(obj.get("pricing").getAsString());
+        assert(pricing != null);
         Sauce sauce = new IDCaster<Sauce>().cast(obj.get("sauce").getAsInt());
         Crust crust = new IDCaster<Crust>().cast(obj.get("crust").getAsInt());
         JsonArray toppingArr = obj.getAsJsonArray("toppings");

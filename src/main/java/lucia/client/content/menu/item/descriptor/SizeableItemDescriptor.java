@@ -3,6 +3,7 @@ package main.java.lucia.client.content.menu.item.descriptor;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.size.Size;
 import main.java.lucia.client.content.menu.size.PricingScheme;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Descriptor for an item whose price varies based on Pizza sizes
@@ -13,14 +14,17 @@ public abstract class SizeableItemDescriptor extends Descriptor{
     /**
      * The pricing scheme of this item
      */
+    @NotNull
     private PricingScheme pricingScheme;
 
-    public SizeableItemDescriptor(int id, String baseName, PricingScheme pricingScheme) {
+    public SizeableItemDescriptor(int id, String baseName, @NotNull PricingScheme pricingScheme) {
         super(id, baseName);
         this.pricingScheme = pricingScheme;
     }
 
-    public SizeableItemDescriptor(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, PricingScheme pricingScheme) {
+    public SizeableItemDescriptor(int id, String baseName, String defaultColor,
+                                  String selectedColor, String hoverColor, String textColor,
+                                  @NotNull PricingScheme pricingScheme) {
         super(id, baseName, defaultColor, selectedColor, hoverColor, textColor);
         this.pricingScheme = pricingScheme;
     }
@@ -28,6 +32,7 @@ public abstract class SizeableItemDescriptor extends Descriptor{
     /**
      * Get the pricing scheme for the base price of this item
      */
+    @NotNull
     public PricingScheme getPricingScheme() {
         return pricingScheme;
     }

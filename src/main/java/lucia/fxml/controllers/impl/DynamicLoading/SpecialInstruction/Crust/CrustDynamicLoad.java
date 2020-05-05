@@ -62,8 +62,8 @@ public class CrustDynamicLoad {
         CrustDesigns crustDesigns = new CrustDesigns(name);
         CrustListeners crustListeners = new CrustListeners(pizzaController, name);
 
-        button = crustDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        button = crustListeners.setListeners(button);
+        crustDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
+        crustListeners.setListeners(button);
 
         return button;
     }

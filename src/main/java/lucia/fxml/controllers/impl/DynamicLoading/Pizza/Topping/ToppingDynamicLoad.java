@@ -66,11 +66,9 @@ public class ToppingDynamicLoad {
         ToppingDesigns toppingDesigns = new ToppingDesigns(name);
         ToppingListeners toppingListeners = new ToppingListeners(pizzaController, name);
 
-        button = toppingDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        button = toppingListeners.setListeners(button); // gets the pane at which the buttons are to be stored
+        toppingDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
+        toppingListeners.setListeners(button); // gets the pane at which the buttons are to be stored
 
         return button;
     }
-
-
 }

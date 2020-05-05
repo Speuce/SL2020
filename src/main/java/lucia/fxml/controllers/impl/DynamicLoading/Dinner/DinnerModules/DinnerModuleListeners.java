@@ -1,24 +1,21 @@
-package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems;
+package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import main.java.lucia.client.content.menu.item.IDCaster;
-import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 /**
- * Listener Manager for the Dinners
+ * Listener Manager for the Dinner Modules
  */
-public class DinnerListeners {
+public class DinnerModuleListeners {
     private PickupDeliveryPaneController pickupDeliveryPaneController;
-    // the instance for the pickup delivery controllers so the fxml methods can be called
-    private Descriptor item; // dinner information
+    // the instance for the pickup delivery pane so the fxml methods can be called
+    private String module; // dinner module information
 
-    public DinnerListeners(PickupDeliveryPaneController pickupDeliveryPaneController, Descriptor item) {
+    public DinnerModuleListeners(PickupDeliveryPaneController pickupDeliveryPaneController, String module) {
         this.pickupDeliveryPaneController = pickupDeliveryPaneController;
-        this.item = item;
+        this.module = module;
     }
 
     /**
@@ -29,9 +26,9 @@ public class DinnerListeners {
      *  todo will have the designs for the buttons changed once the new design is implemented
      */
     public JFXButton setListeners(JFXButton button) {
-        button.setOnMouseClicked(itemSelected(item));
-     //   button.setOnMouseEntered(pizzaController::activateHover);
-     //   button.setOnMouseExited(pizzaController::deactivateHover);
+        button.setOnMouseClicked(moduleSelected(module));
+      //  button.setOnMouseEntered(pizzaController::activateHover);
+      //  button.setOnMouseExited(pizzaController::deactivateHover);
         return button;
     }
 
@@ -40,22 +37,22 @@ public class DinnerListeners {
      *
      *  Goes to Order System
      */
-    private EventHandler<? super MouseEvent> itemSelected(Descriptor item) {
-        itemClicked(item.getId());
+    private EventHandler<? super MouseEvent> moduleSelected(String module) {
+        moduleClicked(module);
         return null; //setOnMouseClicked must be an 'Event'
     }
 
     /**
      *  Implements with the Order System
      */
-    private void itemClicked(int id) {
+    private void moduleClicked(String id) {
         // add to order system
-        ToppingType type = new IDCaster<ToppingType>().cast(id);
+      //  ToppingType type = new IDCaster<ToppingType>().cast(id);
       //  if(pizzaController.getCurrentPizza().hasToppingType(type)){
             //add item
-        //}else{
+      //  }else{
             //remove item
-       // }
+    //    }
 
 
     }

@@ -13,13 +13,14 @@ import java.util.List;
  */
 public class DinnerSidesConstants extends FoodConstants {
     private ItemModifiableDescriptor item;
-    private List<AddonDescriptor> sides = createLists(item);
+    private List<AddonDescriptor> sides;
 
     /**
      *  Sets the constant values for the Dinner Items
      */
     public DinnerSidesConstants(ItemModifiableDescriptor item) {
         this.item = item;
+        sides = createLists(item);
         setInitX(30);
         setInitY(25);
         setxMargin(200);
@@ -41,9 +42,9 @@ public class DinnerSidesConstants extends FoodConstants {
     }
 
     /**
-     *  ACCESSORS for the dinner list
+     *  ACCESSORS for the dinner sides list
      */
-    public List<AddonDescriptor> getDinners() {
+    public List<AddonDescriptor> getDinnerSides() {
         return sides;
     }
 }

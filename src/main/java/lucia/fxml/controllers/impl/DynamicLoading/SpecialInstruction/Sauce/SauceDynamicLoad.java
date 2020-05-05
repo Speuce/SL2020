@@ -62,8 +62,8 @@ public class SauceDynamicLoad {
         SauceDesigns sauceDesigns = new SauceDesigns(name);
         SauceListeners sauceListeners = new SauceListeners(pizzaController, name);
 
-        button = sauceDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        button = sauceListeners.setListeners(button);
+        sauceDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
+        sauceListeners.setListeners(button);
 
         return button;
     }

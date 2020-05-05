@@ -61,8 +61,8 @@ public class SpecialDynamicLoad {
         SpecialDesigns specialDesigns = new SpecialDesigns(name);
         SpecialListeners specialListeners = new SpecialListeners(pizzaController, name);
 
-        button = specialDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        button = specialListeners.setListeners(button);
+        specialDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
+        specialListeners.setListeners(button);
 
         return button;
     }

@@ -1,12 +1,6 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane;
 
 import com.jfoenix.controls.JFXButton;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.*;
-
-
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,15 +9,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.content.order.pricing.DiscountOthersCalculator;
 import main.java.lucia.client.content.order.OrderType;
+import main.java.lucia.client.content.order.pricing.DiscountOthersCalculator;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.*;
 import main.java.lucia.util.currency.CurrencyConverter;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The controller which controls the pickup delivery pane
@@ -63,6 +62,12 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   JFXButton additionalButton;
 
   /* The different panes for the option menus */
+  @FXML
+  public JFXButton PaneChange;
+
+  @FXML
+  public Pane paneModules;
+
   @FXML
   private JFXButton pizzaPaneChange;
 

@@ -1,14 +1,7 @@
 package main.java.lucia.client.content.menu.pizza;
 
-import com.google.gson.*;
-import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.io.JsonCustomSerializable;
-import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.size.PricingScheme;
-
-import java.awt.*;
-import java.lang.reflect.Type;
 
 /**
  * Represents any single topping that can be applied to a pizza.

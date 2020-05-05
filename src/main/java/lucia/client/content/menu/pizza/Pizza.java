@@ -1,21 +1,17 @@
 package main.java.lucia.client.content.menu.pizza;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import main.java.lucia.client.content.menu.io.serializer.server.PizzaSerializer;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.item.IDAble;
-import main.java.lucia.client.content.menu.item.IDCaster;
+import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
-import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
-import main.java.lucia.client.content.menu.size.Size;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
-import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -111,10 +107,10 @@ public class Pizza extends Item{
      * Use with caution,
      */
     public Pizza(String displayName, String name, long price, long discountedPrice,
-                 Descriptor itemDescriptor, int rowNum, List<String> specialInstructions,
+                 Descriptor itemDescriptor, Set<Discount> appliedDiscounts, int rowNum, List<String> specialInstructions,
                  List<Topping> toppings, Integer size, boolean specialty, Sauce sauce, Crust crust,
                  boolean splitHalves, Pizza secondHalf) {
-        super(displayName, name, price, discountedPrice, itemDescriptor);
+        super(displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
         this.rowNum = rowNum;
         this.specialInstructions = specialInstructions;
         this.toppings = toppings;

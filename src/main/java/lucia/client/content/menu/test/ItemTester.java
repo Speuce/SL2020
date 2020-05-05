@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.menu.test;
 
 import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.item.IDCaster;
+import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.menu.pizza.Pizza;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 

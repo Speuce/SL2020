@@ -1,11 +1,7 @@
 package main.java.lucia.client.content.menu.pizza;
 
-import com.google.gson.*;
-import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.item.IDAble;
+import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.menu.size.PricingScheme;
-
-import java.lang.reflect.Type;
 
 /**
  * Represents a crust which a pizza is built upon.

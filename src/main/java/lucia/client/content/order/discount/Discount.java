@@ -1,6 +1,6 @@
 package main.java.lucia.client.content.order.discount;
 
-import main.java.lucia.client.content.menu.item.IDAble;
+import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.order.Order;
 
 /**

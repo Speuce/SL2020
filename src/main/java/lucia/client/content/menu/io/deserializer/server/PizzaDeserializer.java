@@ -2,15 +2,14 @@ package main.java.lucia.client.content.menu.io.deserializer.server;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import main.java.lucia.client.content.menu.item.IDCaster;
+import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.pizza.*;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Deserializer for {@link Pizza}
@@ -71,6 +70,13 @@ public class PizzaDeserializer implements JsonDeserializer<Pizza> {
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();
+
+        Set<Discount> appliedDiscounts = new HashSet<>();
+        int id;
+        for(JsonElement e: o.getAsJsonArray("appliedDiscounts")){
+            id = e.getAsInt();
+        }
+
         int size = o.get("size").getAsInt();
         int sauceId = o.get("sauce").getAsInt();
         Sauce sauce = new IDCaster<Sauce>().cast(sauceId);

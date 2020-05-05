@@ -1,6 +1,7 @@
 package main.java.lucia.client.content.menu.item.type;
 
 import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 
 /**
  * An addon, which can be added to any
@@ -17,6 +18,16 @@ public class Addon extends ItemAmountable {
    */
   public Addon(String name, long price, AddonDescriptor d) {
     super(name, price, d);
+  }
+
+  /**
+   * Construct a new item with the given name and price
+   * @param name the name of the addon
+   * @param price the cost to add this addon to an item
+   * @param amount  the amount of the addon
+   */
+  public Addon(String name, long price, int amount, AddonDescriptor n) {
+    super(name, price, amount, n);
   }
 
   /**

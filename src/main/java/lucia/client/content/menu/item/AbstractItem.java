@@ -1,9 +1,10 @@
 package main.java.lucia.client.content.menu.item;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.order.discount.Discount;
-import main.java.lucia.client.structures.Tuple;
+import main.java.lucia.client.content.utils.structures.Tuple;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,18 +44,18 @@ public abstract class AbstractItem{
     private Set<Discount> appledDiscounts;
 
 
-    @Deprecated
-    public boolean isChickenDinner() {
-        return isChickenDinner;
-    }
-
-    @Deprecated
-    public void setChickenDinner(boolean chickenDinner) {
-        isChickenDinner = chickenDinner;
-    }
-
-    @Deprecated
-    protected boolean isChickenDinner;
+//    @Deprecated
+//    public boolean isChickenDinner() {
+//        return isChickenDinner;
+//    }
+//
+//    @Deprecated
+//    public void setChickenDinner(boolean chickenDinner) {
+//        isChickenDinner = chickenDinner;
+//    }
+//
+//    @Deprecated
+//    protected boolean isChickenDinner;
 
 
     public AbstractItem(String name, long price, Descriptor is) {
@@ -82,6 +83,15 @@ public abstract class AbstractItem{
         this.discountedPrice = -1;
         this.displayName = name;
         this.appledDiscounts = new HashSet<>();
+    }
+
+    public AbstractItem(String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<Discount> appledDiscounts) {
+        this.displayName = displayName;
+        this.name = name;
+        this.price = price;
+        this.discountedPrice = discountedPrice;
+        this.itemDescriptor = itemDescriptor;
+        this.appledDiscounts = appledDiscounts;
     }
 
     /**
@@ -181,6 +191,13 @@ public abstract class AbstractItem{
         o.addProperty("price", this.price);
         o.addProperty("discountedPrice", this.discountedPrice);
         o.addProperty("itemDescriptor", (itemDescriptor != null) ? itemDescriptor.getId() : 0);
+
+        //add applied discounts
+        JsonArray discounts = new JsonArray();
+        appledDiscounts.forEach(d -> discounts.add(d.getId()));
+        o.add("appliedDiscounts", discounts);
+
+
     }
 
     public Set<Discount> getAppledDiscounts() {

@@ -1,10 +1,9 @@
-package main.java.lucia.client.structures;
+package main.java.lucia.client.content.utils.structures;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import main.java.lucia.client.content.files.JsonSerializable;
 import main.java.lucia.client.content.time.ClientTime;
 
 public class GsonFactory {

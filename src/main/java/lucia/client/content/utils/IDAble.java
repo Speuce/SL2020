@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.menu.item;
+package main.java.lucia.client.content.utils;
 
 import com.google.gson.*;
 import main.java.lucia.client.content.files.JsonSerializable;

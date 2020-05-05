@@ -5,10 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
-import main.java.lucia.client.content.menu.item.IDAble;
+import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.menu.item.descriptor.*;
-import main.java.lucia.client.content.menu.item.type.Addon;
-import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.io.*;

@@ -1,4 +1,4 @@
-package main.java.lucia.client.structures;
+package main.java.lucia.client.content.utils.structures;
 
 import java.util.ArrayList;
 

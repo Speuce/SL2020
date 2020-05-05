@@ -1,9 +1,8 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
-import main.java.lucia.client.content.menu.item.IDCaster;
-import main.java.lucia.client.content.menu.item.type.Addon;
+import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
-import main.java.lucia.client.structures.Exclude;
+import main.java.lucia.client.content.utils.structures.Exclude;
 
 import java.util.ArrayList;
 import java.util.List;

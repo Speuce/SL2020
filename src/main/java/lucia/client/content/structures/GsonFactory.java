@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.utils.structures;
+package main.java.lucia.client.content.structures;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;

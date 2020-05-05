@@ -6,6 +6,7 @@ import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.pizza.*;
 import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.utils.SerializationUtils;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.lang.reflect.Type;
@@ -70,13 +71,7 @@ public class PizzaDeserializer implements JsonDeserializer<Pizza> {
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();
-
-        Set<Discount> appliedDiscounts = new HashSet<>();
-        int id;
-        for(JsonElement e: o.getAsJsonArray("appliedDiscounts")){
-            id = e.getAsInt();
-        }
-
+        Set<Discount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
         int size = o.get("size").getAsInt();
         int sauceId = o.get("sauce").getAsInt();
         Sauce sauce = new IDCaster<Sauce>().cast(sauceId);
@@ -92,7 +87,7 @@ public class PizzaDeserializer implements JsonDeserializer<Pizza> {
             secondHalf = new GsonBuilder().registerTypeAdapter(Pizza.class, new PizzaDeserializer(true)).create()
                     .fromJson(o.get("secondHalf"), Pizza.class);
         }
-        return new Pizza(displayName, name, price, discountedPrice, special, rowNum, specialInstructions,
+        return new Pizza(displayName, name, price, discountedPrice, special, appliedDiscounts, rowNum, specialInstructions,
                 toppingList, size, isSpecialty, sauce, crust, splitHalves, secondHalf);
     }
 }

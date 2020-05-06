@@ -6,7 +6,6 @@ import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import main.java.lucia.consts.ColorUtils;
 
-import java.awt.*;
 import java.lang.reflect.Type;
 
 /**

@@ -8,7 +8,7 @@ import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
@@ -514,9 +514,9 @@ public class Pizza extends Item{
         return tp;
     }
 
-    public List<Topping> getToppings(){
-        return toppings;
-    }
+//    public List<Topping> getToppings(){
+//        return toppings;
+//    }
 
     public boolean hasToppingType(ToppingType t){
         return false;

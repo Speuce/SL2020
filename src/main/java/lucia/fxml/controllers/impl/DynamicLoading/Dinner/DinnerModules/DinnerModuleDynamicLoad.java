@@ -25,9 +25,9 @@ public class DinnerModuleDynamicLoad {
     /**
      *  Initial method to start the loading of the dinner module buttons
      */
-    public void createSpecials() {
+    public void createDinnerModules() {
         JFXButton firstButton = createButton(dC.getGetStartX(), dC.getGetStartY(), dinnerModuleList.get(0), dC.getGetSizeX(), dC.getGetSizeY());
-        pickupDeliveryPaneController.PaneChange.getChildrenUnmodifiable().add(firstButton);
+        pickupDeliveryPaneController.PaneChange.getChildren().add(firstButton);
         // gets the pane at which the buttons are to be stored
         iterateModules();
     }
@@ -47,7 +47,7 @@ public class DinnerModuleDynamicLoad {
             else System.out.println("WARNING: ScrollPane for The Modules may get large!");
 
             JFXButton button = createButton(dC.getCurrX(), dC.getGetStartY(), dinnerModuleList.get(x), dC.getGetSizeX(), dC.getGetSizeY());
-            pickupDeliveryPaneController.PaneChange.getChildrenUnmodifiable().add(button); // gets the pane at which the buttons are to be stored
+            pickupDeliveryPaneController.PaneChange.getChildren().add(button); // gets the pane at which the buttons are to be stored
         }
     }
 

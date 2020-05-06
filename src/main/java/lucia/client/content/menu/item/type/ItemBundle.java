@@ -1,6 +1,7 @@
-package main.java.lucia.client.content.menu.item;
+package main.java.lucia.client.content.menu.item.type;
 
-import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
+import main.java.lucia.client.content.menu.item.AbstractItem;
+import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
 
 import java.util.ArrayList;

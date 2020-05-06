@@ -4,6 +4,8 @@
     -fx-border-radius: 20;
     -fx-text-alignment: center;
     -fx-alignment: center;
+    -fx-font-size: 30;
+
 }
 
 .ToppingsDefault {
@@ -12,6 +14,7 @@
     -fx-border-radius: 20;
     -fx-text-alignment: center;
     -fx-alignment: center;
+    -fx-font-size: 30;
 }
 
 .ToppingsDefaultCrustSauce {

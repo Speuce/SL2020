@@ -1,14 +1,10 @@
 package main.java.lucia.client.content.menu.pizza;
 
-import com.google.gson.*;
-import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.io.JsonCustomSerializable;
 import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.awt.*;
-import java.lang.reflect.Type;
 
 /**
  * Represents any single topping that can be applied to a pizza.
@@ -30,7 +26,6 @@ public class ToppingType extends Descriptor {
      * The pricing scheme of this item
      */
     private PricingScheme pricingScheme;
-
 
     public ToppingType(int id, String name,String shortName, PricingScheme pricingScheme) {
         super(id, name);
@@ -58,6 +53,13 @@ public class ToppingType extends Descriptor {
 
     public PricingScheme getPricingScheme() {
         return pricingScheme;
+    }
+
+    /**
+     * get the selected color
+     */
+    public Color getSelectedColor(){
+        return selectedColor;
     }
 
     /**

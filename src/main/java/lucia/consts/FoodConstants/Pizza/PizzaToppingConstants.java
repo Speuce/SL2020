@@ -12,12 +12,13 @@ import java.util.List;
  */
 public class PizzaToppingConstants extends FoodConstants {
 
-    private List<ToppingType> toppings = createLists();
+    private List<ToppingType> toppings;
 
     /**
      *  Sets the constant values for the Toppings
      */
     public PizzaToppingConstants() {
+        toppings = createLists();
         setInitX(18);
         setInitY(5);
         setxMargin(189);

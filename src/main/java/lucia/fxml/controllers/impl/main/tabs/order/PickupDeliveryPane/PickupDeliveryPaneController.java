@@ -14,6 +14,8 @@ import main.java.lucia.client.content.order.pricing.DiscountOthersCalculator;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerModuleDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping.ToppingDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.*;
 import main.java.lucia.util.currency.CurrencyConverter;
@@ -63,7 +65,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
 
   /* The different panes for the option menus */
   @FXML
-  public JFXButton PaneChange;
+  public Pane PaneChange;
 
   @FXML
   public Pane paneModules;
@@ -241,6 +243,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     children = new HashSet<>();
     initializeArrays();
     ControllerMap.addController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER, this);
+
     registerChild(italianPaneController);
     registerChild(appetizersPaneController);
     registerChild(saladsPaneController);
@@ -251,6 +254,15 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     registerChild(cateringPaneController);
     registerChild(orderViewController);
     registerChild(enterNumberPaneController);
+
+    /**
+     * Dynamic Loading
+     */
+    ToppingDynamicLoad toppingDynamicLoad = new ToppingDynamicLoad(pizzaPaneController);
+    DinnerModuleDynamicLoad dinnerModuleDynamicLoad = new DinnerModuleDynamicLoad(this);
+    toppingDynamicLoad.createToppings();
+    dinnerModuleDynamicLoad.createDinnerModules();
+
     open();
   }
 

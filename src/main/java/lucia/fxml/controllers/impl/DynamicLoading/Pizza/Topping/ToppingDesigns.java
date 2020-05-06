@@ -31,8 +31,7 @@ public class ToppingDesigns {
         button.setTextFill(Paint.valueOf("white")); //todo
         button.setFont(Font.font("Modern No. 20"));
         //button.getStyleClass().add("ToppingsDefault");
-        String hex = "#" + Integer.toHexString(topping.getButtonColor().getRGB()).substring(2).toUpperCase();
-        button.setStyle("-fx-font-size: 30; -fx-background-color: " + hex);
+        button.setStyle("-fx-font-size: 30; -fx-background-color: " + topping.getDefaultColor());
         //button.getStylesheets().add("..\\..\\..\\css\\main.css"); //todo
         button.setLayoutX(getX);
         button.setLayoutY(getY);

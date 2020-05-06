@@ -1,27 +1,15 @@
 package main.java.lucia.fxml.controllers.impl.login;
 
-import com.jfoenix.controls.*;
-
-import java.awt.*;
-import java.net.URL;
-import java.text.DateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
-import com.sun.org.apache.bcel.internal.generic.LADD;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
@@ -30,18 +18,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.scene.transform.Scale;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import main.java.lucia.Client;
-import main.java.lucia.client.manager.impl.OrderManager;
-import main.java.lucia.client.protocol.message.impl.W;
-import main.java.lucia.client.protocol.message.impl.order.FoundOrdernumMessage;
-import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.rights.Rights;
+import main.java.lucia.client.manager.impl.OrderManager;
+import main.java.lucia.client.protocol.message.impl.order.FoundOrdernumMessage;
+import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.fxml.FxmlConstants;
 import main.java.lucia.fxml.InterfaceBuilder;
 import main.java.lucia.fxml.controllers.ControllerMap;
@@ -55,7 +40,9 @@ import main.java.lucia.net.packet.impl.outgoing.codec.login.OutgoingNewAccountPa
 import main.java.lucia.net.security.passwords.CryptographicHash;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.swing.event.ChangeEvent;
+import java.awt.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * The controller which handles the login screen when
@@ -428,6 +415,7 @@ public class LoginController implements Controller {
         /* Finalize the stage switch */
         close.close();
         primaryStage.show();
+
 
 
         /* Load all the orders off the server */

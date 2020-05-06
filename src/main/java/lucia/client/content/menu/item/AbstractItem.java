@@ -17,9 +17,10 @@ import java.util.Set;
 public abstract class AbstractItem{
 
     /**
-     *
+     * The specific id of this pizza on the server.
+     * DO NOT SET. Let Gson do that.
      */
-    private int rowNum;
+    private int rowNum = -1;
 
     /**
      * The display name of this item
@@ -90,7 +91,8 @@ public abstract class AbstractItem{
         this.appledDiscounts = new HashSet<>();
     }
 
-    public AbstractItem(String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<Discount> appledDiscounts) {
+    public AbstractItem(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<Discount> appledDiscounts) {
+        this.rowNum = rowNum;
         this.displayName = displayName;
         this.name = name;
         this.price = price;
@@ -191,6 +193,7 @@ public abstract class AbstractItem{
      * @param o the JsonObject for which the properties will be added to.
      */
     public void addJsonProperties(JsonObject o){
+        o.addProperty("rowNum", rowNum);
         o.addProperty("name", this.name);
         o.addProperty("displayName", this.displayName);
         o.addProperty("price", this.price);

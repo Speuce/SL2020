@@ -1,0 +1,40 @@
+package main.java.lucia.client.content.menu.io.serializer.server;
+
+import com.google.gson.*;
+import main.java.lucia.client.content.menu.item.type.Addon;
+import main.java.lucia.client.content.menu.item.type.ItemModifiable;
+
+import java.lang.reflect.Type;
+
+/**
+ * Server Serializer for {@link main.java.lucia.client.content.menu.item.type.ItemModifiable}
+ * @author Matthew Kwiatkowski
+ */
+public class ItemModifiableSerializer implements JsonSerializer<ItemModifiable> {
+    /**
+     * Gson invokes this call-back method during serialization when it encounters a field of the
+     * specified type.
+     *
+     * <p>In the implementation of this call-back method, you should consider invoking
+     * {@link JsonSerializationContext#serialize(Object, Type)} method to create JsonElements for any
+     * non-trivial field of the {@code src} object. However, you should never invoke it on the
+     * {@code src} object itself since that will cause an infinite loop (Gson will call your
+     * call-back method again).</p>
+     *
+     * @param src       the object that needs to be converted to Json.
+     * @param typeOfSrc the actual type (fully genericized version) of the source object.
+     * @param context
+     * @return a JsonElement corresponding to the specified object.
+     */
+    @Override
+    public JsonElement serialize(ItemModifiable src, Type typeOfSrc, JsonSerializationContext context) {
+        JsonObject ret = new JsonObject();
+        src.addJsonProperties(ret);
+        JsonObject addons = new JsonObject();
+        for(Addon a: src.getAddons()){
+            addons.addProperty(a.getItemDescriptor().getId() + "", a.getAmount());
+        }
+        ret.add("addons", addons);
+        return ret;
+    }
+}

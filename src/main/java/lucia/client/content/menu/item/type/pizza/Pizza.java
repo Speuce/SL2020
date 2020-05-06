@@ -22,11 +22,7 @@ import java.util.*;
  */
 public class Pizza extends Item{
 
-    /**
-     * The specific id of this pizza on the server.
-     * DO NOT SET. Let Gson do that.
-     */
-    private int rowNum = -1;
+
 
     /**
      * A list of all special instructions with this Pizza (thin, ls, etc).
@@ -107,12 +103,11 @@ public class Pizza extends Item{
      * The full constructor. EVERY parameter available.
      * Use with caution,
      */
-    public Pizza(String displayName, String name, long price, long discountedPrice,
-                 Descriptor itemDescriptor, Set<Discount> appliedDiscounts, int rowNum, List<String> specialInstructions,
+    public Pizza(int rowNum, String displayName, String name, long price, long discountedPrice,
+                 Descriptor itemDescriptor, Set<Discount> appliedDiscounts, List<String> specialInstructions,
                  List<Topping> toppings, Integer size, boolean specialty, Sauce sauce, Crust crust,
                  boolean splitHalves, Pizza secondHalf) {
-        super(displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
-        this.rowNum = rowNum;
+        super(rowNum,displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
         this.specialInstructions = specialInstructions;
         this.toppings = toppings;
         this.size = size;
@@ -389,7 +384,6 @@ public class Pizza extends Item{
     @Override
     public void addJsonProperties(JsonObject ret){
         super.addJsonProperties(ret);
-        ret.addProperty("rowNum", rowNum);
         ret.addProperty("size", getSize());
         ret.addProperty("isSpecialty", specialty);
         ret.addProperty("specialty", getIdSafe(getPizzaDescriptor()));
@@ -439,10 +433,6 @@ public class Pizza extends Item{
 //    public int compareTo(Pizza other) {
 //        return this.size.compareTo(other.size);
 //    }
-
-    public int getRowNum() {
-        return rowNum;
-    }
 
     /**
      * Get the list of toppings applied

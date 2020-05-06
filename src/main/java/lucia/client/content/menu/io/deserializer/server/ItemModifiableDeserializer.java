@@ -1,20 +1,25 @@
 package main.java.lucia.client.content.menu.io.deserializer.server;
 
 import com.google.gson.*;
-import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
-import main.java.lucia.client.content.menu.item.type.SimpleItem;
+import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
+import main.java.lucia.client.content.menu.item.type.Addon;
+import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.utils.SerializationUtils;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
- * Deserializer for server-communication with {@link main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor}
+ * Server Deserializer for {@link main.java.lucia.client.content.menu.item.type.ItemModifiable}
  * @author Matthew Kwiatkowski
  */
-public class SimpleItemDeserializer implements JsonDeserializer<SimpleItem> {
+public class ItemModifiableDeserializer implements JsonDeserializer<ItemModifiable> {
     /**
      * Gson invokes this call-back method during deserialization when it encounters a field of the
      * specified type.
@@ -31,15 +36,24 @@ public class SimpleItemDeserializer implements JsonDeserializer<SimpleItem> {
      * @throws JsonParseException if json is not in the expected format of {@code typeofT}
      */
     @Override
-    public SimpleItem deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public ItemModifiable deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject o = json.getAsJsonObject();
         int rowNum = o.get("rowNum").getAsInt();
         String name = o.get("name").getAsString();
-        SimpleItemDescriptor desc = new IDCaster<SimpleItemDescriptor>().cast(o.get("descriptor").getAsInt());
+        ItemModifiableDescriptor desc = new IDCaster<ItemModifiableDescriptor>().cast(o.get("descriptor").getAsInt());
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();
+        List<Addon> addons = new ArrayList<>();
+        IDCaster<AddonDescriptor> caster = new IDCaster<>();
+        AddonDescriptor curr;
+        for(Map.Entry<String, JsonElement> ent: o.getAsJsonObject("addons").entrySet()){
+            curr = caster.cast(Integer.parseInt(ent.getKey()));
+            if(curr != null){
+                addons.add(curr.getAsItem(ent.getValue().getAsInt()));
+            }
+        }
         Set<Discount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
-        return new SimpleItem(rowNum, displayName, name, price, discountedPrice, desc, appliedDiscounts);
+        return new ItemModifiable(rowNum, displayName, name, price, discountedPrice, desc, appliedDiscounts, addons);
     }
 }

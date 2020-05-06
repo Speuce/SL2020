@@ -2,6 +2,8 @@ package main.java.lucia.client.content.menu.io.deserializer.server;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import main.java.lucia.client.content.menu.Menu;
+import main.java.lucia.client.content.menu.item.descriptor.SizeableItemDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
@@ -40,9 +42,12 @@ public class PizzaDeserializer implements JsonDeserializer<Pizza> {
         //first check if the pizza is a specialty
         boolean isSpecialty = o.get("isSpecialty").getAsBoolean();
         int specialtyId = o.get("specialty").getAsInt();
-        SpecialtyPizzaDescriptor special = null;
+        SizeableItemDescriptor special = null;
         if(isSpecialty && specialtyId > 0){
             special = new IDCaster<SpecialtyPizzaDescriptor>().cast(specialtyId);
+        }
+        if(special == null){
+            special = Menu.pizza.getBasePizza();
         }
         //now add the toppings
         JsonObject toppings = o.getAsJsonObject("toppings");
@@ -56,7 +61,8 @@ public class PizzaDeserializer implements JsonDeserializer<Pizza> {
                     if (amt == 0) {
                         //if the amount of the topping is 0, it MAY be nothing,
                         // or it may be a negation that needs to be displayed.
-                        if (isSpecialty && special != null && special.hasToppingType(type))
+                        if (isSpecialty && special instanceof SpecialtyPizzaDescriptor &&
+                                ((SpecialtyPizzaDescriptor)special).hasToppingType(type))
                             toppingList.add(type.toTopping(amt));
                     } else {
                         toppingList.add(type.toTopping(amt));
@@ -88,7 +94,7 @@ public class PizzaDeserializer implements JsonDeserializer<Pizza> {
             secondHalf = new GsonBuilder().registerTypeAdapter(Pizza.class, new PizzaDeserializer(true)).create()
                     .fromJson(o.get("secondHalf"), Pizza.class);
         }
-        return new Pizza(displayName, name, price, discountedPrice, special, appliedDiscounts, rowNum, specialInstructions,
+        return new Pizza(rowNum, displayName, name, price, discountedPrice, special, appliedDiscounts, specialInstructions,
                 toppingList, size, isSpecialty, sauce, crust, splitHalves, secondHalf);
     }
 }

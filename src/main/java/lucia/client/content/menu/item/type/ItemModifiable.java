@@ -4,7 +4,6 @@ package main.java.lucia.client.content.menu.item.type;
 import com.google.gson.JsonObject;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
 import main.java.lucia.client.content.order.discount.Discount;
 
@@ -24,7 +23,7 @@ public class ItemModifiable extends Item {
     /**
      * The applied addons to this item
      */
-    private ArrayList<Addon> addonList;
+    private List<Addon> addonList;
 
     /**
      * Construct a new Modifiable item with the given parameters
@@ -36,8 +35,10 @@ public class ItemModifiable extends Item {
         addonList = new ArrayList<Addon>();
     }
 
-    public ItemModifiable(String displayName, String name, long price, long discountedPrice, ItemModifiableDescriptor itemDescriptor, Set<Discount> appliedDiscounts, ArrayList<Addon> addonList) {
-        super(displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
+    public ItemModifiable(int rowNum, String displayName, String name, long price, long discountedPrice,
+                          ItemModifiableDescriptor itemDescriptor, Set<Discount> appliedDiscounts,
+                          List<Addon> addonList) {
+        super(rowNum, displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
         this.addonList = addonList;
     }
 
@@ -115,7 +116,6 @@ public class ItemModifiable extends Item {
     @Override
     public void addJsonProperties(JsonObject o){
         super.addJsonProperties(o);
-
     }
 
 

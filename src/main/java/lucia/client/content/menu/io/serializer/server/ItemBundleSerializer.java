@@ -4,15 +4,15 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import main.java.lucia.client.content.menu.item.type.SimpleItem;
+import main.java.lucia.client.content.menu.item.type.ItemBundle;
 
 import java.lang.reflect.Type;
 
 /**
- * Server Serlaizer for {@link main.java.lucia.client.content.menu.item.type.SimpleItem}
+ * Server Serializer for {@link ItemBundle} objects
  * @author Matthew Kwiatkowski
  */
-public class SimpleItemSerializer implements JsonSerializer<SimpleItem> {
+public class ItemBundleSerializer implements JsonSerializer<ItemBundle> {
     /**
      * Gson invokes this call-back method during serialization when it encounters a field of the
      * specified type.
@@ -29,7 +29,7 @@ public class SimpleItemSerializer implements JsonSerializer<SimpleItem> {
      * @return a JsonElement corresponding to the specified object.
      */
     @Override
-    public JsonElement serialize(SimpleItem src, Type typeOfSrc, JsonSerializationContext context) {
+    public JsonElement serialize(ItemBundle src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject ret = new JsonObject();
         src.addJsonProperties(ret);
         return ret;

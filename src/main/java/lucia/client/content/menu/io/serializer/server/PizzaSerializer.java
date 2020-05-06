@@ -18,7 +18,6 @@ public class PizzaSerializer implements JsonSerializer<Pizza> {
     public JsonElement serialize(Pizza src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject ret = new JsonObject();
         src.addJsonProperties(ret);
-        ret.addProperty("type", "Pizza");
         return ret;
     }
 }

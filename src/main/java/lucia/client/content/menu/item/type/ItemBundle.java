@@ -1,12 +1,18 @@
 package main.java.lucia.client.content.menu.item.type;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import main.java.lucia.client.content.menu.io.ItemGson;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
+import main.java.lucia.client.content.order.discount.Discount;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Represents Item's 'bundled' together and listed together.
@@ -26,8 +32,6 @@ public class ItemBundle extends Item implements Iterable<Item>{
      */
     private List<Item> items;
 
-
-
     /**
      * Construct a new Item Bundle with the given properties
      * @param n the descriptor of the bundle
@@ -35,6 +39,12 @@ public class ItemBundle extends Item implements Iterable<Item>{
      */
     public ItemBundle(ItemBundleDescriptor n, List<Item> items) {
         super(n.getBaseName(), n.getBasePrice(), n);
+        this.items = items;
+    }
+
+    public ItemBundle(int rowNum, String displayName, String name, long price, long discountedPrice,
+                      ItemBundleDescriptor itemDescriptor, Set<Discount> appliedDiscounts, List<Item> items) {
+        super(rowNum, displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
         this.items = items;
     }
 
@@ -86,5 +96,22 @@ public class ItemBundle extends Item implements Iterable<Item>{
     @Override
     public Iterator<Item> iterator() {
         return items.iterator();
+    }
+
+    @Override
+    public void addJsonProperties(JsonObject add){
+        super.addJsonProperties(add);
+        //serialize the bundle items and add it
+        JsonArray arr = new JsonArray();
+        for(Item i: items){
+            if(i instanceof SimpleItem){
+                arr.add(ItemGson.ITEM_GSON.toJsonTree(i, SimpleItem.class));
+            }else if(i instanceof ItemModifiable){
+                arr.add(ItemGson.ITEM_GSON.toJsonTree(i, ItemModifiable.class));
+            }else if(i instanceof Pizza){
+                arr.add(ItemGson.ITEM_GSON.toJsonTree(i, Pizza.class));
+            }
+        }
+        add.add("items", arr);
     }
 }

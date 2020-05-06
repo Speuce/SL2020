@@ -7,10 +7,12 @@ import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.pizza.*;
 import main.java.lucia.client.content.menu.size.Size;
 import main.java.lucia.client.content.menu.size.PricingScheme;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Descriptor for a specialty/gourmet pizza, contains
@@ -22,7 +24,7 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
     /**
      * The toppings on this pizza
      */
-    private List<Topping> toppings;
+    private Map<ToppingType, Integer> toppings;
 
     /**
      * The special instructions for this pizza
@@ -40,8 +42,8 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
      */
     private Crust crust;
 
-    public SpecialtyPizzaDescriptor(int id, String baseName, PricingScheme pricingScheme,
-                                    Sauce sauce, Crust crust, List<Topping> toppings, List<String> specialInstructions) {
+    public SpecialtyPizzaDescriptor(int id, String baseName,@NotNull PricingScheme pricingScheme,
+                                    Sauce sauce, Crust crust, Map<ToppingType, Integer> toppings, List<String> specialInstructions) {
         super(id, baseName, pricingScheme);
         this.sauce = sauce;
         this.crust = crust;
@@ -49,11 +51,21 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
         this.toppings = toppings;
     }
 
+    public SpecialtyPizzaDescriptor(int id, String baseName, String defaultColor,
+                                    String selectedColor, String hoverColor, String textColor,
+                                    @NotNull PricingScheme pricingScheme, Map<ToppingType, Integer> toppings,
+                                    List<String> specialInstructions, Sauce sauce, Crust crust) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor, pricingScheme);
+        this.toppings = toppings;
+        this.specialInstructions = specialInstructions;
+        this.sauce = sauce;
+        this.crust = crust;
+    }
 
     /**
      * Get the toppings on this pizza
      */
-    public List<Topping> getToppings() {
+    public Map<ToppingType, Integer> getToppings() {
         return toppings;
     }
 
@@ -86,14 +98,8 @@ public class SpecialtyPizzaDescriptor extends SizeableItemDescriptor {
     }
 
     public boolean hasToppingType(ToppingType type){
-        boolean result = false;
-        for(Topping top: toppings){
-            if(top.getType() == type){
-                result = true;
-                break;
-            }
-        }
-        return result;
+        return toppings.containsKey(type);
     }
+
 
 }

@@ -26,6 +26,7 @@ import main.java.lucia.util.currency.CurrencyConverter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderViewController implements ParentController<PickupDeliveryPaneController> {
 
@@ -141,7 +142,7 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
      */
     private void updateGridArray() {
         parent.getCurrentOrder().calculateFees();
-        ArrayList<Item> orderList = parent.getCurrentOrder().getItems();
+        List<Item> orderList = parent.getCurrentOrder().getItems();
         int count = 0;
         RowConstraints r = orderGrid.getRowConstraints().get(0);
         orderGrid.getRowConstraints().clear();

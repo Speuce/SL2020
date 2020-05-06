@@ -5,12 +5,20 @@
         "type": "SimpleItemDescriptor",
         "price": 700,
         "baseName": "cheese toast",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
         "id": 2
       },
       {
         "type": "SimpleItemDescriptor",
         "price": 495,
         "baseName": "french fries",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
         "id": 3
       },
       {
@@ -21,6 +29,10 @@
         ],
         "price": 1295,
         "baseName": "wings",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
         "id": 6
       }
     ],
@@ -30,6 +42,10 @@
         "isDiscountable": false,
         "price": 0,
         "baseName": "hot sauce",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
         "id": 4
       },
       {
@@ -37,6 +53,10 @@
         "isDiscountable": false,
         "price": 0,
         "baseName": "bbq sauce",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
         "id": 5
       }
     ],
@@ -84,7 +104,10 @@
     "toppings": [
       {
         "name": "pepperoni",
-        "buttonColor": -65536,
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
         "id": 9,
         "pricing": "free",
         "short": "pep"
@@ -92,6 +115,7 @@
     ],
     "regularPizza": "basePizza",
     "regularSauce": 7,
+    "regularCrust": 8,
     "specials": [
       {
         "id": 10,
@@ -105,6 +129,10 @@
             "amount": 3
           }
         ],
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
         "specialInstructions": []
       }
     ]

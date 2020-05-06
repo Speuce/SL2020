@@ -31,6 +31,10 @@ public class ItemModifiableDescriptor extends SimpleItemDescriptor {
         applicableAddons = new ArrayList<>();
     }
 
+    public ItemModifiableDescriptor(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, long price) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor, price);
+    }
+
     /**
      * Gets the list of all of the addons that can be applied to this item
      * @return an List<Addon>

@@ -13,11 +13,12 @@ public abstract class ItemAmountable extends Item {
     /**
      * The "amount" of this addon
      * 0 = No (a negation)
-     * 1 = Regular amount
-     * 2 = Xtra
-     * 3 = XXTra
+     * 1 = Light
+     * 2 = Regular amount
+     * 3 = Xtra
+     * 4 = XXTra
      */
-    private int amount = 1;
+    private int amount = 2;
 
     public ItemAmountable(String name, long price, int amount, Descriptor n) {
         super(name, price, n);

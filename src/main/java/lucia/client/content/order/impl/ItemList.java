@@ -3,13 +3,13 @@ package main.java.lucia.client.content.order.impl;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.type.Addon;
 import main.java.lucia.client.content.menu.pizza.Pizza;
+import main.java.lucia.client.content.menu.pizza.Topping;
+import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.payment.PaidBillable;
 import main.java.lucia.client.structures.Exclude;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
+import java.io.PrintStream;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -18,12 +18,12 @@ import java.util.stream.Collectors;
  * @author Matthew Kwiatkowski
  * @author Zachery Unrau
  */
-public abstract class ItemList extends PaidBillable {
+public abstract class ItemList extends PaidBillable implements Iterable<Item>{
 
     /**
      * The list of items
      */
-    private ArrayList<Item> items;
+    private List<Item> items;
 
     /**
      * A sorted list of the pizzas (used for double deal price calculations
@@ -56,31 +56,7 @@ public abstract class ItemList extends PaidBillable {
         return tot;
     }
 
-    /**
-     * Sorts the orders items by the defined ordering
-     * @return the ordered list
-     */
-    private ArrayList<Item> sortItems(){
-        List<Item> itemList = items;
-        ArrayList<Item> sortedList = new ArrayList<Item>();
 
-        /* Sort out pizzas and deal with them separately */
-        itemList.removeIf(i -> i instanceof Pizza);
-
-        /* Deal with the pizzas now*/
-        sortedList.addAll(getPizzaSorted());
-
-        /*Partition the remainder to addon and non-addon*/
-        Map<Boolean, List<Item>> parts = itemList.stream().collect(Collectors.partitioningBy(i -> i instanceof Addon));
-
-        /* Add the dinners */
-        sortedList.addAll(parts.get(false));
-
-        /* Add the addons */
-        sortedList.addAll(parts.get(true));
-
-        return sortedList;
-    }
 
 //    /**
 //     * Calculates double deals for pastas
@@ -212,7 +188,14 @@ public abstract class ItemList extends PaidBillable {
      */
     public abstract long calculateFees();
 
-    public ArrayList<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return this.items.iterator();
+    }
+
+
 }

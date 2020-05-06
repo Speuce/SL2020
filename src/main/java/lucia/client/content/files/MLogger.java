@@ -12,5 +12,6 @@ public class MLogger {
 
     public static void logError(String s){
         log("[ERR]: " + s);
+        Thread.dumpStack();
     }
 }

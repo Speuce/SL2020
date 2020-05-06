@@ -1,24 +1,21 @@
 package main.java.lucia.client.content.order.discount;
 
+import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.order.Order;
 
 /**
  * Object representing a discount on an order
  * @author Matt Kwiatkowski
  */
-public abstract class Discount {
+public abstract class Discount extends IDAble {
 
     /**
      * The name of this discount
      */
     private String name;
 
-    /**
-     * Indicates whether this discount is active or not.
-     */
-    private boolean active;
-
-    public Discount(String name) {
+    public Discount(String name, int id) {
+        super(id);
         this.name = name;
     }
 

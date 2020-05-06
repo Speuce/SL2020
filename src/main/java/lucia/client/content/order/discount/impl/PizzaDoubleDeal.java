@@ -12,7 +12,6 @@ import java.util.*;
  * Object that represents the pizza double deal
  * Buy one pizza (10, 13, or 15) and get the
  * second pizza of equal or lesser value 50% off
- * @author Matthew Kwiatkowski
  */
 public class PizzaDoubleDeal extends Discount {
 
@@ -22,7 +21,7 @@ public class PizzaDoubleDeal extends Discount {
     private Set<Integer> applicableSizes;
 
     public PizzaDoubleDeal() {
-        super("Double Deal");
+        super("DoubleDeal", 1);
         applicableSizes = new HashSet<>();
         loadApplicableSizes();
     }

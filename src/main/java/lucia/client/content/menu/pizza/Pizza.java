@@ -19,7 +19,7 @@ import java.util.*;
  * item format
  * @author Matt Kwiatkowski
  */
-public class Pizza extends Item implements Comparable<Pizza>{
+public class Pizza extends Item{
 
     /**
      * The specific id of this pizza on the server.
@@ -75,11 +75,13 @@ public class Pizza extends Item implements Comparable<Pizza>{
      */
     public Pizza(Integer size, SpecialtyPizzaDescriptor is) {
         super(is.getBaseName(), is.getPricingScheme().getPrice(size), is);
-        this.toppings = new ArrayList<>(is.getToppings());
-        for(Topping t: toppings){
-            this.toppings.add(t.deepCopy());
-        }
+        this.toppings = new ArrayList<>(/*is.getToppings()*/);
+//        for(Topping t: toppings){
+//            this.toppings.add(t.deepCopy());
+//        }
         this.specialty = true;
+        this.crust = is.getCrust();
+        this.sauce = is.getSauce();
         this.specialInstructions = new ArrayList<>(is.getSpecialInstructions());
         this.size = size;
     }
@@ -93,6 +95,8 @@ public class Pizza extends Item implements Comparable<Pizza>{
                 Menu.pizza.getBasePizza());
         this.toppings = new ArrayList<>();
         this.specialty = false;
+        this.sauce = Menu.pizza.getRegularSauce();
+        this.crust = Menu.pizza.getRegularCrust();
         this.specialInstructions = new ArrayList<>();
         this.sauce = Menu.pizza.getRegularSauce();
         this.size = size;
@@ -148,8 +152,8 @@ public class Pizza extends Item implements Comparable<Pizza>{
         for(Topping top: toppings){
             if(top.getType() == t){
                 if(this.isSpecialty()){
-                    for(Topping top2: this.getPizzaDescriptor().getToppings()){
-                        if(top.getType() == top2.getType()){
+                    for(ToppingType top2: this.getPizzaDescriptor().getToppings().keySet()){
+                        if(top.getType() == top2){
                             //set to negation and return;
                             top.setAmount(0);
                             return;
@@ -346,11 +350,9 @@ public class Pizza extends Item implements Comparable<Pizza>{
         //get the base price
         long result = (isSpecialty()) ?
                 ((SpecialtyPizzaDescriptor)super.getItemDescriptor()).getPrice(this.getSize()) :
-                ((SimpleItemDescriptor)super.getItemDescriptor()).getBasePrice();
+                ((SimplePizzaDescriptor)super.getItemDescriptor()).getPrice(this.getSize());
         //add the price of the toppings
-        for(Topping t: toppings){
-            result+=t.calculatePrice(this.size);
-        }
+        result += getToppingPrice();
         //add the cost for sauce and crust
         if(isSpecialty()){
             //if the sauce/crust has changed, add the price difference
@@ -428,17 +430,88 @@ public class Pizza extends Item implements Comparable<Pizza>{
         return (d==null) ? 0 : d.getId();
     }
 
-    /**
-     * Compares a pizza to the other.
-     * Larger sizes are considered 'infront' of smaller sizes.
-     */
-    @Override
-    public int compareTo(Pizza other) {
-        return this.size.compareTo(other.size);
-    }
+//    /**
+//     * Compares a pizza to the other.
+//     * Larger sizes are considered 'infront' of smaller sizes.
+//     */
+//    @Override
+//    public int compareTo(Pizza other) {
+//        return this.size.compareTo(other.size);
+//    }
 
     public int getRowNum() {
         return rowNum;
+    }
+
+    /**
+     * Get the list of toppings applied
+     * @return the list of applied toppings
+     */
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
+    /**
+     * Calculates the price of all the toppings combined.
+     * For specialty pizzas, this is the specialty price minus base pizza price
+     * @return the price for the toppings
+     */
+    public long getToppingPrice(){
+        //get the base price
+        long basePrice;
+        long result;
+        if(isSpecialty()){
+            basePrice = getPizzaDescriptor().getPrice(getSize());
+            //add the price of the toppings
+            result = basePrice;
+            for(Topping t: toppings){
+                if(getPizzaDescriptor().getToppings().containsKey(t.getType())){
+                    int amt = getPizzaDescriptor().getToppings().get(t.getType());
+                    if(amt != t.getAmount()){
+                        long topprice = t.getType().getPricingScheme().getPrice(getSize());
+                        result += (t.getAmount()-amt)*topprice;
+                    }
+                }else{
+                    result+=t.calculatePrice(this.size);
+                }
+                //make sure removing toppings from specialty hasn't decreased the price of the specialty
+                result = Math.max(result, basePrice);
+            }
+        }else{
+            //add the price of the toppings
+            basePrice = Menu.pizza.getBasePizza().getPrice(getSize());
+            result = basePrice;
+            for(Topping t: toppings){
+                //no negations in a b-y-o
+                assert(t.getAmount() > 0);
+                result+=t.calculatePrice(this.size);
+            }
+        }
+        result -= basePrice;
+        return result;
+    }
+
+    /**
+     * Gets a map of ALL toppings on a pizza including those from the specialty
+     * (if applicable) (doesn't include negations)
+     */
+    public Map<ToppingType, Integer> getAllToppingsOnPizza(){
+        Map<ToppingType, Integer> tp = new HashMap<>();
+        //add all the specialty toppings
+        if(isSpecialty()){
+            for(Map.Entry<ToppingType, Integer> topping: getPizzaDescriptor().getToppings().entrySet()){
+                tp.put(topping.getKey(), topping.getValue());
+            }
+        }
+        //add the other toppings; handle negations
+        for(Topping t: this.toppings){
+            if(t.getAmount() == 0){
+                tp.remove(t.getType());
+            }else {
+                tp.put(t.getType(), t.getAmount());
+            }
+        }
+        return tp;
     }
 
     public List<Topping> getToppings(){
@@ -448,6 +521,7 @@ public class Pizza extends Item implements Comparable<Pizza>{
     public boolean hasToppingType(ToppingType t){
         return false;
     }
+
 
 
 }

@@ -174,6 +174,13 @@ public class MenuLoader {
     }
 
     /**
+     * Gets the "regular" crust object
+     */
+    public Crust loadRegularCrust(){
+        return (Crust)Menu.get.getItemFromId(pizzaParser.getAsJsonPrimitive(Property.REGULAR_CRUST).getAsInt());
+    }
+
+    /**
      * Gets the Base pizza pricing
      */
     public PricingScheme loadBasePizzaPricing(){

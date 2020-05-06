@@ -27,6 +27,7 @@ import java.awt.print.PrinterJob;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -130,7 +131,7 @@ public class OrderInfoController implements ParentController<ViewOrdersPane> {
      */
     private void updateGridArray() {
         currentOrder.calculateFees();
-        ArrayList<Item> orderList = currentOrder.getItems();
+        List<Item> orderList = currentOrder.getItems();
         int count = 0;
         RowConstraints r = orderGrid.getRowConstraints().get(0);
         orderGrid.getRowConstraints().clear();

@@ -19,6 +19,11 @@ public class SimpleItemDescriptor extends Descriptor {
         this.price = price;
     }
 
+    public SimpleItemDescriptor(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, long price) {
+        super(id, baseName, defaultColor, selectedColor, hoverColor, textColor);
+        this.price = price;
+    }
+
     //default constructor for jsons
     public SimpleItemDescriptor() {
         super(0, "");

@@ -3,6 +3,7 @@ package main.java.lucia.client.content.menu.item.descriptor;
 import main.java.lucia.client.content.menu.pizza.Pizza;
 import main.java.lucia.client.content.menu.size.Size;
 import main.java.lucia.client.content.menu.size.PricingScheme;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An implemented descriptor to use for build-your-own
@@ -11,14 +12,10 @@ import main.java.lucia.client.content.menu.size.PricingScheme;
  */
 public class SimplePizzaDescriptor extends SizeableItemDescriptor {
 
-    public SimplePizzaDescriptor(int id, String baseName, PricingScheme pricingScheme) {
+    public SimplePizzaDescriptor(int id, String baseName,@NotNull PricingScheme pricingScheme) {
         super(id, baseName, pricingScheme);
     }
 
-    //default constructor for json
-    public SimplePizzaDescriptor() {
-        super(0, "", null);
-    }
 
     /**
      * Convert this descriptor to an actual item

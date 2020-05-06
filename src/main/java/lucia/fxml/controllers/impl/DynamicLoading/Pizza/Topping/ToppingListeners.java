@@ -1,7 +1,6 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
@@ -27,11 +26,24 @@ public class ToppingListeners {
      *  todo will have the designs for the buttons changed once the new design is implemented
      */
     public JFXButton setListeners(JFXButton button) {
-        button.setOnMouseClicked(toppingSelected(name));
-        button.setOnMouseEntered(pizzaController::activateHover);
-        button.setOnMouseExited(pizzaController::deactivateHover);
-        button.setId("this works");
+        button.setOnMouseClicked(this::toppingSelected);
+        button.setOnMouseEntered(this::activateHover);
+        button.setOnMouseExited(this::deactivateHover);
         return button;
+    }
+
+    /**
+     *  Event Handler for when the button is hovered into
+     */
+    public void activateHover(MouseEvent event) {
+        System.out.println("HI I AM HERE");
+    }
+
+    /**
+     *  Event Handler for when the button is hovered out of
+     */
+    public void deactivateHover(MouseEvent event) {
+        System.out.println("HI I AM HERE fedsf");
     }
 
     /**
@@ -39,9 +51,8 @@ public class ToppingListeners {
      *
      *  Goes to Order System
      */
-    private EventHandler<? super MouseEvent> toppingSelected(ToppingType name) {
+    public void toppingSelected(MouseEvent event) {
         toppingClicked(name.getId());
-        return null; //setOnMouseClicked must be an 'Event'
     }
 
     /**
@@ -49,6 +60,7 @@ public class ToppingListeners {
      */
     private void toppingClicked(int id) {
         // add to order system
+        System.out.println("SELECTED " + id);
         ToppingType type = new IDCaster<ToppingType>().cast(id);
         if(pizzaController.getCurrentPizza().hasToppingType(type)){
             //add topping

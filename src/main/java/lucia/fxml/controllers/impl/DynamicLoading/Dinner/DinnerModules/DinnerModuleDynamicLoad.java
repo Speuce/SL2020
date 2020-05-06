@@ -3,6 +3,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModule
 import com.jfoenix.controls.JFXButton;
 import main.java.lucia.consts.FoodConstants.Dinner.DinnerButtonTabConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class DinnerModuleDynamicLoad {
      *  Adds button to the pane, after the fact that the button is tested true that it can be placed
      */
     private JFXButton createButton(int getX, int getY, String name, int getSizeX, int getSizeY) {
+        name = StringUtils.capitalize(name);
         JFXButton button = new JFXButton(name);
         DinnerModuleDesigns dinnerModuleDesigns = new DinnerModuleDesigns(name);
         DinnerModuleListeners dinnerModuleListeners = new DinnerModuleListeners(pickupDeliveryPaneController, name);

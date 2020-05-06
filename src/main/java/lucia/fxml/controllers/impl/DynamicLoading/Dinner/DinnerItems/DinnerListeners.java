@@ -3,9 +3,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 /**
@@ -50,7 +48,7 @@ public class DinnerListeners {
      */
     private void itemClicked(int id) {
         // add to order system
-        ToppingType type = new IDCaster<ToppingType>().cast(id);
+//        ToppingType type = new IDCaster<ToppingType>().cast(id);
       //  if(pizzaController.getCurrentPizza().hasToppingType(type)){
             //add item
         //}else{

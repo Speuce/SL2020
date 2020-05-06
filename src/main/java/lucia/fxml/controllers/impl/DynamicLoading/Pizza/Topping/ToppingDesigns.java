@@ -2,7 +2,6 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 
@@ -28,10 +27,11 @@ public class ToppingDesigns {
      */
     public JFXButton initButtonDesign(JFXButton button, int getX, int getY, int getSizeX, int getSizeY) {
         button.setCursor(Cursor.OPEN_HAND);
-        button.setTextFill(Paint.valueOf("white")); //todo
         button.setFont(Font.font("Modern No. 20"));
         //button.getStyleClass().add("ToppingsDefault");
-        button.setStyle("-fx-font-size: 30; -fx-background-color: " + topping.getDefaultColor());
+        button.setStyle("-fx-font-size: 30; -fx-background-color: " + topping.getShortName() +
+                        "; -fx-background-radius: 5; fx-border-radius: 20; -fx-text-alignment: center;" +
+                        "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: " + topping.getTextColor());
         //button.getStylesheets().add("..\\..\\..\\css\\main.css"); //todo
         button.setLayoutX(getX);
         button.setLayoutY(getY);

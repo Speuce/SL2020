@@ -14,8 +14,7 @@ import main.java.lucia.client.content.order.pricing.DiscountOthersCalculator;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerModuleDynamicLoad;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping.ToppingDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.*;
 import main.java.lucia.util.currency.CurrencyConverter;
@@ -258,11 +257,8 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     /**
      * Dynamic Loading
      */
-    ToppingDynamicLoad toppingDynamicLoad = new ToppingDynamicLoad(pizzaPaneController);
-    DinnerModuleDynamicLoad dinnerModuleDynamicLoad = new DinnerModuleDynamicLoad(this);
-    toppingDynamicLoad.createToppings();
-    dinnerModuleDynamicLoad.createDinnerModules();
-
+    DynamicLoader dynamicLoader = new DynamicLoader(this, pizzaPaneController);
+    dynamicLoader.runDynamicLoader();
     open();
   }
 

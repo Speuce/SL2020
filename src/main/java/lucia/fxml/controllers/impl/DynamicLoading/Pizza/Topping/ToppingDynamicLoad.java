@@ -27,7 +27,6 @@ public class ToppingDynamicLoad {
      *  Initial method to start the loading of the topping buttons
      */
     public void createToppings() {
-        System.out.println("Created! " + toppingsList.get(0).getShortName() + " colour: " + toppingsList.get(0).getDefaultColor());
         JFXButton firstButton = createButton(tC.getGetStartX(), tC.getGetStartY(), toppingsList.get(0), tC.getGetSizeX(), tC.getGetSizeY());
         pizzaController.pizzaButtons.getChildren().add(firstButton);
         iterateToppings();
@@ -62,7 +61,7 @@ public class ToppingDynamicLoad {
      *  Adds button to the pane, after the fact that the button is tested true that it can be placed
      */
     private JFXButton createButton(int getX, int getY, ToppingType name, int getSizeX, int getSizeY) {
-        JFXButton button = new JFXButton(name.getShortName());
+        JFXButton button = new JFXButton(name.getDefaultColor());
         ToppingDesigns toppingDesigns = new ToppingDesigns(name);
         ToppingListeners toppingListeners = new ToppingListeners(pizzaController, name);
 

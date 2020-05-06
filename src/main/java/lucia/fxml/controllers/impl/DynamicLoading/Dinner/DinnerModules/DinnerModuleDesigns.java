@@ -2,7 +2,6 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModule
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
-import javafx.scene.text.Font;
 
 /**
  * Design Manager for Dinner Modules in FXML
@@ -30,9 +29,8 @@ public class DinnerModuleDesigns {
      */
     public JFXButton initButtonDesign(JFXButton button, int getX, int getY, int getSizeX, int getSizeY) {
         button.setCursor(Cursor.OPEN_HAND);
-        button.setFont(Font.font("Century"));
         button.setStyle("-fx-background-color:  #800000; -fx-alignment: center; -fx-background-radius: 20;" +
-                        "-fx-border-radius: 20; -fx-text-fill: white");
+                        "-fx-border-radius: 20; -fx-text-fill: white; -fx-font-size: 39; -fx-font-family: Century");
         //button.getStyleClass().add("ToppingsDefault");
         //  String hex = "#" + Integer.toHexString(simpleItemDescriptor.getButtonColor().getRGB()).substring(2).toUpperCase();
         //   button.setStyle("-fx-font-size: 30; -fx-background-color: " + hex);

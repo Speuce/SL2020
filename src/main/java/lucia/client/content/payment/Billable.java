@@ -22,15 +22,15 @@ public abstract class Billable {
      */
     public long getCost() {
         if(cost == -1){
-            updatePrice();
+            recalculatePrice();
         }
         return cost;
     }
 
     /**
-     * Recalculates the cost
+     * Recalculates the cost of this item.
      */
-    public void updatePrice(){
+    public void recalculatePrice(){
         this.cost = calculateCost();
     }
 

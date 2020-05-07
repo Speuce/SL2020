@@ -1,14 +1,11 @@
 package main.java.lucia.client.content.order;
 
-import java.time.Month;
-
 import main.java.lucia.client.content.order.impl.PrintableOrder;
-
-import java.util.ArrayList;
-
-import main.java.lucia.client.content.order.impl.ModifiedTracker;
 import main.java.lucia.client.content.order.impl.SpecialOrderInstructions;
 import main.java.lucia.client.content.time.TimeFormat;
+
+import java.time.Month;
+import java.util.ArrayList;
 
 /**
  * A representation of an order
@@ -40,15 +37,8 @@ public class Order extends PrintableOrder {
    */
   private ArrayList<SpecialOrderInstructions> specialOrderInstructions;
 
-  /**
-   * An array of modified trackers, which keep track of which items were modified and how they were
-   * modified
-   */
-  private ArrayList<ModifiedTracker> modifiedTrackers;
-
   private boolean isStaffOrder = false;
 
-  private double staffDiscount;
 
   /**
    * Creates a new order, initializes important values and sets the creation date.
@@ -57,7 +47,6 @@ public class Order extends PrintableOrder {
     super();
     setOrderType(type);
     this.specialOrderInstructions = new ArrayList<>();
-    this.modifiedTrackers = new ArrayList<>();
   }
 
   /**
@@ -74,13 +63,6 @@ public class Order extends PrintableOrder {
     this(type);
     this.setPreorder(true);
     this.setPreorderTime(year, month, dayOfMonth, hour, minute);
-  }
-
-  public void addStaffDiscount(boolean onShift) {
-    if(onShift)
-      staffDiscount = .25;
-    else staffDiscount = .15;
-    isStaffOrder = true;
   }
 
   public int getRowNum() {

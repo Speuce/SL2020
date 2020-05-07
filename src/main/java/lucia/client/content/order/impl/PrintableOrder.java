@@ -25,6 +25,7 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
     // TODO Printing information, such as Henderson/phone number etc should be loaded from Server as it differs from store to store
     //paper size 10cm/27m
     //Constants based on paper size and desired layout
+    @Exclude
     private static final int MAX_CHARS_PER_LINE = 35, MAX_LINES_PER_PAGE = 10,
             X_OFFSET = 170, Y_OFFSET = 130, LINE_SPACING = 17, PRICE_X_OFFSET = 395, STUB_SPACING = 500,
             HEADER_OFFSET = 50, HEADER2_OFFSET = 420;
@@ -32,6 +33,7 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
     /**
      * Standard Format for money on bills
      */
+    @Exclude
     private static final NumberFormat formatter = new DecimalFormat("#0.00");
 
     @Exclude
@@ -48,7 +50,7 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
 
     @Override
     public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) {
-        this.updatePrice();
+        this.recalculatePrice();
         graphics.setFont(new Font("Calibri", Font.PLAIN, 10));
         if (pageIndex == 0) {
             preparePrint();

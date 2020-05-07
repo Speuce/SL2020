@@ -21,7 +21,7 @@ public abstract class ItemList extends PaidBillable implements Iterable<Item>{
     private List<Item> items;
 
     /**
-     * A sorted list of the pizzas (used for double deal price calculations
+     * A sorted list of the pizzas (used for double deal price calculations)
      */
     @Exclude
     private LinkedHashSet<Pizza> pizzaSorted;

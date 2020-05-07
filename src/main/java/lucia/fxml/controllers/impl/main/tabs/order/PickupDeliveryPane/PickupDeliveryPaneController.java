@@ -120,7 +120,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   private Pane chickenPane;
 
   @FXML
-  private Pane pizzaPane;
+  public Pane pizza;
 
   @FXML
   private Label grandTotalLabel;
@@ -165,7 +165,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   private SaladsController saladsPaneController;
 
   @FXML
-  private PizzaController pizzaPaneController;
+  private PizzaController pizzaController;
 
   @FXML
   private ChickenController chickenPaneController;
@@ -246,7 +246,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     registerChild(italianPaneController);
     registerChild(appetizersPaneController);
     registerChild(saladsPaneController);
-    registerChild(pizzaPaneController);
+    registerChild(pizzaController);
     registerChild(chickenPaneController);
     registerChild(beveragesPaneController);
     registerChild(sidesPaneController);
@@ -257,7 +257,8 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     /**
      * Dynamic Loading
      */
-    DynamicLoader dynamicLoader = new DynamicLoader(this, pizzaPaneController);
+    pizza.setId("pizza"); // ensures that the pizza module can be selected
+    DynamicLoader dynamicLoader = new DynamicLoader(this, pizzaController);
     dynamicLoader.runDynamicLoader();
     open();
   }
@@ -291,10 +292,10 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
 
   public void initializeArrays() {
 
-    paneArray = new Pane[]{pizzaPaneController.specialAnchor, pizzaPaneController.sizeButtons, pizzaPaneController.extraPane, pizzaPaneController.pizzaButtons,
-            pizzaPaneController.settingsButtons, pizzaPaneController.cheeseAnchor, appetizersPane, italianPane,
+    paneArray = new Pane[]{pizzaController.specialAnchor, pizzaController.sizeButtons, pizzaController.extraPane, pizzaController.pizzaButtons,
+            pizzaController.settingsButtons, pizzaController.cheeseAnchor, appetizersPane, italianPane,
             saladsPane, chickenPaneController.chickenPane, beveragesPane};
-    specialPaneArray = new Pane[]{pizzaPaneController.extraPane, pizzaPaneController.pizzaButtons, pizzaPaneController.settingsButtons, pizzaPaneController.cheeseAnchor};
+    specialPaneArray = new Pane[]{pizzaController.extraPane, pizzaController.pizzaButtons, pizzaController.settingsButtons, pizzaController.cheeseAnchor};
   }
 //  public void initializeTheOrderPizza() {
 //    pizzaPaneController.theOrderPizza.clear();
@@ -303,7 +304,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
 //  }
 
   public PizzaController getPizzaController() {
-    return pizzaPaneController;
+    return pizzaController;
   }
   public SaladsController getSaladsPaneController() {
     return saladsPaneController;
@@ -454,18 +455,18 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     if (Style.isEnabled(button, selectedCSS)) {
       pane.getChildren().forEach(theButtons -> {
         theButtons.getStyleClass().removeAll(selectedCSS);
-        if (theButtons.equals(pizzaPaneController.easy) || theButtons.equals(pizzaPaneController.extra) || theButtons.equals(pizzaPaneController.xextra))
+        if (theButtons.equals(pizzaController.easy) || theButtons.equals(pizzaController.extra) || theButtons.equals(pizzaController.xextra))
           setExtraButtons(false, "null");
       });
     } else {
       pane.getChildren().forEach(theButtons -> {
         theButtons.getStyleClass().removeAll(selectedCSS);
         button.getStyleClass().add(selectedCSS);
-        if (Style.isEnabled(pizzaPaneController.easy, selectedCSS))
+        if (Style.isEnabled(pizzaController.easy, selectedCSS))
           setExtraButtons(true, "EZ");
-        else if (Style.isEnabled(pizzaPaneController.extra, selectedCSS))
+        else if (Style.isEnabled(pizzaController.extra, selectedCSS))
           setExtraButtons(true, "X");
-        else if (Style.isEnabled(pizzaPaneController.xextra, selectedCSS))
+        else if (Style.isEnabled(pizzaController.xextra, selectedCSS))
           setExtraButtons(true, "XX");
       });
     }
@@ -489,14 +490,14 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   @FXML
   public void setAdditionalPane(ActionEvent event) {
     Object source = event.getSource();
-    if (pizzaPaneController.saucePane.isVisible()) {
-      if (!source.equals(pizzaPaneController.saucePane))
+    if (pizzaController.saucePane.isVisible()) {
+      if (!source.equals(pizzaController.saucePane))
         setOptionPane(source);
-      pizzaPaneController.saucePane.setVisible(false);
-    } else if (pizzaPaneController.crustPane.isVisible()) {
-      if (!source.equals(pizzaPaneController.crustPane))
+      pizzaController.saucePane.setVisible(false);
+    } else if (pizzaController.crustPane.isVisible()) {
+      if (!source.equals(pizzaController.crustPane))
         setOptionPane(source);
-      pizzaPaneController.crustPane.setVisible(false);
+      pizzaController.crustPane.setVisible(false);
     } else if (additionalPane.isVisible()) {
       if (!source.equals(additionalPane))
         setOptionPane(source);
@@ -512,15 +513,15 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   }
   @FXML
   public void setOptionPane(Object source) {
-    pizzaPaneController.saucePane.setVisible(source.equals(pizzaPaneController.sauce));
-    pizzaPaneController.crustPane.setVisible(source.equals(pizzaPaneController.crust));
+    pizzaController.saucePane.setVisible(source.equals(pizzaController.sauce));
+    pizzaController.crustPane.setVisible(source.equals(pizzaController.crust));
     additionalPane.setVisible(source.equals(additionalButton));
   }
 
   @Override
   public void setOptionPanesVisible(boolean change) {
-    pizzaPaneController.saucePane.setVisible(change);
-    pizzaPaneController.crustPane.setVisible(change);
+    pizzaController.saucePane.setVisible(change);
+    pizzaController.crustPane.setVisible(change);
     additionalPane.setVisible(change);
     paymentPane.setVisible(change);
   }
@@ -569,7 +570,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     removeAllSelected();
     final Object source = event.getSource();
     if (source.equals(pizzaPaneChange))
-      pizzaPane.toFront();
+      pizza.toFront();
     else if (source.equals(appetizersPaneChange))
       appetizersPane.toFront();
     else if (source.equals(italianPaneChange))

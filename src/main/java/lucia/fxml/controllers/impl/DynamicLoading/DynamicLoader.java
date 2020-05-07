@@ -20,7 +20,7 @@ public class DynamicLoader {
 
     public DynamicLoader(PickupDeliveryPaneController pickupDeliveryPaneController, PizzaController pizzaController) {
         dinnerDynamicLoad = new DinnerDynamicLoad(pickupDeliveryPaneController);
-        dinnerModuleDynamicLoad = new DinnerModuleDynamicLoad(pickupDeliveryPaneController);
+        dinnerModuleDynamicLoad = new DinnerModuleDynamicLoad(pickupDeliveryPaneController, dinnerDynamicLoad);
         specialDynamicLoad = new SpecialDynamicLoad(pizzaController);
         toppingDynamicLoad = new ToppingDynamicLoad(pizzaController);
     }

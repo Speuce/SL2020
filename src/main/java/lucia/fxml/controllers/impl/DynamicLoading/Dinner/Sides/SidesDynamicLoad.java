@@ -10,6 +10,7 @@ import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerAddonPaneDesigns;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class SidesDynamicLoad {
 
     private PickupDeliveryPaneController pickupDeliveryPaneController;
     // the instance of the pickup delivery controller in order to control FXML methods
+    public ArrayList<Pane> menuSidesPanes = new ArrayList<>(); //panes for the dinners
     private DinnerSidesConstants dinnerSidesConstants;
     private SidesCoordinates sC;
     private DinnerAddonPaneCoordinates dinnerAddonPaneCoordinates;
@@ -64,8 +66,7 @@ public class SidesDynamicLoad {
                 pane.getChildren().add(button); // gets the pane at which the buttons are to be stored
             }
         } else { //The pane will be empty, what we want!
-            System.out.println(pane.getId() + " has no addons!");
-        }
+             }
     }
 
     /**
@@ -83,7 +84,13 @@ public class SidesDynamicLoad {
             createDinnerPaneAddOnDesigns(addOnPane);
             iterateAddOnItems(addOnPane, dinnerItem);
             parentPane.getChildren().addAll(addOnPane);
+            menuSidesPanes.add(addOnPane);
         }
+        Pane blankPane = new Pane();
+        createDinnerPaneAddOnDesigns(blankPane);
+        parentPane.getChildren().addAll(blankPane);
+        parentPane.getChildren().get(parentPane.getChildren().size() - 1).toFront();
+        menuSidesPanes.add(blankPane);
     }
 
     /**
@@ -96,6 +103,7 @@ public class SidesDynamicLoad {
         dinnerAddonPaneDesigns = new DinnerAddonPaneDesigns(pane);
         dinnerAddonPaneDesigns.initPaneDesign(pane, dinnerAddonPaneCoordinates.getGetStartX(), dinnerAddonPaneCoordinates.getGetStartY(),
                                               dinnerAddonPaneCoordinates.getGetSizeX(), dinnerAddonPaneCoordinates.getGetSizeY());
+
     }
 
     /**
@@ -107,10 +115,10 @@ public class SidesDynamicLoad {
     private JFXButton createAddOnButton(int getX, int getY, AddonDescriptor name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getBaseName());
         SidesDesigns sidesDesigns = new SidesDesigns(name);
-        SidesListeners sidesListeners = new SidesListeners(pickupDeliveryPaneController, name);
+        SidesListeners sidesListeners = new SidesListeners(pickupDeliveryPaneController, name, button, sidesDesigns);
 
         sidesDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        sidesListeners.setListeners(button); // gets the pane at which the buttons are to be stored
+        sidesListeners.setListeners(); // gets the pane at which the buttons are to be stored
 
         return button;
     }

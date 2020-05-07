@@ -2,6 +2,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModule
 
 import com.jfoenix.controls.JFXButton;
 import main.java.lucia.consts.FoodConstants.Dinner.DinnerButtonTabConstants;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems.DinnerDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 import org.apache.commons.lang3.StringUtils;
 
@@ -13,21 +14,24 @@ import java.util.List;
 public class DinnerModuleDynamicLoad {
     private PickupDeliveryPaneController pickupDeliveryPaneController;
     // the instance of the pickup delivery pane in order to control FXML methods
-    DinnerButtonTabConstants dinnerButtonTabConstants = new DinnerButtonTabConstants();
-    DinnerModuleCoordinates dC = new DinnerModuleCoordinates();
+    private DinnerButtonTabConstants dinnerButtonTabConstants = new DinnerButtonTabConstants();
+    private DinnerModuleCoordinates dC = new DinnerModuleCoordinates();
+    private DinnerDynamicLoad dinnerDynamicLoad;
 
     // list of the dinner modules
-    private List<String> dinnerModuleList = dinnerButtonTabConstants.getDinnerModuleList();
+    private List<String> dinnerModuleList;
 
-    public DinnerModuleDynamicLoad(PickupDeliveryPaneController pickupDeliveryPaneController) {
+    public DinnerModuleDynamicLoad(PickupDeliveryPaneController pickupDeliveryPaneController, DinnerDynamicLoad dinnerDynamicLoad) {
         this.pickupDeliveryPaneController = pickupDeliveryPaneController;
+        this.dinnerDynamicLoad = dinnerDynamicLoad;
+        dinnerModuleList = dinnerButtonTabConstants.getDinnerModuleList();
     }
 
     /**
      *  Initial method to start the loading of the dinner module buttons
      */
     public void createDinnerModules() {
-        JFXButton firstButton = createButton(dC.getGetStartX(), dC.getGetStartY(), dinnerModuleList.get(0), dC.getGetSizeX(), dC.getGetSizeY());
+        JFXButton firstButton = createButton(dC.getGetStartX(), dC.getGetStartY(), "Pizza", dC.getGetSizeX(), dC.getGetSizeY());
         pickupDeliveryPaneController.PaneChange.getChildren().add(firstButton);
         // gets the pane at which the buttons are to be stored
         iterateModules();
@@ -42,7 +46,7 @@ public class DinnerModuleDynamicLoad {
      *  todo will make into scrollpane for the ability for infinite buttons
      */
     private void iterateModules() {
-        for(int x = 1; x < dinnerModuleList.size(); x++) {
+        for(int x = 0; x < dinnerModuleList.size(); x++) {
             if(dC.checkLessThanMaxX())
                 dC.addToCurrX(dC.getGetXMargin());
             else System.out.println("WARNING: ScrollPane for The Modules may get large!");
@@ -62,10 +66,11 @@ public class DinnerModuleDynamicLoad {
         name = StringUtils.capitalize(name);
         JFXButton button = new JFXButton(name);
         DinnerModuleDesigns dinnerModuleDesigns = new DinnerModuleDesigns(name);
-        DinnerModuleListeners dinnerModuleListeners = new DinnerModuleListeners(pickupDeliveryPaneController, name);
+        DinnerModuleListeners dinnerModuleListeners = new DinnerModuleListeners(pickupDeliveryPaneController, dinnerDynamicLoad,
+                                                                                name, button);
 
         dinnerModuleDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        dinnerModuleListeners.setListeners(button);
+        dinnerModuleListeners.setListeners();
 
         return button;
     }

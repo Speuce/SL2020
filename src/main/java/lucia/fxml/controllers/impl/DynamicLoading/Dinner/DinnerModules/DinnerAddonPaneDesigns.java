@@ -28,12 +28,10 @@ public class DinnerAddonPaneDesigns {
      *  In this case, many of the designs will be hard coded as there is no custom classes
      *      except the fact that the list can be updated
      */
-    public Pane initPaneDesign(Pane pane, int getX, int getY, int getSizeX, int getSizeY) {
+    public void initPaneDesign(Pane pane, int getX, int getY, int getSizeX, int getSizeY) {
         pane.setStyle(paneStyleString);
         pane.setLayoutX(getX);
         pane.setLayoutY(getY);
         pane.setPrefSize(getSizeX, getSizeY);
-
-        return pane;
     }
 }

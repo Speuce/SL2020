@@ -19,11 +19,12 @@ import java.util.List;
 public class DinnerDynamicLoad {
     Menu menuInstance = Menu.get; // menu instance
     public ArrayList<Pane> menuPaneModules = new ArrayList<>(); //panes for the dinners
-    DinnerConstants dinnerConstants = new DinnerConstants();
-    DinnerCoordinates dC = new DinnerCoordinates();
-    SidesDynamicLoad sidesDynamicLoad;
-    DinnerPaneCoordinates dinnerPaneCoordinates;
-    DinnerPaneDesigns dinnerPaneDesigns;
+    private DinnerConstants dinnerConstants = new DinnerConstants();
+    private DinnerCoordinates dC = new DinnerCoordinates();
+    private SidesDynamicLoad sidesDynamicLoad;
+    private DinnerPaneCoordinates dinnerPaneCoordinates;
+    private DinnerPaneDesigns dinnerPaneDesigns;
+    private List<SimpleItemDescriptor> dinnerItems;
 
     /**
      * Pickup Delivery Controller
@@ -53,7 +54,7 @@ public class DinnerDynamicLoad {
      */
     private void iterateDinnerSections() {
         for(int x = 0; x < dinnerList.size(); x++) {
-            List<SimpleItemDescriptor> dinnerItems = menuInstance.getSection(dinnerList.get(x));
+            dinnerItems = menuInstance.getSection(dinnerList.get(x));
             Pane pane = new Pane();
             pane.setId(dinnerList.get(x));
             createDinnerPane(pane, dinnerItems); //todo check
@@ -123,11 +124,18 @@ public class DinnerDynamicLoad {
     private JFXButton createButton(int getX, int getY, SimpleItemDescriptor name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getBaseName());
         DinnerDesigns dinnerDesigns = new DinnerDesigns(name);
-        DinnerListeners dinnerListeners = new DinnerListeners(pickupDeliveryPaneController, name);
+        DinnerListeners dinnerListeners = new DinnerListeners(pickupDeliveryPaneController, name, button, dinnerDesigns, sidesDynamicLoad);
 
         dinnerDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        dinnerListeners.setListeners(button); // gets the pane at which the buttons are to be stored
+        dinnerListeners.setListeners(); // gets the pane at which the buttons are to be stored
 
         return button;
+    }
+
+    /**
+     * LISTENERS
+     */
+    public PickupDeliveryPaneController getPickupDeliveryPaneController() {
+        return pickupDeliveryPaneController;
     }
 }

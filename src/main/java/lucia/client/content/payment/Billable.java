@@ -16,6 +16,11 @@ public abstract class Billable {
     private long cost = -1;
 
     /**
+     * The gst/pst paid on this item
+     */
+    private long gst, pst;
+
+    /**
      * Gets the cost of this billable
      * Calculates the cost if it hasn't been done yet.
      * @return the cost (in cents)
@@ -32,6 +37,8 @@ public abstract class Billable {
      */
     public void recalculatePrice(){
         this.cost = calculateCost();
+        this.gst = TaxData.getGstPaid(this.cost);
+        this.pst = TaxData.getPstPaid(this.cost);
     }
 
     /**
@@ -42,7 +49,6 @@ public abstract class Billable {
     protected abstract long calculateCost();
 
     /**
-     *
      * @return The grand total with tax
      */
     public BigDecimal getGrandTotalTax() {
@@ -53,14 +59,14 @@ public abstract class Billable {
      * Returns the GST paid (verify this)
      */
     public BigDecimal getGrandTotalGST() {
-        return CurrencyConverter.taxAndBuildGST(getCost());
+        return CurrencyConverter.build(getGSTPaid());
     }
 
     /**
      * Returns the PST paid (verify this)
      */
     public BigDecimal getGrandTotalPST() {
-        return CurrencyConverter.taxAndBuildPST(getCost());
+        return CurrencyConverter.build(getPSTPaid());
     }
 
     /**
@@ -86,5 +92,52 @@ public abstract class Billable {
      */
     public BigDecimal getGrandTotalBD() {
         return CurrencyConverter.build(getCost());
+    }
+
+    /**
+     * Get the GST paid on this billable
+     */
+    public long getGSTPaid() {
+        return gst;
+    }
+
+    /**
+     * Get the PST paid on this billable
+     */
+    public long getPSTPaid() {
+        return pst;
+    }
+
+    /**
+     * Get the total amount of taxes paid
+     */
+    public long getTaxes(){
+        return gst+pst;
+    }
+
+    /**
+     * Get the grand total including all taxes
+     *
+     */
+    public long getGrandTotal(){
+        return getCost() + gst + pst;
+    }
+
+    /**
+     * Sets the gst amount paid on this billable
+     * Should only be done within a subclass.
+     * @param gst the gst to be paid
+     */
+    protected void setGst(long gst) {
+        this.gst = gst;
+    }
+
+    /**
+     * Sets the pst amount paid on this billable
+     * should only be done within a subclass
+     * @param pst the pst to be paid
+     */
+    protected void setPst(long pst) {
+        this.pst = pst;
     }
 }

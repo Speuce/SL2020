@@ -1,8 +1,9 @@
 package main.java.lucia.util.currency;
 
+import main.java.lucia.consts.TaxConstants;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import main.java.lucia.consts.TaxConstants;
 
 /**
  * The currency converter which handles
@@ -46,6 +47,12 @@ public class CurrencyConverter {
     return val.multiply(new BigDecimal( ".0" + (TaxConstants.MANITOBA_PST))).setScale(2, RoundingMode.HALF_UP);
   }
 
+
+  /**
+   * Converts the given amount of cents into a displayable bigdecimal
+   * @param cents the cents to display
+   * @return a bigdecimal in the format xxxx.xx
+   */
   public static BigDecimal build(long cents) {
     long dollars = cents / 100;
     cents %= 100;

@@ -10,7 +10,7 @@ import main.java.lucia.client.content.menu.io.serializer.server.PizzaSerializer;
 import main.java.lucia.client.content.menu.item.descriptor.*;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.menu.legacy.premade.impl.PremadePizza;
-import main.java.lucia.client.content.utils.Exclude;
+import main.java.lucia.client.content.structures.Exclude;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.net.packet.IncomingPacket;
 import main.java.lucia.net.packet.impl.incoming.codec.login.IncomingLoginAttemptPacket;

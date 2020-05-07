@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.utils;
+package main.java.lucia.client.content.structures;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

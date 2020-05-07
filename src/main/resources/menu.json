@@ -130,8 +130,8 @@
           }
         ],
         "defaultColor": "#FFFFFF",
-        "selectedColor": "#FFFFFF",
-        "hoverColor": "#FFFFFF",
+        "selectedColor": "#000000",
+        "hoverColor": "#228B22",
         "textColor": "#000000",
         "specialInstructions": []
       }

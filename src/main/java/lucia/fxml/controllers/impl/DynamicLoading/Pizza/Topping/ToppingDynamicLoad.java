@@ -63,10 +63,10 @@ public class ToppingDynamicLoad {
     private JFXButton createButton(int getX, int getY, ToppingType name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getDefaultColor());
         ToppingDesigns toppingDesigns = new ToppingDesigns(name);
-        ToppingListeners toppingListeners = new ToppingListeners(pizzaController, name);
+        ToppingListeners toppingListeners = new ToppingListeners(pizzaController, name, button);
 
         toppingDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        toppingListeners.setListeners(button); // gets the pane at which the buttons are to be stored
+        toppingListeners.setListeners(); // gets the pane at which the buttons are to be stored
         return button;
     }
 }

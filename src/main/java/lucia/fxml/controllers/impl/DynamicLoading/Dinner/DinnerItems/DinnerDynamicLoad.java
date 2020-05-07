@@ -3,22 +3,11 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
-import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
-import main.java.lucia.client.content.menu.item.type.Addon;
-import main.java.lucia.client.content.menu.item.type.ItemModifiable;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.consts.FoodConstants.Dinner.DinnerConstants;
-import main.java.lucia.consts.FoodConstants.Dinner.DinnerSidesConstants;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesCoordinates;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesDesigns;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerPaneCoordinates;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerPaneDesigns;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesDynamicLoad;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesListeners;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping.ToppingDesigns;
-import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping.ToppingListeners;
-import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.SidesController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 import java.util.ArrayList;
@@ -33,6 +22,8 @@ public class DinnerDynamicLoad {
     DinnerConstants dinnerConstants = new DinnerConstants();
     DinnerCoordinates dC = new DinnerCoordinates();
     SidesDynamicLoad sidesDynamicLoad;
+    DinnerPaneCoordinates dinnerPaneCoordinates;
+    DinnerPaneDesigns dinnerPaneDesigns;
 
     /**
      * Pickup Delivery Controller
@@ -79,7 +70,7 @@ public class DinnerDynamicLoad {
      * @param dinnerItems the dinner items of the current section
      */
     private void createDinnerPane(Pane pane, List<SimpleItemDescriptor> dinnerItems) {
-        createDinnerDesigns(pane);
+        createDinnerPaneDesigns(pane);
         sidesDynamicLoad = new SidesDynamicLoad(pickupDeliveryPaneController, dinnerItems);
         sidesDynamicLoad.createAddOnPanes(pane);
     }
@@ -89,8 +80,11 @@ public class DinnerDynamicLoad {
      *
      * @param pane the parent pane
      */
-    private void createDinnerDesigns(Pane pane) {
-        return;
+    private void createDinnerPaneDesigns(Pane pane) {
+        dinnerPaneCoordinates = new DinnerPaneCoordinates();
+        dinnerPaneDesigns = new DinnerPaneDesigns(pane);
+        dinnerPaneDesigns.initPaneDesign(pane, dinnerPaneCoordinates.getGetStartX(), dinnerPaneCoordinates.getGetStartY(),
+                                         dinnerPaneCoordinates.getGetSizeX(), dinnerPaneCoordinates.getGetSizeY());
     }
 
 

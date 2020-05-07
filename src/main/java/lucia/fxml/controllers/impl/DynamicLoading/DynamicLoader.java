@@ -30,8 +30,8 @@ public class DynamicLoader {
      */
     public void runDynamicLoader() {
         toppingDynamicLoad.createToppings();
-     //   specialDynamicLoad.createSpecials();
-//        dinnerModuleDynamicLoad.createDinnerModules();
-     //   dinnerDynamicLoad.createDinners();
+        specialDynamicLoad.createSpecials();
+        dinnerModuleDynamicLoad.createDinnerModules();
+        dinnerDynamicLoad.createDinners();
     }
 }

@@ -2,8 +2,6 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Special;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 
 /**
@@ -12,10 +10,26 @@ import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescrip
 public class SpecialDesigns {
     private SpecialtyPizzaDescriptor special; // information for the specialty pizza
     private SpecialCoordinates specialCoordinates; // information for the specialty coordinates
+    private String defaultStyleString; // for css
+    private String hoveredStyleString;
+    private String selectedStyleString;
 
     public SpecialDesigns(SpecialtyPizzaDescriptor special) {
         this.special = special;
         specialCoordinates = new SpecialCoordinates();
+
+        defaultStyleString = "-fx-font-size: 24; -fx-background-color: " + special.getDefaultColor() +
+                "; -fx-background-radius: 15; fx-border-radius: 20; -fx-text-alignment: center;" +
+                "-fx-alignment: center; -fx-font-size: 24; -fx-text-fill: " + special.getTextColor() +
+                "; -fx-font-family: Century";
+        hoveredStyleString = "-fx-font-size: 24; -fx-background-color: " + special.getHoverColor() +
+                "; -fx-background-radius: 15; fx-border-radius: 20; -fx-text-alignment: center;" +
+                "-fx-alignment: center; -fx-font-size: 24; -fx-text-fill: " + special.getTextColor() +
+                "; -fx-font-family: Century";
+        selectedStyleString = "-fx-font-size: 24; -fx-background-color: " + special.getSelectedColor() +
+                "; -fx-background-radius: 15; fx-border-radius: 20; -fx-text-alignment: center;" +
+                "-fx-alignment: center; -fx-font-size: 24; -fx-text-fill: " + special.getTextColor() +
+                "; -fx-font-family: Century";
     }
 
     /**
@@ -28,18 +42,45 @@ public class SpecialDesigns {
      */
     public JFXButton initButtonDesign(JFXButton button, int getX, int getY, int getSizeX, int getSizeY) {
         button.setCursor(Cursor.OPEN_HAND);
-        button.setTextFill(Paint.valueOf("white")); //todo
-        button.setFont(Font.font("Modern No. 20"));
+       // button.setTextFill(Paint.valueOf("white")); //todo
+       // button.setFont(Font.font("Modern No. 20"));
         //button.getStyleClass().add("ToppingsDefault");
 
        // String hex = "#" + Integer.toHexString(special.getButtonColor().getRGB()).substring(2).toUpperCase();
-        // button.setStyle("-fx-font-size: 30; -fx-background-color: " + hex);
+        button.setStyle(defaultStyleString);
 
         button.setLayoutX(getX);
         button.setLayoutY(getY);
         button.setPrefSize(getSizeX, getSizeY);
 
         return button;
+    }
+
+    /**
+     * ACCESSORS and MODIFIERS
+     */
+    public String getDefaultStyleString() {
+        return defaultStyleString;
+    }
+
+    public void setDefaultStyleString(String defaultStyleString) {
+        this.defaultStyleString = defaultStyleString;
+    }
+
+    public String getHoveredStyleString() {
+        return hoveredStyleString;
+    }
+
+    public void setHoveredStyleString(String hoveredStyleString) {
+        this.hoveredStyleString = hoveredStyleString;
+    }
+
+    public String getSelectedStyleString() {
+        return selectedStyleString;
+    }
+
+    public void setSelectedStyleString(String selectedStyleString) {
+        this.selectedStyleString = selectedStyleString;
     }
 
 }

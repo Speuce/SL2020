@@ -12,10 +12,14 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
 public class ToppingListeners {
     private PizzaController pizzaController; // the instance for the pizza controllers so the fxml methods can be called
     private ToppingType name; // topping information
+    private JFXButton button; // the button instance
+    private ToppingDesigns toppingDesigns;
 
-    public ToppingListeners(PizzaController pizzaController, ToppingType name) {
+    public ToppingListeners(PizzaController pizzaController, ToppingType name, JFXButton button) {
         this.pizzaController = pizzaController;
         this.name = name;
+        this.button = button;
+        toppingDesigns = new ToppingDesigns(name);
     }
 
     /**
@@ -25,25 +29,24 @@ public class ToppingListeners {
      *
      *  todo will have the designs for the buttons changed once the new design is implemented
      */
-    public JFXButton setListeners(JFXButton button) {
+    public void setListeners() {
         button.setOnMouseClicked(this::toppingSelected);
         button.setOnMouseEntered(this::activateHover);
         button.setOnMouseExited(this::deactivateHover);
-        return button;
     }
 
     /**
      *  Event Handler for when the button is hovered into
      */
     public void activateHover(MouseEvent event) {
-        System.out.println("HI I AM HERE");
+        button.setStyle(toppingDesigns.getHoveredStyleString());
     }
 
     /**
      *  Event Handler for when the button is hovered out of
      */
     public void deactivateHover(MouseEvent event) {
-        System.out.println("HI I AM HERE fedsf");
+        button.setStyle(toppingDesigns.getDefaultStyleString());
     }
 
     /**
@@ -60,7 +63,6 @@ public class ToppingListeners {
      */
     private void toppingClicked(int id) {
         // add to order system
-        System.out.println("SELECTED " + id);
         ToppingType type = new IDCaster<ToppingType>().cast(id);
         if(pizzaController.getCurrentPizza().hasToppingType(type)){
             //add topping

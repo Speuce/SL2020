@@ -1,7 +1,6 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Special;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
@@ -12,10 +11,14 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
 public class SpecialListeners {
     private PizzaController pizzaController; // the instance for the pizza controllers so the fxml methods can be called
     private SpecialtyPizzaDescriptor name; // specialty pizza information
+    private JFXButton button;
+    private SpecialDesigns specialDesigns;
 
-    public SpecialListeners(PizzaController pizzaController, SpecialtyPizzaDescriptor name) {
+    public SpecialListeners(PizzaController pizzaController, SpecialtyPizzaDescriptor name, JFXButton button) {
         this.pizzaController = pizzaController;
         this.name = name;
+        this.button = button;
+        specialDesigns = new SpecialDesigns(name);
     }
 
     /**
@@ -25,11 +28,24 @@ public class SpecialListeners {
      *
      *  todo will have the designs for the buttons changed once the new design is implemented
      */
-    public JFXButton setListeners(JFXButton button) {
-        button.setOnMouseClicked(specialSelected(name));
-        button.setOnMouseEntered(pizzaController::activateHover);
-        button.setOnMouseExited(pizzaController::deactivateHover);
-        return button;
+    public void setListeners() {
+        button.setOnMouseClicked(this::specialSelected);
+        button.setOnMouseEntered(this::activateHover);
+        button.setOnMouseExited(this::deactivateHover);
+    }
+
+    /**
+     *  Event Handler for when the button is hovered into
+     */
+    public void activateHover(MouseEvent event) {
+        button.setStyle(specialDesigns.getHoveredStyleString());
+    }
+
+    /**
+     *  Event Handler for when the button is hovered out of
+     */
+    public void deactivateHover(MouseEvent event) {
+        button.setStyle(specialDesigns.getDefaultStyleString());
     }
 
     /**
@@ -37,9 +53,8 @@ public class SpecialListeners {
      *
      *  Goes to Order System
      */
-    private EventHandler<? super MouseEvent> specialSelected(SpecialtyPizzaDescriptor name) {
+    private void specialSelected(MouseEvent event) {
         specialClicked(name.getId());
-        return null; //setOnMouseClicked must be an 'Event'
     }
 
     /**

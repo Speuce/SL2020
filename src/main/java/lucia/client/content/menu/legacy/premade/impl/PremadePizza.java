@@ -23,7 +23,7 @@ import main.java.lucia.client.content.menu.legacy.toppings.Topping;
 
 import main.java.lucia.client.content.menu.legacy.toppings.names.GourmetToppingNames;
 import main.java.lucia.client.content.time.ClientTime;
-import main.java.lucia.client.content.structures.Exclude;
+import main.java.lucia.client.content.utils.Exclude;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 /**

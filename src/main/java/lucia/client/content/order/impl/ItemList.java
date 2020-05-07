@@ -3,7 +3,7 @@ package main.java.lucia.client.content.order.impl;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.payment.PaidBillable;
-import main.java.lucia.client.content.structures.Exclude;
+import main.java.lucia.client.content.utils.Exclude;
 
 import java.util.*;
 

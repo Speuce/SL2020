@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.order.impl;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.structures.Exclude;
+import main.java.lucia.client.content.utils.Exclude;
 import main.java.lucia.util.currency.CurrencyConverter;
 
 import java.awt.*;

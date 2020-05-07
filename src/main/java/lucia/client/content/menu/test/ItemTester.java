@@ -44,7 +44,7 @@ public class ItemTester {
      */
     public static Pizza build15SpecialWithTop(){
         Pizza special = Menu.pizza.getSpecialties().get(0).getAsItem(15);
-        special.addTopping(new IDCaster<ToppingType>().cast(11), 2);
+        special.addTopping(new IDCaster<ToppingType>().cast(9), 2);
         return special;
     }
 

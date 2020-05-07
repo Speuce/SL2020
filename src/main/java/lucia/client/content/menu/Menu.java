@@ -119,7 +119,7 @@ public class Menu {
         if(sectionItems.containsKey(section)){
             sectionItems.get(section).add(item);
         }else {
-            List<SimpleItemDescriptor> items = new ArrayList<SimpleItemDescriptor>();
+            List<SimpleItemDescriptor> items = new ArrayList<>();
             items.add(item);
             sectionItems.put(section, items);
         }
@@ -140,9 +140,8 @@ public class Menu {
      * @param source the souce of the menu json
      */
     public void loadMenu(File source){
-        Gson gson = GsonTypeFactory.MENU_ITEM_GSON;
         JsonParser parse = new JsonParser();
-        FileReader r = null;
+        FileReader r;
         try {
             r = new FileReader(source);
             JsonObject parser = parse.parse(r).getAsJsonObject();

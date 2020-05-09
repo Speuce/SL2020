@@ -20,7 +20,10 @@ public enum PaymentType {
     SPLIT("Split"),
 
     //A good C.Y.A. just incase
-    OTHER("OTHER");
+    OTHER("OTHER"),
+
+    //not paid
+    UNPAID("UNPAID");
 
     /**
      * The display text for this payment type

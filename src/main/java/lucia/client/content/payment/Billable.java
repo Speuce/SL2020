@@ -73,9 +73,11 @@ public abstract class Billable {
      * Calculates the grand total in long format plus tax
      *
      * @return the grand total with tax
+     * @deprecated use {@link #getGrandTotal()}
      */
+    @Deprecated()
     public long getGrandTotalLongWithTax(){
-        return CurrencyConverter.withTax(getCost());
+        return getGrandTotal();
     }
 
     /**

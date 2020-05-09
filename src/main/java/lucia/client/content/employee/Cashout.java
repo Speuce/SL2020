@@ -4,8 +4,6 @@ import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.payment.CashOutOfTill;
 import main.java.lucia.client.content.payment.PaymentType;
 import main.java.lucia.client.content.payment.Transaction;
-import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
-import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 import main.java.lucia.client.manager.impl.OrderManager;
 
 import java.util.*;
@@ -153,19 +151,14 @@ public class Cashout {
         }
     }
 
+    /**
+     * Calculates the total cash sales
+     * (does not include tips
+     */
     public void calcCashSales(){
         cashSales = 0;
         for(Order o: myOrders){
-                if(o.getPaymentType().equals(PaymentType.CASH)){
-                    cashSales+=o.getPaymentMethod().getPrice();
-                }else if(o.getPaymentMethod() instanceof SplitPayment){
-                    SplitPayment r = (SplitPayment) o.getPaymentMethod();
-                    for(SimplePayment sub : r.getPaymentSet()){
-                        if(sub.getPaymentType().equals(PaymentType.CASH)){
-                            cashSales += sub.getPrice();
-                        }
-                    }
-                }
+
         }
     }
 

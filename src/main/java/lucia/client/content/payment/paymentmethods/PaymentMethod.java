@@ -12,6 +12,12 @@ import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
 public abstract class PaymentMethod {
 
     /**
+     * RowNum field for Json serialization
+     * DO NOT TOUCH.
+     */
+    private int rowNum = -1;
+
+    /**
      * The method of payment
      */
     private PaymentType p;
@@ -54,9 +60,8 @@ public abstract class PaymentMethod {
     public static RuntimeTypeAdapterFactory<PaymentMethod> getPaymentAdapterFactory(){
         if(paymentAdapterFactory == null){
             paymentAdapterFactory = RuntimeTypeAdapterFactory.of(PaymentMethod.class)
-                    .registerSubtype(SimplePayment.class, "SinglePayment")
-                    .registerSubtype(GiftPayment.class, "GiftPayment")
-                    .registerSubtype(SplitPayment.class, "SplitPayment");
+                    .registerSubtype(SimplePayment.class, "simple")
+                    .registerSubtype(GiftPayment.class, "gift");
         }
         return paymentAdapterFactory;
     }

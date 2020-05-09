@@ -30,6 +30,9 @@ public class ItemModifiable extends Item {
     public ItemModifiable(String name, long price, ItemModifiableDescriptor parent) {
         super(name, price, parent);
         addonList = new ArrayList<Addon>();
+        for(Addon add: parent.getAppliedAddons()){
+            addonList.add(add.deepCopy());
+        }
     }
 
     /**

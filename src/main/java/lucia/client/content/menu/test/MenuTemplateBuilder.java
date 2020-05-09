@@ -6,14 +6,11 @@ import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
-import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.pizza.Crust;
 import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.Topping;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +49,8 @@ public class MenuTemplateBuilder {
         ItemModifiableDescriptor wings = new ItemModifiableDescriptor(6, "wings", 1295);
         wings.addAddon(hotSauce);
         wings.addAddon(bbqSauce);
+        wings.addDefaultAddon(bbqSauce, (byte) 2);
+        wings.addDefaultAddon(hotSauce, (byte)4);
         itemList1.add(wings);
 
         //pizza menu things

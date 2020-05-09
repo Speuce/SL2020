@@ -6,13 +6,16 @@ import com.google.gson.JsonParser;
 import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
 import main.java.lucia.client.content.menu.item.IDAble;
-import main.java.lucia.client.content.menu.item.descriptor.*;
-import main.java.lucia.client.content.menu.item.type.Addon;
-import main.java.lucia.client.content.menu.item.type.ItemModifiable;
+import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Singleton class that contains all of the menu information
@@ -223,8 +226,13 @@ public class Menu {
             printAddon((AddonDescriptor) item, out);
             out.println();
         }else if(item instanceof ItemModifiableDescriptor){
-            out.printf(" - Modifiable: %s, ID: %d Price: %d, Addons:\n",
+            out.printf(" - Modifiable: %s, ID: %d Price: %d, Default: ",
                     item.getBaseName(), item.getId(), item.getBasePrice());
+            out.print("{");
+            for(Map.Entry<Integer, Byte> d: ((ItemModifiableDescriptor)item).getAddonsDefault().entrySet()){
+                out.printf("[%d,%d]", d.getKey(), d.getValue());
+            }
+            out.print("}, Addons:\n");
             out.print("            ");
             for(AddonDescriptor a: ((ItemModifiableDescriptor)item).getAppliableAddons()){
                 out.print("{");

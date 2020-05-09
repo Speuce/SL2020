@@ -20,6 +20,15 @@ public class Addon extends ItemAmountable {
   }
 
   /**
+   * Construct a new item with the given name and price
+   * @param name the name of the addon
+   * @param price the cost to add this addon to an item
+   */
+  public Addon(String name, long price, AddonDescriptor d, int amt) {
+    super(name, price,amt, d);
+  }
+
+  /**
    * Generates the display name of the item
    */
   @Override

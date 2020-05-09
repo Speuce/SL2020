@@ -7,16 +7,7 @@ package main.java.lucia.client.content.payment;
  */
 public abstract class PaidBillable extends Billable implements Transaction{
 
-    /**
-     * The payment type that the billable was paid with
-     * (or will be paid with)
-     */
-    private PaymentType paymentType;
-
-    /**
-     * The payment for this order
-     */
-    private Payment payment = null;
+    private
 
     /**
      * The ID of the employee that has signed this billable out
@@ -25,13 +16,13 @@ public abstract class PaidBillable extends Billable implements Transaction{
 
 
     @Override
-    public Payment getPayment() {
+    public PaymentMethod getPaymentMethod() {
         return payment;
     }
 
     @Override
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.payment = paymentMethod;
     }
 
     /**

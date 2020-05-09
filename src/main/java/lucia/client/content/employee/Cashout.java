@@ -157,9 +157,9 @@ public class Cashout {
         cashSales = 0;
         for(Order o: myOrders){
                 if(o.getPaymentType().equals(PaymentType.CASH)){
-                    cashSales+=o.getPayment().getPrice();
-                }else if(o.getPayment() instanceof SplitPayment){
-                    SplitPayment r = (SplitPayment) o.getPayment();
+                    cashSales+=o.getPaymentMethod().getPrice();
+                }else if(o.getPaymentMethod() instanceof SplitPayment){
+                    SplitPayment r = (SplitPayment) o.getPaymentMethod();
                     for(SimplePayment sub : r.getPaymentSet()){
                         if(sub.getPaymentType().equals(PaymentType.CASH)){
                             cashSales += sub.getPrice();
@@ -172,7 +172,7 @@ public class Cashout {
     public void calcCashOut(){
         otherOut = 0;
         for(CashOutOfTill oth: otherOuts){
-            otherOut = oth.getPayment().getPrice();
+            otherOut = oth.getPaymentMethod().getPrice();
         }
     }
 

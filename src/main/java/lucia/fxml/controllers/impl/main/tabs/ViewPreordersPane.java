@@ -1,7 +1,6 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs;
 
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -266,7 +265,7 @@ public class ViewPreordersPane implements Controller {
       registerItem(cost, 5);
       viewOrderGridpane.add(cost, 5, row);
 
-      if(r.getPayment() != null){
+      if(r.getPaymentMethod() != null){
         Label paytype = new Label(" "+ r.getPaymentType().getDisplayCode());
         registerItem(paytype, 6);
         viewOrderGridpane.add(paytype, 6, row);

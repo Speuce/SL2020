@@ -11,7 +11,7 @@ import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
  * a class representing a payment with type
  * @author Matt Kwiatkowki
  */
-public abstract class Payment {
+public abstract class PaymentMethod {
 
     /**
      * The method of payment
@@ -23,12 +23,12 @@ public abstract class Payment {
      */
     private long price;
 
-    public Payment(PaymentType p, long price){
+    public PaymentMethod(PaymentType p, long price){
         this.p = p;
         this.price = price;
     }
 
-    public Payment(PaymentType p) {
+    public PaymentMethod(PaymentType p) {
         this.p = p;
     }
 
@@ -51,11 +51,11 @@ public abstract class Payment {
      * The {@link RuntimeTypeAdapterFactory} for serializing payments
      * Stored as a singleton instance
      */
-    private static RuntimeTypeAdapterFactory<Payment> paymentAdapterFactory;
+    private static RuntimeTypeAdapterFactory<PaymentMethod> paymentAdapterFactory;
 
-    public static RuntimeTypeAdapterFactory<Payment> getPaymentAdapterFactory(){
+    public static RuntimeTypeAdapterFactory<PaymentMethod> getPaymentAdapterFactory(){
         if(paymentAdapterFactory == null){
-            paymentAdapterFactory = RuntimeTypeAdapterFactory.of(Payment.class)
+            paymentAdapterFactory = RuntimeTypeAdapterFactory.of(PaymentMethod.class)
                     .registerSubtype(SimplePayment.class, "SinglePayment")
                     .registerSubtype(GiftPayment.class, "GiftPayment")
                     .registerSubtype(SplitPayment.class, "SplitPayment");

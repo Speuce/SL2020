@@ -1,13 +1,10 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs;
 
-import java.net.URL;
 import java.text.NumberFormat;
 import java.util.*;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -25,13 +22,11 @@ import main.java.lucia.fxml.controllers.impl.Controller;
  * @author Matt Kwiatkowski
  */
 import com.jfoenix.controls.JFXButton;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
-import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.OrderInfoController;
 
@@ -215,7 +210,7 @@ public class ViewOrdersPane implements Controller {
       registerItem(cost, 5);
       viewOrderGridpane.add(cost, 5, row);
 
-      if(r.getPayment() != null){
+      if(r.getPaymentMethod() != null){
         Label paytype = new Label(" "+ r.getPaymentType().getDisplayCode());
         registerItem(paytype, 6);
         viewOrderGridpane.add(paytype, 6, row);

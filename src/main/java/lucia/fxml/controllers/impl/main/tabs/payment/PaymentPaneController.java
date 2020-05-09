@@ -14,7 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import main.java.lucia.client.content.payment.Payment;
+import main.java.lucia.client.content.payment.PaymentMethod;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 import main.java.lucia.client.content.payment.PaymentType;
@@ -148,7 +148,7 @@ public class PaymentPaneController {
     /**
      * The current payment
      */
-    private Payment currentPayment;
+    private PaymentMethod currentPaymentMethod;
 
     /**
      * grid highlight for split payments
@@ -211,7 +211,7 @@ public class PaymentPaneController {
         resetSplitPayment();
         resetSelectServer();
         finalizeOrder.setVisible(false);
-        currentPayment = null;
+        currentPaymentMethod = null;
         currentPaymentType = null;
         currentSelected = null;
     }
@@ -311,7 +311,7 @@ public class PaymentPaneController {
 
     private long getRemainingPrice(long paid){
         long total = parent.getHighlightedOrder().getGrandTotalLongWithTax();
-        return Payment.nearest5(total - paid);
+        return PaymentMethod.nearest5(total - paid);
     }
 
     private void resetBoxes(){
@@ -355,7 +355,7 @@ public class PaymentPaneController {
             }else if(currentSelected != null){
                 openCardPane();
             }
-            currentPayment = new SplitPayment(parent.getHighlightedOrder().getGrandTotalLongWithTax());
+            currentPaymentMethod = new SplitPayment(parent.getHighlightedOrder().getGrandTotalLongWithTax());
         }
     }
 
@@ -381,8 +381,8 @@ public class PaymentPaneController {
         String selected = selectServerBox.getValue();
         Integer id = EmployeePane.instance.getEmployeeId(selected);
         o.setServer(id);
-        o.setPayment(currentPayment);
-        o.setPaymentType(currentPayment.getPaymentType());
+        o.setPaymentMethod(currentPaymentMethod);
+        o.setPaymentType(currentPaymentMethod.getPaymentType());
         parent.completeOrder(o);
         parent.setPaymentPaneVisible(false);
     }
@@ -411,12 +411,12 @@ public class PaymentPaneController {
                     if(tip > 0){
                         pay.setTip(Math.round(tip*100));
                     }
-                    currentPayment = pay;
+                    currentPaymentMethod = pay;
                     closePayArea();
                 }else{
                     long amtToPay = Math.round(parse(amountPaidBox.getText())*100);
                     SimplePayment pay = new SimplePayment(PaymentType.CASH, amtToPay);
-                    ((SplitPayment)currentPayment).addPayment(pay);
+                    ((SplitPayment) currentPaymentMethod).addPayment(pay);
                     closePayArea();
                 }
 
@@ -443,10 +443,10 @@ public class PaymentPaneController {
                 if(tip > 0){
                     pay.setTip(tip);
                 }
-                ((SplitPayment)currentPayment).addPayment(pay);
+                ((SplitPayment) currentPaymentMethod).addPayment(pay);
             }else{
                 SimplePayment pay = new SimplePayment(currentPaymentType, parent.getHighlightedOrder().getGrandTotalLongWithTax());
-                currentPayment = pay;
+                currentPaymentMethod = pay;
             }
             closePayArea();
 
@@ -471,7 +471,7 @@ public class PaymentPaneController {
     @FXML
     private void deletePayment(MouseEvent e){
         if(gridHighlighter.getHighLightedRow() > -1){
-            SplitPayment sp = (SplitPayment) currentPayment;
+            SplitPayment sp = (SplitPayment) currentPaymentMethod;
 
             sp.getPaymentSet().remove(gridHighlighter.getHighLightedRow());
 
@@ -491,8 +491,8 @@ public class PaymentPaneController {
     private void resetPaymentTracker(){
         //remove old
         SplitPayGridPane.getChildren().clear();
-        if(currentPayment instanceof SplitPayment){
-            SplitPayment r = (SplitPayment) currentPayment;
+        if(currentPaymentMethod instanceof SplitPayment){
+            SplitPayment r = (SplitPayment) currentPaymentMethod;
             if(Math.abs(r.getRemainingPrice()) <= 2){
                 showServerSelector();
                 return;

@@ -11,12 +11,12 @@ import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
  */
 public interface Transaction {
 
-  Payment getPayment();
+  PaymentMethod getPaymentMethod();
 
-  void setPayment(Payment payment);
+  void setPaymentMethod(PaymentMethod paymentMethod);
 
   default PaymentType getPaymentType() {
-    return getPayment().getPaymentType();
+    return getPaymentMethod().getPaymentType();
   }
 
   /**
@@ -27,12 +27,12 @@ public interface Transaction {
    * @return a long representing the number of cents in the tip
    */
   default long getTip(boolean cash) {
-    if (this.getPayment() == null) {
+    if (this.getPaymentMethod() == null) {
       return 0L;
-    } else if (this.getPayment() instanceof SimplePayment) {
-      return ((SimplePayment) this.getPayment()).getTip();
-    } else if (this.getPayment() instanceof SplitPayment) {
-      SplitPayment r = (SplitPayment) this.getPayment();
+    } else if (this.getPaymentMethod() instanceof SimplePayment) {
+      return ((SimplePayment) this.getPaymentMethod()).getTip();
+    } else if (this.getPaymentMethod() instanceof SplitPayment) {
+      SplitPayment r = (SplitPayment) this.getPaymentMethod();
       if (cash) {
         return r.getTotalCashTips();
       } else {

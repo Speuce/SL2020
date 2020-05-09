@@ -1,36 +1,26 @@
 package main.java.lucia.client.content.payment.paymentmethods;
 
-import main.java.lucia.client.content.payment.Payment;
+import main.java.lucia.client.content.payment.PaymentMethod;
 import main.java.lucia.client.content.payment.PaymentType;
 
 /**
- * A payment with one payment type
+ * A simple payment with no added fields.
+ * Either Cash, debit, mc, visa, amex, or discover.
  * @author Matt Kwiatkowski
  * For GSON usage see Payment.java
  */
-public class SimplePayment extends Payment {
+public class SimplePayment extends PaymentMethod {
 
     /**
-     * The tip given with the payment
+     * Constructs a new simple payment
+     * @param p the type of payment
+     * @param amount the amount paid.
      */
-    private long tip = 0l;
-
-    public SimplePayment(PaymentType p, long price) {
-        super(p, price);
-    }
-    public SimplePayment(PaymentType p) {
-        super(p);
+    public SimplePayment(PaymentType p, long amount) {
+        super(p, amount);
+        //preconditions: payment type is not AR, cheque, or gift
+        assert(p != PaymentType.GIFT);
+        assert(p != PaymentType.CHEQUE);
     }
 
-    public long getTip() {
-        return tip;
-    }
-
-    public void setTip(long tip) {
-        this.tip = tip;
-    }
-
-    public boolean hasTip(){
-        return this.tip >0;
-    }
 }

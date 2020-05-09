@@ -1,6 +1,6 @@
 package main.java.lucia.client.content.payment.paymentmethods;
 
-import main.java.lucia.client.content.payment.Payment;
+import main.java.lucia.client.content.payment.PaymentMethod;
 import main.java.lucia.client.content.payment.PaymentType;
 
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * Represents a payment comprised of multiple payments
  * @author Matt kwiatkowski
  */
-public class SplitPayment extends Payment {
+public class SplitPayment extends PaymentMethod {
 
     /**
      * The set of payments that this split payment cosists of

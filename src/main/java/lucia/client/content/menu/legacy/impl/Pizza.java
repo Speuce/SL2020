@@ -1,10 +1,6 @@
 package main.java.lucia.client.content.menu.legacy.impl;
 
 import com.google.common.base.Preconditions;
-
-import java.lang.reflect.Type;
-import java.util.*;
-
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import main.java.lucia.client.content.menu.legacy.Item;
@@ -18,12 +14,16 @@ import main.java.lucia.client.content.menu.legacy.instructions.SpecialInstructio
 import main.java.lucia.client.content.menu.legacy.premade.impl.PremadePizza;
 import main.java.lucia.client.content.menu.legacy.size.Size;
 import main.java.lucia.client.content.menu.legacy.toppings.Topping;
-
 import main.java.lucia.client.content.menu.legacy.toppings.names.GourmetToppingNames;
 import main.java.lucia.client.content.time.ClientTime;
-import main.java.lucia.client.content.time.TimeFormat;
+import main.java.lucia.client.content.time.io.deserializer.ClientTimeDeserializer;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import org.apache.commons.lang3.StringUtils;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A class representation of a pizza item
@@ -739,7 +739,7 @@ public class Pizza extends Item implements Comparable<Pizza> {
                 CrustTypes.valueOf(o.get("crust").getAsString()), o.get("splitHalves").getAsBoolean(),
                 new GsonBuilder().registerTypeAdapter(Pizza.class, Pizza.getJsonDeserializer()).create()
                         .fromJson(o.get("secondHalf"), Pizza.class),new GsonBuilder().registerTypeAdapter(ClientTime.class,
-                ClientTime.getJsonDeserializer()).create()
+                new ClientTimeDeserializer()).create()
                 .fromJson(o.get("builtTime"), ClientTime.class));
 
       }

@@ -15,7 +15,7 @@ import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
-import main.java.lucia.client.content.time.ClientTime;
+import main.java.lucia.client.content.time.io.TimeGson;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
 
@@ -43,8 +43,7 @@ public class ItemGson {
         .registerSubtype(ItemModifiable.class)
         .registerSubtype(ItemBundle.class));
 
-        builder.registerTypeAdapter(ClientTime.class, ClientTime.getJsonDeserializer());
-        builder.registerTypeAdapter(ClientTime.class, ClientTime.getJsonSerializer());
+        TimeGson.addCustomJsonSerializers(builder);
         builder.registerTypeAdapter(Pizza.class, new PizzaSerializer());
         builder.registerTypeAdapter(Pizza.class, new PizzaDeserializer(false));
         builder.registerTypeAdapter(SimpleItem.class, new SimpleItemSerializer());

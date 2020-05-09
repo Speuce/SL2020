@@ -4,7 +4,8 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import main.java.lucia.client.content.employee.*;
+import main.java.lucia.client.content.employee.EmployeeNote;
+import main.java.lucia.client.content.employee.ManagerNote;
 import main.java.lucia.client.content.employee.type.Driver;
 import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.client.content.employee.type.Manager;
@@ -14,7 +15,7 @@ import main.java.lucia.client.content.menu.item.descriptor.*;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.menu.legacy.premade.impl.PremadePizza;
 import main.java.lucia.client.content.structures.Exclude;
-import main.java.lucia.client.content.time.ClientTime;
+import main.java.lucia.client.content.time.io.TimeGson;
 import main.java.lucia.net.packet.IncomingPacket;
 import main.java.lucia.net.packet.impl.incoming.codec.login.IncomingLoginAttemptPacket;
 import main.java.lucia.net.packet.impl.incoming.codec.login.IncomingNewAccountPacket;
@@ -128,8 +129,7 @@ public class GsonTypeFactory {
     b.setPrettyPrinting();
 //    b.registerTypeAdapterFactory(typeAdapter);
     //b.registerTypeAdapterFactory(typeAdapter);
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonDeserializer());
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonSerializer());
+    TimeGson.addCustomJsonSerializers(b);
     b.registerTypeAdapter(Pizza.class, new PizzaSerializer());
     b.registerTypeAdapter(Pizza.class, new PizzaDeserializer(false));
     b.registerTypeAdapter(PremadePizza.class, PremadePizza.getJsonPremadeDeserializer());
@@ -158,8 +158,7 @@ public class GsonTypeFactory {
 //    b.registerTypeAdapterFactory(typeAdapter);
     b.registerTypeAdapterFactory(typeAdapter1);
     b.registerTypeAdapterFactory(typeAdapter2);
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonDeserializer());
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonSerializer());
+    TimeGson.addCustomJsonSerializers(b);
     b.serializeNulls();
 
     return b.create();
@@ -175,8 +174,7 @@ public class GsonTypeFactory {
     addExclusionPolicy(b);
     b.setPrettyPrinting();
     b.serializeNulls();
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonDeserializer());
-    b.registerTypeAdapter(ClientTime.class, ClientTime.getJsonSerializer());
+    TimeGson.addCustomJsonSerializers(b);
 
     return b.create();
   }

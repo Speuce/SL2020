@@ -1,8 +1,5 @@
 package main.java.lucia.client.content.time;
 
-import com.google.gson.*;
-
-import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -190,23 +187,5 @@ public class ClientTime {
     return Math.abs(val.between(INSTANCE, ClientTime.getWinnipegTime()));
   }
 
-  /**
-   * Creates the serializer for ClientTime objects
-   * @return the {@link JsonSerializer} for ClientTime objects
-   */
-  public static JsonSerializer<ClientTime> getJsonSerializer(){
-    return new JsonSerializer<ClientTime>() {
 
-    };
-  }
-
-  /**
-   * Creates the deserializer for ClientTime objects
-   * @return the {@link JsonDeserializer} for ClientTime objects
-   */
-  public static JsonDeserializer<ClientTime> getJsonDeserializer(){
-    return new JsonDeserializer<ClientTime>() {
-
-    };
-  }
 }

@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.payment;
+package main.java.lucia.client.content.payment.util;
 
 import java.math.BigDecimal;
 import java.util.Date;

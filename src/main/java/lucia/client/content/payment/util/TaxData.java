@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.payment;
+package main.java.lucia.client.content.payment.util;
 
 /**
  * Contains all data about the tax rates.

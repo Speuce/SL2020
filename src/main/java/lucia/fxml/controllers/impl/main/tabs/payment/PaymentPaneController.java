@@ -16,7 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
-import main.java.lucia.client.content.payment.PaymentType;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;

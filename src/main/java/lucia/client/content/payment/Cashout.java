@@ -4,6 +4,7 @@ import main.java.lucia.client.content.employee.type.Driver;
 import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.manager.impl.OrderManager;
 

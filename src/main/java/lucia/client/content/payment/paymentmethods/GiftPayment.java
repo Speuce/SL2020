@@ -1,7 +1,6 @@
 package main.java.lucia.client.content.payment.paymentmethods;
 
-import main.java.lucia.client.content.payment.GiftCard;
-import main.java.lucia.client.content.payment.PaymentType;
+import main.java.lucia.client.content.payment.util.GiftCard;
 
 /**
  * A gift certificate payment

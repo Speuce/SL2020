@@ -1,7 +1,5 @@
 package main.java.lucia.client.content.payment.paymentmethods;
 
-import main.java.lucia.client.content.payment.PaymentType;
-
 /**
  * A simple payment with no added fields.
  * Either Cash, debit, mc, visa, amex, or discover.

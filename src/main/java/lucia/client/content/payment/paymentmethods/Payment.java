@@ -1,6 +1,4 @@
-package main.java.lucia.client.content.payment;
-
-import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
+package main.java.lucia.client.content.payment.paymentmethods;
 
 import java.util.ArrayList;
 

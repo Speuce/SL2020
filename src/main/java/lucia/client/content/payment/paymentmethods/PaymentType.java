@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.payment;
+package main.java.lucia.client.content.payment.paymentmethods;
 
 /**
  * An enum to track the various payment types available for orders

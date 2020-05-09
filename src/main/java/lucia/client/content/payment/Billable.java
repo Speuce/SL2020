@@ -1,5 +1,6 @@
 package main.java.lucia.client.content.payment;
 
+import main.java.lucia.client.content.payment.util.TaxData;
 import main.java.lucia.util.currency.CurrencyConverter;
 
 import java.math.BigDecimal;

@@ -1,5 +1,7 @@
 package main.java.lucia.client.content.payment;
 
+import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
+
 public class CashOutOfTill implements Transaction {
 
     private PaymentMethod paymentMethod;

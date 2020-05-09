@@ -1,6 +1,5 @@
 package main.java.lucia.client.content.payment.paymentmethods;
 
-import main.java.lucia.client.content.payment.PaymentMethod;
 import main.java.lucia.client.content.payment.PaymentType;
 
 import java.math.BigDecimal;

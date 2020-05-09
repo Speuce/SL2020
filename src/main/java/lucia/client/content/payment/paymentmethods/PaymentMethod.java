@@ -1,10 +1,8 @@
-package main.java.lucia.client.content.payment;
+package main.java.lucia.client.content.payment.paymentmethods;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import main.java.lucia.client.content.payment.paymentmethods.GiftPayment;
-import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
-import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
+import main.java.lucia.client.content.payment.PaymentType;
 import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
 
 /**

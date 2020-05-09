@@ -1,6 +1,7 @@
 package main.java.lucia.client.content.payment;
 
 
+import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 

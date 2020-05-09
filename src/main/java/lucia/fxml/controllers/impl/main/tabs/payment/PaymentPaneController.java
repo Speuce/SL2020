@@ -14,7 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import main.java.lucia.client.content.payment.PaymentMethod;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 import main.java.lucia.client.content.payment.PaymentType;

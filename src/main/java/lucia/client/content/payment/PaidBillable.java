@@ -1,5 +1,7 @@
 package main.java.lucia.client.content.payment;
 
+import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
+
 /**
  * A Billable that has either already been paid for,
  * or will be paid for in the near future

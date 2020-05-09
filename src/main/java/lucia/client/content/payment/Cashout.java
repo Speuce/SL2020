@@ -1,12 +1,16 @@
-package main.java.lucia.client.content.employee;
+package main.java.lucia.client.content.payment;
 
+import main.java.lucia.client.content.employee.Driver;
+import main.java.lucia.client.content.employee.Employee;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.payment.CashOutOfTill;
 import main.java.lucia.client.content.payment.PaymentType;
-import main.java.lucia.client.content.payment.Transaction;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
+import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.manager.impl.OrderManager;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -98,7 +102,7 @@ public class Cashout {
         this.otherOuts = other;
         this.employee = e;
         this.cashFloat = cashFloat;
-        if(e instanceof  Driver){
+        if(e instanceof Driver){
             employeeKeepsTips = true;
             deliveryFee = true;
             payCash = true;
@@ -106,24 +110,6 @@ public class Cashout {
             payCash = false;
             deliveryFee = false;
             employeeKeepsTips = false;
-        }
-    }
-
-    /**
-     * Recalculates total tips
-     */
-    public void updateTips(){
-        cashTips = 0L;
-        nonCashTips = 0L;
-        for(Transaction o: myOrders){
-            if(o.getPaymentType().equals(PaymentType.CASH)){
-                cashTips += o.getTip(true);
-            }else if(o.getPaymentType().equals(PaymentType.SPLIT)){
-                cashTips += o.getTip(true);
-                nonCashTips += o.getTip(false);
-            }else{
-                nonCashTips += o.getTip(false);
-            }
         }
     }
 
@@ -153,19 +139,53 @@ public class Cashout {
 
     /**
      * Calculates the total cash sales
-     * (does not include tips
+     * (does not include tips)
      */
     public void calcCashSales(){
         cashSales = 0;
         for(Order o: myOrders){
+            for(PaymentMethod m : o.getPayment()){
+                if(m.getPaymentType() == PaymentType.CASH){
+                    cashSales+= m.getAmount();
+                }
+            }
+        }
+    }
 
+
+
+    /**
+     * Calculates the total cash tips
+     */
+    public void calcCashTips(){
+        cashTips = 0;
+        for(Order o: myOrders){
+            for(PaymentMethod m : o.getTips()){
+                if(m.getPaymentType() == PaymentType.CASH){
+                    cashTips+= m.getAmount();
+                }
+            }
+        }
+    }
+
+    /**
+     * Calculates the non-cash tips.
+     */
+    public void calcNonCashTips(){
+        nonCashTips = 0;
+        for(Order o: myOrders){
+            for(PaymentMethod m : o.getTips()){
+                if(m.getPaymentType() != PaymentType.CASH){
+                    nonCashTips+= m.getAmount();
+                }
+            }
         }
     }
 
     public void calcCashOut(){
         otherOut = 0;
         for(CashOutOfTill oth: otherOuts){
-            otherOut = oth.getPaymentMethod().getPrice();
+            otherOut = oth.getPaymentMethod().getAmount();
         }
     }
 
@@ -204,7 +224,9 @@ public class Cashout {
      */
     public void recalculate(){
         calcCashOut();
-        updateTips();
+        //updateTips();
+        calcCashTips();
+        calcNonCashTips();
         calcCashSales();
         calculateDeliveryFees();
         calcPay();

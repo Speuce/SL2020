@@ -43,11 +43,11 @@ public abstract class PaymentMethod {
     public void setP(PaymentType p) {
         this.p = p;
     }
-    public long getPrice() {
+    public long getAmount() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setAmount(long price) {
         this.price = price;
     }
 

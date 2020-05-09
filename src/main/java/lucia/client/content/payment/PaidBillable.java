@@ -17,6 +17,11 @@ public abstract class PaidBillable extends Billable{
     private Payment payment;
 
     /**
+     * The total amount already paid.
+     */
+    private long totalPaid;
+
+    /**
      * The tip.
      */
     private Payment tips;
@@ -30,6 +35,7 @@ public abstract class PaidBillable extends Billable{
         this.payment = new Payment();
         this.tips = new Payment();
         this.server = server;
+        totalPaid = 0;
     }
 
     /**
@@ -81,6 +87,7 @@ public abstract class PaidBillable extends Billable{
     public void payinFullSimple(PaymentType p, long tipAMt){
         payment.clear();
         tips.clear();
+        totalPaid = getGrandTotal();
         addPayment(new SimplePayment(p, getGrandTotal()));
         addTip(new SimplePayment(p, tipAMt));
     }
@@ -93,6 +100,7 @@ public abstract class PaidBillable extends Billable{
     public void payinFullGift(long tipAmt, Integer cardNumber){
         payment.clear();
         tips.clear();
+        totalPaid = getGrandTotal();
         addPayment(new GiftPayment(getGrandTotal(), cardNumber));
         addTip(new GiftPayment(tipAmt, cardNumber));
     }
@@ -102,6 +110,11 @@ public abstract class PaidBillable extends Billable{
      */
     public void addPayment(PaymentMethod m){
         payment.add(m);
+        totalPaid += m.getAmount();
+    }
+
+    public void removePayment(PaymentMethod m){
+
     }
 
     /**
@@ -123,6 +136,28 @@ public abstract class PaidBillable extends Billable{
      */
     public Payment getTips(){
         return tips;
+    }
+
+    /**
+     * Calculates how much is still owed
+     */
+    public long calcRemaining(){
+        return getGrandTotal() - getTotalPaid();
+    }
+
+    public long getTotalPaid(){
+
+    }
+
+    /**
+     * Get how much has already been paid.
+     */
+    private long calcTotalPaid(){
+        long paid = 0;
+        for(PaymentMethod m: payment){
+            paid += m.getAmount();
+        }
+        return paid;
     }
 
 

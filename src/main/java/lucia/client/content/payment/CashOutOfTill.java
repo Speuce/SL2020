@@ -2,7 +2,7 @@ package main.java.lucia.client.content.payment;
 
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 
-public class CashOutOfTill implements Transaction {
+public class CashOutOfTill {
 
     private PaymentMethod paymentMethod;
 
@@ -13,12 +13,10 @@ public class CashOutOfTill implements Transaction {
         this.reason = reason;
     }
 
-    @Override
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    @Override
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }

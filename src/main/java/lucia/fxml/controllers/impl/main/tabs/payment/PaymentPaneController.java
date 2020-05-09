@@ -16,7 +16,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
-import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 import main.java.lucia.client.content.payment.PaymentType;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
@@ -504,7 +503,7 @@ public class PaymentPaneController {
                 paytype.setPrefSize(125, 35);
                 gridHighlighter.registerNode(paytype);
 
-                Label payAmt = new Label(NumberFormat.getCurrencyInstance().format(single.getPrice()/100.0));
+                Label payAmt = new Label(NumberFormat.getCurrencyInstance().format(single.getAmount()/100.0));
                 payAmt.setPrefSize(200, 35);
                 payAmt.setFont(parent.pt25Font);
                 gridHighlighter.registerNode(payAmt);

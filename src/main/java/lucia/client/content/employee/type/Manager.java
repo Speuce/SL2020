@@ -1,10 +1,10 @@
-package main.java.lucia.client.content.employee;
+package main.java.lucia.client.content.employee.type;
 
 /** Represents a manager, which is an employee
  *
  * @author Matt Kwiatkowski
  */
-public class Manager extends Employee{
+public class Manager extends Employee {
 
 //    /**
 //     * The specific id of this pizza on the server.

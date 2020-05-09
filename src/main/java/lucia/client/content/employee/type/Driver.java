@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.employee;
+package main.java.lucia.client.content.employee.type;
 
 public class Driver extends Employee {
 

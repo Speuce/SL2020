@@ -9,7 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import main.java.lucia.client.content.employee.Employee;
+import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessage;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;

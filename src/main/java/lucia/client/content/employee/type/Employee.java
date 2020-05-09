@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.employee;
+package main.java.lucia.client.content.employee.type;
 
 import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import java.util.TreeSet;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import main.java.lucia.client.content.customer.ComplaintAction;
+import main.java.lucia.client.content.employee.*;
 import main.java.lucia.client.content.payment.CashOutOfTill;
 import main.java.lucia.client.content.payment.Cashout;
 import main.java.lucia.client.content.time.ClientTime;

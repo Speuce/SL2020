@@ -3,7 +3,7 @@ package main.java.lucia.client.content.order.impl;
 import main.java.lucia.Client;
 import main.java.lucia.client.content.customer.Complaint;
 import main.java.lucia.client.content.customer.CustomerDetails;
-import main.java.lucia.client.content.employee.Driver;
+import main.java.lucia.client.content.employee.type.Driver;
 import main.java.lucia.client.content.order.OrderType;
 import main.java.lucia.client.content.order.pricing.DiscountOthersCalculator;
 import main.java.lucia.client.content.time.ClientTime;

@@ -3,11 +3,9 @@ package main.java.lucia.client.content.payment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import main.java.lucia.client.content.payment.paymentmethods.GiftPayment;
-import main.java.lucia.client.content.payment.paymentmethods.SinglePayment;
+import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * a class representing a payment with type
@@ -15,7 +13,14 @@ import java.math.RoundingMode;
  */
 public abstract class Payment {
 
+    /**
+     * The method of payment
+     */
     private PaymentType p;
+
+    /**
+     * The amount paid
+     */
     private long price;
 
     public Payment(PaymentType p, long price){
@@ -51,7 +56,7 @@ public abstract class Payment {
     public static RuntimeTypeAdapterFactory<Payment> getPaymentAdapterFactory(){
         if(paymentAdapterFactory == null){
             paymentAdapterFactory = RuntimeTypeAdapterFactory.of(Payment.class)
-                    .registerSubtype(SinglePayment.class, "SinglePayment")
+                    .registerSubtype(SimplePayment.class, "SinglePayment")
                     .registerSubtype(GiftPayment.class, "GiftPayment")
                     .registerSubtype(SplitPayment.class, "SplitPayment");
         }

@@ -15,23 +15,23 @@ public class SplitPayment extends Payment {
     /**
      * The set of payments that this split payment cosists of
      */
-    private LinkedList<SinglePayment> paymentSet;
+    private LinkedList<SimplePayment> paymentSet;
 
     public SplitPayment(long price) {
         super(PaymentType.SPLIT, price);
-        paymentSet = new LinkedList<SinglePayment>();
+        paymentSet = new LinkedList<SimplePayment>();
     }
 
     /**
      * Adds a payment to the split payment
      * @param p
      */
-    public void addPayment(SinglePayment p){
+    public void addPayment(SimplePayment p){
         paymentSet.add(p);
     }
     public long getTotalTips(){
         long ret = 0;
-        for(SinglePayment p: paymentSet){
+        for(SimplePayment p: paymentSet){
             if(p.hasTip()){
                ret += p.getTip();
             }
@@ -41,7 +41,7 @@ public class SplitPayment extends Payment {
 
     public long getTotalCashTips(){
         long ret = 0;
-        for(SinglePayment p: paymentSet){
+        for(SimplePayment p: paymentSet){
             if(p.hasTip() && p.getPaymentType().equals(PaymentType.CASH)){
                 ret += p.getTip();
             }
@@ -50,7 +50,7 @@ public class SplitPayment extends Payment {
     }
     public long getTotalNonCashTips(){
         long ret = 0;
-        for(SinglePayment p: paymentSet){
+        for(SimplePayment p: paymentSet){
             if(p.hasTip() && !p.getPaymentType().equals(PaymentType.CASH)){
                 ret += p.getTip();
             }
@@ -65,13 +65,13 @@ public class SplitPayment extends Payment {
      */
     public long getRemainingPrice(){
         long remaining = getPrice();
-        for(SinglePayment p: paymentSet){
+        for(SimplePayment p: paymentSet){
             remaining -= p.getPrice();
         }
         return (remaining);
     }
 
-    public LinkedList<SinglePayment> getPaymentSet() {
+    public LinkedList<SimplePayment> getPaymentSet() {
         return paymentSet;
     }
 }

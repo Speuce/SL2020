@@ -8,7 +8,7 @@ import main.java.lucia.client.content.payment.PaymentType;
  * @author Matt Kwiatkowski
  * For GSON usage see Payment.java
  */
-public class GiftPayment extends SinglePayment {
+public class GiftPayment extends SimplePayment {
 
     public Integer giftCertificateNumber;
 

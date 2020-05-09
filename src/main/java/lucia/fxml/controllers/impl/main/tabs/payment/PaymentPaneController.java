@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.content.payment.Payment;
-import main.java.lucia.client.content.payment.paymentmethods.SinglePayment;
+import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 import main.java.lucia.client.content.payment.PaymentType;
 import main.java.lucia.client.content.order.Order;
@@ -26,7 +26,6 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPan
 
 import java.awt.*;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Map;
@@ -408,7 +407,7 @@ public class PaymentPaneController {
                         wrong(amountPaidBox);
                         return;
                     }
-                    SinglePayment pay = new SinglePayment(PaymentType.CASH, parent.getHighlightedOrder().getGrandTotalLongWithTax());
+                    SimplePayment pay = new SimplePayment(PaymentType.CASH, parent.getHighlightedOrder().getGrandTotalLongWithTax());
                     if(tip > 0){
                         pay.setTip(Math.round(tip*100));
                     }
@@ -416,7 +415,7 @@ public class PaymentPaneController {
                     closePayArea();
                 }else{
                     long amtToPay = Math.round(parse(amountPaidBox.getText())*100);
-                    SinglePayment pay = new SinglePayment(PaymentType.CASH, amtToPay);
+                    SimplePayment pay = new SimplePayment(PaymentType.CASH, amtToPay);
                     ((SplitPayment)currentPayment).addPayment(pay);
                     closePayArea();
                 }
@@ -440,13 +439,13 @@ public class PaymentPaneController {
                     wrong(cardAmtPaidBox);
                     return;
                 }
-                SinglePayment pay = new SinglePayment(currentPaymentType, paid);
+                SimplePayment pay = new SimplePayment(currentPaymentType, paid);
                 if(tip > 0){
                     pay.setTip(tip);
                 }
                 ((SplitPayment)currentPayment).addPayment(pay);
             }else{
-                SinglePayment pay = new SinglePayment(currentPaymentType, parent.getHighlightedOrder().getGrandTotalLongWithTax());
+                SimplePayment pay = new SimplePayment(currentPaymentType, parent.getHighlightedOrder().getGrandTotalLongWithTax());
                 currentPayment = pay;
             }
             closePayArea();
@@ -499,7 +498,7 @@ public class PaymentPaneController {
                 return;
             }
             int index = 0;
-            for(SinglePayment single: r.getPaymentSet()){
+            for(SimplePayment single: r.getPaymentSet()){
                 Label paytype = new Label(single.getPaymentType().getDisplayCode());
                 paytype.setFont(parent.pt25Font);
                 paytype.setPrefSize(125, 35);

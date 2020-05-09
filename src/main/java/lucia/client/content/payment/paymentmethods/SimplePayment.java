@@ -8,17 +8,17 @@ import main.java.lucia.client.content.payment.PaymentType;
  * @author Matt Kwiatkowski
  * For GSON usage see Payment.java
  */
-public class SinglePayment extends Payment {
+public class SimplePayment extends Payment {
 
     /**
      * The tip given with the payment
      */
     private long tip = 0l;
 
-    public SinglePayment(PaymentType p, long price) {
+    public SimplePayment(PaymentType p, long price) {
         super(p, price);
     }
-    public SinglePayment(PaymentType p) {
+    public SimplePayment(PaymentType p) {
         super(p);
     }
 

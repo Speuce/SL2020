@@ -1,15 +1,13 @@
 package main.java.lucia.client.content.payment;
 
-import main.java.lucia.client.content.payment.paymentmethods.SinglePayment;
-
-import java.math.BigDecimal;
+import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 
 /**
  * Class representing a tip given to an employee/store
  * @author Matt Kwiatkowski
  * For GSON usage see payment.java
  */
-public class Tip extends SinglePayment {
+public class Tip extends SimplePayment {
 
     /**
      * The employee ID of the employee that received this tip

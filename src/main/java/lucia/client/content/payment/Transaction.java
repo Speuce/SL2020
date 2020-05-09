@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.payment;
 
 
-import main.java.lucia.client.content.payment.paymentmethods.SinglePayment;
+import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 
 /**
@@ -29,8 +29,8 @@ public interface Transaction {
   default long getTip(boolean cash) {
     if (this.getPayment() == null) {
       return 0L;
-    } else if (this.getPayment() instanceof SinglePayment) {
-      return ((SinglePayment) this.getPayment()).getTip();
+    } else if (this.getPayment() instanceof SimplePayment) {
+      return ((SimplePayment) this.getPayment()).getTip();
     } else if (this.getPayment() instanceof SplitPayment) {
       SplitPayment r = (SplitPayment) this.getPayment();
       if (cash) {

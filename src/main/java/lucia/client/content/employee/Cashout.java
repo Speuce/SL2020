@@ -4,7 +4,7 @@ import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.payment.CashOutOfTill;
 import main.java.lucia.client.content.payment.PaymentType;
 import main.java.lucia.client.content.payment.Transaction;
-import main.java.lucia.client.content.payment.paymentmethods.SinglePayment;
+import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.content.payment.paymentmethods.SplitPayment;
 import main.java.lucia.client.manager.impl.OrderManager;
 
@@ -160,7 +160,7 @@ public class Cashout {
                     cashSales+=o.getPayment().getPrice();
                 }else if(o.getPayment() instanceof SplitPayment){
                     SplitPayment r = (SplitPayment) o.getPayment();
-                    for(SinglePayment sub : r.getPaymentSet()){
+                    for(SimplePayment sub : r.getPaymentSet()){
                         if(sub.getPaymentType().equals(PaymentType.CASH)){
                             cashSales += sub.getPrice();
                         }
@@ -200,7 +200,7 @@ public class Cashout {
     private void calcExcess(){
         if(cashToStore < 0){
             excess = new CashOutOfTill(employee.getShorterName() + "'s Cashout",
-                    new SinglePayment(PaymentType.CASH, Math.abs(cashToStore)));
+                    new SimplePayment(PaymentType.CASH, Math.abs(cashToStore)));
         }else{
             excess = null;
         }

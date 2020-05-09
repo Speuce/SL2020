@@ -3,8 +3,6 @@ package main.java.lucia.client.content.payment;
 import main.java.lucia.client.content.employee.Driver;
 import main.java.lucia.client.content.employee.Employee;
 import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.content.payment.CashOutOfTill;
-import main.java.lucia.client.content.payment.PaymentType;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.manager.impl.OrderManager;

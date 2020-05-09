@@ -3,7 +3,7 @@ package main.java.lucia.client;
 import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import main.java.lucia.Client;
-import main.java.lucia.client.content.employee.TaskComplete;
+import main.java.lucia.client.content.utils.TaskComplete;
 import main.java.lucia.consts.ClientConstants;
 
 import java.util.concurrent.*;

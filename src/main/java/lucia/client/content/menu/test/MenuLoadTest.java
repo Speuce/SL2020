@@ -12,7 +12,7 @@ import java.io.File;
 public class MenuLoadTest {
 
     public static void main(String[] args){
-        File menu = new File("src/main/resources/menutest.json");
+        File menu = new File("src/main/resources/menu.json");
         Menu.get.loadMenu(menu);
         Menu.get.printMenu(System.out);
         ((PrintablePizzaMenu)Menu.pizza).print(System.out);

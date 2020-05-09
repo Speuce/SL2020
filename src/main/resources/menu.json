@@ -1,25 +1,55 @@
 {
   "menu": {
-    "appetizers": [
+    "Appetizers": [
       {
         "type": "SimpleItemDescriptor",
-        "price": 700,
-        "baseName": "cheese toast",
+        "price": 150,
+        "baseName": "Garlic Toast",
         "defaultColor": "#FFFFFF",
         "selectedColor": "#FFFFFF",
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
-        "id": 2
+        "id": 1001
       },
       {
         "type": "SimpleItemDescriptor",
-        "price": 495,
-        "baseName": "french fries",
+        "price": 700,
+        "baseName": "Cheese Toast",
         "defaultColor": "#FFFFFF",
         "selectedColor": "#FFFFFF",
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
-        "id": 3
+        "id": 1002
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 475,
+        "baseName": "French Fries",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 1003
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 875,
+        "baseName": "Poutine",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 1004
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 150,
+        "baseName": "x3 Garlic Toast",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 1005
       },
       {
         "type": "ItemModifiableDescriptor",
@@ -28,40 +58,892 @@
           5
         ],
         "price": 1295,
-        "baseName": "wings",
+        "baseName": "Wings",
         "defaultColor": "#FFFFFF",
         "selectedColor": "#FFFFFF",
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
-        "id": 6
+        "id": 1006
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 895,
+        "baseName": "Mozza Bread Sticks",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 1007
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 725,
+        "baseName": "Bread Sticks",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 1008
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "isDiscountable": false,
+        "price": 495,
+        "baseName": "Chicken Skewer",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 1009
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "isDiscountable": false,
+        "price": 495,
+        "baseName": "Shrimp Skewer",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 1010
       }
     ],
-    "Sauces": [
+    "Italian": [
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1530,
+        "baseName": "Ravioli",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 2001
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1500,
+        "baseName": "Manicotti",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 2002
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1530,
+        "baseName": "Lasagna",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 2003
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1530,
+        "baseName": "Spaghetti",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 2004
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1530,
+        "baseName": "Fettuccine Alfredo",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 2005
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1530,
+        "baseName": "Penne",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 2006
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1895,
+        "baseName": "Chicken Parmesan",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 2007
+      }
+    ],
+    "Chicken": [
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1095,
+        "baseName": "Chicken Strips",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 3001
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1395,
+        "baseName": "Chicken Dinner",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 3002
+      }
+    ],
+    "Salad": [
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1250,
+        "baseName": "Cheese Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4001
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1445,
+        "baseName": "Chef Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4002
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1095,
+        "baseName": "Caesar Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4003
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1250,
+        "baseName": "Greek Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4004
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 695,
+        "baseName": "Small Garden Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4005
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 1095,
+        "baseName": "Large Garden Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4006
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 650,
+        "baseName": "Starter Caesar Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4007
+      },
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          4,
+          5
+        ],
+        "price": 675,
+        "baseName": "Starter Greek Salad",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4008
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 275,
+        "baseName": "Regular Coleslaw",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4009
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 495,
+        "baseName": "Large Coleslaw",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 4010
+      }
+    ],
+    "Beverage": [
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 225,
+        "baseName": "Water Bottle",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5001
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 125,
+        "baseName": "Can Coke",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5002
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 125,
+        "baseName": "Can Coke Zero",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5003
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 125,
+        "baseName": "Can Sprite",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5004
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 125,
+        "baseName": "Can Orange",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5005
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 125,
+        "baseName": "Can Rootbeer",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5006
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 125,
+        "baseName": "Can Iced Tea",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5007
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 350,
+        "baseName": "2L Coke",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5008
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 350,
+        "baseName": "2L Coke Zero",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5009
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 350,
+        "baseName": "2L Sprite",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5010
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 350,
+        "baseName": "2L Rootbeer",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5011
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 350,
+        "baseName": "2L Iced Tea",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 5012
+      }
+    ],
+    "Addons": [
       {
         "type": "AddonDescriptor",
         "isDiscountable": false,
-        "price": 0,
-        "baseName": "hot sauce",
+        "price": 475,
+        "baseName": "Meatballs",
         "defaultColor": "#FFFFFF",
         "selectedColor": "#FFFFFF",
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
-        "id": 4
+        "id": 6001
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 495,
+        "baseName": "Chicken",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6002
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 495,
+        "baseName": "Shrimp",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6003
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 250,
+        "baseName": "Cheese Toast Upgrade",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6004
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 250,
+        "baseName": "Mushroom",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6005
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 400,
+        "baseName": "Poutine Upgrade",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6006
       },
       {
         "type": "AddonDescriptor",
         "isDiscountable": false,
         "price": 0,
-        "baseName": "bbq sauce",
+        "baseName": "Starter Caesar Salad",
         "defaultColor": "#FFFFFF",
         "selectedColor": "#FFFFFF",
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
-        "id": 5
+        "id": 6007
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Coleslaw",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6008
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Small Alfredo",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6009
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Mustard",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7001
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Mayo",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7002
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Hot",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7003
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "BBQ",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7004
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Marinara",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7005
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Honey Dill",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7006
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Honey Mustard",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7007
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Sweet Chili",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7008
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Caesar Dressing",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7009
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Greek Dressing",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7010
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Ranch Dressing",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7011
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Rasp. Vin",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7012
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Suicidal",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7013
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Fire",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7014
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Spicy Caesar",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7015
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Cajun",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7016
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Parmesan",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7017
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Chili Flakes",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7018
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Honey Garlic",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7019
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Meatsauce",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7020
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "1000 isl. Dressing",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7021
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Italian Dressing",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7022
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Sour Cream",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7023
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Pineapple Curry",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7024
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Tzatziki",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7025
+      }
+    ],
+    "Sauces": [
+      {
+        "type": "ItemModifiableDescriptor",
+        "addons": [
+          7001,
+          7002,
+          7003,
+          7004,
+          7005,
+          7006,
+          7007,
+          7008,
+          7009,
+          7010,
+          7011,
+          7012,
+          7013,
+          7014,
+          7015,
+          7016,
+          7017,
+          7018,
+          7019,
+          7020,
+          7021,
+          7022,
+          7023,
+          7024,
+          7025
+        ],
+        "price": 100,
+        "baseName": "Extra Dip",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 8001
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 395,
+        "baseName": "Large Gravy",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 8002
+      },
+      {
+        "type": "SimpleItemDescriptor",
+        "price": 195,
+        "baseName": "Small Gravy",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 8003
       }
     ],
     "sections": [
-      "appetizers",
+      "Appetizers",
+      "Italian",
+      "Chicken",
+      "Salad",
+      "Beverage",
+      "Addons",
       "Sauces"
     ]
   },

@@ -1,9 +1,8 @@
 package main.java.lucia.client.content.time;
 
 import com.google.gson.*;
-import main.java.lucia.Client;
+
 import java.lang.reflect.Type;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -196,7 +195,9 @@ public class ClientTime {
    * @return the {@link JsonSerializer} for ClientTime objects
    */
   public static JsonSerializer<ClientTime> getJsonSerializer(){
-    return (src, typeOfSrc, context) -> new JsonPrimitive(src.toString(TimeFormat.FORMATTER_ISO_STANDARD));
+    return new JsonSerializer<ClientTime>() {
+
+    };
   }
 
   /**
@@ -204,13 +205,8 @@ public class ClientTime {
    * @return the {@link JsonDeserializer} for ClientTime objects
    */
   public static JsonDeserializer<ClientTime> getJsonDeserializer(){
-    return (json, typeOfT, context) -> {
-      try {
-        return new ClientTime(LocalDateTime.parse(json.getAsString(), TimeFormat.FORMATTER_ISO_STANDARD.getFormat()));
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-      return null;
+    return new JsonDeserializer<ClientTime>() {
+
     };
   }
 }

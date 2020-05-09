@@ -2,6 +2,7 @@ package main.java.lucia.client.content.payment.paymentmethods;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
 
 /**
@@ -17,6 +18,11 @@ public abstract class PaymentMethod {
     private int rowNum = -1;
 
     /**
+     * The time that this payment was done/entered.
+     */
+    private ClientTime time;
+
+    /**
      * The method of payment
      */
     private PaymentType p;
@@ -26,9 +32,10 @@ public abstract class PaymentMethod {
      */
     private long price;
 
-    public PaymentMethod(PaymentType p, long price){
+    public PaymentMethod(PaymentType p, long price, ClientTime time){
         this.p = p;
         this.price = price;
+        this.time = time;
     }
 
     public PaymentMethod(PaymentType p) {

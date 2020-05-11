@@ -57,7 +57,7 @@ public abstract class PaidBillable extends Billable{
      * @return true if the billable is paid
      */
     public boolean isPaid(){
-        return this.payment.isEmpty();
+        return this.totalPaid>=this.getGrandTotal();
     }
 
     /**

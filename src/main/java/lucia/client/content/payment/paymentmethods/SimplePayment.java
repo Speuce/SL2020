@@ -18,9 +18,10 @@ public class SimplePayment extends PaymentMethod {
     public SimplePayment(PaymentType p, long amount) {
         super(p, amount, LocalDateTime.now());
         //preconditions: payment type is not AR, cheque, or gift
-        assert(p != PaymentType.GIFT);
+        //assert(p != PaymentType.GIFT);
         assert(p != PaymentType.CHEQUE);
     }
+
 
     public SimplePayment(PaymentType p, long price, LocalDateTime time) {
         super(p, price, time);

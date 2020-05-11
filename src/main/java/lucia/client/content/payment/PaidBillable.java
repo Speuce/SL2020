@@ -87,7 +87,6 @@ public abstract class PaidBillable extends Billable{
     public void payinFullSimple(PaymentType p, long tipAMt){
         payment.clear();
         tips.clear();
-        totalPaid = getGrandTotal();
         addPayment(new SimplePayment(p, getGrandTotal()));
         addTip(new SimplePayment(p, tipAMt));
     }
@@ -165,6 +164,15 @@ public abstract class PaidBillable extends Billable{
      */
     public long getTotalPaid(){
         return totalPaid;
+    }
+
+    /**
+     * Clears ALL payments on this billable (including tips!!)
+     */
+    public void clearPayments(){
+        payment.clear();
+        tips.clear();
+        totalPaid = 0;
     }
 
 //    /**

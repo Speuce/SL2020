@@ -131,12 +131,12 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
         }
 
         //Print Phone Number, Order Number, and payment type
-        if(this.getPaymentMethod() != null){
+        if(this.getPaymentType() != null){
             graphics.drawString("Phone: " + getCustomerDetails().getPhoneNumberFormatted() + " Order #" +
-                            this.getOrderNumber() + " Pay: " + this.getPaymentMethod().getPaymentType().getDisplayCode(), X_OFFSET,
+                            this.getOrderNumber() + " Pay: " + this.getPaymentType().getDisplayCode(), X_OFFSET,
                     HEADER_OFFSET + (LINE_SPACING * 3) + 6);
             graphics.drawString("Phone: " + getCustomerDetails().getPhoneNumberFormatted() + " Order #" +
-                            this.getOrderNumber() + " Pay: " + this.getPaymentMethod().getPaymentType().getDisplayCode(), X_OFFSET,
+                            this.getOrderNumber() + " Pay: " + this.getPaymentType().getDisplayCode(), X_OFFSET,
                     HEADER2_OFFSET + (LINE_SPACING * 3) + 6);
         }else{
             graphics.drawString("Phone: " + getCustomerDetails().getPhoneNumberFormatted() + " Order #" +

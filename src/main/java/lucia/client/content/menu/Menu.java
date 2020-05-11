@@ -247,6 +247,21 @@ public class Menu {
                 a.getBaseName(), a.getId(), a.getBasePrice(), a.isDiscountable() );
     }
 
+    /**
+     * Loads the menu frm menutest.json
+     */
+    public static void loadFromTestMenu(){
+        File menu = new File("src/main/resources/menutest.json");
+        Menu.get.loadMenu(menu);
+    }
+
+    /**
+     * Loads the menu frm menu.json
+     */
+    public static void loadFromMenu(){
+        File menu = new File("src/main/resources/menu.json");
+        Menu.get.loadMenu(menu);
+    }
 
 
 

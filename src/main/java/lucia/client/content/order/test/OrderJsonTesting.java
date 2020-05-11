@@ -23,6 +23,8 @@ public class OrderJsonTesting {
         order.addItem(ItemTester.build10Chz());
         order.addItem(ItemTester.getSomeSimpleItem());
 
+
+
         System.out.println(ItemGson.ITEM_GSON.toJson(order));
 
     }

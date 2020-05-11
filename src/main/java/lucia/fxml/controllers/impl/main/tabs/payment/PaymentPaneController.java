@@ -354,7 +354,7 @@ public class PaymentPaneController {
             }else if(currentSelected != null){
                 openCardPane();
             }
-            currentPaymentMethod = new SplitPayment(parent.getHighlightedOrder().getGrandTotalLongWithTax());
+            //currentPaymentMethod = new SplitPayment(parent.getHighlightedOrder().getGrandTotalLongWithTax());
         }
     }
 
@@ -380,8 +380,8 @@ public class PaymentPaneController {
         String selected = selectServerBox.getValue();
         Integer id = EmployeePane.instance.getEmployeeId(selected);
         o.setServer(id);
-        o.setPaymentMethod(currentPaymentMethod);
-        o.setPaymentType(currentPaymentMethod.getPaymentType());
+        //o.setPaymentMethod(currentPaymentMethod);
+       // o.setPaymentType(currentPaymentMethod.getPaymentType());
         parent.completeOrder(o);
         parent.setPaymentPaneVisible(false);
     }
@@ -408,14 +408,14 @@ public class PaymentPaneController {
                     }
                     SimplePayment pay = new SimplePayment(PaymentType.CASH, parent.getHighlightedOrder().getGrandTotalLongWithTax());
                     if(tip > 0){
-                        pay.setTip(Math.round(tip*100));
+                        //pay.setTip(Math.round(tip*100));
                     }
                     currentPaymentMethod = pay;
                     closePayArea();
                 }else{
                     long amtToPay = Math.round(parse(amountPaidBox.getText())*100);
                     SimplePayment pay = new SimplePayment(PaymentType.CASH, amtToPay);
-                    ((SplitPayment) currentPaymentMethod).addPayment(pay);
+                    //((SplitPayment) currentPaymentMethod).addPayment(pay);
                     closePayArea();
                 }
 
@@ -440,9 +440,9 @@ public class PaymentPaneController {
                 }
                 SimplePayment pay = new SimplePayment(currentPaymentType, paid);
                 if(tip > 0){
-                    pay.setTip(tip);
+                    //pay.setTip(tip);
                 }
-                ((SplitPayment) currentPaymentMethod).addPayment(pay);
+               // ((SplitPayment) currentPaymentMethod).addPayment(pay);
             }else{
                 SimplePayment pay = new SimplePayment(currentPaymentType, parent.getHighlightedOrder().getGrandTotalLongWithTax());
                 currentPaymentMethod = pay;
@@ -470,9 +470,9 @@ public class PaymentPaneController {
     @FXML
     private void deletePayment(MouseEvent e){
         if(gridHighlighter.getHighLightedRow() > -1){
-            SplitPayment sp = (SplitPayment) currentPaymentMethod;
+            //SplitPayment sp = (SplitPayment) currentPaymentMethod;
 
-            sp.getPaymentSet().remove(gridHighlighter.getHighLightedRow());
+            //sp.getPaymentSet().remove(gridHighlighter.getHighLightedRow());
 
             resetPaymentTracker();
         }
@@ -490,41 +490,41 @@ public class PaymentPaneController {
     private void resetPaymentTracker(){
         //remove old
         SplitPayGridPane.getChildren().clear();
-        if(currentPaymentMethod instanceof SplitPayment){
-            SplitPayment r = (SplitPayment) currentPaymentMethod;
-            if(Math.abs(r.getRemainingPrice()) <= 2){
-                showServerSelector();
-                return;
-            }
-            int index = 0;
-            for(SimplePayment single: r.getPaymentSet()){
-                Label paytype = new Label(single.getPaymentType().getDisplayCode());
-                paytype.setFont(parent.pt25Font);
-                paytype.setPrefSize(125, 35);
-                gridHighlighter.registerNode(paytype);
-
-                Label payAmt = new Label(NumberFormat.getCurrencyInstance().format(single.getAmount()/100.0));
-                payAmt.setPrefSize(200, 35);
-                payAmt.setFont(parent.pt25Font);
-                gridHighlighter.registerNode(payAmt);
-
-                SplitPayGridPane.add(paytype, 0, index);
-                SplitPayGridPane.add(payAmt, 1, index);
-
-                index++;
-            }
-            long owed = r.getRemainingPrice();
-            if(owed < 0){
-                stillOwedLabel.setStyle("-fx-background-color:#D16666;");
-                customerOverpayLabel.setVisible(true);
-            }else{
-                stillOwedLabel.setStyle("-fx-background-color:#D3D3D3;");
-                customerOverpayLabel.setVisible(false);
-            }
-            stillOwedLabel.setText(NumberFormat.getCurrencyInstance().format(r.getRemainingPrice()/100.0));
-            paymentTrackerPane.setVisible(true);
-
-        }
+//        if(currentPaymentMethod instanceof SplitPayment){
+//            SplitPayment r = (SplitPayment) currentPaymentMethod;
+//            if(Math.abs(r.getRemainingPrice()) <= 2){
+//                showServerSelector();
+//                return;
+//            }
+//            int index = 0;
+//            for(SimplePayment single: r.getPaymentSet()){
+//                Label paytype = new Label(single.getPaymentType().getDisplayCode());
+//                paytype.setFont(parent.pt25Font);
+//                paytype.setPrefSize(125, 35);
+//                gridHighlighter.registerNode(paytype);
+//
+//                Label payAmt = new Label(NumberFormat.getCurrencyInstance().format(single.getAmount()/100.0));
+//                payAmt.setPrefSize(200, 35);
+//                payAmt.setFont(parent.pt25Font);
+//                gridHighlighter.registerNode(payAmt);
+//
+//                SplitPayGridPane.add(paytype, 0, index);
+//                SplitPayGridPane.add(payAmt, 1, index);
+//
+//                index++;
+//            }
+//            //long owed = r.getRemainingPrice();
+//            if(owed < 0){
+//                stillOwedLabel.setStyle("-fx-background-color:#D16666;");
+//                customerOverpayLabel.setVisible(true);
+//            }else{
+//                stillOwedLabel.setStyle("-fx-background-color:#D3D3D3;");
+//                customerOverpayLabel.setVisible(false);
+//            }
+//            //stillOwedLabel.setText(NumberFormat.getCurrencyInstance().format(r.getRemainingPrice()/100.0));
+//            paymentTrackerPane.setVisible(true);
+//
+//        }
 
 
     }

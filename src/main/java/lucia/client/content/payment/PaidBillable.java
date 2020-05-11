@@ -1,6 +1,7 @@
 package main.java.lucia.client.content.payment;
 
 import main.java.lucia.client.content.payment.paymentmethods.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A Billable that has either already been paid for,
@@ -29,10 +30,10 @@ public abstract class PaidBillable extends Billable{
      */
     private int server;
 
-    public PaidBillable(int server) {
+    public PaidBillable() {
         this.payment = new Payment();
         this.tips = new Payment();
-        this.server = server;
+        this.server = -1;
         totalPaid = 0;
     }
 
@@ -41,6 +42,7 @@ public abstract class PaidBillable extends Billable{
      * @return the main payment method (if there is only one)
      * or SPLIT if there is more than one.
      */
+    @NotNull
     public PaymentType getPaymentType(){
         if(payment.size() == 1){
             return payment.get(0).getPaymentType();
@@ -111,8 +113,23 @@ public abstract class PaidBillable extends Billable{
         totalPaid += m.getAmount();
     }
 
+    /**
+     * Removes a payment methdd
+     * @param m the payment method to remove.
+     */
     public void removePayment(PaymentMethod m){
+        if(payment.remove(m)){
+            totalPaid-=m.getAmount();
+        }
+    }
 
+    /**
+     * Removes a payment method
+     * @param n the payment method to remove
+     */
+    public void removePayment(int n){
+        assert(n <= payment.size());
+        removePayment(payment.get(n));
     }
 
     /**
@@ -143,20 +160,23 @@ public abstract class PaidBillable extends Billable{
         return getGrandTotal() - getTotalPaid();
     }
 
-    public long getTotalPaid(){
-
-    }
-
     /**
-     * Get how much has already been paid.
+     * @return the amount of money paid in total (minus tips)
      */
-    private long calcTotalPaid(){
-        long paid = 0;
-        for(PaymentMethod m: payment){
-            paid += m.getAmount();
-        }
-        return paid;
+    public long getTotalPaid(){
+        return totalPaid;
     }
+
+//    /**
+//     * Get how much has already been paid.
+//     */
+//    private long calcTotalPaid(){
+//        long paid = 0;
+//        for(PaymentMethod m: payment){
+//            paid += m.getAmount();
+//        }
+//        return paid;
+//    }
 
 
 

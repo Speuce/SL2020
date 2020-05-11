@@ -1,9 +1,8 @@
 package main.java.lucia.client.content.payment.paymentmethods;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
+
+import java.time.LocalDateTime;
 
 /**
  * a class representing a payment with type
@@ -20,7 +19,7 @@ public abstract class PaymentMethod {
     /**
      * The time that this payment was done/entered.
      */
-    private ClientTime time;
+    private LocalDateTime time;
 
     /**
      * The method of payment
@@ -32,7 +31,7 @@ public abstract class PaymentMethod {
      */
     private long price;
 
-    public PaymentMethod(PaymentType p, long price, ClientTime time){
+    public PaymentMethod(PaymentType p, long price, LocalDateTime time){
         this.p = p;
         this.price = price;
         this.time = time;
@@ -46,15 +45,29 @@ public abstract class PaymentMethod {
         return p;
     }
 
-    public void setP(PaymentType p) {
+    public void setPaymentType(PaymentType p) {
         this.p = p;
     }
+
+    /**
+     * Get the amount paid by this payment method
+     */
     public long getAmount() {
         return price;
     }
 
+    /**
+     * Set the amount paid by this payment method
+     */
     public void setAmount(long price) {
         this.price = price;
+    }
+
+    /**
+     * Get the original time of this payment method
+     */
+    public LocalDateTime getTime() {
+        return time;
     }
 
     /**
@@ -70,14 +83,6 @@ public abstract class PaymentMethod {
                     .registerSubtype(GiftPayment.class, "gift");
         }
         return paymentAdapterFactory;
-    }
-
-    /**
-     * Used for getting the serializer for payments
-     * @return {@link Gson} that can be used to serialize payment objects
-     */
-    public static Gson getGson(){
-        return new GsonBuilder().registerTypeAdapterFactory(getPaymentAdapterFactory()).setPrettyPrinting().serializeNulls().create();
     }
 
     public static long nearest5(long cents){

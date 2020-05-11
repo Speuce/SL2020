@@ -1,12 +1,5 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs;
 
-import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -26,12 +19,20 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
 import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
+
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * The controller which controls the view pre-orders pane
@@ -265,7 +266,7 @@ public class ViewPreordersPane implements Controller {
       registerItem(cost, 5);
       viewOrderGridpane.add(cost, 5, row);
 
-      if(r.getPaymentMethod() != null){
+      if(r.getPaymentType() != PaymentType.UNPAID){
         Label paytype = new Label(" "+ r.getPaymentType().getDisplayCode());
         registerItem(paytype, 6);
         viewOrderGridpane.add(paytype, 6, row);

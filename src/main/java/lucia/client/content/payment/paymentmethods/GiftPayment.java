@@ -2,6 +2,8 @@ package main.java.lucia.client.content.payment.paymentmethods;
 
 import main.java.lucia.client.content.payment.util.GiftCard;
 
+import java.time.LocalDateTime;
+
 /**
  * A gift certificate payment
  * @author Matt Kwiatkowski
@@ -23,6 +25,17 @@ public class GiftPayment extends SimplePayment {
         super(PaymentType.GIFT, price);
         giftCertificateNumber = number;
     }
+
+    public GiftPayment(long price , GiftCard c, LocalDateTime time) {
+        super(PaymentType.GIFT, price, time);
+        giftCertificateNumber = c.getCardNumber();
+    }
+
+    public GiftPayment(long price , Integer number, LocalDateTime time) {
+        super(PaymentType.GIFT, price, time);
+        giftCertificateNumber = number;
+    }
+
 
 
     /**

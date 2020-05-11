@@ -1,17 +1,6 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers;
 
 import com.jfoenix.controls.*;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.text.DecimalFormat;
-import java.text.ParsePosition;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,7 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.control.TextInputControl;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -31,7 +23,6 @@ import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.content.javascript.JavaScriptBridge;
 import main.java.lucia.client.content.order.impl.Address;
-import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.protocol.message.impl.customer.CreateCustomerMessage;
 import main.java.lucia.fxml.FxmlConstants;
@@ -45,6 +36,17 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 import netscape.javascript.JSObject;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.DecimalFormat;
+import java.text.ParsePosition;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
@@ -990,7 +992,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
       else {
         System.out.println(controller.getCurrentOrder().isDelivery());
         System.out.println(controller.getCurrentOrder().getGrandTotalTax().toString());
-        controller.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethod.getValue().toUpperCase()));
+        //controller.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethod.getValue().toUpperCase()));
         controller.finalizeOrder();
       }
     }
@@ -1066,7 +1068,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     else if(calendarPreorder.getValue() == null)
       errorLabelPreorder.setText("Date Needed!");
     else {
-      parent.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethodPreorder.getValue().toUpperCase()));
+      //parent.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethodPreorder.getValue().toUpperCase()));
       int hour;
       if(Integer.valueOf(comboBoxTimeHour.getValue()) == 12)
         if(comboBoxTimeAMPM.equals("AM"))
@@ -1098,9 +1100,9 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
   @FXML
   void acceptStaff(ActionEvent event) {
-    if(staffShiftToggle.isSelected())
-      parent.getCurrentOrder().addStaffDiscount(true);
-    else parent.getCurrentOrder().addStaffDiscount(false);
+//    if(staffShiftToggle.isSelected())
+//      parent.getCurrentOrder().addStaffDiscount(true);
+//    else parent.getCurrentOrder().addStaffDiscount(false);
     staffPane.setVisible(false);
     discountPane.setVisible(false);
     staffShiftToggle.setText("Off Shift");

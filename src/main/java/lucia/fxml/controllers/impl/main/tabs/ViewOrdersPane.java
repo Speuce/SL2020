@@ -1,34 +1,36 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs;
 
-import java.text.NumberFormat;
-import java.util.*;
-
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
+import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
+import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
+import main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.OrderInfoController;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The controller which controls the transfer order pane
  *
  * @author Matt Kwiatkowski
  */
-import com.jfoenix.controls.JFXButton;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
-import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.OrderInfoController;
 
 /**
  * Controller for the view orders pane
@@ -210,7 +212,7 @@ public class ViewOrdersPane implements Controller {
       registerItem(cost, 5);
       viewOrderGridpane.add(cost, 5, row);
 
-      if(r.getPaymentMethod() != null){
+      if(r.getPaymentType() != PaymentType.UNPAID){
         Label paytype = new Label(" "+ r.getPaymentType().getDisplayCode());
         registerItem(paytype, 6);
         viewOrderGridpane.add(paytype, 6, row);

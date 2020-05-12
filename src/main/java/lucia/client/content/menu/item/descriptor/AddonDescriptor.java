@@ -1,6 +1,5 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
-import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.type.Addon;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
 
@@ -54,5 +53,13 @@ public class AddonDescriptor extends SimpleItemDescriptor {
      */
     public Addon getAsItem(){
         return new Addon(this.getBaseName(), this.getBasePrice(), this);
+    }
+
+    /**
+     * Get this loaded item, as an item that can be added to an order
+     * @return a {@link SimpleItem} representing the item specified by this class.
+     */
+    public Addon getAsItem(int amt){
+        return new Addon(this.getBaseName(), this.getBasePrice(), this, amt);
     }
 }

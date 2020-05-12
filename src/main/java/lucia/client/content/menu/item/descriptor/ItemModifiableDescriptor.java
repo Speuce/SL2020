@@ -6,7 +6,9 @@ import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.structures.Exclude;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -21,14 +23,28 @@ public class ItemModifiableDescriptor extends SimpleItemDescriptor {
      */
     private List<Integer> addons;
 
+    /**
+     * The list of ID:amt pairs of addons that come on this item by default.
+     */
+    private Map<Integer, Byte> addonsDefault;
+
+
     @Exclude
     private List<AddonDescriptor> applicableAddons;
+
+    /**
+     * The list of addons that come by default
+     */
+    @Exclude
+    private List<Addon> appliedAddons;
 
 
     public ItemModifiableDescriptor(int id, String name, long price) {
         super(id, name, price);
         addons = new ArrayList<>();
         applicableAddons = new ArrayList<>();
+        addonsDefault = new HashMap<>();
+        appliedAddons = new ArrayList<>();
     }
 
     public ItemModifiableDescriptor(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, long price) {
@@ -49,6 +65,14 @@ public class ItemModifiableDescriptor extends SimpleItemDescriptor {
     public void fillMappings(){
         IDCaster<AddonDescriptor> caster = new IDCaster<>();
         applicableAddons = addons.stream().map(caster::cast).collect(Collectors.toList());
+        appliedAddons = new ArrayList<>();
+        AddonDescriptor curr;
+        for(Map.Entry<Integer, Byte> t: addonsDefault.entrySet()){
+            curr = caster.cast(t.getKey());
+            if(curr != null){
+                appliedAddons.add(curr.getAsItem(t.getValue()));
+            }
+        }
     }
 
     /**
@@ -60,11 +84,24 @@ public class ItemModifiableDescriptor extends SimpleItemDescriptor {
         addons.add(add.getId());
     }
 
+    public void addDefaultAddon(AddonDescriptor add, byte amt){
+        this.appliedAddons.add(add.getAsItem(amt));
+        this.addonsDefault.put(add.getId(), amt);
+    }
+
     @Override
     public ItemModifiable getAsItem(){
         return new ItemModifiable(this.getBaseName(), this.getBasePrice(), this);
     }
 
+    /**
+     * The list of addons that come by default
+     */
+    public List<Addon> getAppliedAddons() {
+        return appliedAddons;
+    }
 
-
+    public Map<Integer, Byte> getAddonsDefault() {
+        return addonsDefault;
+    }
 }

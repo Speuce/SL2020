@@ -54,8 +54,20 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7001,
+          7003,
+          7004,
+          7006,
+          7007,
+          7008,
+          7009,
+          7011,
+          7015,
+          7017,
+          7018,
+          7019,
+          7024,
+          7026
         ],
         "price": 1295,
         "baseName": "Wings",
@@ -68,8 +80,8 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7005,
+          7020
         ],
         "price": 895,
         "baseName": "Mozza Bread Sticks",
@@ -82,8 +94,8 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7005,
+          7020
         ],
         "price": 725,
         "baseName": "Bread Sticks",
@@ -120,8 +132,14 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6010,
+          7005,
+          7020
         ],
         "price": 1530,
         "baseName": "Ravioli",
@@ -134,8 +152,15 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6004,
+          7005,
+          7020,
+          6010,
+          6002,
+          6003,
+          6004,
+          6005,
+          6007
         ],
         "price": 1500,
         "baseName": "Manicotti",
@@ -148,8 +173,14 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6010,
+          7005,
+          7020
         ],
         "price": 1530,
         "baseName": "Lasagna",
@@ -162,8 +193,14 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6010,
+          7005,
+          7020
         ],
         "price": 1530,
         "baseName": "Spaghetti",
@@ -176,8 +213,14 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6010,
+          7005,
+          7020
         ],
         "price": 1530,
         "baseName": "Fettuccine Alfredo",
@@ -190,8 +233,14 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6010,
+          7005,
+          7020
         ],
         "price": 1530,
         "baseName": "Penne",
@@ -204,8 +253,12 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6004,
+          6007,
+          6009,
+          6010,
+          7005,
+          7020
         ],
         "price": 1895,
         "baseName": "Chicken Parmesan",
@@ -220,8 +273,22 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7001,
+          7003,
+          7004,
+          7005,
+          7006,
+          7007,
+          7008,
+          7009,
+          7011,
+          7015,
+          7017,
+          7018,
+          7019,
+          7020,
+          7024,
+          7026
         ],
         "price": 1095,
         "baseName": "Chicken Strips",
@@ -234,8 +301,25 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7001,
+          7003,
+          7004,
+          7005,
+          7006,
+          7007,
+          7008,
+          7009,
+          7011,
+          7015,
+          7017,
+          7018,
+          7019,
+          7020,
+          7024,
+          7026,
+          6004,
+          6006,
+          6008
         ],
         "price": 1395,
         "baseName": "Chicken Dinner",
@@ -250,8 +334,15 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6002,
+          6003,
+          6004,
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022
         ],
         "price": 1250,
         "baseName": "Cheese Salad",
@@ -264,8 +355,15 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6002,
+          6003,
+          6004,
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022
         ],
         "price": 1445,
         "baseName": "Chef Salad",
@@ -278,8 +376,16 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6002,
+          6003,
+          6004,
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022,
+          7030
         ],
         "price": 1095,
         "baseName": "Caesar Salad",
@@ -292,8 +398,18 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6002,
+          6003,
+          6004,
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022,
+          7027,
+          7028,
+          7029
         ],
         "price": 1250,
         "baseName": "Greek Salad",
@@ -306,8 +422,12 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022
         ],
         "price": 695,
         "baseName": "Small Garden Salad",
@@ -320,8 +440,15 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          6002,
+          6003,
+          6004,
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022
         ],
         "price": 1095,
         "baseName": "Large Garden Salad",
@@ -334,8 +461,12 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022
         ],
         "price": 650,
         "baseName": "Starter Caesar Salad",
@@ -348,8 +479,12 @@
       {
         "type": "ItemModifiableDescriptor",
         "addons": [
-          4,
-          5
+          7009,
+          7010,
+          7011,
+          7012,
+          7021,
+          7022
         ],
         "price": 675,
         "baseName": "Starter Greek Salad",
@@ -595,12 +730,23 @@
         "type": "AddonDescriptor",
         "isDiscountable": false,
         "price": 0,
-        "baseName": "Small Alfredo",
+        "baseName": "Small Fett Alfredo",
         "defaultColor": "#FFFFFF",
         "selectedColor": "#FFFFFF",
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 6009
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Alfredo Sauce",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 6010
       },
       {
         "type": "AddonDescriptor",
@@ -876,6 +1022,61 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 7025
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Salt & Pepper",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7026
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Red Onion",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7027
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Feta",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7028
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Olives",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7029
+      },
+      {
+        "type": "AddonDescriptor",
+        "isDiscountable": false,
+        "price": 0,
+        "baseName": "Croutons",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 7030
       }
     ],
     "Sauces": [
@@ -951,35 +1152,135 @@
     "sizes": [
       10,
       13,
-      15
+      15,
+      18,
+      30
     ],
     "pricingSchemes": [
       {
         "name": "basePizza",
         "10": "999",
         "13": "1399",
-        "15": "1999"
+        "15": "1999",
+        "18": "0",
+        "30": "0"
       },
       {
         "name": "free",
         "10": "0",
         "13": "0",
-        "15": "0"
+        "15": "0",
+        "18": "0",
+        "30": "0"
+      },
+      {
+        "name": "keto",
+        "10": "0"
+      },
+      {
+        "name": "glutenFree",
+        "10": "0"
+      },
+      {
+        "name": "greekSauce",
+        "10": "0",
+        "13": "0",
+        "15": "0",
+        "18": "0",
+        "30": "0"
       }
     ],
     "crusts": [
       {
-        "displayName": "regular",
-        "name": "regular",
-        "id": 8,
+        "displayName": "Reg. Crust",
+        "name": "regular crust",
+        "id": 9001,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Thin",
+        "name": "thin",
+        "id": 9002,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Thick",
+        "name": "thick",
+        "id": 9003,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Gluten Free",
+        "name": "gluten free",
+        "id": 9004,
+        "pricing": "glutenFree"
+      },
+      {
+        "displayName": "Keto",
+        "name": "keto",
+        "id": 9005,
+        "pricing": "keto"
+      },
+      {
+        "displayName": "Whole Wheat",
+        "name": "whole wheat",
+        "id": 9006,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Well Done",
+        "name": "well done",
+        "id": 9007,
         "pricing": "free"
       }
     ],
     "sauces": [
       {
-        "displayName": "regular",
+        "displayName": "Reg. Sauce",
         "name": "regular",
-        "id": 7,
+        "id": 10001,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Light Sauce",
+        "name": "light sauce",
+        "id": 10002,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Extra Sauce",
+        "name": "extra sauce",
+        "id": 10003,
+        "pricing": "free"
+      },
+      {
+        "displayName": "No Sauce",
+        "name": "no sauce",
+        "id": 10004,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Greek Sauce",
+        "name": "greek sauce",
+        "id": 10005,
+        "pricing": "greekSauce"
+      },
+      {
+        "displayName": "BBQ Sauce",
+        "name": "bbq sauce",
+        "id": 10006,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Alf. Sauce",
+        "name": "alfredo sauce",
+        "id": 10007,
+        "pricing": "free"
+      },
+      {
+        "displayName": "Spicy Mar.",
+        "name": "regular",
+        "id": 10008,
         "pricing": "free"
       }
     ],
@@ -990,7 +1291,337 @@
         "selectedColor": "#FFFFFF",
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
-        "id": 9,
+        "id": 11001,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11002,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11003,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11004,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11005,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11006,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11007,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11008,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11009,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11010,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11011,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11012,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11013,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11014,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11015,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11016,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11017,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11018,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11019,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11020,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11021,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11022,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11023,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11024,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11025,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11026,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11027,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11028,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11029,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11030,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11031,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11032,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11033,
+        "pricing": "free",
+        "short": "pep"
+      },
+      {
+        "name": "pepperoni",
+        "defaultColor": "#FFFFFF",
+        "selectedColor": "#FFFFFF",
+        "hoverColor": "#FFFFFF",
+        "textColor": "#000000",
+        "id": 11034,
         "pricing": "free",
         "short": "pep"
       }
@@ -1000,7 +1631,7 @@
     "regularCrust": 8,
     "specials": [
       {
-        "id": 10,
+        "id": 12001,
         "name": "XPEPPizza",
         "pricing": "basePizza",
         "sauce": 7,

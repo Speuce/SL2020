@@ -1474,7 +1474,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11003,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "beef"
       },
       {
@@ -1484,7 +1484,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11004,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "b.bac"
       },
       {
@@ -1494,7 +1494,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11005,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "s.bac"
       },
       {
@@ -1504,7 +1504,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11006,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "saug"
       },
       {
@@ -1514,7 +1514,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11007,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "ham"
       },
       {
@@ -1524,7 +1524,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11008,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "mush"
       },
       {
@@ -1534,7 +1534,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11009,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "tom"
       },
       {
@@ -1544,7 +1544,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11010,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "PA"
       },
       {
@@ -1554,7 +1554,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11011,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "GP"
       },
       {
@@ -1564,7 +1564,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11012,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "RP"
       },
       {
@@ -1574,7 +1574,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11013,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "onion"
       },
       {
@@ -1584,7 +1584,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11014,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "r. onion"
       },
       {
@@ -1594,7 +1594,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11015,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "BO"
       },
       {
@@ -1604,7 +1604,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11016,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "GO"
       },
       {
@@ -1614,7 +1614,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11017,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "ban pepper"
       },
       {
@@ -1624,7 +1624,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11018,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "jal"
       },
       {
@@ -1634,7 +1634,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11019,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "anch"
       },
       {
@@ -1644,7 +1644,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11020,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "sunTom"
       },
       {
@@ -1654,7 +1654,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11021,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "artichoke"
       },
       {
@@ -1664,7 +1664,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11022,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "feta"
       },
       {
@@ -1674,7 +1674,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11023,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "cheese"
       },
       {
@@ -1694,7 +1694,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11025,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "cheddar"
       },
       {
@@ -1704,7 +1704,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11026,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "chorizo"
       },
       {
@@ -1714,7 +1714,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11027,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "CKN"
       },
       {
@@ -1724,7 +1724,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11028,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "prosc."
       },
       {
@@ -1734,7 +1734,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11029,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "shrimp"
       },
       {
@@ -1744,7 +1744,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11030,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "brco"
       },
       {
@@ -1754,7 +1754,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11031,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "eggplant"
       },
       {
@@ -1764,7 +1764,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11032,
-        "pricing": "free",
+        "pricing": "normalTopping",
         "short": "spinach"
       },
       {
@@ -1774,7 +1774,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11033,
-        "pricing": "free",
+        "pricing": "gourmetTopping",
         "short": "gyro meat"
       },
       {
@@ -1784,7 +1784,7 @@
         "hoverColor": "#FFFFFF",
         "textColor": "#000000",
         "id": 11034,
-        "pricing": "free",
+        "pricing": "chiliPepper",
         "short": "chiliP"
       }
     ],
@@ -1795,7 +1795,7 @@
       {
         "id": 12001,
         "name": "SLS",
-        "pricing": "basePizza",
+        "pricing": "normalPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -1829,7 +1829,7 @@
       {
         "id": 12002,
         "name": "ML",
-        "pricing": "basePizza",
+        "pricing": "normalPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -1859,7 +1859,7 @@
       {
         "id": 12003,
         "name": "Veggie",
-        "pricing": "basePizza",
+        "pricing": "normalPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -1889,7 +1889,7 @@
       {
         "id": 12004,
         "name": "Aloha",
-        "pricing": "basePizza",
+        "pricing": "normalPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -1911,7 +1911,7 @@
       {
         "id": 12005,
         "name": "Mexican",
-        "pricing": "basePizza",
+        "pricing": "normalPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -1945,7 +1945,7 @@
       {
         "id": 12006,
         "name": "Greek",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10009,
         "crust": 9001,
         "toppings": [
@@ -1971,7 +1971,7 @@
       {
         "id": 12007,
         "name": "BBQ CKN",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10006,
         "crust": 9001,
         "toppings": [
@@ -2001,7 +2001,7 @@
       {
         "id": 12008,
         "name": "Hal&Joe",
-        "pricing": "basePizza",
+        "pricing": "normalPremade",
         "sauce": 10003,
         "crust": 9001,
         "toppings": [
@@ -2027,7 +2027,7 @@
       {
         "id": 12009,
         "name": "Italian",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10001,
         "crust": 9002,
         "toppings": [
@@ -2057,7 +2057,7 @@
       {
         "id": 12010,
         "name": "CKN SUP",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -2087,7 +2087,7 @@
       {
         "id": 12011,
         "name": "Montenegro",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -2117,7 +2117,7 @@
       {
         "id": 12012,
         "name": "MED",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -2147,7 +2147,7 @@
       {
         "id": 12013,
         "name": "Gyro",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -2173,7 +2173,7 @@
       {
         "id": 12014,
         "name": "92City",
-        "pricing": "basePizza",
+        "pricing": "normalPremade",
         "sauce": 10001,
         "crust": 9001,
         "toppings": [
@@ -2199,7 +2199,7 @@
       {
         "id": 12015,
         "name": "HH",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10001,
         "crust": 9006,
         "toppings": [
@@ -2233,7 +2233,7 @@
       {
         "id": 12016,
         "name": "Santa Fe",
-        "pricing": "basePizza",
+        "pricing": "gourmetPremade",
         "sauce": 10008,
         "crust": 9001,
         "toppings": [

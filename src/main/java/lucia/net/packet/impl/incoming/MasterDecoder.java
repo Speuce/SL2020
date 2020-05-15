@@ -1,16 +1,25 @@
 package main.java.lucia.net.packet.impl.incoming;
 
 import main.java.lucia.Client;
+import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.net.NetworkBuilder;
 import main.java.lucia.net.packet.IncomingPacket;
+import main.java.lucia.net.packet.impl.incoming.authenticated.AuthenticatedDecoder;
 import main.java.lucia.net.packet.impl.incoming.handshake.HandshakeDecoder;
+import main.java.lucia.net.packet.impl.incoming.login.LoginDecoder;
 import main.java.lucia.net.security.encryption.IncomingDecryptionManager;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * A decoder which decodes and handles immediate incoming requests, and changes state
- * depending on what state the client is currently on.
+ * depending on what state the communication is currently on.
+ *
+ *
  *
  * @author Brett Downey
+ * @author Matthew Kwiatkowski
  */
 public class MasterDecoder {
 
@@ -20,9 +29,14 @@ public class MasterDecoder {
     private NetworkBuilder network;
 
     /**
-     * The current decoder.
+     * The decoders to use as next is called, in order
      */
-    private DecoderInterface current;
+    private Queue<Decoder> decoder;
+
+    /**
+     * the current {@link Decoder}
+     */
+    private Decoder current;
 
     /**
      * The class that will decrypt incoming
@@ -43,6 +57,14 @@ public class MasterDecoder {
         current = new HandshakeDecoder(this).handshake();
     }
 
+    public void resetDecoders(){
+        decoder = new LinkedList<>();
+        decoder.add(new HandshakeDecoder(this));
+        decoder.add(new LoginDecoder(this));
+        decoder.add(new AuthenticatedDecoder());
+        next();
+    }
+
     public IncomingDecryptionManager getDecrypt() {
         return decrypt;
     }
@@ -55,7 +77,11 @@ public class MasterDecoder {
      * Proceeds to the next impl
      */
     public void next() {
-        current = current.next();
+        if(!decoder.isEmpty()){
+            current = decoder.poll();
+        }else{
+            MLogger.logError("Tried to get the next decoder when there is none!");
+        }
     }
 
     /**

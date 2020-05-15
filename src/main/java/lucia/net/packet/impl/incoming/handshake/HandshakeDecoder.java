@@ -4,10 +4,9 @@ import main.java.lucia.Client;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.net.packet.IncomingPacket;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
+import main.java.lucia.net.packet.impl.incoming.Decoder;
 import main.java.lucia.net.packet.impl.incoming.MasterDecoder;
-import main.java.lucia.net.packet.impl.incoming.DecoderInterface;
 import main.java.lucia.net.packet.impl.incoming.codec.IncomingHandshakePacket;
-import main.java.lucia.net.packet.impl.incoming.login.LoginDecoder;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingHandshakePacket;
 
@@ -15,8 +14,9 @@ import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingHandshakePacket;
  * The decoder which handles the handshake message.
  *
  * @author Brett Downey
+ * @author Matthew Kwiatkowski
  */
-public class HandshakeDecoder implements DecoderInterface {
+public class HandshakeDecoder extends Decoder {
 
     /**
      * The origin {@link MasterDecoder}
@@ -54,7 +54,7 @@ public class HandshakeDecoder implements DecoderInterface {
 
     @Override
     public IncomingPacket process(String message) {
-        IncomingHandshakePacket packet = (IncomingHandshakePacket) attemptToGetPacket(message);
+        IncomingHandshakePacket packet = (IncomingHandshakePacket) decodePacket(message);
         if(packet != null) {
             PacketSender.setSecureToken(packet.getSessionToken());
             origin.next();
@@ -65,10 +65,5 @@ public class HandshakeDecoder implements DecoderInterface {
             Client.logger.error("The handshake message has failed!");
             return null;
         }
-    }
-
-    @Override
-    public DecoderInterface next() {
-        return new LoginDecoder(origin);
     }
 }

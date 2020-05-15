@@ -5,11 +5,11 @@ import main.java.lucia.client.protocol.message.Message;
 import main.java.lucia.net.packet.IncomingPacket;
 import main.java.lucia.net.packet.PacketProcessor;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import main.java.lucia.net.packet.impl.incoming.DecoderInterface;
+import main.java.lucia.net.packet.impl.incoming.Decoder;
 import main.java.lucia.net.packet.impl.incoming.codec.IncomingAuthenticatedPacket;
 import main.java.lucia.net.protocol.ProtocolBuilder;
 
-public class AuthenticatedDecoder implements DecoderInterface {
+public class AuthenticatedDecoder extends Decoder {
 
     /**
      * The {@link ProtocolBuilder} that handles all protocol related operations.
@@ -23,7 +23,7 @@ public class AuthenticatedDecoder implements DecoderInterface {
 
     @Override
     public IncomingPacket process(String message) {
-        IncomingAuthenticatedPacket packet = (IncomingAuthenticatedPacket) attemptToGetPacket(message);
+        IncomingAuthenticatedPacket packet = (IncomingAuthenticatedPacket) decodePacket(message);
 
         if (packet != null && protocol.hasCode(packet.getOpcode())) {
             PacketProcessor packetProcessor = new PacketProcessor(packet.getJsonRequest());
@@ -33,10 +33,5 @@ public class AuthenticatedDecoder implements DecoderInterface {
         } else {
             return null;
         }
-    }
-
-    @Override
-    public DecoderInterface next() {
-        return this;
     }
 }

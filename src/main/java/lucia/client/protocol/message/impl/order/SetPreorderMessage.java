@@ -71,7 +71,6 @@ public class SetPreorderMessage extends MattMessage {
         W.p("receiving an preorder");
         if(getPacketProcessor().getJsonRequest() == null || getPacketProcessor().getJsonRequest().length() < 10){
             W.p("its null");
-            return;
         }else{
             try{
                 Order o = deserialize();

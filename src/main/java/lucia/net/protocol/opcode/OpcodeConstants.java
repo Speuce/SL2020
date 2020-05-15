@@ -10,6 +10,8 @@ import main.java.lucia.net.protocol.ProtocolBuilder;
  * @author Matt Kwiatkowski
  */
 public class OpcodeConstants {
+    //System Error/Info/Request opcodes 0-50
+
     /**
      * This opcode will be for errors, sent to the client from the server.
      * Its up to the client how to deal with these.
@@ -97,6 +99,17 @@ public class OpcodeConstants {
      * For server sending a preorders as a part of a request
      */
     public static final int SEND_PREORDER_OPCODE = 105;
+
+    /**
+     * Client requesting ordernumber of a specific day
+     */
+    public static final int GET_ORDERNUM_DAY_OPCODE = 106;
+
+    /**
+     * Rsponse packet to get ordernum day
+     * Server telling client
+     */
+    public static final int FOUND_ORDERNUM_DAY_OPCODE = 107;
 
 
 

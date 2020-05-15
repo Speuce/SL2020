@@ -38,7 +38,7 @@ public class ProtocolBuilder extends OpcodeMap {
         register(OpcodeConstants.SET_CURRENT_ORDERNUM_OPCODE, new SetCurrentOrdernumHandler());
         register(OpcodeConstants.SEND_PREORDER_OPCODE, new SetPreorderHandler());
         register(OpcodeConstants.GET_PREORDERS_OPCODE, new DoNotReplyHandler());
-        register(OpcodeConstants.GET_ORDERNUM_DAY_OPCODE, new DoNotReplyHandler());
+        //register(OpcodeConstants.SET_CURRENT_ORDERNUM_OPCODE, new DoNotReplyHandler());
         register(OpcodeConstants.FOUND_ORDERNUM_OPCODE, new FoundOrdernumHandler());
 
         register(OpcodeConstants.SEARCH_CUSTOMER_OPCODE, new DoNotReplyHandler());

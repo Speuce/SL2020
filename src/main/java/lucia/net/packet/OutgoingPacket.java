@@ -8,24 +8,20 @@ import main.java.lucia.net.NetworkConstants;
  *
  * @author Brett Downey
  */
-public abstract class OutgoingPacket {
+public abstract class OutgoingPacket extends Packet{
 
-    private int echoCode;
 
     private String sessionToken;
 
     private String cId = NetworkConstants.CID;
 
-    public int getEchoCode() {
-        return echoCode;
-    }
-
     public String getcId() {
         return cId;
     }
 
+    @Override
     public OutgoingPacket setEchoCode(int echoCode) {
-        this.echoCode = echoCode;
+        super.setEchoCode(echoCode);
         return this;
     }
 

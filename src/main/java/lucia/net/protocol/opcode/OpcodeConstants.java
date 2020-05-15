@@ -22,7 +22,12 @@ public class OpcodeConstants {
      * Opcode for when an employee/manager attempts to do something without
      * a proper session
      */
-    public static final int PERMISSION_DENIED=1;
+    public static final int PERMISSION_DENIED= 1;
+
+    /**
+     * Opcode for packet which has no other data, other than an echo code.
+     */
+    public static final int ECHO_ONLY = 2;
 
     /**
      * The opcode which requests all information pertaining to a specific store.

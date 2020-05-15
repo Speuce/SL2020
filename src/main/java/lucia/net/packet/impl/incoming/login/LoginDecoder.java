@@ -4,21 +4,20 @@ import main.java.lucia.client.task.TaskManager;
 import main.java.lucia.client.task.impl.LoginResponseTask;
 import main.java.lucia.net.packet.IncomingPacket;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import main.java.lucia.net.packet.impl.incoming.Decoder;
+import main.java.lucia.net.packet.impl.incoming.MasterDecoder;
 import main.java.lucia.net.packet.impl.incoming.DecoderInterface;
 import main.java.lucia.net.packet.impl.incoming.authenticated.AuthenticatedDecoder;
 import main.java.lucia.net.packet.impl.incoming.codec.login.IncomingLoginAttemptPacket;
-import main.java.lucia.net.protocol.opcode.OpcodeConstants;
 
 public class LoginDecoder implements DecoderInterface {
 
     /**
-     * The origin {@link lucia.net.packet.impl.incoming.Decoder}
+     * The origin {@link MasterDecoder}
      * that created this.
      */
-    private Decoder origin;
+    private MasterDecoder origin;
 
-    public LoginDecoder(Decoder origin) {
+    public LoginDecoder(MasterDecoder origin) {
         this.origin = origin;
     }
 

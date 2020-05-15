@@ -10,10 +10,16 @@ public interface DecoderInterface {
 
     DecoderInterface next();
 
+    /**
+     * Wraps the get
+     * @param message
+     * @return
+     */
     default IncomingPacket attemptToGetPacket(String message) {
         try {
             return getPacket(message);
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

@@ -99,6 +99,8 @@ public class PacketSender {
         client.writeAndFlush(encrypted);
     }
 
+
+
     public void reattemptFailedMessages() {
         if (history.isEmpty()) {
             return;

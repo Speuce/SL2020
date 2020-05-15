@@ -1,6 +1,5 @@
 package main.java.lucia.net.packet.impl.incoming;
 
-import io.netty.channel.Channel;
 import main.java.lucia.Client;
 import main.java.lucia.net.NetworkBuilder;
 import main.java.lucia.net.packet.IncomingPacket;
@@ -13,10 +12,10 @@ import main.java.lucia.net.security.encryption.IncomingDecryptionManager;
  *
  * @author Brett Downey
  */
-public class Decoder {
+public class MasterDecoder {
 
     /**
-     * The network for this {@link Decoder}
+     * The network for this {@link MasterDecoder}
      */
     private NetworkBuilder network;
 
@@ -37,7 +36,7 @@ public class Decoder {
      *
      * @param network The network
      */
-    public Decoder(NetworkBuilder network) {
+    public MasterDecoder(NetworkBuilder network) {
         this.network = network;
         this.network.buildPacketSender();
         decrypt = new IncomingDecryptionManager();

@@ -4,7 +4,7 @@ import main.java.lucia.Client;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.net.packet.IncomingPacket;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import main.java.lucia.net.packet.impl.incoming.Decoder;
+import main.java.lucia.net.packet.impl.incoming.MasterDecoder;
 import main.java.lucia.net.packet.impl.incoming.DecoderInterface;
 import main.java.lucia.net.packet.impl.incoming.codec.IncomingHandshakePacket;
 import main.java.lucia.net.packet.impl.incoming.login.LoginDecoder;
@@ -19,17 +19,17 @@ import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingHandshakePacket;
 public class HandshakeDecoder implements DecoderInterface {
 
     /**
-     * The origin {@link Decoder}
+     * The origin {@link MasterDecoder}
      * that created this.
      */
-    private Decoder origin;
+    private MasterDecoder origin;
 
     /**
      * The constructor for this HandshakeDecoder
      *
      * @param origin The decoder origin
      */
-    public HandshakeDecoder(Decoder origin) {
+    public HandshakeDecoder(MasterDecoder origin) {
         this.origin = origin;
     }
 

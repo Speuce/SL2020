@@ -31,7 +31,7 @@ public class DiscountTest {
     public static void main(String[] args){
         try{
             //load the menu first
-            File menu = new File("src/main/resources/menu.json");
+            File menu = new File("src/main/resources/menutest.json");
             Menu.get.loadMenu(menu);
             testDiscount2();
 

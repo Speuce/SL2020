@@ -44,7 +44,6 @@ public class DinnerListeners {
      */
     public void activateHover(MouseEvent event) {
         //   button.setStyle(dinnerModuleDesigns.g());
-        button.setStyle(dinnerDesigns.getHoveredStyleString());
     }
 
     /**
@@ -52,7 +51,6 @@ public class DinnerListeners {
      */
     public void deactivateHover(MouseEvent event) {
         //  button.setStyle(toppingDesigns.getDefaultStyleString());
-        button.setStyle(dinnerDesigns.getDefaultStyleString());
     }
     /**
      *  Event Handler for when the button is 'clicked'

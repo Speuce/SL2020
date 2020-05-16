@@ -15,7 +15,7 @@ public abstract class OutgoingAuthPacket extends OutgoingPacket {
      */
     private int opcode;
 
-    protected OutgoingAuthPacket(int opcode) {
+    public OutgoingAuthPacket(int opcode) {
         this.opcode = opcode;
     }
 

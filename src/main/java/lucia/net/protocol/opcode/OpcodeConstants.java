@@ -132,9 +132,6 @@ public class OpcodeConstants {
      */
     public static final int EMPLOYEE_PERMISSION_DENIED= 204;
 
-
-
-
     //Customer details 300-399
 
     /**

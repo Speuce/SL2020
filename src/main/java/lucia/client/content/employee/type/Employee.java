@@ -1,23 +1,19 @@
 package main.java.lucia.client.content.employee.type;
 
 import com.google.gson.GsonBuilder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 import main.java.lucia.client.content.customer.ComplaintAction;
-import main.java.lucia.client.content.employee.*;
+import main.java.lucia.client.content.employee.EmployeeNote;
+import main.java.lucia.client.content.employee.ManagerNote;
+import main.java.lucia.client.content.employee.Permission;
+import main.java.lucia.client.content.employee.Shift;
 import main.java.lucia.client.content.payment.CashOutOfTill;
 import main.java.lucia.client.content.payment.Cashout;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.net.security.passwords.CryptographicHash;
-import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
+
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * Encapsulates all details about an employee
@@ -140,7 +136,7 @@ public class Employee {
    * @param pass plaintext password
    */
   public void changePassword(String pass) {
-    CryptographicHash.hashPassword(pass, has -> setPasswordHash(has));
+    CryptographicHash.hashPassword(pass, this::setPasswordHash);
     updateServer();
     //TODO update the server about the change?
   }
@@ -406,14 +402,4 @@ public class Employee {
     this.address = address;
   }
 
-  private static RuntimeTypeAdapterFactory<Employee> paymentAdapterFactory;
-
-  public static RuntimeTypeAdapterFactory<Employee> getPaymentAdapterFactory() {
-    if (paymentAdapterFactory == null) {
-      paymentAdapterFactory = RuntimeTypeAdapterFactory.of(Employee.class)
-          .registerSubtype(Manager.class, "Manager")
-          .registerSubtype(Driver.class, "Driver");
-    }
-    return paymentAdapterFactory;
-  }
 }

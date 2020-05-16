@@ -138,7 +138,7 @@ public class OpcodeConstants {
      * For the client sending requests to the server to
      * find an applicable customer
      */
-    public static final int SEARCH_CUSTOMER_OPCODE = 300;
+    public static final int SEARCH_CUSTOMER_PHONE_OPCODE = 300;
 
     /**
      * Sent as a later response to a clients Search Customer
@@ -147,7 +147,10 @@ public class OpcodeConstants {
      */
     public static final int CUSTOMER_FOUND_OPCDOE = 301;
 
-    public static final int SET_CUSTOMER_OPCODE = 302;
+    /**
+     * Opcode for saving a customer into the database.
+     */
+    public static final int SAVE_CUSTOMER_OPCODE = 302;
 
 
     // TODO Server report for every owner for the morning that reports

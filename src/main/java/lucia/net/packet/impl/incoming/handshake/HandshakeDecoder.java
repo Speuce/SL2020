@@ -39,7 +39,6 @@ public class HandshakeDecoder extends Decoder {
      * @return This class
      */
     public HandshakeDecoder handshake() {
-        System.out.println("TRYING THIS");
         OutgoingHandshakePacket outgoingHandshakePacket = new OutgoingHandshakePacket()
                 .setClientPublicKey(origin.getDecrypt().getServerKey())
                 .setVersion(ClientConstants.VERSION);

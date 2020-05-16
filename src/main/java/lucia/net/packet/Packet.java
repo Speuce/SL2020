@@ -1,5 +1,7 @@
 package main.java.lucia.net.packet;
 
+import main.java.lucia.client.content.structures.Exclude;
+
 /**
  * High-level abstraction of a packet.
  * Only contains information about the echocode
@@ -13,6 +15,12 @@ public abstract class Packet {
      */
     private int echoCode;
 
+    /**
+     * Flag tracking whether sending/receving of this packet is cancelled or not.
+     */
+    @Exclude
+    private boolean cancelled;
+
     public int getEchoCode() {
         return echoCode;
     }
@@ -22,4 +30,17 @@ public abstract class Packet {
         return this;
     }
 
+    /**
+     * Flag tracking whether sending/receving of this packet is cancelled or not.
+     */
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    /**
+     * Flag tracking whether sending/receving of this packet is cancelled or not.
+     */
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
 }

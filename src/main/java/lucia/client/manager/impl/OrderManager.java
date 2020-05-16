@@ -1,14 +1,17 @@
 package main.java.lucia.client.manager.impl;
 
-import java.util.*;
-
 import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.manager.Manager;
-import main.java.lucia.client.manager.ManagerType;
+import main.java.lucia.client.protocol.packet.in.order.PacketInSetOrder;
+import main.java.lucia.net.packet.event.Cancellable;
+import main.java.lucia.net.packet.event.IncomingPacketListener;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
 import main.java.lucia.net.protocol.opcode.OpcodeConstants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The order manager, which keeps track of all
@@ -20,12 +23,12 @@ import main.java.lucia.net.protocol.opcode.OpcodeConstants;
  * @author Matt Kwiatkowski
  * @author Zachery Unrau
  */
-public enum OrderManager implements Manager {
+public class OrderManager {
 
   /**
    * The instance of this singleton class
    */
-  INSTANCE;
+  public static final OrderManager INSTANCE = new OrderManager();
 
 
   /**
@@ -56,6 +59,14 @@ public enum OrderManager implements Manager {
    */
   private Order[] allOrders = new Order[500];
 
+  public OrderManager() {
+    //create anonymous listeners
+    PacketListenerManager.get.registerListener(PacketInSetOrder.class, new IncomingPacketListener<PacketInSetOrder>() {
+      public void onPacketReceive(PacketInSetOrder packet, Cancellable cancel) {
+        setOrder(packet.getOrder());
+      }
+    });
+  }
 
   /**
    * Registers an order and automatically sorts
@@ -133,25 +144,6 @@ public enum OrderManager implements Manager {
 
   public ArrayList<Order> getPendingOrdersDelivery() {
     return pendingOrdersDelivery;
-  }
-
-  /**
-   * Gets the {@link ManagerType} this
-   * Manager is associated to
-   *
-   * @return The manager type
-   */
-  @Override
-  public ManagerType getType() {
-    return ManagerType.ORDER_MANAGER;
-  }
-
-  /**
-   * Processes this Manager.
-   */
-  @Override
-  public void process() {
-    // TODO Send all the local additions to the server
   }
 
   /**

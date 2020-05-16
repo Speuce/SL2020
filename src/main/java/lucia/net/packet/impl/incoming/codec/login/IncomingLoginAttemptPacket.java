@@ -1,7 +1,6 @@
 package main.java.lucia.net.packet.impl.incoming.codec.login;
 
 import main.java.lucia.net.packet.IncomingPacket;
-import main.java.lucia.net.packet.impl.outgoing.codec.login.OutgoingLoginAttemptPacket;
 
 public class IncomingLoginAttemptPacket extends IncomingPacket {
 
@@ -16,8 +15,4 @@ public class IncomingLoginAttemptPacket extends IncomingPacket {
         return loginResponseOpcode;
     }
 
-    @Override
-    public OutgoingLoginAttemptPacket createOutgoingPacket() {
-        return null;
-    }
 }

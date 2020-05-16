@@ -13,6 +13,11 @@ public abstract class IncomingPacketListener<T extends IncomingAuthPacket> exten
         super(priority);
     }
 
+    public IncomingPacketListener(){
+        super(ListenerPriority.NORMAL);
+    }
+
+
     @Override
     public void handlePacket(T packet, Cancellable c){
         onPacketReceive(packet, c);

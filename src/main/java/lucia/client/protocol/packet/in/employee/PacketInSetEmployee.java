@@ -19,4 +19,12 @@ public class PacketInSetEmployee extends IncomingAuthPacket {
     public PacketInSetEmployee(int echoCode) {
         super(echoCode, OpcodeConstants.SET_EMPLOYEE_OPCODE);
     }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 }

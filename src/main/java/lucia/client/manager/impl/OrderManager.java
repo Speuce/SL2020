@@ -1,9 +1,7 @@
 package main.java.lucia.client.manager.impl;
 
 import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.protocol.packet.in.order.PacketInSetOrder;
-import main.java.lucia.net.packet.event.Cancellable;
-import main.java.lucia.net.packet.event.IncomingPacketListener;
+import main.java.lucia.net.packet.event.PacketHandler;
 import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
@@ -23,7 +21,7 @@ import java.util.List;
  * @author Matt Kwiatkowski
  * @author Zachery Unrau
  */
-public class OrderManager {
+public class OrderManager implements PacketHandler {
 
   /**
    * The instance of this singleton class
@@ -60,13 +58,9 @@ public class OrderManager {
   private Order[] allOrders = new Order[500];
 
   public OrderManager() {
-    //create anonymous listeners
-    PacketListenerManager.get.registerListener(PacketInSetOrder.class, new IncomingPacketListener<PacketInSetOrder>() {
-      public void onPacketReceive(PacketInSetOrder packet, Cancellable cancel) {
-        setOrder(packet.getOrder());
-      }
-    });
+    PacketListenerManager.get.registerListener(this);
   }
+
 
   /**
    * Registers an order and automatically sorts

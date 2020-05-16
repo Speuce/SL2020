@@ -5,6 +5,7 @@ import main.java.lucia.Client;
 import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.net.NetworkConstants;
 import main.java.lucia.net.packet.OutgoingPacket;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.security.encryption.Encrypt;
 
 import java.util.*;
@@ -83,6 +84,9 @@ public class PacketSender {
      * Sends the associated messages.
      */
     public void sendMessage(OutgoingPacket packet) {
+        if(!PacketListenerManager.get.callEvent(packet)){
+            return;
+        }
         packet.setSessionToken(secureToken);
         int echoId = counter.get();
         packet.setEchoCode(echoId);
@@ -108,7 +112,6 @@ public class PacketSender {
         if (history.isEmpty()) {
             return;
         }
-
         int resent = 0;
         for (Map.Entry<Integer, History> entry : history.entrySet()) {
             if (entry.getValue().getTimeElapsed() >= TIME_ELAPSED_MILLIS) {

@@ -28,7 +28,7 @@ public class PacketListenerManager {
         this.listenerMap = new HashMap<>();
     }
 
-    
+
     /**
      * Calls any listeners listening for this specific packet.
      * @param p the packet to call events for

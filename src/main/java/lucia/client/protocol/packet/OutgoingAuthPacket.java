@@ -21,7 +21,7 @@ public abstract class OutgoingAuthPacket extends OutgoingPacket {
 
 
     /**
-     * Used for specifiying serialization behaviour of this packet
+     * Used for specifying serialization behaviour of this packet
      * @return the entire packet, represented as a json string
      */
     public abstract String serialize();

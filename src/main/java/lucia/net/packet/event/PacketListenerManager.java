@@ -11,7 +11,6 @@ import java.util.*;
  * Manages All packet listeners
  * @author Matthew Kwiatkowski
  */
-@SuppressWarnings({"rawtypes", "unchecked"})
 public class PacketListenerManager {
 
     /**
@@ -58,8 +57,11 @@ public class PacketListenerManager {
 
 
     /**
+     * Looks through any listener class,
+     * and attempted to extract any properly-paramterized
+     * methods annotated with {@link PacketEventHandler}
      * Inspired by code from: https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/browse/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java#237
-     * @param listener
+     * @param listener the listener class to get listener methods from.
      */
     private Map<Class<? extends Packet>, Set<RegisteredPacketListener>> getListeners(@NotNull PacketHandler listener){
 

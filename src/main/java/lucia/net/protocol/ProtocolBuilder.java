@@ -5,7 +5,6 @@ import main.java.lucia.client.protocol.message.handler.ServerUpTimeHandler;
 import main.java.lucia.client.protocol.message.handler.customer.CustomerFoundHandler;
 import main.java.lucia.client.protocol.message.handler.employee.GetEmployeeMapHandler;
 import main.java.lucia.client.protocol.message.handler.employee.SetEmployeeHandler;
-import main.java.lucia.client.protocol.message.handler.order.SetCurrentOrdernumHandler;
 import main.java.lucia.client.protocol.message.handler.order.SetOrderMessageHandler;
 import main.java.lucia.client.protocol.message.handler.order.SetPreorderHandler;
 import main.java.lucia.net.protocol.opcode.OpcodeConstants;
@@ -40,7 +39,7 @@ public class ProtocolBuilder extends OpcodeMap {
         register(OpcodeConstants.DAY_ORDERS_LIST_OPCODE, new DoNotReplyHandler());
         register(OpcodeConstants.SUBMIT_ORDER_OPCODE, new DoNotReplyHandler());
         register(OpcodeConstants.SET_ORDER_OPCODE, new SetOrderMessageHandler());
-        register(OpcodeConstants.SET_CURRENT_ORDERNUM_OPCODE, new SetCurrentOrdernumHandler());
+        //register(OpcodeConstants.SET_CURRENT_ORDERNUM_OPCODE, new SetCurrentOrdernumHandler());
         register(OpcodeConstants.SEND_PREORDER_OPCODE, new SetPreorderHandler());
         register(OpcodeConstants.GET_PREORDERS_OPCODE, new DoNotReplyHandler());
         //register(OpcodeConstants.SET_CURRENT_ORDERNUM_OPCODE, new DoNotReplyHandler());

@@ -13,16 +13,23 @@ public class PacketListenerTest {
 
     public static void main(String[] args){
         PacketListenerManager.get.registerListener(new Listen());
-        PacketInSetOrder inPacket = new PacketInSetOrder(10, 10);
+        PacketInSetOrder inPacket = new PacketInSetOrder(10, null);
         PacketListenerManager.get.callEvent(inPacket);
+
     }
 
 }
 class Listen implements PacketHandler {
 
+    public Listen(){
+        PacketListenerManager.get.registerListener(this);
+    }
+
     @PacketEventHandler
     public void gotPacket(PacketInSetOrder p){
-        System.out.println("Got packet!");
+        System.out.println("Got packet!: " + p.getOpcode());
+        System.out.println("with order: " + p.getOrder());
     }
+
 
 }

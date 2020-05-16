@@ -6,18 +6,18 @@ import main.java.lucia.net.protocol.opcode.OpcodeConstants;
 
 /**
  * Packet sent by server to indicate that the client should update
- * its' internal records of a particular order to the order given
+ * its' internal records of a particular preorder to the preorder given
  * @author Matthew Kwiatkowski
  */
-public class PacketInSetOrder extends IncomingAuthPacket {
+public class PacketInSetPreOrder extends IncomingAuthPacket {
 
     /**
      * The order that is being dealt with
      */
     private Order order;
 
-    public PacketInSetOrder(int echoCode, Order order) {
-        super(echoCode, OpcodeConstants.SET_ORDER_OPCODE);
+    public PacketInSetPreOrder(int echoCode, Order order) {
+        super(echoCode, OpcodeConstants.SET_PREORDER_OPCODE);
         this.order = order;
     }
 

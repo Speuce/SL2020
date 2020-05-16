@@ -1,4 +1,4 @@
-package main.java.lucia.client.protocol.packet.outgoing;
+package main.java.lucia.client.protocol.packet.outgoing.order;
 
 import main.java.lucia.client.content.menu.io.ItemGson;
 import main.java.lucia.client.content.order.Order;

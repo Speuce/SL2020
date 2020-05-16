@@ -19,17 +19,6 @@ public class OpcodeConstants {
     public static final int ERROR_OPCODE = 0;
 
     /**
-     * Opcode for when an employee/manager attempts to do something without
-     * a proper session
-     */
-    public static final int PERMISSION_DENIED= 1;
-
-    /**
-     * Opcode for packet which has no other data, other than an echo code.
-     */
-    public static final int ECHO_ONLY = 2;
-
-    /**
      * The opcode which requests all information pertaining to a specific store.
      * This opcode will usually be ran once a client logs in to the server.
      */
@@ -62,10 +51,15 @@ public class OpcodeConstants {
      */
     public static final int STORE_OPEN_MESSAGE = 15;
 
+    /**
+     * The opcode that is responsible for retrieving the server up time.
+     */
+    public static final int SERVER_UP_TIME_OPCODE = 30;
+
     //Order Opcodes 100-199
 
     /**
-     * The opcode for submitting an order
+     * The operation code for submitting an order to the server
      */
     public static final int SUBMIT_ORDER_OPCODE = 100;
 
@@ -77,18 +71,12 @@ public class OpcodeConstants {
     /**
      * The opcode for cancelling an order.
      */
-    public static final int CANCEL_ORDER_OPCODE = 199;
+    public static final int VOID_ORDER_OPCODE = 199;
 
     /**
      * The opcode for transferring an order to another store.
      */
     public static final int TRANSFER_ORDER_OPCODE = 120;
-
-    /**
-     * The opcode for the server sending the client updated current order number
-     * for the current day
-     */
-    public static final int SET_CURRENT_ORDERNUM_OPCODE = 102;
 
     /**
      * The opcode for requesting the store's given day orders.
@@ -101,9 +89,9 @@ public class OpcodeConstants {
     public static final int GET_PREORDERS_OPCODE = 104;
 
     /**
-     * For server sending a preorders as a part of a request
+     * For server sending a preorder as a part of a request
      */
-    public static final int SEND_PREORDER_OPCODE = 105;
+    public static final int SET_PREORDER_OPCODE = 105;
 
     /**
      * Client requesting ordernumber of a specific day
@@ -117,15 +105,8 @@ public class OpcodeConstants {
     public static final int FOUND_ORDERNUM_DAY_OPCODE = 107;
 
 
-
-    /**
-     * The opcode that is responsible for retrieving the server up time.
-     */
-    public static final int SERVER_UP_TIME_OPCODE = 30;
-
     //Employee Opcodes 200-299
     /**
-
      * The opcode for requested Employee object receiving
      */
     public static final int GET_EMPLOYEE_OPCODE = 200;
@@ -144,6 +125,12 @@ public class OpcodeConstants {
      * Opcode for requesting Employee ID:Name map
      */
     public static final int GET_EMPLOYEE_MAP_OPCODE = 203;
+
+    /**
+     * Opcode for when an employee/manager attempts to do something without
+     * a proper session
+     */
+    public static final int EMPLOYEE_PERMISSION_DENIED= 204;
 
 
 

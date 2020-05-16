@@ -36,17 +36,25 @@ public abstract class Protocol {
 
     /**
      * Register a packet
-     * @param opcode
-     * @param clazz
-     * @param gson
+     * @param opcode the opcode of the packet
+     * @param clazz the class representing the packet
+     * @param gson the preferred method of deserialization
      */
     public void register(Integer opcode, Class<? extends IncomingAuthPacket> clazz, Gson gson){
         opcodeMap.put(opcode,clazz);
         deserializerMap.put(opcode, gson);
     }
 
+    /**
+     * Deserialze a jsonobject into a packet.
+     * Note: The JsonObject MUST have a 'opcode' property.
+     * @param o the jsonobject to deserialize
+     * @return the packet, if possible, or null otherwise
+     */
     public IncomingAuthPacket deserialize(JsonObject o){
-        assert(o.has("opcode"));
+        if(!o.has("opcode")){
+            return null;
+        }
         int opcode = o.get("opcode").getAsInt();
         if(deserializerMap.containsKey(opcode)){
             return deserializerMap.get(opcode).fromJson(o, opcodeMap.get(opcode));

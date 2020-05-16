@@ -8,12 +8,13 @@ import java.util.*;
  * Manages All packet listeners
  * @author Matthew Kwiatkowski
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class PacketListenerManager {
 
     /**
      * The map of all packet type to Listener Lists
      */
-    private Map<Class<? extends Packet>, List<PacketListener<? extends Packet>>> listenerMap;
+    private Map<Class<? extends Packet>, List<PacketListener>> listenerMap;
 
     public PacketListenerManager() {
         this.listenerMap = new HashMap<>();
@@ -24,8 +25,8 @@ public class PacketListenerManager {
      * @param type the type of packet that the listener works with
      * @param listener the listener to register.
      */
-    public void registerListener( Class<? extends Packet> type, PacketListener<? extends Packet> listener){
-        List<PacketListener<? extends Packet>> listeners;
+    public void registerListener( Class<? extends Packet> type, PacketListener listener){
+        List<PacketListener> listeners;
         if(listenerMap.containsKey(type)){
             listeners = listenerMap.get(type);
         }else{
@@ -41,13 +42,32 @@ public class PacketListenerManager {
      * @param type the type of packet that the listener works with
      * @param listener the listener to register.
      */
-    public void unRegisterListener( Class<? extends Packet> type, PacketListener<? extends Packet> listener){
-        List<PacketListener<? extends Packet>> listeners;
+    public void unRegisterListener( Class<? extends Packet> type, PacketListener listener){
+        List<PacketListener> listeners;
         if(listenerMap.containsKey(type)){
             listeners = listenerMap.get(type);
             listeners.remove(listener);
             Collections.sort(listeners);
             listenerMap.put(type, listeners);
+        }
+    }
+
+    /**
+     * Calls any listeners listening for this specific packet.
+     * @param p the packet to call events for
+     * @return true if the packet processing should continue, false otherwise
+     */
+    public boolean callEvent(Packet p){
+        if(listenerMap.containsKey(p.getClass())){
+            Cancellable c = new Cancellable(false);
+            for(PacketListener lis: listenerMap.get(p.getClass())){
+                lis.handlePacket(p, c);
+                //stop higher up listeners if one of the lower ones cancels.
+                if(c.isCancelled()) break;
+            }
+            return !c.isCancelled();
+        }else{
+            return true;
         }
     }
 

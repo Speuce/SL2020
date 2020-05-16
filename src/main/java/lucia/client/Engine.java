@@ -1,20 +1,23 @@
 package main.java.lucia.client;
 
-import java.util.Queue;
 import main.java.lucia.Client;
-import main.java.lucia.client.protocol.message.Message;
+import main.java.lucia.client.content.files.MLogger;
+import main.java.lucia.client.protocol.packet.IncomingAuthPacket;
 import main.java.lucia.client.task.TaskManager;
 import main.java.lucia.net.NetworkBuilder;
 import main.java.lucia.net.NetworkConstants;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
+
+import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
 
 /**
  * Represents the engine, processing it and its clients.
  *
  * @author Brett Downey
+ * @author Matthew Kwiatkowski
  */
 public class Engine {
 
@@ -22,6 +25,8 @@ public class Engine {
      * The network associated with this engine
      */
     static NetworkBuilder network;
+
+    static PacketListenerManager listenerManager;
 
     /**
      * The queue of echo codes associated with the engine, these
@@ -35,7 +40,7 @@ public class Engine {
     /**
      * The queue of packets that will be handled on the next sequence.
      */
-    private static final Queue<Message> packetsQueue = new ConcurrentLinkedQueue<>();
+    private static final Queue<IncomingAuthPacket> packetsQueue = new ConcurrentLinkedQueue<>();
 
     /**
      * Processes the engine
@@ -69,45 +74,48 @@ public class Engine {
      */
     public static void processPackets() {
         for (int i = 0; i < NetworkConstants.PACKET_PROCESS_LIMIT; i++) {
-            Message packet = packetsQueue.poll();
+            IncomingAuthPacket packet = packetsQueue.poll();
             if (packet == null) {
+                MLogger.logError("Got a weird null packet :(");
                 return;
             }
-            processPacket(packet);
+            //now run events
+            if(!listenerManager.callEvent(packet)){
+                return;
+            }
+            //processPacket(packet);
         }
     }
 
-    /**
-     * Handles an incoming packet.
-     *
-     * @param packet The packet to handle.
-     *
-     */
-    public static void processPacket(Message packet) {
-        try {
-            packet.process();
-
-            /* Send all available responses if they exist */
-            if(packet.getReplyOpcode() != -1) {
-                network.sendMessage(new OutgoingAuthenticatedPacket(packet.getReplyOpcode()));
-            }
-            if(packet.getReplyPacket() != null) {
-                network.sendMessage(packet.getReplyPacket());
-            }
-            if(packet.getPacketProcessor().getOutgoingPacket() != null) {
-                network.sendMessage(packet.getPacketProcessor().getOutgoingPacket());
-            }
-        } catch (Exception e) {
-            Client.logger.error("A packet failed to send!", e);
-        }
-    }
+//    /**
+//     * Handles an incoming packet.
+//     *
+//     * @param packet The packet to handle.
+//     *
+//     */
+//    public static void processPacket(IncomingAuthPacket packet) {
+//        try {
+//            /* Send all available responses if they exist */
+//            if(packet.getReplyOpcode() != -1) {
+//                network.sendMessage(new OutgoingAuthenticatedPacket(packet.getReplyOpcode()));
+//            }
+//            if(packet.getReplyPacket() != null) {
+//                network.sendMessage(packet.getReplyPacket());
+//            }
+//            if(packet.getPacketProcessor().getOutgoingPacket() != null) {
+//                network.sendMessage(packet.getPacketProcessor().getOutgoingPacket());
+//            }
+//        } catch (Exception e) {
+//            Client.logger.error("A packet failed to send!", e);
+//        }
+//    }
 
     /**
      * Queues a recently decoded packet received from the channel.
      *
      * @param packet The packet that should be processed.
      */
-    public static void queuePacket(Message packet) {
+    public static void queuePacket(IncomingAuthPacket packet) {
         if (packetsQueue.size() >= NetworkConstants.PACKET_PROCESS_LIMIT) {
             Client.logger.info("Discarding message as packets size has exceeded the total amount");
         } else packetsQueue.add(packet);

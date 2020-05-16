@@ -1,16 +1,18 @@
 package main.java.lucia.client;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
 import main.java.lucia.Client;
 import main.java.lucia.client.content.files.json.loader.impl.DiscountDefinitionLoader;
-import main.java.lucia.client.content.files.json.loader.impl.StoreInformationDefinitionLoader;
-import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.client.content.files.json.loader.impl.PremadeFoodDefinitionLoader;
+import main.java.lucia.client.content.files.json.loader.impl.StoreInformationDefinitionLoader;
 import main.java.lucia.client.content.files.json.loader.impl.ToppingsDefinitionLoader;
+import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.fxml.InterfaceBuilder;
 import main.java.lucia.net.NetworkBuilder;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.util.BackgroundLoader;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 /**
  * Loads all required information and starts processes required for the server
@@ -47,6 +49,7 @@ public class ClientBuilder {
    */
   public ClientBuilder(NetworkBuilder network, InterfaceBuilder fxml) {
     Engine.network = network;
+    Engine.listenerManager = new PacketListenerManager();
     this.network = network;
     this.fxml = fxml;
   }

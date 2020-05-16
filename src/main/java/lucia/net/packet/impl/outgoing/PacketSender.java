@@ -2,6 +2,7 @@ package main.java.lucia.net.packet.impl.outgoing;
 
 import io.netty.channel.Channel;
 import main.java.lucia.Client;
+import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.net.NetworkConstants;
 import main.java.lucia.net.packet.OutgoingPacket;
 import main.java.lucia.net.security.encryption.Encrypt;
@@ -83,12 +84,14 @@ public class PacketSender {
      */
     public void sendMessage(OutgoingPacket packet) {
         packet.setSessionToken(secureToken);
-        int codeId = counter.get();
-        packet.setEchoCode(codeId);
+        int echoId = counter.get();
+        packet.setEchoCode(echoId);
         if (client.isOpen()) {
-            sendMessage(codeId, packet);
+            sendMessage(echoId, packet);
         } else if(history.size() < MAX_HISTORY) {
-            history.putIfAbsent(codeId, new History(packet));
+            history.putIfAbsent(echoId, new History(packet));
+        }else{
+            MLogger.logError("History size exceeded max history size.");
         }
     }
 

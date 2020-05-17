@@ -21,7 +21,7 @@ public class PacketInFoundCustomer extends IncomingAuthPacket {
     private CustomerDetails customer;
 
     public PacketInFoundCustomer(int echoCode, String request, CustomerDetails customer) {
-        super(echoCode, OpcodeConstants.CUSTOMER_FOUND_OPCDOE);
+        super(echoCode, OpcodeConstants.CUSTOMER_FOUND_OPCODE);
         this.request = request;
         this.customer = customer;
     }

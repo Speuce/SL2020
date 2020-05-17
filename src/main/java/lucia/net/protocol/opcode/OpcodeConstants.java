@@ -19,6 +19,11 @@ public class OpcodeConstants {
     public static final int ERROR_OPCODE = 0;
 
     /**
+     * Represents a packet whose only purpose is to have an echocode.
+     */
+    public static final int ECHO_ONLY = 1;
+
+    /**
      * The opcode which requests all information pertaining to a specific store.
      * This opcode will usually be ran once a client logs in to the server.
      */
@@ -143,9 +148,10 @@ public class OpcodeConstants {
     /**
      * Sent as a later response to a clients Search Customer
      * request, indicating that a customer was found, and
-     * containing the details of the customer
+     * containing the details of the customer.
+     * OR as a response to a customer save.
      */
-    public static final int CUSTOMER_FOUND_OPCDOE = 301;
+    public static final int CUSTOMER_FOUND_OPCODE = 301;
 
     /**
      * Opcode for saving a customer into the database.

@@ -1,7 +1,6 @@
 package main.java.lucia.client.protocol.packet;
 
 import main.java.lucia.net.packet.OutgoingPacket;
-import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 /**
  * Represents a packet to be sent out to the server
@@ -19,6 +18,12 @@ public abstract class OutgoingAuthPacket extends OutgoingPacket {
         this.opcode = opcode;
     }
 
+    /**
+     * @return The code of the operation to perform
+     */
+    public int getOpcode() {
+        return opcode;
+    }
 
     /**
      * Used for specifying serialization behaviour of this packet
@@ -28,6 +33,6 @@ public abstract class OutgoingAuthPacket extends OutgoingPacket {
 
     @Override
     public String toString() {
-        return GsonTypeFactory.BASIC_GSON.toJson(this, this.getClass());
+        return serialize();
     }
 }

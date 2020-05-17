@@ -107,7 +107,6 @@ public class PacketSender {
     }
 
 
-
     public void reattemptFailedMessages() {
         if (history.isEmpty()) {
             return;

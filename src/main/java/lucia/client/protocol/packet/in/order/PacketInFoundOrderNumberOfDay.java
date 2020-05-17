@@ -1,8 +1,6 @@
 package main.java.lucia.client.protocol.packet.in.order;
 
-import main.java.lucia.client.protocol.packet.OutgoingAuthPacket;
-import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import main.java.lucia.net.protocol.opcode.OpcodeConstants;
+import main.java.lucia.client.protocol.packet.IncomingAuthPacket;
 
 import java.time.LocalDate;
 
@@ -11,7 +9,7 @@ import java.time.LocalDate;
  * (for reports, etc)
  * @author Matthew Kwiatkowski
  */
-public class PacketInFoundOrderNumberOfDay extends OutgoingAuthPacket {
+public class PacketInFoundOrderNumberOfDay extends IncomingAuthPacket {
 
     /**
      * The number of orders on the given day
@@ -23,18 +21,10 @@ public class PacketInFoundOrderNumberOfDay extends OutgoingAuthPacket {
      */
     private LocalDate day;
 
-    public PacketInFoundOrderNumberOfDay() {
-        super(OpcodeConstants.FOUND_ORDERNUM_DAY_OPCODE);
-    }
-
-    /**
-     * Used for specifying serialization behaviour of this packet
-     *
-     * @return the entire packet, represented as a json string
-     */
-    @Override
-    public String serialize() {
-        return GsonTypeFactory.BASIC_GSON.toJson(this, this.getClass());
+    public PacketInFoundOrderNumberOfDay(int echoCode, int opcode, int orders, LocalDate day) {
+        super(echoCode, opcode);
+        this.orders = orders;
+        this.day = day;
     }
 
     /**

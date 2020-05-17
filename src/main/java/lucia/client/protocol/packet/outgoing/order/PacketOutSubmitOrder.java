@@ -14,11 +14,11 @@ public class PacketOutSubmitOrder extends OutgoingAuthPacket {
     /**
      * The Order to submit
      */
-    private Order o;
+    private Order order;
 
-    public PacketOutSubmitOrder(Order o) {
+    public PacketOutSubmitOrder(Order order) {
         super(OpcodeConstants.SUBMIT_ORDER_OPCODE);
-        this.o = o;
+        this.order = order;
     }
 
     /**
@@ -35,13 +35,13 @@ public class PacketOutSubmitOrder extends OutgoingAuthPacket {
      * The Order to submit
      */
     public Order getOrder() {
-        return o;
+        return order;
     }
 
     /**
      * The Order to submit
      */
     public void setOrder(Order o) {
-        this.o = o;
+        this.order = o;
     }
 }

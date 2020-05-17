@@ -172,7 +172,6 @@ public class GsonTypeFactory {
   private static Gson basicBuilder(){
     GsonBuilder b = new GsonBuilder();
     addExclusionPolicy(b);
-    b.setPrettyPrinting();
     b.serializeNulls();
     TimeGson.addCustomJsonSerializers(b);
 

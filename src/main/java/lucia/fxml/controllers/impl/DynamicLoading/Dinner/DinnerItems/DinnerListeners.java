@@ -3,6 +3,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
@@ -63,7 +64,7 @@ public class DinnerListeners {
         for(int x = 0; x < sidesDynamicLoad.menuSidesPanes.size(); x++) {
             if(sidesDynamicLoad.menuSidesPanes.get(x).getId().equalsIgnoreCase(item.getBaseName())) {
                 sidesDynamicLoad.menuSidesPanes.get(x).toFront();
-                return;
+                break;
             }
             else System.out.println(sidesDynamicLoad.menuSidesPanes.get(x).getId() + " Not Found On CLick! Looking For " + item.getBaseName());
             // Will happen if the item has no applicable addons
@@ -75,14 +76,7 @@ public class DinnerListeners {
      *  Implements with the Order System
      */
     private void itemClicked(int id) {
-        // add to order system
-//        ToppingType type = new IDCaster<ToppingType>().cast(id);
-      //  if(pizzaController.getCurrentPizza().hasToppingType(type)){
-            //add item
-        //}else{
-            //remove item
-       // }
-
-
+        DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
+        dinnerOrderManager.currentItem = item;
     }
 }

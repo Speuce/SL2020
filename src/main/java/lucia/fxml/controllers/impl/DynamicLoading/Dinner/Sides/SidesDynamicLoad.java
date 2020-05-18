@@ -8,6 +8,7 @@ import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.consts.FoodConstants.Dinner.DinnerSidesConstants;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerAddonPaneCoordinates;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerAddonPaneDesigns;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.MakeButton.MakeButtonDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 import java.util.ArrayList;
@@ -84,6 +85,11 @@ public class SidesDynamicLoad {
             createDinnerPaneAddOnDesigns(addOnPane);
             iterateAddOnItems(addOnPane, dinnerItem);
             parentPane.getChildren().addAll(addOnPane);
+
+            // adds the make button
+            MakeButtonDynamicLoad makeButtonDynamicLoad = new MakeButtonDynamicLoad(addOnPane);
+            makeButtonDynamicLoad.createMakeButton();
+
             menuSidesPanes.add(addOnPane);
         }
         Pane blankPane = new Pane();

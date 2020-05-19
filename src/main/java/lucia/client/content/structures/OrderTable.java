@@ -11,7 +11,11 @@ import java.util.Iterator;
  * Custom Implemented Data type for tracking a current days' orders.
  * @author Matthew Kwiatkowski
  *
- * 
+ * Theoretical Big-Oh runtimes of various operations in this data structure:
+ * Add: Best: O(1) Worst: O(n) [this case occurs when the table needs to be resized].
+ * Delete: O(1)
+ * Contains: O(1)
+ * Next: O(h/n) where h=number of elements, n=current maximum size
  */
 public class OrderTable implements Collection<Order> {
 
@@ -204,5 +208,6 @@ public class OrderTable implements Collection<Order> {
         }
         size = 0;
     }
+
 
 }

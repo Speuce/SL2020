@@ -1,5 +1,6 @@
 package main.java.lucia.client.content.structures;
 
+import com.google.common.collect.Iterators;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.manager.impl.OrderManager;
 import org.jetbrains.annotations.NotNull;
@@ -129,6 +130,41 @@ public class OrderTable implements Collection<Order> {
         };
     }
 
+    /**
+     * Integer ordernumber iterator
+     */
+    @NotNull
+    public Iterator<Integer> interator() {
+        return new Iterator<Integer>() {
+            /**
+             * The amount of elements pulled.
+             */
+            int found = 0;
+
+            /**
+             * The current index
+             */
+            int currIndex = -1;
+
+            @Override
+            public boolean hasNext() {
+                return currIndex < max && found < size;
+            }
+
+            @Override
+            public Integer next() {
+                currIndex++;
+                while(currIndex < max && !lookupTable[currIndex]){
+                    currIndex++;
+                }
+                if(currIndex < max){
+                    return currIndex;
+                }
+                return null;
+            }
+        };
+    }
+
     @NotNull
     @Override
     public Order[] toArray() {
@@ -207,6 +243,21 @@ public class OrderTable implements Collection<Order> {
             lookupTable[i] = false;
         }
         size = 0;
+    }
+
+    /**
+     * Gets the 'index'-th item in the ordertable
+     * by iteration order.
+     * @param index the index to get
+     * @return the Order, if found, null otherwise
+     */
+    public Order getOrder(int index){
+        Order ret = null;
+        if(index < size){
+            int orderNum = Iterators.get(this.interator(), index);
+            ret = OrderManager.INSTANCE.getFromOrderNumber(index);
+        }
+        return ret;
     }
 
 

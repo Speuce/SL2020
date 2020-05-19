@@ -1,6 +1,7 @@
 package main.java.lucia.client.content.structures;
 
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.manager.impl.OrderManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -9,6 +10,8 @@ import java.util.Iterator;
 /**
  * Custom Implemented Data type for tracking a current days' orders.
  * @author Matthew Kwiatkowski
+ *
+ * 
  */
 public class OrderTable implements Collection<Order> {
 
@@ -41,7 +44,8 @@ public class OrderTable implements Collection<Order> {
     private void checkSize(int num){
         assert(lookupTable.length == max);
         if(max <= num){
-
+            int newSize = findNewSize(num);
+            resizeTable(newSize);
         }
     }
 
@@ -91,19 +95,53 @@ public class OrderTable implements Collection<Order> {
     @NotNull
     @Override
     public Iterator<Order> iterator() {
-        return null;
+        return new Iterator<Order>() {
+            /**
+             * The amount of elements pulled.
+             */
+            int found = 0;
+
+            /**
+             * The current index
+             */
+            int currIndex = -1;
+
+            @Override
+            public boolean hasNext() {
+                return currIndex < max && found < size;
+            }
+
+            @Override
+            public Order next() {
+                currIndex++;
+                while(currIndex < max && !lookupTable[currIndex]){
+                    currIndex++;
+                }
+                if(currIndex < max){
+                    return OrderManager.INSTANCE.getFromOrderNumber(currIndex);
+                }
+                return null;
+            }
+        };
     }
 
     @NotNull
     @Override
-    public Object[] toArray() {
-        return new Object[0];
+    public Order[] toArray() {
+        return toArray(new Order[0]);
     }
 
     @NotNull
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T[] toArray(@NotNull T[] ts) {
-        return null;
+        Order[] ret = new Order[size];
+        int index = 0;
+        for(Order o: this){
+            ret[index] = o;
+            index++;
+        }
+        return (T[]) ret;
     }
 
     @Override
@@ -138,17 +176,25 @@ public class OrderTable implements Collection<Order> {
 
     @Override
     public boolean addAll(@NotNull Collection<? extends Order> collection) {
-        return false;
+        for(Order o: collection){
+            add(o);
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(@NotNull Collection<?> collection) {
-        return false;
+        collection.forEach(o ->{
+            if(o instanceof Order){
+                remove(o);
+            }
+        });
+        return true;
     }
 
     @Override
     public boolean retainAll(@NotNull Collection<?> collection) {
-        return false;
+        return true;
     }
 
     @Override
@@ -159,13 +205,4 @@ public class OrderTable implements Collection<Order> {
         size = 0;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        throw new UnsupportedOperationException("Equals method not defined.");
-    }
-
-    @Override
-    public int hashCode() {
-        throw new UnsupportedOperationException("hashcode method not defined.");
-    }
 }

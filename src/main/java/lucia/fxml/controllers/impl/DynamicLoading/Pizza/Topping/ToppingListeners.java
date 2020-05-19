@@ -1,7 +1,6 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
@@ -13,10 +12,14 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
 public class ToppingListeners {
     private PizzaController pizzaController; // the instance for the pizza controllers so the fxml methods can be called
     private ToppingType name; // topping information
+    private JFXButton button; // the button instance
+    private ToppingDesigns toppingDesigns;
 
-    public ToppingListeners(PizzaController pizzaController, ToppingType name) {
+    public ToppingListeners(PizzaController pizzaController, ToppingType name, JFXButton button) {
         this.pizzaController = pizzaController;
         this.name = name;
+        this.button = button;
+        toppingDesigns = new ToppingDesigns(name);
     }
 
     /**
@@ -26,12 +29,24 @@ public class ToppingListeners {
      *
      *  todo will have the designs for the buttons changed once the new design is implemented
      */
-    public JFXButton setListeners(JFXButton button) {
-        button.setOnMouseClicked(toppingSelected(name));
-        button.setOnMouseEntered(pizzaController::activateHover);
-        button.setOnMouseExited(pizzaController::deactivateHover);
-        button.setId("this works");
-        return button;
+    public void setListeners() {
+        button.setOnMouseClicked(this::toppingSelected);
+        button.setOnMouseEntered(this::activateHover);
+        button.setOnMouseExited(this::deactivateHover);
+    }
+
+    /**
+     *  Event Handler for when the button is hovered into
+     */
+    public void activateHover(MouseEvent event) {
+        button.setStyle(toppingDesigns.getHoveredStyleString());
+    }
+
+    /**
+     *  Event Handler for when the button is hovered out of
+     */
+    public void deactivateHover(MouseEvent event) {
+        button.setStyle(toppingDesigns.getDefaultStyleString());
     }
 
     /**
@@ -39,9 +54,8 @@ public class ToppingListeners {
      *
      *  Goes to Order System
      */
-    private EventHandler<? super MouseEvent> toppingSelected(ToppingType name) {
+    public void toppingSelected(MouseEvent event) {
         toppingClicked(name.getId());
-        return null; //setOnMouseClicked must be an 'Event'
     }
 
     /**

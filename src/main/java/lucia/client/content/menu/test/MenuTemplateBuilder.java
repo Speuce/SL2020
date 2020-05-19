@@ -100,7 +100,7 @@ public class MenuTemplateBuilder {
 
 
 
-        File menu = new File("src/main/resources/menutest.json");
+        File menu = new File("src/main/resources/menu.json");
         if(!menu.exists()){
             menu.createNewFile();
         }

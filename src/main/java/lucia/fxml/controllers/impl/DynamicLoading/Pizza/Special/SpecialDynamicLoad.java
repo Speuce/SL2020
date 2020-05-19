@@ -59,10 +59,10 @@ public class SpecialDynamicLoad {
     private JFXButton createButton(int getX, int getY, SpecialtyPizzaDescriptor name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getBaseName());
         SpecialDesigns specialDesigns = new SpecialDesigns(name);
-        SpecialListeners specialListeners = new SpecialListeners(pizzaController, name);
+        SpecialListeners specialListeners = new SpecialListeners(pizzaController, name, button);
 
         specialDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        specialListeners.setListeners(button);
+        specialListeners.setListeners();
 
         return button;
     }

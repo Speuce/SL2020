@@ -21,7 +21,7 @@ public class DinnerButtonTabConstants extends FoodConstants {
         setxMargin(260);
         setSizeX(247);
         setSizeY(87);
-        setMaxX(1576);
+        setMaxX(1570);
         // no need for y margin, y not changing
     }
 

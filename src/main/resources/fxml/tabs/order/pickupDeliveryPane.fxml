@@ -51,7 +51,7 @@
                   <fx:include fx:id="beveragesPane" source="pickupdelivery/beveragesPane.fxml" />
                   <fx:include fx:id="sidesPane" source="pickupdelivery/sidesPane.fxml" />
                   <fx:include fx:id="cateringPane" source="pickupdelivery/cateringPane.fxml" />
-                  <fx:include fx:id="pizza" source="pickupdelivery/pizza.fxml" />
+                  <fx:include source="pickupdelivery/pizza.fxml" />
                </children>
             </Pane>
             <Pane fx:id="PaneChange" layoutX="-7.0" prefHeight="154.0" prefWidth="1697.0">

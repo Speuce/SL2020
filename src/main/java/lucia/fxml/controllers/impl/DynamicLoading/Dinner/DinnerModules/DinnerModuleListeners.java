@@ -68,7 +68,6 @@ public class DinnerModuleListeners {
                 return;
             }
             else {
-                System.out.println(dinnerDynamicLoad.menuPaneModules.get(x).getId() + " Not Found on Click!");
                 System.out.println(pickupDeliveryPaneController.pizza.getId());
             }
         }

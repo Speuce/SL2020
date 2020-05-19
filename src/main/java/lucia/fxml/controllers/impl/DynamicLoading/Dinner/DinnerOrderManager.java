@@ -1,9 +1,12 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner;
 
+import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
+import main.java.lucia.client.content.menu.item.type.SimpleItem;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,7 @@ public class DinnerOrderManager {
     public Descriptor currentItem;
 
     private ItemModifiable itemModifiable; // created order item when 'Make' is clicked
+    private SimpleItem simpleItem; // created order item when 'Make' is clicked
 
     private static DinnerOrderManager dinnerOrderInstance;
 
@@ -47,11 +51,20 @@ public class DinnerOrderManager {
      * When 'Make' is clicked, creates the item for the Order
      *
      */
-    public ItemModifiable makeItem() {
-        ItemModifiableDescriptor itemDescriptor = (ItemModifiableDescriptor)currentItem;
-        itemModifiable = itemDescriptor.getAsItem();
-        setItemModifiableAddons();
-        return itemModifiable;
+    public Item makeItem() {
+        if(currentItem instanceof ItemModifiableDescriptor) {
+            ItemModifiableDescriptor itemDescriptor = (ItemModifiableDescriptor) currentItem;
+            itemModifiable = itemDescriptor.getAsItem();
+            setItemModifiableAddons();
+            System.out.println("added " + itemModifiable.getName());
+            return itemModifiable;
+        }
+        else {
+            SimpleItemDescriptor simpleItemDescriptor = (SimpleItemDescriptor)currentItem;
+            simpleItem = (SimpleItem)simpleItemDescriptor.getAsItem();
+            System.out.println("added " + simpleItem.getName());
+            return simpleItem;
+        }
     }
 
     /**

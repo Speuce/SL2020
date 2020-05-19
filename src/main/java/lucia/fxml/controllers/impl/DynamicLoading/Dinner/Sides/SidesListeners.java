@@ -2,7 +2,9 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
+import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 /**
@@ -40,7 +42,6 @@ public class SidesListeners {
      *  Event Handler for when the button is hovered into
      */
     public void activateHover(MouseEvent event) {
-        //   button.setStyle(dinnerModuleDesigns.g());
         button.setStyle(sidesDesigns.getHoveredStyleString());
     }
 
@@ -48,7 +49,6 @@ public class SidesListeners {
      *  Event Handler for when the button is hovered out of
      */
     public void deactivateHover(MouseEvent event) {
-        //  button.setStyle(toppingDesigns.getDefaultStyleString());
         button.setStyle(sidesDesigns.getDefaultStyleString());
     }
     /**
@@ -64,14 +64,12 @@ public class SidesListeners {
      *  Implements with the Order System
      */
     private void sideClicked(int id) {
-//        // add to order system
-//        ToppingType type = new IDCaster<ToppingType>().cast(id);
-//        if(pizzaController.getCurrentPizza().hasToppingType(type)){
-//            //add topping
-//        }else{
-//            //remove topping
-//        }
-
-
+        DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
+        Menu menuInstance = Menu.get;
+        if(addonDescriptor.equals(menuInstance.getItemFromId(id))) {
+            dinnerOrderManager.addons.add(addonDescriptor);
+            System.out.println("Added " + addonDescriptor.getBaseName() + " to addons");
+        }
+        else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
     }
 }

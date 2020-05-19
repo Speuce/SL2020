@@ -17,7 +17,7 @@ public class DinnerAddonPaneCoordinates {
         getStartX = 711;
         getStartY = 0;
         getSizeX = 629;
-        getSizeY = 766;
+        getSizeY = 779;
     }
 
     /**  ACCESSORS  **/

@@ -2,6 +2,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
+import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesDynamicLoad;
@@ -66,7 +67,7 @@ public class DinnerListeners {
                 sidesDynamicLoad.menuSidesPanes.get(x).toFront();
                 break;
             }
-            else System.out.println(sidesDynamicLoad.menuSidesPanes.get(x).getId() + " Not Found On CLick! Looking For " + item.getBaseName());
+//            else System.out.println(sidesDynamicLoad.menuSidesPanes.get(x).getId() + " Not Found On CLick! Looking For " + item.getBaseName());
             // Will happen if the item has no applicable addons
         }
         itemClicked(item.getId());
@@ -77,6 +78,9 @@ public class DinnerListeners {
      */
     private void itemClicked(int id) {
         DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
-        dinnerOrderManager.currentItem = item;
+        Menu menuInstance = Menu.get;
+        if(item.equals(menuInstance.getItemFromId(id)))
+            dinnerOrderManager.currentItem = item;
+        else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
     }
 }

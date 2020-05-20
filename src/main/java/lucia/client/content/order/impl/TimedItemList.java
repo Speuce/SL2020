@@ -99,7 +99,7 @@ public abstract class TimedItemList extends ItemList {
      * Returns true if the order is for a future date (not today)
      */
     public boolean isFuturePreorder(){
-        return orderTime.getThisTime().isAfter(LocalDate.now(ZoneId.systemDefault()).plusDays(1).atTime(ClientConstants.DAY_RESET, 0));
+        return orderTime.toLocalDate().isAfter(LocalDate.now(ZoneId.systemDefault()).plusDays(1).atTime(ClientConstants.DAY_RESET, 0));
     }
 
     /**
@@ -152,18 +152,14 @@ public abstract class TimedItemList extends ItemList {
     }
 
     /**
-     * @return the time left for the order if it is a delivery
+     * Sets the time that the order left the store
      */
-    public ClientTime getDeliveryLeftTime() {
-        return deliveryLeftTime;
-    }
-
     public void setDeliveryLeftTime(ClientTime deliveryLeftTime) {
         this.deliveryLeftTime = deliveryLeftTime;
     }
 
     /**
-     * @return TRUE if this order is a preorder
+     * @return TRUE if this order is a preorder, false otherwise
      */
     public boolean isPreOrder() {
         return preorder;
@@ -214,9 +210,6 @@ public abstract class TimedItemList extends ItemList {
         isDispatchReady = dispatchReady;
     }
 
-    public boolean isPreOrderPast() {
-        return preOrderPast;
-    }
 
     public void setPreOrderPast(boolean preOrderPast) {
         this.preOrderPast = preOrderPast;

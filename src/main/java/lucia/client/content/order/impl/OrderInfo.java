@@ -214,11 +214,17 @@ public abstract class OrderInfo extends TimedItemList implements Comparable<Orde
         return orderNumber;
     }
 
+    /**
+     * @param orderNumber the order's order number
+     */
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
 
     @Override
     public int compareTo(OrderInfo o) {
         if(this.isFuturePreorder() || o.isFuturePreorder() || o.isPreOrder()){
-            return this.getOrderTime().getThisTime().compareTo(o.getOrderTime().getThisTime());
+            return this.getOrderTime().toLocalDate().compareTo(o.getOrderTime().toLocalDate());
         }
         return this.getOrderNumber() - o.getOrderNumber();
     }

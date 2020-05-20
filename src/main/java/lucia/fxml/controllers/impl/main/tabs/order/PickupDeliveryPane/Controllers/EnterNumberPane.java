@@ -928,11 +928,11 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     }
     if(parent.getCurrentOrder().isPreOrder()) {
       if(!parent.getCurrentOrder().isFuturePreorder()) {
-        takeoutTime.setText(parent.getCurrentOrder().getOrderTime().getThisTime().getHour() + ":"
-                + parent.getCurrentOrder().getOrderTime().getThisTime().getMinute());
+        takeoutTime.setText(parent.getCurrentOrder().getOrderTime().toLocalDate().getHour() + ":"
+                + parent.getCurrentOrder().getOrderTime().toLocalDate().getMinute());
         takeoutTime.setStyle("-fx-font-size: 15");
-        orderETA.setText(parent.getCurrentOrder().getOrderTime().getThisTime().getHour() + ":"
-                + parent.getCurrentOrder().getOrderTime().getThisTime().getMinute());
+        orderETA.setText(parent.getCurrentOrder().getOrderTime().toLocalDate().getHour() + ":"
+                + parent.getCurrentOrder().getOrderTime().toLocalDate().getMinute());
       }else{
         //TODO its an order for a future day.
       }

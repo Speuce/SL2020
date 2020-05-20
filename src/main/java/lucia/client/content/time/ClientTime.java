@@ -125,7 +125,7 @@ public class ClientTime {
    *
    * @return The time
    */
-  public LocalDateTime getThisTime() {
+  public LocalDateTime toLocalDate() {
     return INSTANCE;
   }
 
@@ -174,7 +174,7 @@ public class ClientTime {
    * @return The time between this time and the given {@code time}
    */
   public long getTimeBetween(ClientTime time, ChronoUnit val) {
-    return Math.abs(val.between(INSTANCE, time.getThisTime()));
+    return Math.abs(val.between(INSTANCE, time.toLocalDate()));
   }
 
   /**

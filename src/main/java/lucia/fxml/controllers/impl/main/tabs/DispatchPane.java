@@ -9,12 +9,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
 
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.concurrent.Future;
 
@@ -239,15 +237,15 @@ public class DispatchPane implements Controller {
     }
 
     private void isPreorderReady(ArrayList<Order> orders, int x) {
-        if (orders.get(x).isPreOrder()) {
-            if (!orders.get(x).isFuturePreorder()) {
-                if (orders.get(x).getOrderTime().getThisTime().isBefore(ClientTime.getWinnipegTime()))
-                    orders.get(x).setPreOrderPast(true);
-                if (orders.get(x).getOrderTime().timeFromNow(ChronoUnit.MINUTES) <= 60) {
-                    orders.get(x).setPreOrderReadyForDispatch(true);
-                } else orders.get(x).setPreOrderReadyForDispatch(false);
-            }
-        }
+//        if (orders.get(x).isPreOrder()) {
+//            if (!orders.get(x).isFuturePreorder()) {
+//                if (orders.get(x).getOrderTime().getThisTime().isBefore(ClientTime.getWinnipegTime()))
+//                    orders.get(x).setPreOrderPast(true);
+//                if (orders.get(x).getOrderTime().timeFromNow(ChronoUnit.MINUTES) <= 60) {
+//                    orders.get(x).setPreOrderReadyForDispatch(true);
+//                } else orders.get(x).setPreOrderReadyForDispatch(false);
+//            }
+//        }
     }
 
     public void finished(Event event) {

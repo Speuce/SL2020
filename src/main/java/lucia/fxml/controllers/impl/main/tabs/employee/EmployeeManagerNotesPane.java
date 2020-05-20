@@ -165,7 +165,7 @@ public class EmployeeManagerNotesPane implements Controller {
             employeeMNotesGridPane.getRowConstraints().add(new RowConstraints(120));
             employeeMNotesGridPane.getRowConstraints().set(row, new RowConstraints(120));
             employeeMNotesGridPane.add(e.getLabel(f.getSender()), 0, row);
-            employeeMNotesGridPane.add(e.getLabel(EmployeePane.getDateFormat().format(f.getClientTime().getThisTime())), 1, row);
+            employeeMNotesGridPane.add(e.getLabel(EmployeePane.getDateFormat().format(f.getClientTime().toLocalDate())), 1, row);
             employeeMNotesGridPane.add(text, 2, row);
             row+=1;
         }

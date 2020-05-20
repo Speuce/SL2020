@@ -230,7 +230,7 @@ public class ViewPreordersPane implements Controller {
       if(r == null){
         continue;
       }
-      Label orderDate = new Label(" "+ dayFormat.format(r.getOrderTime().getThisTime()) + "");
+      Label orderDate = new Label(" "+ dayFormat.format(r.getOrderTime().toLocalDate()) + "");
       registerItem(orderDate, 0);
       viewOrderGridpane.add(orderDate, 0, row);
 
@@ -257,7 +257,7 @@ public class ViewPreordersPane implements Controller {
       registerItem(phoneNum, 3);
       viewOrderGridpane.add(phoneNum, 3, row);
 
-      Label time = new Label(" "+ timeFormat.format(r.getOrderTime().getThisTime()));
+      Label time = new Label(" "+ timeFormat.format(r.getOrderTime().toLocalDate()));
       registerItem(time, 4);
       viewOrderGridpane.add(time, 4, row);
 
@@ -285,7 +285,7 @@ public class ViewPreordersPane implements Controller {
     LocalDate to = firstDayPicker.getValue();
     LocalDate from = secondDayPicker.getValue();
     for(Order i: OrderManager.INSTANCE.getAllPreorders()){
-      LocalDate orderDate = i.getOrderTime().getThisTime().toLocalDate();
+      LocalDate orderDate = i.getOrderTime().toLocalDate().toLocalDate();
       if(!orderDate.isBefore(to) && !orderDate.isAfter(from)){
         if(number.equals("") || i.getCustomerDetails().getPhoneNumber().contains(number)){
           searchedPreorders.add(i);

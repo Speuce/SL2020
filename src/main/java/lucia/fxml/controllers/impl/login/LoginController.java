@@ -36,6 +36,7 @@ import main.java.lucia.fxml.controllers.impl.Controller;
 import main.java.lucia.fxml.controllers.impl.main.Resolution;
 import main.java.lucia.net.packet.event.PacketEventHandler;
 import main.java.lucia.net.packet.event.PacketHandler;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import main.java.lucia.net.packet.impl.outgoing.codec.login.OutgoingLoginAttemptPacket;
 import main.java.lucia.net.packet.impl.outgoing.codec.login.OutgoingLoginPacket;
@@ -215,6 +216,7 @@ public class LoginController implements Controller, PacketHandler {
     public void initialize() {
         ControllerMap.addController(ControllerType.LOGIN_CONTROLLER, this);
         incorrectCredentials.setTextAlignment(TextAlignment.CENTER);
+        PacketListenerManager.get.registerListener(this);
     }
 
     /**

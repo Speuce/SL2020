@@ -55,6 +55,7 @@ public class MasterDecoder {
         this.network.buildPacketSender();
         decrypt = new IncomingDecryptionManager();
         current = new HandshakeDecoder(this).handshake();
+        resetDecoders();
     }
 
     public void resetDecoders(){

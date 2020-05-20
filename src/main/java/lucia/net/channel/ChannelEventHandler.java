@@ -3,7 +3,9 @@ package main.java.lucia.net.channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import main.java.lucia.Client;
+import main.java.lucia.client.manager.ErrorManager;
 import main.java.lucia.net.NetworkBuilder;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.packet.impl.incoming.MasterDecoder;
 import main.java.lucia.net.protocol.ProtocolBuilder;
 
@@ -85,5 +87,6 @@ public class ChannelEventHandler extends SimpleChannelInboundHandler<String> {
         Client.logger.info("Connected to the server.");
         network.setClient(context.channel());
         masterDecoder = new MasterDecoder(network);
+        PacketListenerManager.get.registerListener(new ErrorManager());
     }
 }

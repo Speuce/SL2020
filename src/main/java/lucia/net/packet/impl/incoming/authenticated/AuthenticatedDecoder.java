@@ -15,6 +15,10 @@ public class AuthenticatedDecoder extends Decoder {
 
     private static final Protocol protocol = new PacketProtocol();
 
+    public AuthenticatedDecoder() {
+
+    }
+
     @Override
     public IncomingAuthPacket getPacket(String message) {
         return protocol.deserialize(new JsonParser().parse(message).getAsJsonObject());

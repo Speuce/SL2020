@@ -1,9 +1,7 @@
 package main.java.lucia.net.protocol.opcode;
 
-import main.java.lucia.net.protocol.ProtocolBuilder;
-
 /**
- * The constant opcodes used for our {@link ProtocolBuilder}
+ * The constant opcodes used for our Protocol
  *
  * @author Brett Downey
  * @author Zachery Unrau

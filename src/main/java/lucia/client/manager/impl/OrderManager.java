@@ -278,6 +278,13 @@ public class OrderManager implements PacketHandler {
     }
 
     /**
+     * @return an array of all of the orders.
+     */
+    public Order[] getAllOrders() {
+        return allOrders;
+    }
+
+    /**
      * Submits an order to the server
      *
      * @param o the {@link Order} to submit

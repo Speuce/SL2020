@@ -1,7 +1,6 @@
 package main.java.lucia.client.protocol.message.impl.order;
 
 import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.client.protocol.message.Message;
 import main.java.lucia.client.protocol.message.impl.MattMessage;
 import main.java.lucia.client.protocol.message.impl.W;
@@ -73,7 +72,7 @@ public class SetOrderMessage extends MattMessage {
             Order o = deserialize();
             W.p("Got order: " + o.getOrderNumber());
             W.p(getPacketProcessor().getJsonRequest());
-            OrderManager.INSTANCE.setOrder(o);
+           // OrderManager.INSTANCE.setOrder(o);
         }
     }
 

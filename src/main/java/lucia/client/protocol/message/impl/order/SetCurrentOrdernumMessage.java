@@ -1,7 +1,6 @@
 package main.java.lucia.client.protocol.message.impl.order;
 
 import com.google.gson.Gson;
-import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.client.protocol.message.Message;
 import main.java.lucia.client.protocol.message.impl.MattMessage;
 import main.java.lucia.client.protocol.message.impl.W;
@@ -72,7 +71,7 @@ public class SetCurrentOrdernumMessage extends MattMessage {
         Integer set = deserialize();
         if(set >= 0){
             W.p("got new order num: " + set);
-            OrderManager.setCurrentOrderNumber(set);
+            //OrderManager.setCurrentOrderNumber(set);
         }
     }
 

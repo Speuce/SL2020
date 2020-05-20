@@ -31,6 +31,7 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,280 +42,281 @@ import java.util.List;
  */
 public class ViewPreordersPane implements Controller {
 
-  @FXML
-  private Pane viewPreordersPane;
+    @FXML
+    private Pane viewPreordersPane;
 
-  @FXML
-  private JFXButton forward2;
+    @FXML
+    private JFXButton forward2;
 
-  @FXML
-  private JFXButton back2;
+    @FXML
+    private JFXButton back2;
 
-  @FXML
-  private Label searchLabel;
+    @FXML
+    private Label searchLabel;
 
-  @FXML
-  private JFXTextField searchBox;
+    @FXML
+    private JFXTextField searchBox;
 
-  @FXML
-  private AnchorPane viewOrdersAnchor;
+    @FXML
+    private AnchorPane viewOrdersAnchor;
 
-  @FXML
-  private GridPane viewOrderGridpane;
+    @FXML
+    private GridPane viewOrderGridpane;
 
-  @FXML
-  private JFXDatePicker firstDayPicker;
+    @FXML
+    private JFXDatePicker firstDayPicker;
 
-  @FXML
-  private JFXDatePicker secondDayPicker;
+    @FXML
+    private JFXDatePicker secondDayPicker;
 
-  /**
-   * The highlighter for the view orders grid
-   */
-  private GridHighlighter highlighter;
+    /**
+     * The highlighter for the view orders grid
+     */
+    private GridHighlighter highlighter;
 
-  /**
-   * a variable to store the font that will be used
-   */
-  public Font pt20Font, pt25Font;
+    /**
+     * a variable to store the font that will be used
+     */
+    public Font pt20Font, pt25Font;
 
-  private static DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("MMM dd");
+    private static DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("MMM dd");
 
-  private static DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("h:mm a");
+    private static DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("h:mm a");
 
-  final Background markedBackground = new Background(new BackgroundFill(Color.rgb(0x99, 0xE6, 0x99),
-          CornerRadii.EMPTY,
-          Insets.EMPTY));
+    final Background markedBackground = new Background(new BackgroundFill(Color.rgb(0x99, 0xE6, 0x99),
+            CornerRadii.EMPTY,
+            Insets.EMPTY));
 
 
-  @FXML
-  private void initialize(){
-    ControllerMap.addController(ControllerType.VIEW_PREODERS_PANE_CONTROLLER, this);
-    firstDayPicker.setValue(LocalDate.now());
-    secondDayPicker.setValue(LocalDate.now());
-    searchBox.setTextFormatter(EmployeeLoginPaneController.buildNumericFormatList(10));
-    searchBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-      @Override
-      public void handle(KeyEvent e){
-        updateGridWithSearches();
-      }
-    });
-
-    /* To make the date picker not show certain dates */
-    firstDayPicker.setDayCellFactory(dp -> new DateCell() {
-      {
-        addEventHandler(MouseEvent.MOUSE_EXITED, evt -> {
-          if(getItem().compareTo(LocalDate.now()) < 0){
-            Platform.runLater(() -> {
-              setBackground(markedBackground);
-            });
-          }
+    @FXML
+    private void initialize() {
+        ControllerMap.addController(ControllerType.VIEW_PREODERS_PANE_CONTROLLER, this);
+        firstDayPicker.setValue(LocalDate.now());
+        secondDayPicker.setValue(LocalDate.now());
+        searchBox.setTextFormatter(EmployeeLoginPaneController.buildNumericFormatList(10));
+        searchBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                updateGridWithSearches();
+            }
         });
-        addEventHandler(MouseEvent.MOUSE_ENTERED, evt -> {
-          if(getItem().compareTo(LocalDate.now()) < 0){
-            Platform.runLater(() -> {
-              setBackground(markedBackground);
-            });
-          }
+
+        /* To make the date picker not show certain dates */
+        firstDayPicker.setDayCellFactory(dp -> new DateCell() {
+            {
+                addEventHandler(MouseEvent.MOUSE_EXITED, evt -> {
+                    if (getItem().compareTo(LocalDate.now()) < 0) {
+                        Platform.runLater(() -> {
+                            setBackground(markedBackground);
+                        });
+                    }
+                });
+                addEventHandler(MouseEvent.MOUSE_ENTERED, evt -> {
+                    if (getItem().compareTo(LocalDate.now()) < 0) {
+                        Platform.runLater(() -> {
+                            setBackground(markedBackground);
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (!empty && item.compareTo(LocalDate.now()) < 0) {
+                    setBackground(markedBackground);
+                }
+            }
         });
-      }
-      @Override
-      public void updateItem(LocalDate item, boolean empty) {
-        super.updateItem(item, empty);
-        if (!empty && item.compareTo(LocalDate.now()) < 0) {
-          setBackground(markedBackground);
-        }
-      }
-    });
-    secondDayPicker.setDayCellFactory(dp -> new DateCell() {
-      {
-        addEventHandler(MouseEvent.MOUSE_EXITED, evt -> {
-          if(getItem().compareTo(firstDayPicker.getValue()) < 0){
-            Platform.runLater(() -> {
-              setBackground(markedBackground);
-            });
-          }
+        secondDayPicker.setDayCellFactory(dp -> new DateCell() {
+            {
+                addEventHandler(MouseEvent.MOUSE_EXITED, evt -> {
+                    if (getItem().compareTo(firstDayPicker.getValue()) < 0) {
+                        Platform.runLater(() -> {
+                            setBackground(markedBackground);
+                        });
+                    }
+                });
+                addEventHandler(MouseEvent.MOUSE_ENTERED, evt -> {
+                    if (getItem().compareTo(firstDayPicker.getValue()) < 0) {
+                        Platform.runLater(() -> {
+                            setBackground(markedBackground);
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (!empty && item.compareTo(firstDayPicker.getValue()) < 0) {
+                    setBackground(markedBackground);
+                }
+            }
         });
-        addEventHandler(MouseEvent.MOUSE_ENTERED, evt -> {
-          if(getItem().compareTo(firstDayPicker.getValue()) < 0){
-            Platform.runLater(() -> {
-              setBackground(markedBackground);
-            });
-          }
-        });
-      }
-      @Override
-      public void updateItem(LocalDate item, boolean empty) {
-        super.updateItem(item, empty);
-        if (!empty && item.compareTo(firstDayPicker.getValue()) < 0) {
-          setBackground(markedBackground);
-        }
-      }
-    });
 //
-    firstDayPicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
-      @Override
-      public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue,
-          LocalDate newValue) {
-        if(newValue.isAfter(secondDayPicker.getValue())){
-          secondDayPicker.setValue(newValue);
-        }
-        updateGridWithSearches();
-      }
-    });
+        firstDayPicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
+            @Override
+            public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue,
+                                LocalDate newValue) {
+                if (newValue.isAfter(secondDayPicker.getValue())) {
+                    secondDayPicker.setValue(newValue);
+                }
+                updateGridWithSearches();
+            }
+        });
 
-    secondDayPicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
-      @Override
-      public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue,
-          LocalDate newValue) {
-        if(newValue.isBefore(firstDayPicker.getValue())){
-          firstDayPicker.setValue(newValue);
-        }
-        updateGridWithSearches();
-      }
-    });
+        secondDayPicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
+            @Override
+            public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue,
+                                LocalDate newValue) {
+                if (newValue.isBefore(firstDayPicker.getValue())) {
+                    firstDayPicker.setValue(newValue);
+                }
+                updateGridWithSearches();
+            }
+        });
 
         highlighter = new GridHighlighter(viewOrderGridpane, "#FFFFFF");
-    ControllerMap.addController(ControllerType.VIEW_ORDERS_PANE_CONTROLLER, this);
-    highlighter.addSelectListener(r -> {
-      if (r)
-        orderSelected(OrderManager.INSTANCE.getAllOrders()[highlighter.getHighLightedRow()+1]);
-      else
-        unselected();
-    });
-    pt20Font = new Font("Calibri", 20);
-    pt25Font = new Font("Calibri", 25);
-    //orderDetailsPaneController.setParent(this);
-    searchBox.setTextFormatter(EmployeeLoginPaneController.buildNumericFormatList(10));
-  }
-
-
-  /**
-   * Used for opening this pane.
-   */
-  public void open(){
-    resetConstraints();
-    //orderInfoAnchor.setVisible(false);
-    viewOrdersAnchor.setVisible(true);
-    //viewOrdersInfoPane.setVisible(false);
-    searchBox.setVisible(true);
-    searchLabel.setVisible(true);
-    //drawGrid(OrderManager.INSTANCE.getAllOrders(), OrderManager.getCurrentOrderNumber()+1);
-    searchBox.setText("");
-    firstDayPicker.setValue(LocalDate.now());
-    secondDayPicker.setValue(LocalDate.now());
-    Collections.sort(OrderManager.INSTANCE.getAllPreorders());
-    System.out.println("preorder size: " + OrderManager.INSTANCE.getAllPreorders().size());
-    drawGrid(OrderManager.INSTANCE.getAllPreorders());
-  }
-
-  /**
-   * Resets the row constraints for the view order gridpane
-   */
-  private void resetConstraints(){
-    RowConstraints r = viewOrderGridpane.getRowConstraints().get(0);
-    viewOrderGridpane.getRowConstraints().clear();
-    viewOrderGridpane.getRowConstraints().add(r);
-    for(int i = 0; i<= OrderManager.getApproxNumOrders(); i++){
-      viewOrderGridpane.getRowConstraints().add(r);
+        ControllerMap.addController(ControllerType.VIEW_ORDERS_PANE_CONTROLLER, this);
+        highlighter.addSelectListener(r -> {
+            if (r)
+                orderSelected(OrderManager.INSTANCE.getAllOrders()[highlighter.getHighLightedRow() + 1]);
+            else
+                unselected();
+        });
+        pt20Font = new Font("Calibri", 20);
+        pt25Font = new Font("Calibri", 25);
+        //orderDetailsPaneController.setParent(this);
+        searchBox.setTextFormatter(EmployeeLoginPaneController.buildNumericFormatList(10));
     }
-  }
-
-  private void drawGrid(List<Order> orders){
-    int row = 0;
-    viewOrderGridpane.getChildren().clear();
-    highlighter.reset();
-    for(int i = 0; i < orders.size(); i++){
-      Order r = orders.get(i);
-      //System.out.println("drawing preorder: " + r.getOrderTime().toString());
-      if(r == null){
-        continue;
-      }
-      Label orderDate = new Label(" "+ dayFormat.format(r.getOrderTime().toLocalDate()) + "");
-      registerItem(orderDate, 0);
-      viewOrderGridpane.add(orderDate, 0, row);
-
-      Label pu;
-      if(r.isDelivery()){
-        pu = new Label(" Delivery");
-      }else{
-        pu = new Label(" Pickup");
-      }
-      registerItem(pu, 1);
-      viewOrderGridpane.add(pu, 1, row);
-
-      Label nameOrAddress = null;
-      if(r.isDelivery()){
-        nameOrAddress = new Label(" "+ r.getCustomerDetails().getAddress().toString());
-      }else{
-        nameOrAddress = new Label(" "+ r.getCustomerDetails().getName());
-      }
-      registerItem(nameOrAddress, 2);
-      viewOrderGridpane.add(nameOrAddress, 2, row);
 
 
-      Label phoneNum = new Label(" "+ r.getCustomerDetails().getPhoneNumberFormatted());
-      registerItem(phoneNum, 3);
-      viewOrderGridpane.add(phoneNum, 3, row);
-
-      Label time = new Label(" "+ timeFormat.format(r.getOrderTime().toLocalDate()));
-      registerItem(time, 4);
-      viewOrderGridpane.add(time, 4, row);
-
-
-      Label cost = new Label(" "+ NumberFormat.getCurrencyInstance().format(r.getAllTotal()));
-      registerItem(cost, 5);
-      viewOrderGridpane.add(cost, 5, row);
-
-      if(r.getPaymentType() != PaymentType.UNPAID){
-        Label paytype = new Label(" "+ r.getPaymentType().getDisplayCode());
-        registerItem(paytype, 6);
-        viewOrderGridpane.add(paytype, 6, row);
-      }else{
-        Label paytype = new Label(" ");
-        registerItem(paytype, 6);
-        viewOrderGridpane.add(paytype, 6, row);
-      }
-      row++;
+    /**
+     * Used for opening this pane.
+     */
+    public void open() {
+        resetConstraints();
+        //orderInfoAnchor.setVisible(false);
+        viewOrdersAnchor.setVisible(true);
+        //viewOrdersInfoPane.setVisible(false);
+        searchBox.setVisible(true);
+        searchLabel.setVisible(true);
+        //drawGrid(OrderManager.INSTANCE.getAllOrders(), OrderManager.getCurrentOrderNumber()+1);
+        searchBox.setText("");
+        firstDayPicker.setValue(LocalDate.now());
+        secondDayPicker.setValue(LocalDate.now());
+        //Collections.sort(OrderManager.INSTANCE.getAllPreorders());
+        System.out.println("preorder size: " + OrderManager.INSTANCE.getAllPreorders().size());
+        drawGrid(OrderManager.INSTANCE.getAllPreorders());
     }
-  }
 
-  public void updateGridWithSearches(){
-    List<Order> searchedPreorders = new ArrayList<Order>();
-    String number = searchBox.getText();
-    LocalDate to = firstDayPicker.getValue();
-    LocalDate from = secondDayPicker.getValue();
-    for(Order i: OrderManager.INSTANCE.getAllPreorders()){
-      LocalDate orderDate = i.getOrderTime().toLocalDate().toLocalDate();
-      if(!orderDate.isBefore(to) && !orderDate.isAfter(from)){
-        if(number.equals("") || i.getCustomerDetails().getPhoneNumber().contains(number)){
-          searchedPreorders.add(i);
+    /**
+     * Resets the row constraints for the view order gridpane
+     */
+    private void resetConstraints() {
+        RowConstraints r = viewOrderGridpane.getRowConstraints().get(0);
+        viewOrderGridpane.getRowConstraints().clear();
+        viewOrderGridpane.getRowConstraints().add(r);
+        for (int i = 0; i <= OrderManager.getApproxNumOrders(); i++) {
+            viewOrderGridpane.getRowConstraints().add(r);
         }
-      }else if(!number.equals("") && i.getCustomerDetails().getPhoneNumber().contains(number)){
-        searchedPreorders.add(i);
-      }
     }
-    Collections.sort(searchedPreorders);
-    drawGrid(searchedPreorders);
-  }
 
-  private void registerItem(Label s, int col){
-    double width = viewOrderGridpane.getColumnConstraints().get(col).getPrefWidth();
-    double height = viewOrderGridpane.getRowConstraints().get(0).getPrefHeight();
-    s.setPrefSize(width, height);
-    s.setFont(pt20Font);
-    registerNode(s);
-  }
+    private void drawGrid(Collection<Order> orders) {
+        int row = 0;
+        viewOrderGridpane.getChildren().clear();
+        highlighter.reset();
+        for (Order r : orders) {
+            //System.out.println("drawing preorder: " + r.getOrderTime().toString());
+            if (r == null) {
+                continue;
+            }
+            Label orderDate = new Label(" " + dayFormat.format(r.getOrderTime().toLocalDate()) + "");
+            registerItem(orderDate, 0);
+            viewOrderGridpane.add(orderDate, 0, row);
 
-  private void registerNode(Node n){
-    highlighter.registerNode(n);
-  }
+            Label pu;
+            if (r.isDelivery()) {
+                pu = new Label(" Delivery");
+            } else {
+                pu = new Label(" Pickup");
+            }
+            registerItem(pu, 1);
+            viewOrderGridpane.add(pu, 1, row);
 
-  /**
-   * Called when an order is selected
-   */
-  private void orderSelected(Order r) {
-    //orderDetailsPaneController.setOrder(r);
+            Label nameOrAddress = null;
+            if (r.isDelivery()) {
+                nameOrAddress = new Label(" " + r.getCustomerDetails().getAddress().toString());
+            } else {
+                nameOrAddress = new Label(" " + r.getCustomerDetails().getName());
+            }
+            registerItem(nameOrAddress, 2);
+            viewOrderGridpane.add(nameOrAddress, 2, row);
+
+
+            Label phoneNum = new Label(" " + r.getCustomerDetails().getPhoneNumberFormatted());
+            registerItem(phoneNum, 3);
+            viewOrderGridpane.add(phoneNum, 3, row);
+
+            Label time = new Label(" " + timeFormat.format(r.getOrderTime().toLocalDate()));
+            registerItem(time, 4);
+            viewOrderGridpane.add(time, 4, row);
+
+
+            Label cost = new Label(" " + NumberFormat.getCurrencyInstance().format(r.getAllTotal()));
+            registerItem(cost, 5);
+            viewOrderGridpane.add(cost, 5, row);
+
+            if (r.getPaymentType() != PaymentType.UNPAID) {
+                Label paytype = new Label(" " + r.getPaymentType().getDisplayCode());
+                registerItem(paytype, 6);
+                viewOrderGridpane.add(paytype, 6, row);
+            } else {
+                Label paytype = new Label(" ");
+                registerItem(paytype, 6);
+                viewOrderGridpane.add(paytype, 6, row);
+            }
+            row++;
+        }
+    }
+
+    public void updateGridWithSearches() {
+        List<Order> searchedPreorders = new ArrayList<Order>();
+        String number = searchBox.getText();
+        LocalDate to = firstDayPicker.getValue();
+        LocalDate from = secondDayPicker.getValue();
+        for (Order i : OrderManager.INSTANCE.getAllPreorders()) {
+            LocalDate orderDate = i.getOrderTime().toLocalDate().toLocalDate();
+            if (!orderDate.isBefore(to) && !orderDate.isAfter(from)) {
+                if (number.equals("") || i.getCustomerDetails().getPhoneNumber().contains(number)) {
+                    searchedPreorders.add(i);
+                }
+            } else if (!number.equals("") && i.getCustomerDetails().getPhoneNumber().contains(number)) {
+                searchedPreorders.add(i);
+            }
+        }
+        Collections.sort(searchedPreorders);
+        drawGrid(searchedPreorders);
+    }
+
+    private void registerItem(Label s, int col) {
+        double width = viewOrderGridpane.getColumnConstraints().get(col).getPrefWidth();
+        double height = viewOrderGridpane.getRowConstraints().get(0).getPrefHeight();
+        s.setPrefSize(width, height);
+        s.setFont(pt20Font);
+        registerNode(s);
+    }
+
+    private void registerNode(Node n) {
+        highlighter.registerNode(n);
+    }
+
+    /**
+     * Called when an order is selected
+     */
+    private void orderSelected(Order r) {
+        //orderDetailsPaneController.setOrder(r);
 //    viewOrderInfo2.setVisible(false);
 //    viewOrderInfo3.setVisible(false);
 //    viewOrdersInfoPane.setVisible(true);
@@ -336,41 +338,41 @@ public class ViewPreordersPane implements Controller {
 //      }
 //
 //    }
-  }
+    }
 
-  private void unselected(){
+    private void unselected() {
 
-  }
+    }
 
-  @FXML
-  void viewThisMonthsPreorders(ActionEvent event) {
-    firstDayPicker.setValue(LocalDate.now());
-    secondDayPicker.setValue(LocalDate.now().plusMonths(1));
-    updateGridWithSearches();
-  }
+    @FXML
+    void viewThisMonthsPreorders(ActionEvent event) {
+        firstDayPicker.setValue(LocalDate.now());
+        secondDayPicker.setValue(LocalDate.now().plusMonths(1));
+        updateGridWithSearches();
+    }
 
-  @FXML
-  void viewTodaysPreorders(ActionEvent event) {
-    firstDayPicker.setValue(LocalDate.now());
-    secondDayPicker.setValue(LocalDate.now());
-    updateGridWithSearches();
-  }
+    @FXML
+    void viewTodaysPreorders(ActionEvent event) {
+        firstDayPicker.setValue(LocalDate.now());
+        secondDayPicker.setValue(LocalDate.now());
+        updateGridWithSearches();
+    }
 
-  @FXML
-  void viewThisWeeksPreorders(ActionEvent event) {
-    firstDayPicker.setValue(LocalDate.now());
-    secondDayPicker.setValue(LocalDate.now().plusWeeks(1));
-    updateGridWithSearches();
-  }
+    @FXML
+    void viewThisWeeksPreorders(ActionEvent event) {
+        firstDayPicker.setValue(LocalDate.now());
+        secondDayPicker.setValue(LocalDate.now().plusWeeks(1));
+        updateGridWithSearches();
+    }
 
-  public void reset(){
-    firstDayPicker.setValue(LocalDate.now());
-    secondDayPicker.setValue(LocalDate.now());
-  }
+    public void reset() {
+        firstDayPicker.setValue(LocalDate.now());
+        secondDayPicker.setValue(LocalDate.now());
+    }
 
 
-  @Override
-  public ControllerType getType() {
-    return ControllerType.VIEW_PREODERS_PANE_CONTROLLER;
-  }
+    @Override
+    public ControllerType getType() {
+        return ControllerType.VIEW_PREODERS_PANE_CONTROLLER;
+    }
 }

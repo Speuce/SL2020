@@ -1,11 +1,14 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.Order;
@@ -199,6 +202,15 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
 
   @FXML
   private Label errorLabelMisc;
+
+  @FXML
+  public JFXScrollPane moduleScrollPane;
+
+  @FXML
+  public AnchorPane moduleScrollPaneAnchor;
+
+  @FXML
+  public JFXListView<JFXButton> moduleListView;
 
   NumberFormat formatter = new DecimalFormat("#0.00");
 

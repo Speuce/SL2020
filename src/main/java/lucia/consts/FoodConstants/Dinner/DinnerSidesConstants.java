@@ -27,7 +27,7 @@ public class DinnerSidesConstants extends FoodConstants {
         setyMargin(110);
         setSizeX(180);
         setSizeY(93);
-        setMaxX(629);
+        setMaxX(700);
         setMaxY(675);
         // y value does not cover the entire height, leaves room for the 'make' button
     }

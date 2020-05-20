@@ -20,7 +20,7 @@ public class DinnerDynamicLoad {
     Menu menuInstance = Menu.get; // menu instance
     public ArrayList<Pane> menuPaneModules = new ArrayList<>(); //panes for the dinners
     private DinnerConstants dinnerConstants = new DinnerConstants();
-    private DinnerCoordinates dC = new DinnerCoordinates();
+    private DinnerCoordinates dC;
     private SidesDynamicLoad sidesDynamicLoad;
     private DinnerPaneCoordinates dinnerPaneCoordinates;
     private DinnerPaneDesigns dinnerPaneDesigns;
@@ -98,12 +98,14 @@ public class DinnerDynamicLoad {
      *  todo will make into scrollpane for the ability for infinite buttons
      */
     private void iterateItems(Pane pane, List<SimpleItemDescriptor> dinnerItems) {
+        dC = new DinnerCoordinates();
         JFXButton firstButton = createButton(dC.getGetStartX(), dC.getGetStartY(), dinnerItems.get(0), dC.getGetSizeX(), dC.getGetSizeY());
         pane.getChildren().add(firstButton);
 
         for(int x = 1; x < dinnerItems.size(); x++) {
-            if(dC.checkLessThanMaxX())
+            if(dC.checkLessThanMaxX()) {
                 dC.addToCurrX(dC.getGetXMargin());
+            }
             else if(dC.checkLessThanMaxY()) {
                 dC.resetCurrX();
                 dC.addToCurrY(dC.getGetYMargin());

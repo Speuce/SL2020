@@ -1,7 +1,5 @@
 package main.java.lucia.client.content.menu.legacy.premade.impl;
 
-import java.util.ArrayList;
-
 import main.java.lucia.Client;
 import main.java.lucia.client.content.menu.legacy.AlternativeItemPackage;
 import main.java.lucia.client.content.menu.legacy.Item;
@@ -16,7 +14,7 @@ import main.java.lucia.client.content.menu.legacy.premade.impl.names.PremadeAddo
 import main.java.lucia.client.content.menu.legacy.size.Size;
 import main.java.lucia.client.content.menu.legacy.toppings.Topping;
 
-import javax.print.attribute.standard.Sides;
+import java.util.ArrayList;
 
 public abstract class PremadeItem extends Item implements Premade {
 
@@ -94,7 +92,6 @@ public abstract class PremadeItem extends Item implements Premade {
         applySpecialInstructions(builder);
         applyAddons(builder);
         name = builder.getString().trim();
-        System.out.println(name);
 
       } catch (Exception e) {
         Client.logger

@@ -68,7 +68,7 @@ public class DinnerModuleListeners {
                 return;
             }
             else {
-                System.out.println(pickupDeliveryPaneController.pizza.getId());
+               // System.out.println(pickupDeliveryPaneController.pizza.getId());
             }
         }
         moduleClicked(module);

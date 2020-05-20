@@ -53,6 +53,7 @@ public class ColorUtils {
      * @return the hex string, if valid, or a fun random color if there is an issue
      */
     public static String parseHex(String s){
+        s = s.toUpperCase();
         if(matchesHex(s)){
             return s;
         }

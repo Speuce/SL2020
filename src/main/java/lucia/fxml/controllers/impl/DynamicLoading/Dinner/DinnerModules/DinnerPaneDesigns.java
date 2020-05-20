@@ -1,6 +1,8 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
+import main.java.lucia.consts.FoodConstants.Dinner.DinnerLineConstants;
 
 /**
  * Design Manager for Dinner Pane in FXML
@@ -13,7 +15,7 @@ public class DinnerPaneDesigns {
     public DinnerPaneDesigns(Pane pane) {
         this.pane = pane;
         dinnerPaneCoordinates = new DinnerPaneCoordinates();
-        paneStyleString = "-fx-background-color: #ADD8E6";
+        paneStyleString = "-fx-background-color:  #585858";
     }
 
     /**
@@ -33,5 +35,19 @@ public class DinnerPaneDesigns {
         pane.setLayoutX(getX);
         pane.setLayoutY(getY);
         pane.setPrefSize(getSizeX, getSizeY);
+        buildLineBorder(pane);
+    }
+
+    private void buildLineBorder(Pane pane) {
+        DinnerLineConstants dinnerLineConstants = new DinnerLineConstants();
+        Line line = new Line();
+        line.setStartX(dinnerLineConstants.getStartX());
+        line.setStartY(dinnerLineConstants.getStartY());
+        line.setEndX(dinnerLineConstants.getEndX());
+        line.setEndY(dinnerLineConstants.getEndY());
+        line.setLayoutX(dinnerLineConstants.getLayoutX());
+        line.setLayoutY(dinnerLineConstants.getLayoutY());
+        line.setStrokeWidth(dinnerLineConstants.getStrokeWidth());
+        pane.getChildren().add(line);
     }
 }

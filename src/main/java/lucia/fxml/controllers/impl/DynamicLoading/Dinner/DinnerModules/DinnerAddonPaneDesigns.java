@@ -13,7 +13,7 @@ public class DinnerAddonPaneDesigns {
     public DinnerAddonPaneDesigns(Pane pane) {
         this.pane = pane;
         dinnerAddonPaneCoordinates = new DinnerAddonPaneCoordinates();
-        paneStyleString = "-fx-background-color: #000000";
+        paneStyleString = "-fx-background-color:  #585858";
     }
 
     /**

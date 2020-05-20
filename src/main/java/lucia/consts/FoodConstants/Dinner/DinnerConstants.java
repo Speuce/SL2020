@@ -22,7 +22,7 @@ public class DinnerConstants extends FoodConstants {
         setyMargin(145);
         setSizeX(185);
         setSizeY(117);
-        setMaxX(700);
+        setMaxX(800);
         setMaxY(779);
         setFullPaneValue(1337);
     }

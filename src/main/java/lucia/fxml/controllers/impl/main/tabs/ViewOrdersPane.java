@@ -120,7 +120,7 @@ public class ViewOrdersPane implements Controller {
     viewOrdersInfoPane.setVisible(false);
     searchBox.setVisible(true);
     searchLabel.setVisible(true);
-    drawGrid(OrderManager.INSTANCE.getAllOrders(), OrderManager.getCurrentOrderNumber()+1);
+    drawGrid(OrderManager.INSTANCE.getAllOrders(), OrderManager.getApproxNumOrders()+1);
     searchBox.setText("");
   }
 
@@ -131,7 +131,7 @@ public class ViewOrdersPane implements Controller {
     RowConstraints r = viewOrderGridpane.getRowConstraints().get(0);
     viewOrderGridpane.getRowConstraints().clear();
     viewOrderGridpane.getRowConstraints().add(r);
-    for(int i = 0; i<= OrderManager.getCurrentOrderNumber(); i++){
+    for(int i = 0; i<= OrderManager.getApproxNumOrders(); i++){
       viewOrderGridpane.getRowConstraints().add(r);
     }
   }
@@ -251,7 +251,7 @@ public class ViewOrdersPane implements Controller {
   private List<Order> search(String number){
       List<Order> display = new ArrayList<>();
       String searchString = number;
-    for(int i = 0; i <= OrderManager.getCurrentOrderNumber(); i++){
+    for(int i = 0; i <= OrderManager.getApproxNumOrders(); i++){
         Order r = OrderManager.INSTANCE.getAllOrders()[i];
         if(r == null){
           continue;

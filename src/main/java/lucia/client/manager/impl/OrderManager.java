@@ -1,15 +1,22 @@
 package main.java.lucia.client.manager.impl;
 
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.structures.OrderTable;
+import main.java.lucia.client.manager.TimeManager;
+import main.java.lucia.client.protocol.packet.in.order.PacketInSetOrder;
+import main.java.lucia.client.protocol.packet.in.order.PacketInSetPreOrder;
+import main.java.lucia.client.protocol.packet.outgoing.order.PacketOutDayOrdersList;
+import main.java.lucia.client.protocol.packet.outgoing.order.PacketOutGetPreorders;
+import main.java.lucia.client.protocol.packet.outgoing.order.PacketOutSubmitOrder;
+import main.java.lucia.net.packet.event.ListenerPriority;
+import main.java.lucia.net.packet.event.PacketEventHandler;
 import main.java.lucia.net.packet.event.PacketHandler;
 import main.java.lucia.net.packet.event.PacketListenerManager;
-import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
-import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
-import main.java.lucia.net.protocol.opcode.OpcodeConstants;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * The order manager, which keeps track of all
@@ -23,232 +30,262 @@ import java.util.List;
  */
 public class OrderManager implements PacketHandler {
 
-  /**
-   * The instance of this singleton class
-   */
-  public static final OrderManager INSTANCE = new OrderManager();
+    /**
+     * The instance of this singleton class
+     */
+    public static final OrderManager INSTANCE = new OrderManager();
 
 
-  /**
-   * The list of orders this store currently has which
-   * are pending
-   */
-  private ArrayList<Order> pendingOrders = new ArrayList<>();
+    /**
+     * The collection of orders this store currently has which
+     * are pending (and are pickups)
+     */
+    private OrderTable pendingOrders = new OrderTable(50);
 
-  private ArrayList<Order> pendingOrdersDelivery = new ArrayList<>();
+    /**
+     * The collection of pending orders for delivery (not yet signed out by a driver)
+     */
+    private TreeSet<Order> pendingOrdersDelivery;
 
-  public ArrayList<Order> getPendingOrdersMade() {
-    return pendingOrdersMade;
-  }
+    /**
+     * The set of ALL preorders. Todays preorders included.
+     */
+    private TreeSet<Order> allPreorders;
 
-  private ArrayList<Order> pendingOrdersMade = new ArrayList<>();
+    /**
+     * The preorders for today.
+     */
+    private OrderTable preordersToday = new OrderTable(50);
 
-  public ArrayList<Order> getAllPendingOrders() {
-    return allPendingOrders;
-  }
+    /**
+     * The list of orders this store currently has which are
+     * not pending (therefore they are completed)
+     */
+    private Order[] allOrders = new Order[500];
 
-  private ArrayList<Order> allPendingOrders = new ArrayList<>();
+    /**
+     * The highest order num for today.
+     */
+    private static int numOrders = 0;
 
-  private ArrayList<Order> allPreorders = new ArrayList<>();
-
-  /**
-   * The list of orders this store currently has which are
-   * not pending (therefore they are completed)
-   */
-  private Order[] allOrders = new Order[500];
-
-  public OrderManager() {
-    PacketListenerManager.get.registerListener(this);
-  }
-
-
-  /**
-   * Registers an order and automatically sorts
-   * it into it's appropriate list
-   *
-   * @param order The given order to register
-   */
-  public void registerOrder(Order order) {
-    if(!order.isFuturePreorder()){
-      System.out.println("not a future preorder");
-      if(order.isPreOrder()){
-        allPreorders.add(order);
-        System.out.println("registered preorder: " + order.getOrderTime());
-      }
-      if(!order.isDelivery()) {
-        System.out.println("updated pending orders.");
-        pendingOrders.add(order);
-        System.out.println("pending size: " + pendingOrders.size());
-      } else
-        pendingOrdersDelivery.add(order);
-      allPendingOrders.add(order);
-      allOrders[order.getOrderNumber()] = order;
+    public OrderManager() {
+        PacketListenerManager.get.registerListener(this);
+        pendingOrdersDelivery = new TreeSet<>(Comparator.comparing(o -> o.getOrderTime().toLocalDate()));
+        allPreorders = new TreeSet<>(Comparator.comparing(o -> o.getOrderTime().toLocalDate()));
     }
-    System.out.println("registered order: " + order.getCustomerDetails().getPhoneNumber());
-    submitOrder(order);
-  }
 
-  public Order[] getAllOrders(){
-    return allOrders;
-  }
+    @PacketEventHandler(priority = ListenerPriority.HIGH)
+    public void onOrderReceive(PacketInSetOrder pack) {
+        Order order = pack.getOrder();
+        allOrders[order.getOrderNumber()] = order;
 
-  public Order getFromOrderNumber(int id){
-    return allOrders[id];
-  }
+    }
 
-  /**
-   * Completes an order, which will remove the given
-   * order from the pending orders list and add it
-   * to the non pending orders list.
-   * Note that if the order doesn't
-   * exist within the pending orders list, then it is
-   * not added into the non pending orders list.
-   *
-   * @param order The order to switch lists
-   */
-  public void completeOrder(Order order) {
-    order.setCompleted(true);
-    if(order.isDelivery())
-      if(pendingOrdersDelivery.contains(order))
-        pendingOrdersDelivery.remove(order);
-    else
-      if(pendingOrders.contains(order));
-      pendingOrders.remove(order);
-    if(allPendingOrders.contains(order))
-      allPendingOrders.remove(order);
-    if(pendingOrdersMade.contains(order))
-      pendingOrdersMade.remove(order);
-  }
+    @PacketEventHandler(priority = ListenerPriority.HIGH)
+    public void onPreOrderReceive(PacketInSetPreOrder preorder){
+        allPreorders.add(preorder.getOrder());
+        sortOrder(preorder.getOrder());
+    }
 
-  public void orderMade(Order order) {
-    pendingOrdersMade.add(order);
-    //order.setIsMade(true);
-  }
+    /**
+     * Automatically re-sorts the order into the appropriate list(s)
+     * @param o the order to sort.
+     */
+    public void sortOrder(Order o){
+        numOrders = Math.max(o.getOrderNumber(), numOrders);
+        if(o.isPendingOrder()){
+            if(o.isDelivery()){
+                pendingOrdersDelivery.add(o);
+                pendingOrders.remove(o);
+            }else{
+                pendingOrdersDelivery.remove(o);
+                pendingOrders.add(o);
+            }
+        }else{
+            pendingOrdersDelivery.remove(o);
+            pendingOrders.remove(o);
+        }
+    }
 
-  /**
-   * Gets all of the pending orders which are
-   * the orders which have not yet been assigned to
-   * an employee
-   *
-   * @return The pending orders list
-   */
-  public ArrayList<Order> getPendingOrders() {
-    return pendingOrders;
-  }
+    /**
+     * Automatically re-sorts the order into the appropriate preorder lists.
+     * @param o the order to sort.
+     */
+    public void sortPreorder(Order o){
+        assert(o.isPreOrder());
+        allPreorders.add(o);
+        if(o.getOrderTime().toLocalDate().isBefore(TimeManager.resetTime)){
+            preordersToday.add(o);
+            //TODO if supposed to add to dispatch, add
+            sortOrder(o);
+        }else{
+            //TODO see issue #24
+        }
+    }
 
-  public ArrayList<Order> getPendingOrdersDelivery() {
-    return pendingOrdersDelivery;
-  }
 
-  /**
-   * The current order number. Should be reset daily
-   * Used for assigning order numbers to orders
-   */
-  private static int currentOrderNumber = 0;
+    /**
+     * Registers an order and automatically sorts
+     * it into it's appropriate list
+     *
+     * @param order The given order to register
+     *
+     *
+     * @deprecated use {@link #submitOrder(Order)}
+     */
+    @Deprecated
+    public void registerOrder(Order order) {
+        if (order.getOrderNumber() > 0) {
+            throw new IllegalArgumentException("Got an order with an order number already assigned!");
+        }
+        submitOrder(order);
+//        if (!order.isFuturePreorder()) {
+//      System.out.println("not a future preorder");
+//      if(order.isPreOrder()){
+//        allPreorders.add(order);
+//        System.out.println("registered preorder: " + order.getOrderTime());
+//      }
+//      if(!order.isDelivery()) {
+//        System.out.println("updated pending orders.");
+//        pendingOrders.add(order);
+//        System.out.println("pending size: " + pendingOrders.size());
+//      } else
+//        pendingOrdersDelivery.add(order);
+//      allPendingOrders.add(order);
+//      allOrders[order.getOrderNumber()] = order;
+//            order.setOrderNumber(-1);
+//        } else {
+//            order.setOrderNumber(0);
+//        }
+//        System.out.println("registered order: " + order.getCustomerDetails().getPhoneNumber());
+//        submitOrder(order);
+    }
 
-  /**
-   * Gets the next available order number
-   * @return the next order number
-   */
-  public static int nextOrderNumber(){
-    currentOrderNumber++;
-    return currentOrderNumber;
-  }
+    /**
+     * Get an order, from its order number.
+     * @param id the id of the order to find
+     * @return the Order, if found, null otherwise
+     */
+    public Order getFromOrderNumber(int id) {
+        assert(id < allOrders.length);
+        return allOrders[id];
+    }
 
-  /**
-   * ONLY CALLED BY SERVER
-   * DO NOT USE THIS.
-   * Adds the order to the current days orders,
-   * taking orderNum from the order
-   * @param o the Order to add to the current day's order
-   */
-  public void setOrder(Order o){
-//    if(TestMaker.testingOrders){
-//      TestMaker.testOrderIntercepted(o);
-//    }else{
-      if(o.isPreOrder()){
-       setPreorder(o);
-      }
-      allOrders[o.getOrderNumber()] = o;
-      if(o.isPendingOrder()){
-        if(!o.isDelivery()) {
-          System.out.println("adding to pending orders");
-          searchAddOrderNum(o, pendingOrders);
-        } else
-          searchAddOrderNum(o, pendingOrdersDelivery);
-        allPendingOrders.add(o);
-      }
-    //}
-  }
+    /**
+     * Completes an order, which will remove the given
+     * order from the pending orders list and add it
+     * to the non pending orders list.
+     * Note that if the order doesn't
+     * exist within the pending orders list, then it is
+     * not added into the non pending orders list.
+     *
+     * @param order The order to switch lists
+     */
+    public void completeOrder(Order order) {
+        order.setCompleted(true);
+        submitOrder(order);
+    }
 
-  public void setPreorder(Order o){
-    System.out.println("setting preorder: " + o.getCustomerDetails().getPhoneNumber() + ":" + o.getOrderTime());
-    searchAddRowNumOrOther(o, allPreorders);
-    //allPreorders.add(o);
-  }
+    /**
+     * Sets the order to 'made' and broadcasts the changes.
+     * @param order the order to set to made.
+     */
+    public void orderMade(Order order) {
+        order.setMade(true);
+        submitOrder(order);
+        //order.setIsMade(true);
+    }
 
-  /**
-   * Removes all instances of O from list
-   * @param o
-   * @param list
-   */
-  private void searchAddOrderNum(Order o, List<Order> list){
-    list.removeIf(order -> order.getOrderNumber()==o.getOrderNumber());
-    list.add(o);
-  }
+    /**
+     * Gets all of the pending orders which are
+     * the orders which have not yet been assigned to
+     * an employee
+     *
+     * @return The pending orders orderTable
+     */
+    public OrderTable getPendingOrders() {
+        return pendingOrders;
+    }
 
-  /**
-   * Removes all instances of O from preorderlist
-   * @param o
-   * @param list
-   */
-  private void searchAddRowNumOrOther(Order o, List<Order> list){
-//    list.removeIf(order -> (order.getRowNum()==o.getRowNum()) ||
-//        (o.getCustomerDetails().getPhoneNumber().equals(order.getCustomerDetails().getPhoneNumber()) && o.getGrandTotalLong() == order.getGrandTotalLong()));
-//    list.add(o);
-  }
+//    /**
+//     * ONLY CALLED BY SERVER
+//     * DO NOT USE THIS.
+//     * Adds the order to the current days orders,
+//     * taking orderNum from the order
+//     *
+//     * @param o the Order to add to the current day's order
+//     */
+//    public void setOrder(Order o) {
+////    if(TestMaker.testingOrders){
+////      TestMaker.testOrderIntercepted(o);
+////    }else{
+//        if (o.isPreOrder()) {
+//            setPreorder(o);
+//        }
+//        allOrders[o.getOrderNumber()] = o;
+//        if (o.isPendingOrder()) {
+//            if (!o.isDelivery()) {
+//                System.out.println("adding to pending orders");
+//                searchAddOrderNum(o, pendingOrders);
+//            } else
+//                searchAddOrderNum(o, pendingOrdersDelivery);
+//            allPendingOrders.add(o);
+//        }
+//        //}
+//    }
 
-  public static int getCurrentOrderNumber(){
-    return currentOrderNumber;
-  }
+    /**
+     * Gets an APPROXIMATE number of orders.
+     * Use this for drawing grids and such of orders
+     */
+    public static int getApproxNumOrders() {
+        return numOrders;
+    }
 
-  /**
-   * Resets the order counter to 0
-   */
-  public static void resetOrderNumber(){
-    currentOrderNumber = 0;
-  }
+    /**
+     * Requests the days orders from the server.
+     */
+    public static void loadAllOrders() {
+        PacketSender.getCurrentPacketSender().sendMessage(new PacketOutDayOrdersList());
+    }
 
-  /**
-   * Requests the days orders from the server.
-   */
-  public static void loadAllOrders(){
-    OutgoingAuthenticatedPacket out = new OutgoingAuthenticatedPacket(OpcodeConstants.DAY_ORDERS_LIST_OPCODE);
-    out.setJsonRequest("hey");
-    PacketSender.getCurrentPacketSender().sendMessage(out);
-  }
+    /**
+     * Requests the preorders from the server.
+     */
+    public static void loadAllPreOrders() {
+        PacketSender.getCurrentPacketSender().sendMessage(new PacketOutGetPreorders());
+    }
 
-  public static void loadAllPreOrders(){
-    OutgoingAuthenticatedPacket out = new OutgoingAuthenticatedPacket(OpcodeConstants.GET_PREORDERS_OPCODE);
-    out.setJsonRequest("hey");
-    PacketSender.getCurrentPacketSender().sendMessage(out);
-  }
+    /**
+     * Get a set of all preorders
+     */
+    public Set<Order> getAllPreorders() {
+        return allPreorders;
+    }
 
-  public static void setCurrentOrderNumber(int set){
-    currentOrderNumber = set;
-  }
+    /**
+     * Get a table of all orders from today that are preorders
+     */
+    public OrderTable getPreordersToday() {
+        return preordersToday;
+    }
 
-  /**
-   * Submits an order to the server
-   * @param o the {@link Order} to submit
-   */
-  public static void submitOrder(Order o){
-    OutgoingAuthenticatedPacket out = new OutgoingAuthenticatedPacket(OpcodeConstants.SUBMIT_ORDER_OPCODE);
-    out.setJsonRequest(GsonTypeFactory.ORDER_GSON.toJson(o));
-    PacketSender.getCurrentPacketSender().sendMessage(out);
-  }
+    /**
+     * Get the set of orders that are pending for delivery
+     */
+    public TreeSet<Order> getPendingOrdersDelivery() {
+        return pendingOrdersDelivery;
+    }
 
-  public List<Order> getAllPreorders(){
-    return this.allPreorders;
-  }
+    /**
+     * Submits an order to the server
+     *
+     * @param o the {@link Order} to submit
+     */
+    public static void submitOrder(Order o) {
+        PacketSender.getCurrentPacketSender().sendMessage(new PacketOutSubmitOrder(o));
+    }
+
+
+
 }

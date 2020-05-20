@@ -16,56 +16,77 @@ import java.util.ArrayList;
  */
 public class Order extends PrintableOrder {
 
-  /**
-   * The default time format which is used by the Order class
-   */
-  private static final transient TimeFormat DEFAULT_TIME_FORMAT = TimeFormat.FORMATTER_12_HOUR;
+    /**
+     * The default time format which is used by the Order class
+     */
+    private static final transient TimeFormat DEFAULT_TIME_FORMAT = TimeFormat.FORMATTER_12_HOUR;
 
-  /**
-   * The specific id of this pizza on the server.
-   * DO NOT SET. Let Gson do that.
-   */
-  private int rowNum = -1;
+    /**
+     * The specific id of this pizza on the server.
+     * DO NOT SET. Let Gson do that.
+     */
+    private int rowNum = -1;
 
-  /**
-   * Dont touch this either.
-   */
-  private String type = "foodOrder";
+    /**
+     * Dont touch this either.
+     */
+    private String type = "foodOrder";
 
-  /**
-   * The list of special instructions an order can contain
-   */
-  private ArrayList<SpecialOrderInstructions> specialOrderInstructions;
+    /**
+     * The list of special instructions an order can contain
+     */
+    private ArrayList<SpecialOrderInstructions> specialOrderInstructions;
 
-  private boolean isStaffOrder = false;
+    private boolean isStaffOrder = false;
 
 
-  /**
-   * Creates a new order, initializes important values and sets the creation date.
-   */
-  public Order(OrderType type) {
-    super();
-    setOrderType(type);
-    this.specialOrderInstructions = new ArrayList<>();
-  }
+    /**
+     * Creates a new order, initializes important values and sets the creation date.
+     */
+    public Order(OrderType type) {
+        super();
+        setOrderType(type);
+        this.specialOrderInstructions = new ArrayList<>();
+    }
 
-  /**
-   * Creates a new order, which is a pre order
-   *
-   * @param type The type of order to create
-   * @param year The year for the pre order
-   * @param month The month for the pre order
-   * @param dayOfMonth The day of the month for the pre order
-   * @param hour The hour for the pre order
-   * @param minute The minutes for the pre order
-   */
-  public Order(OrderType type, int year, Month month, int dayOfMonth, int hour, int minute) {
-    this(type);
-    this.setPreorder(true);
-    this.setPreorderTime(year, month, dayOfMonth, hour, minute);
-  }
+    /**
+     * Creates a new order, which is a pre order
+     *
+     * @param type       The type of order to create
+     * @param year       The year for the pre order
+     * @param month      The month for the pre order
+     * @param dayOfMonth The day of the month for the pre order
+     * @param hour       The hour for the pre order
+     * @param minute     The minutes for the pre order
+     */
+    public Order(OrderType type, int year, Month month, int dayOfMonth, int hour, int minute) {
+        this(type);
+        this.setPreorder(true);
+        this.setPreorderTime(year, month, dayOfMonth, hour, minute);
+    }
 
-  public int getRowNum() {
-    return rowNum;
-  }
+    public int getRowNum() {
+        return rowNum;
+    }
+
+    /**
+     * Custom hashing for orders
+     */
+    @Override
+    public int hashCode() {
+        return this.rowNum;
+    }
+
+    /**
+     * Custom equals comparision
+     */
+    @Override
+    public boolean equals(Object c){
+        if(c instanceof Order){
+            if(((Order)c).getRowNum() == rowNum){
+                return true;
+            }
+        }
+        return false;
+    }
 }

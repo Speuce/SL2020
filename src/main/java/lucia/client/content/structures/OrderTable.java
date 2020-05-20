@@ -248,6 +248,9 @@ public class OrderTable implements Collection<Order> {
     /**
      * Gets the 'index'-th item in the ordertable
      * by iteration order.
+     * WARNING: this method in comparatively inefficient.
+     * Only use as ABSOLUTELY necessary. Use iterator or an enhanced for loop
+     * for iterating over the table.
      * @param index the index to get
      * @return the Order, if found, null otherwise
      */

@@ -8,7 +8,6 @@ import main.java.lucia.client.content.order.OrderType;
 import main.java.lucia.client.content.order.pricing.DiscountOthersCalculator;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.content.time.TimeFormat;
-import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
 
 import java.text.ParseException;
@@ -54,11 +53,6 @@ public abstract class OrderInfo extends TimedItemList implements Comparable<Orde
         this.setBuiltTime(new ClientTime(TimeFormat.FORMATTER_12_HOUR,
                 ClientTime.getWinnipegTimeZone())); // TODO When needed check saskatoon/winnipeg etc.
         this.calculateCost();
-        if(!this.isFuturePreorder()){
-            this.orderNumber = OrderManager.nextOrderNumber();
-        }else{
-            this.orderNumber = -1;
-        }
     }
 
     /**

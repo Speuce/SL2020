@@ -215,7 +215,7 @@ public class ViewPreordersPane implements Controller {
     RowConstraints r = viewOrderGridpane.getRowConstraints().get(0);
     viewOrderGridpane.getRowConstraints().clear();
     viewOrderGridpane.getRowConstraints().add(r);
-    for(int i = 0; i<= OrderManager.getCurrentOrderNumber(); i++){
+    for(int i = 0; i<= OrderManager.getApproxNumOrders(); i++){
       viewOrderGridpane.getRowConstraints().add(r);
     }
   }

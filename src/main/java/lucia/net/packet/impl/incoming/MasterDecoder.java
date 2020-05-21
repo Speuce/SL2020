@@ -54,13 +54,13 @@ public class MasterDecoder {
         this.network = network;
         this.network.buildPacketSender();
         decrypt = new IncomingDecryptionManager();
-        current = new HandshakeDecoder(this).handshake();
+        //current = new HandshakeDecoder(this).handshake();
         resetDecoders();
     }
 
     public void resetDecoders(){
         decoder = new LinkedList<>();
-        decoder.add(new HandshakeDecoder(this));
+        decoder.add(new HandshakeDecoder(this).handshake());
         decoder.add(new LoginDecoder(this));
         decoder.add(new AuthenticatedDecoder());
         next();

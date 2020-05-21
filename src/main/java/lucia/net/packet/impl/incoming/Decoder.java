@@ -1,5 +1,6 @@
 package main.java.lucia.net.packet.impl.incoming;
 
+import main.java.lucia.Client;
 import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.net.packet.IncomingPacket;
 
@@ -31,6 +32,7 @@ public abstract class Decoder {
      * @return an {@link IncomingPacket} with the given message
      */
     public IncomingPacket decodePacket(String message){
+        Client.logger.debug("Processed incoming packet: " + message);
         IncomingPacket ret = null;
         try{
             ret = getPacket(message);

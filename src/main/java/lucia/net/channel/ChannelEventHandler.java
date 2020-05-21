@@ -60,8 +60,8 @@ public class ChannelEventHandler extends SimpleChannelInboundHandler<String> {
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext context, Throwable cause) {
-        Client.logger.info(cause);
-        Client.logger.info("An error occurred on the server side, please wait for a reconnection attempt");
+        Client.logger.error("An error occurred on the server side, please wait for a reconnection attempt");
+        Client.logger.error(cause, cause);
         context.close();
     }
 

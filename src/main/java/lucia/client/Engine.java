@@ -74,6 +74,9 @@ public class Engine {
      */
     public static void processPackets() {
         for (int i = 0; i < NetworkConstants.PACKET_PROCESS_LIMIT; i++) {
+            if(packetsQueue.isEmpty()){
+                return;
+            }
             IncomingAuthPacket packet = packetsQueue.poll();
             if (packet == null) {
                 MLogger.logError("Got a weird null packet :(");
@@ -116,6 +119,7 @@ public class Engine {
      * @param packet The packet that should be processed.
      */
     public static void queuePacket(IncomingAuthPacket packet) {
+        assert(packet != null);
         if (packetsQueue.size() >= NetworkConstants.PACKET_PROCESS_LIMIT) {
             Client.logger.info("Discarding message as packets size has exceeded the total amount");
         } else packetsQueue.add(packet);

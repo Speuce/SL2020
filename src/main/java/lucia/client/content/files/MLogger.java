@@ -1,5 +1,7 @@
 package main.java.lucia.client.content.files;
 
+import main.java.lucia.Client;
+
 import java.io.PrintStream;
 
 public class MLogger {
@@ -18,7 +20,6 @@ public class MLogger {
     }
 
     public static void logError(String s){
-        log("[ERR]: " + s);
-        Thread.dumpStack();
+        Client.logger.error(s, new Exception(s));
     }
 }

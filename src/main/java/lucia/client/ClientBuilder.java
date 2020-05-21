@@ -65,9 +65,9 @@ public class ClientBuilder {
             //backgroundLoader.init(createBackgroundTasks());
 
             /* Make sure background tasks loaded properly before proceeding */
-            if (!backgroundLoader.awaitCompletion()) {
-                throw new IllegalStateException("Background load did not complete normally!");
-            }
+//            if (!backgroundLoader.awaitCompletion()) {
+//                throw new IllegalStateException("Background load did not complete normally!");
+//            }
             //MenuTest.test(); // TODO Remove this when done w/ menu testing
             Client.logger.info(ClientConstants.NAME + " has successfully loaded\n");
         });

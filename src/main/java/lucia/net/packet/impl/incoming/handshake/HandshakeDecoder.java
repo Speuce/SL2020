@@ -3,6 +3,7 @@ package main.java.lucia.net.packet.impl.incoming.handshake;
 import main.java.lucia.Client;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.net.packet.IncomingPacket;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import main.java.lucia.net.packet.impl.incoming.Decoder;
 import main.java.lucia.net.packet.impl.incoming.MasterDecoder;
@@ -55,6 +56,7 @@ public class HandshakeDecoder extends Decoder {
     public IncomingPacket process(String message) {
         IncomingHandshakePacket packet = (IncomingHandshakePacket) decodePacket(message);
         if(packet != null) {
+            PacketListenerManager.get.callEvent(packet);
             PacketSender.setSecureToken(packet.getSessionToken());
             origin.next();
             Client.logger.info("Handshake message complete.");

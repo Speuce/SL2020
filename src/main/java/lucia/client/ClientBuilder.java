@@ -41,7 +41,7 @@ public class ClientBuilder {
     /**
      * Whether or not to run the gui part of the application, or to run it headless.
      */
-    private boolean runGUI = true;
+    public static final boolean runGUI = true;
 
     /**
      * The constructor for this Client.

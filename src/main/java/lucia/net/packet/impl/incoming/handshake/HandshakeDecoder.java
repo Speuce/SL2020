@@ -56,11 +56,14 @@ public class HandshakeDecoder extends Decoder {
     public IncomingPacket process(String message) {
         IncomingHandshakePacket packet = (IncomingHandshakePacket) decodePacket(message);
         if(packet != null) {
-            PacketListenerManager.get.callEvent(packet);
+
             PacketSender.setSecureToken(packet.getSessionToken());
             origin.next();
             Client.logger.info("Handshake message complete.");
             Client.logger.info("This connection has been secured with " + origin.getDecrypt().getServerKey());
+            if(!PacketListenerManager.get.callEvent(packet)){
+                return null;
+            }
             return packet;
         } else {
             Client.logger.error("The handshake message has failed!");

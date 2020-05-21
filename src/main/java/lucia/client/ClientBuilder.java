@@ -41,7 +41,7 @@ public class ClientBuilder {
     /**
      * Whether or not to run the gui part of the application, or to run it headless.
      */
-    public static final boolean runGUI = true;
+    public static boolean runGUI = true;
 
     /**
      * The constructor for this Client.
@@ -120,8 +120,8 @@ public class ClientBuilder {
     /**
      * Set whether or not to run with the gui.
      */
-    public ClientBuilder setRunGUI(boolean runGUI) {
-        this.runGUI = runGUI;
+    public ClientBuilder setRunGUI(boolean runGU) {
+        runGUI = runGU;
         return this;
     }
 }

@@ -1,22 +1,21 @@
 package main.java.lucia;
 
-import java.time.temporal.ChronoUnit;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.ClientBuilder;
 import main.java.lucia.client.content.files.json.loader.JsonHandler;
-import main.java.lucia.client.content.time.ClientTime;
-import main.java.lucia.client.content.time.TimeFormat;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.fxml.InterfaceBuilder;
 import main.java.lucia.net.NetworkBuilder;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 /**
  * The class which initializes the client.
  *
  * @author Brett Downey
+ * @author Matthew Kwiatkowski
  */
 public class Client {
 
@@ -25,14 +24,22 @@ public class Client {
      */
     private static ClientBuilder client;
 
+//    static {
+//        System.out.println("static block");
+//        Configurator.initialize(LogConfigBuilder.buildDefaultConfig().build());
+//        Thread.currentThread().setName(ClientConstants.NAME);
+//        System.out.println("static block2");
+//
+//        //Configurator.setLevel("io.netty", Level.ALL);
+//    }
+
     /**
      * The logger that will print important information.
      */
-    public static final Logger logger = Logger.getLogger(Client.class.getSimpleName());
-    static {
-        BasicConfigurator.configure();
-        logger.getLoggerRepository().getLogger("io.netty").setLevel(Level.INFO);
-        Thread.currentThread().setName(ClientConstants.NAME);
+    public static final Logger logger = LogManager.getLogger(Client.class);
+
+    static{
+        //LogManager.getLogger("io.netty").atInfo()
     }
 
     /**
@@ -40,6 +47,7 @@ public class Client {
      */
     public static void main(String[] args) {
         try {
+
             logger.info("Initializing " + ClientConstants.NAME);
             client = new ClientBuilder(new NetworkBuilder(), new InterfaceBuilder()).initialize();
         } catch (Exception e) {
@@ -49,7 +57,7 @@ public class Client {
     }
 
     public synchronized static void shutdown(int errorCode) {
-        logger.getLoggerRepository().getLogger("io.netty").setLevel(Level.OFF);
+        Configurator.setLevel("io.netty", Level.OFF);
         synchronized (Client.class) {
             Client.logger.info("The client is shutting down with an error code of : " + errorCode + "\n");
             Client.logger.info("Shutdown Trace:");

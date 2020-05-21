@@ -10,6 +10,9 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
 
 /**
  * The class which initializes the client.
@@ -23,6 +26,26 @@ public class Client {
      * The {@link ClientBuilder} for the Client
      */
     private static ClientBuilder client;
+
+    /**
+     * Static block to disable the stupid netty warning.
+     * Allegedly its unfixable and actually an intended feature, but it clogs up the logger
+     * So its' disabled for the time being.
+     * See: https://github.com/netty/netty/issues/7769
+     */
+    static{
+        try {
+            Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+            theUnsafe.setAccessible(true);
+            Unsafe u = (Unsafe) theUnsafe.get(null);
+
+            Class cls = Class.forName("jdk.internal.module.IllegalAccessLogger");
+            Field logger = cls.getDeclaredField("logger");
+            u.putObjectVolatile(cls, u.staticFieldOffset(logger), null);
+        } catch (Exception e) {
+            // ignore
+        }
+    }
 
 //    static {
 //        System.out.println("static block");

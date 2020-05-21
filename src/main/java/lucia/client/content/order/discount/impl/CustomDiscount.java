@@ -1,6 +1,5 @@
 package main.java.lucia.client.content.order.discount.impl;
 
-import jdk.internal.jline.internal.Nullable;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
@@ -9,6 +8,7 @@ import main.java.lucia.client.content.order.discount.impl.items.AmountRequiremen
 import main.java.lucia.client.content.order.discount.impl.stacking.DiscountStacking;
 import main.java.lucia.client.content.order.discount.impl.times.DiscountTime;
 import main.java.lucia.client.content.order.impl.ItemList;
+import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

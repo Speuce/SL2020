@@ -1,8 +1,10 @@
 package main.java.lucia.net.packet.impl.incoming.authenticated;
 
 import com.google.gson.JsonParser;
+import main.java.lucia.Client;
 import main.java.lucia.client.Engine;
 import main.java.lucia.client.protocol.packet.IncomingAuthPacket;
+import main.java.lucia.client.protocol.packet.in.system.PacketInEchoOnly;
 import main.java.lucia.net.packet.impl.incoming.Decoder;
 import main.java.lucia.net.protocol.PacketProtocol;
 import main.java.lucia.net.protocol.Protocol;
@@ -28,9 +30,14 @@ public class AuthenticatedDecoder extends Decoder {
     public IncomingAuthPacket process(String message) {
         IncomingAuthPacket packet = (IncomingAuthPacket) decodePacket(message);
         if (packet != null) {
+            if (packet instanceof PacketInEchoOnly) {
+                return packet;
+            }
             Engine.queuePacket(packet);
+            Client.logger.debug("Queued packet with opcode: " + packet.getOpcode());
             return packet;
         } else {
+            Client.logger.info("Processed a null packet!");
             return null;
         }
     }

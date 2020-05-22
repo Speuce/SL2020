@@ -1,5 +1,6 @@
 package main.java.lucia.net.packet.impl.incoming.login;
 
+import main.java.lucia.Client;
 import main.java.lucia.client.ClientBuilder;
 import main.java.lucia.client.task.TaskManager;
 import main.java.lucia.client.task.impl.LoginResponseTask;
@@ -36,6 +37,7 @@ public class LoginDecoder extends Decoder {
             TaskManager.submit(new LoginResponseTask(packet));
         }
         if (packet.getLoginResponseOpcode() == 2) {
+            Client.logger.debug("Advanced Login Decoder");
             origin.next();
         }
         return packet;

@@ -4,7 +4,6 @@ import main.java.lucia.Client;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.fxml.InterfaceBuilder;
 import main.java.lucia.net.NetworkBuilder;
-import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.util.BackgroundLoader;
 
 import java.util.ArrayDeque;
@@ -48,7 +47,6 @@ public class ClientBuilder {
      */
     public ClientBuilder(NetworkBuilder network, InterfaceBuilder fxml) {
         Engine.network = network;
-        Engine.listenerManager = new PacketListenerManager();
         this.network = network;
         this.fxml = fxml;
     }

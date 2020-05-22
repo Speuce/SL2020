@@ -23,7 +23,7 @@ public class PacketListenerManager {
      */
     private Map<Class<? extends Packet>, PacketEventHandlerList> listenerMap;
 
-    public PacketListenerManager() {
+    private PacketListenerManager() {
         this.listenerMap = new HashMap<>();
     }
 
@@ -34,8 +34,9 @@ public class PacketListenerManager {
      * @return true if the packet processing should continue, false otherwise
      */
     public boolean callEvent(Packet p){
-        if(listenerMap.containsKey(p.getClass())){
-            return listenerMap.get(p.getClass()).callInOrder(p);
+        Class clazz = p.getClass();
+        if(listenerMap.containsKey(clazz)){
+            return listenerMap.get(clazz).callInOrder(p);
         }else{
             return true;
         }

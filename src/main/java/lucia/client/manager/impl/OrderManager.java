@@ -84,7 +84,7 @@ public class OrderManager implements PacketHandler {
     @PacketEventHandler(priority = ListenerPriority.HIGH)
     public void onPreOrderReceive(PacketInSetPreOrder preorder){
         allPreorders.add(preorder.getOrder());
-        sortOrder(preorder.getOrder());
+        sortPreorder(preorder.getOrder());
     }
 
     /**

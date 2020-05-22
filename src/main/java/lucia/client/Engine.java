@@ -26,8 +26,6 @@ public class Engine {
      */
     static NetworkBuilder network;
 
-    static PacketListenerManager listenerManager;
-
     /**
      * The queue of echo codes associated with the engine, these
      * codes are sent from the client and then echoed from the
@@ -73,6 +71,9 @@ public class Engine {
      * handleInputMessage. This method is called each server cycle.
      */
     public static void processPackets() {
+        if(packetsQueue.isEmpty()){
+            return;
+        }
         for (int i = 0; i < NetworkConstants.PACKET_PROCESS_LIMIT; i++) {
             if(packetsQueue.isEmpty()){
                 return;
@@ -83,7 +84,7 @@ public class Engine {
                 return;
             }
             //now run events
-            if(!listenerManager.callEvent(packet)){
+            if(!PacketListenerManager.get.callEvent(packet)){
                 return;
             }
             //processPacket(packet);

@@ -95,7 +95,7 @@ public class ItemTester {
         for(String sec : Menu.get.getLoadedSections()){
             for(SimpleItemDescriptor desc: Menu.get.getSection(sec)){
                 if(!(desc instanceof ItemModifiableDescriptor)){
-                    return (SimpleItem) ((SimpleItemDescriptor)desc).getAsItem();
+                    return (SimpleItem) desc.getAsItem();
                 }
             }
         }

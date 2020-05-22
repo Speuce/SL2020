@@ -3,6 +3,7 @@ package test.lucia;
 import main.java.lucia.Client;
 import main.java.lucia.client.ClientBuilder;
 import main.java.lucia.client.content.menu.Menu;
+import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.test.ItemTester;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
@@ -50,6 +51,11 @@ public class ServerOrderTest implements PacketHandler {
         o.setCustomerDetails(null);
         o.addItem(ItemTester.getSomeSimpleItem());
         o.addItem(ItemTester.build10Chz());
+        o.addItem(ItemTester.build15SpecialWithTop());
+        ItemModifiable item = ItemTester.getSomeModifiableItem();
+        assert item != null;
+        item.addAddon(item.getItemDescriptor().getAppliableAddons().get(0).getAsItem(2));
+        o.addItem(item);
         OrderManager.submitOrder(o);
     }
 

@@ -228,6 +228,7 @@ public class PizzaMenu {
         basePizza = new SimplePizzaDescriptor(1, "", Objects.requireNonNull(loader.loadBasePizzaPricing()));
 
         specialties = loader.loadSpecialtyList();
+        specialties.forEach(m::addMenuItem);
     }
 
 

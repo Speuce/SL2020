@@ -35,7 +35,7 @@ public class SimpleItemDeserializer implements JsonDeserializer<SimpleItem> {
         JsonObject o = json.getAsJsonObject();
         int rowNum = o.get("rowNum").getAsInt();
         String name = o.get("name").getAsString();
-        SimpleItemDescriptor desc = new IDCaster<SimpleItemDescriptor>().cast(o.get("descriptor").getAsInt());
+        SimpleItemDescriptor desc = new IDCaster<SimpleItemDescriptor>().cast(o.get("itemDescriptor").getAsInt());
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();

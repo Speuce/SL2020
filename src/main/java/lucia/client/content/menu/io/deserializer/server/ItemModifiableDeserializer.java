@@ -40,7 +40,7 @@ public class ItemModifiableDeserializer implements JsonDeserializer<ItemModifiab
         JsonObject o = json.getAsJsonObject();
         int rowNum = o.get("rowNum").getAsInt();
         String name = o.get("name").getAsString();
-        ItemModifiableDescriptor desc = new IDCaster<ItemModifiableDescriptor>().cast(o.get("descriptor").getAsInt());
+        ItemModifiableDescriptor desc = new IDCaster<ItemModifiableDescriptor>().cast(o.get("itemDescriptor").getAsInt());
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();

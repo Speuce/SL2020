@@ -27,6 +27,7 @@ public abstract class Protocol {
     public Protocol() {
         opcodeMap = new HashMap<>();
         deserializerMap = new HashMap<>();
+        registerAll();
     }
 
     /**

@@ -39,7 +39,7 @@ public class ItemBundleDeserializer implements JsonDeserializer<ItemBundle> {
         JsonObject o = json.getAsJsonObject();
         int rowNum = o.get("rowNum").getAsInt();
         String name = o.get("name").getAsString();
-        ItemBundleDescriptor desc = new IDCaster<ItemBundleDescriptor>().cast(o.get("descriptor").getAsInt());
+        ItemBundleDescriptor desc = new IDCaster<ItemBundleDescriptor>().cast(o.get("itemDescriptor").getAsInt());
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();

@@ -1,5 +1,7 @@
 package main.java.lucia.client.content.menu.item.type;
 
+import com.google.gson.JsonObject;
+import main.java.lucia.client.content.menu.io.MenuJsonConstants;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
@@ -37,6 +39,12 @@ public class SimpleItem extends Item {
     @Override
     public long calculatePrice() {
         return this.getPrice();
+    }
+
+    @Override
+    public void addJsonProperties(JsonObject add){
+        super.addJsonProperties(add);
+        add.addProperty(MenuJsonConstants.TYPE_FIELD, MenuJsonConstants.SIMPLE_TYPE);
     }
 
     /**

@@ -2,6 +2,7 @@ package main.java.lucia.client.content.menu.item.type;
 
 
 import com.google.gson.JsonObject;
+import main.java.lucia.client.content.menu.io.MenuJsonConstants;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
@@ -116,6 +117,7 @@ public class ItemModifiable extends Item {
     @Override
     public void addJsonProperties(JsonObject o){
         super.addJsonProperties(o);
+        o.addProperty(MenuJsonConstants.TYPE_FIELD, MenuJsonConstants.MODIFIABLE_TYPE);
     }
 
 

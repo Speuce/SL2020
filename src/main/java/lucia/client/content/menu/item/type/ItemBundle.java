@@ -3,6 +3,7 @@ package main.java.lucia.client.content.menu.item.type;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import main.java.lucia.client.content.menu.io.ItemGson;
+import main.java.lucia.client.content.menu.io.MenuJsonConstants;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
@@ -101,6 +102,7 @@ public class ItemBundle extends Item implements Iterable<Item>{
     @Override
     public void addJsonProperties(JsonObject add){
         super.addJsonProperties(add);
+        add.addProperty(MenuJsonConstants.TYPE_FIELD, MenuJsonConstants.BUNDLE_TYPE);
         //serialize the bundle items and add it
         JsonArray arr = new JsonArray();
         for(Item i: items){

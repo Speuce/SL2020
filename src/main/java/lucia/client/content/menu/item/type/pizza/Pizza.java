@@ -1,6 +1,7 @@
 package main.java.lucia.client.content.menu.item.type.pizza;
 
 import com.google.gson.*;
+import main.java.lucia.client.content.menu.io.MenuJsonConstants;
 import main.java.lucia.client.content.menu.io.serializer.server.PizzaSerializer;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.Menu;
@@ -384,6 +385,7 @@ public class Pizza extends Item{
     @Override
     public void addJsonProperties(JsonObject ret){
         super.addJsonProperties(ret);
+        ret.addProperty(MenuJsonConstants.TYPE_FIELD, MenuJsonConstants.PIZZA_TYPE);
         ret.addProperty("size", getSize());
         ret.addProperty("isSpecialty", specialty);
         ret.addProperty("specialty", getIdSafe(getPizzaDescriptor()));

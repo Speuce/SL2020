@@ -11,10 +11,12 @@ import main.java.lucia.net.packet.event.PacketListenerManager;
  */
 public class ServerConnectTest {
 
+    public static ClientBuilder cl;
+
     public static void main(String[] args){
         Client.logger.info("Starting Server Connection Test...");
         PacketListenerManager.get.registerListener(new ServerConnectTester());
         //System.setProperty("io.netty.tryReflectionSetAccessible", "true");
-        new ClientBuilder(new NetworkBuilder(), null).setRunGUI(false).initialize();
+        cl = new ClientBuilder(new NetworkBuilder(), null).setRunGUI(false).initialize();
     }
 }

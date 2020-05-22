@@ -25,7 +25,8 @@ public class ServerConnectTester implements PacketHandler {
         Client.logger.info("Got incoming login packet as response with code: " + e.getLoginResponseOpcode());
         if(e.getLoginResponseOpcode() == 2){
             Client.logger.info("Successfully logged in!");
-            
+            Client.logger.info("Test completed.");
+            ServerConnectTest.cl.shutdown(0);
         }
     }
 }

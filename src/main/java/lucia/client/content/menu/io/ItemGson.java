@@ -2,6 +2,7 @@ package main.java.lucia.client.content.menu.io;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import main.java.lucia.client.content.menu.io.deserializer.server.ItemBundleDeserializer;
 import main.java.lucia.client.content.menu.io.deserializer.server.ItemModifiableDeserializer;
 import main.java.lucia.client.content.menu.io.deserializer.server.PizzaDeserializer;
@@ -15,10 +16,12 @@ import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
+import main.java.lucia.client.content.order.io.deserializer.ListOfItemsDeserializer;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 import main.java.lucia.client.content.time.io.TimeGson;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
+
+import java.util.List;
 
 /**
  * The Gson for {@link main.java.lucia.client.content.menu.item.Item}
@@ -38,15 +41,10 @@ public class ItemGson {
         builder.setPrettyPrinting();
         GsonTypeFactory.addExclusionPolicy(builder);
 
-        builder.registerTypeAdapterFactory(RuntimeTypeAdapterFactory.of(Item.class)
-        .registerSubtype(Pizza.class)
-        .registerSubtype(SimpleItem.class)
-        .registerSubtype(ItemModifiable.class)
-        .registerSubtype(ItemBundle.class));
-
         builder.registerTypeAdapterFactory(PaymentMethod.getPaymentAdapterFactory());
 
         TimeGson.addCustomJsonSerializers(builder);
+        builder.registerTypeAdapter(new TypeToken<List<Item>>(){}.getType(), new ListOfItemsDeserializer());
         builder.registerTypeAdapter(Pizza.class, new PizzaSerializer());
         builder.registerTypeAdapter(Pizza.class, new PizzaDeserializer(false));
         builder.registerTypeAdapter(SimpleItem.class, new SimpleItemSerializer());

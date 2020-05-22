@@ -39,7 +39,6 @@ public class Order extends PrintableOrder {
 
     private boolean isStaffOrder = false;
 
-
     /**
      * Creates a new order, initializes important values and sets the creation date.
      */

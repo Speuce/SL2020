@@ -7,7 +7,7 @@ package main.java.lucia.client.content.menu.io;
 public class MenuJsonConstants {
 
     public static final String
-            TYPE_FIELD = "Type",
+            TYPE_FIELD = "type",
 
             PIZZA_TYPE = "Pizza",
             MODIFIABLE_TYPE = "Modifiable",

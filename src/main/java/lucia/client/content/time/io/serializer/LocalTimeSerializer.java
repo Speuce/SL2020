@@ -18,6 +18,6 @@ public class LocalTimeSerializer implements JsonSerializer<LocalTime> {
 
     @Override
     public JsonElement serialize(LocalTime src, Type typeOfSrc, JsonSerializationContext context) {
-        return new JsonPrimitive(TimeFormat.FORMATTER_ISO_STANDARD.getFormat().format(src));
+        return new JsonPrimitive(TimeFormat.FORMATTER_ISO_STANDARD_TIME.getFormat().format(src));
     }
 }

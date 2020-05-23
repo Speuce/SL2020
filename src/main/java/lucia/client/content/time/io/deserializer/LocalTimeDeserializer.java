@@ -19,7 +19,7 @@ public class LocalTimeDeserializer implements JsonDeserializer<LocalTime> {
     @Override
     public LocalTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         try {
-            return LocalTime.parse(json.getAsString(), TimeFormat.FORMATTER_ISO_STANDARD.getFormat());
+            return LocalTime.parse(json.getAsString(), TimeFormat.FORMATTER_ISO_STANDARD_TIME.getFormat());
         } catch (Exception e) {
             e.printStackTrace();
         }

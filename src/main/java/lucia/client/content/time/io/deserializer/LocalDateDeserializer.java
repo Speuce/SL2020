@@ -19,7 +19,7 @@ public class LocalDateDeserializer implements JsonDeserializer<LocalDate> {
     @Override
     public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         try {
-            return LocalDate.parse(json.getAsString(), TimeFormat.FORMATTER_ISO_STANDARD.getFormat());
+            return LocalDate.parse(json.getAsString(), TimeFormat.FORMATTER_ISO_STANDARD_DATE.getFormat());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,12 +1,16 @@
 package main.java.lucia.client.content.menu.item.type;
 
 
+import com.google.gson.JsonObject;
+import main.java.lucia.client.content.menu.io.MenuJsonConstants;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
+import main.java.lucia.client.content.order.discount.Discount;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.StringJoiner;
 
 /**
@@ -20,7 +24,7 @@ public class ItemModifiable extends Item {
     /**
      * The applied addons to this item
      */
-    private ArrayList<Addon> addonList;
+    private List<Addon> addonList;
 
     /**
      * Construct a new Modifiable item with the given parameters
@@ -33,6 +37,13 @@ public class ItemModifiable extends Item {
         for(Addon add: parent.getAppliedAddons()){
             addonList.add(add.deepCopy());
         }
+    }
+
+    public ItemModifiable(int rowNum, String displayName, String name, long price, long discountedPrice,
+                          ItemModifiableDescriptor itemDescriptor, Set<Discount> appliedDiscounts,
+                          List<Addon> addonList) {
+        super(rowNum, displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
+        this.addonList = addonList;
     }
 
     /**
@@ -99,6 +110,20 @@ public class ItemModifiable extends Item {
         addonList.remove(a);
         return this;
     }
+
+    /**
+     * Adds the properties of this AbstractItem object
+     *  to the given JsonObject,
+     *  meant to be used for serialization
+     * @param o the JsonObject for which the properties will be added to.
+     */
+    @Override
+    public void addJsonProperties(JsonObject o){
+        super.addJsonProperties(o);
+        o.addProperty(MenuJsonConstants.TYPE_FIELD, MenuJsonConstants.MODIFIABLE_TYPE);
+    }
+
+
 
     @Override
     public ItemModifiableDescriptor getItemDescriptor(){

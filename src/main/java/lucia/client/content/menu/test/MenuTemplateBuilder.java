@@ -6,9 +6,9 @@ import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.io.File;

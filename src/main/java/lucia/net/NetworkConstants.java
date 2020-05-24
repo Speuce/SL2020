@@ -19,7 +19,7 @@ public abstract class NetworkConstants {
     /**
      * The key location used for encryption
      */
-    public static final String PUBLIC_KEY_DIRECTORY = "resources/security/public.key";
+    public static final String PUBLIC_KEY_DIRECTORY = "security/public.key";
 
     /**
      * The maximum amount of messages that can be processed in one sequence.

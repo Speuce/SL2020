@@ -1,39 +1,36 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs;
 
-import java.net.URL;
-import java.text.NumberFormat;
-import java.util.*;
-
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
+import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
+import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
+import main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.OrderInfoController;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The controller which controls the transfer order pane
  *
  * @author Matt Kwiatkowski
  */
-import com.jfoenix.controls.JFXButton;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
-import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.OrderInfoController;
 
 /**
  * Controller for the view orders pane
@@ -123,7 +120,7 @@ public class ViewOrdersPane implements Controller {
     viewOrdersInfoPane.setVisible(false);
     searchBox.setVisible(true);
     searchLabel.setVisible(true);
-    drawGrid(OrderManager.INSTANCE.getAllOrders(), OrderManager.getCurrentOrderNumber()+1);
+    drawGrid(OrderManager.INSTANCE.getAllOrders(), OrderManager.getApproxNumOrders()+1);
     searchBox.setText("");
   }
 
@@ -134,7 +131,7 @@ public class ViewOrdersPane implements Controller {
     RowConstraints r = viewOrderGridpane.getRowConstraints().get(0);
     viewOrderGridpane.getRowConstraints().clear();
     viewOrderGridpane.getRowConstraints().add(r);
-    for(int i = 0; i<= OrderManager.getCurrentOrderNumber(); i++){
+    for(int i = 0; i<= OrderManager.getApproxNumOrders(); i++){
       viewOrderGridpane.getRowConstraints().add(r);
     }
   }
@@ -215,7 +212,7 @@ public class ViewOrdersPane implements Controller {
       registerItem(cost, 5);
       viewOrderGridpane.add(cost, 5, row);
 
-      if(r.getPayment() != null){
+      if(r.getPaymentType() != PaymentType.UNPAID){
         Label paytype = new Label(" "+ r.getPaymentType().getDisplayCode());
         registerItem(paytype, 6);
         viewOrderGridpane.add(paytype, 6, row);
@@ -254,7 +251,7 @@ public class ViewOrdersPane implements Controller {
   private List<Order> search(String number){
       List<Order> display = new ArrayList<>();
       String searchString = number;
-    for(int i = 0; i <= OrderManager.getCurrentOrderNumber(); i++){
+    for(int i = 0; i <= OrderManager.getApproxNumOrders(); i++){
         Order r = OrderManager.INSTANCE.getAllOrders()[i];
         if(r == null){
           continue;

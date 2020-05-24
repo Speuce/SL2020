@@ -2,7 +2,7 @@ package main.java.lucia.client.content.menu.io.deserializer.local;
 
 import com.google.gson.*;
 import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import main.java.lucia.consts.ColorUtils;
 

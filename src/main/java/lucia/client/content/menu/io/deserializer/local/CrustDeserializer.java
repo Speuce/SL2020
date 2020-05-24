@@ -2,8 +2,7 @@ package main.java.lucia.client.content.menu.io.deserializer.local;
 
 import com.google.gson.*;
 import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.lang.reflect.Type;

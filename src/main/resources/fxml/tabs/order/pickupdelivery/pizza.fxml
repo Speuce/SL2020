@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pizza" prefHeight="779.0" prefWidth="1339.0" style="-fx-background-color: #585858;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController">
+<Pane fx:id="pizza" prefHeight="779.0" prefWidth="1339.0" style="-fx-background-color: #585858;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController">
    <children>
       <Pane fx:id="settingsButtons" layoutY="662.0" prefHeight="121.0" prefWidth="1337.0" style="-fx-background-color: #585858;">
          <children>

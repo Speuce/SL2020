@@ -1,16 +1,11 @@
 package main.java.lucia.client.content.order.impl;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.item.type.Addon;
-import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.menu.pizza.Topping;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.payment.PaidBillable;
-import main.java.lucia.client.structures.Exclude;
+import main.java.lucia.client.content.structures.Exclude;
 
-import java.io.PrintStream;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * A class meant to hold a list of menu items,
@@ -26,7 +21,7 @@ public abstract class ItemList extends PaidBillable implements Iterable<Item>{
     private List<Item> items;
 
     /**
-     * A sorted list of the pizzas (used for double deal price calculations
+     * A sorted list of the pizzas (used for double deal price calculations)
      */
     @Exclude
     private LinkedHashSet<Pizza> pizzaSorted;

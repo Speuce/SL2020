@@ -23,7 +23,6 @@ import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.content.javascript.JavaScriptBridge;
 import main.java.lucia.client.content.order.impl.Address;
-import main.java.lucia.client.content.payment.PaymentType;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.protocol.message.impl.customer.CreateCustomerMessage;
 import main.java.lucia.fxml.FxmlConstants;
@@ -929,11 +928,11 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     }
     if(parent.getCurrentOrder().isPreOrder()) {
       if(!parent.getCurrentOrder().isFuturePreorder()) {
-        takeoutTime.setText(parent.getCurrentOrder().getOrderTime().getThisTime().getHour() + ":"
-                + parent.getCurrentOrder().getOrderTime().getThisTime().getMinute());
+        takeoutTime.setText(parent.getCurrentOrder().getOrderTime().toLocalDate().getHour() + ":"
+                + parent.getCurrentOrder().getOrderTime().toLocalDate().getMinute());
         takeoutTime.setStyle("-fx-font-size: 15");
-        orderETA.setText(parent.getCurrentOrder().getOrderTime().getThisTime().getHour() + ":"
-                + parent.getCurrentOrder().getOrderTime().getThisTime().getMinute());
+        orderETA.setText(parent.getCurrentOrder().getOrderTime().toLocalDate().getHour() + ":"
+                + parent.getCurrentOrder().getOrderTime().toLocalDate().getMinute());
       }else{
         //TODO its an order for a future day.
       }
@@ -993,7 +992,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
       else {
         System.out.println(controller.getCurrentOrder().isDelivery());
         System.out.println(controller.getCurrentOrder().getGrandTotalTax().toString());
-        controller.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethod.getValue().toUpperCase()));
+        //controller.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethod.getValue().toUpperCase()));
         controller.finalizeOrder();
       } 
     }
@@ -1069,7 +1068,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     else if(calendarPreorder.getValue() == null)
       errorLabelPreorder.setText("Date Needed!");
     else {
-      parent.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethodPreorder.getValue().toUpperCase()));
+      //parent.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethodPreorder.getValue().toUpperCase()));
       int hour;
       if(Integer.valueOf(comboBoxTimeHour.getValue()) == 12)
         if(comboBoxTimeAMPM.equals("AM"))
@@ -1101,9 +1100,9 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
   @FXML
   void acceptStaff(ActionEvent event) {
-    if(staffShiftToggle.isSelected())
-      parent.getCurrentOrder().addStaffDiscount(true);
-    else parent.getCurrentOrder().addStaffDiscount(false);
+//    if(staffShiftToggle.isSelected())
+//      parent.getCurrentOrder().addStaffDiscount(true);
+//    else parent.getCurrentOrder().addStaffDiscount(false);
     staffPane.setVisible(false);
     discountPane.setVisible(false);
     staffShiftToggle.setText("Off Shift");

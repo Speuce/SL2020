@@ -1,77 +1,46 @@
 package main.java.lucia.net.packet.impl.incoming;
 
-import io.netty.channel.Channel;
 import main.java.lucia.Client;
-import main.java.lucia.net.NetworkBuilder;
+import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.net.packet.IncomingPacket;
-import main.java.lucia.net.packet.impl.incoming.handshake.HandshakeDecoder;
-import main.java.lucia.net.security.encryption.IncomingDecryptionManager;
 
 /**
- * A decoder which decodes and handles immediate incoming requests, and changes state
- * depending on what state the client is currently on.
- *
+ * Interface for all decoder implementations
+ * @author Matthew Kwiatkowski
  * @author Brett Downey
  */
-public class Decoder {
+public abstract class Decoder {
 
     /**
-     * The network for this {@link Decoder}
+     * Provides Deserialization functionality for converting messages
+     * to {@link IncomingPacket}
+     * @param message the message to decode
+     * @return the respective {@link IncomingPacket}
      */
-    private NetworkBuilder network;
+    protected abstract IncomingPacket getPacket(String message);
 
     /**
-     * The current decoder.
+     * Processes the incoming message
+     * @param message the message to process
+     * @return the packet, after processing.
      */
-    private DecoderInterface current;
+    public abstract IncomingPacket process(String message);
 
     /**
-     * The class that will decrypt incoming
-     * messages.
+     * Safely decodes a message
+     * @param message the message to decode
+     * @return an {@link IncomingPacket} with the given message
      */
-    private IncomingDecryptionManager decrypt;
-
-    /**
-     * The constructor for the decoder which builds the packet sender
-     * and sends the handshake message
-     *
-     * @param network The network
-     */
-    public Decoder(NetworkBuilder network) {
-        this.network = network;
-        this.network.buildPacketSender();
-        decrypt = new IncomingDecryptionManager();
-        current = new HandshakeDecoder(this).handshake();
-    }
-
-    public IncomingDecryptionManager getDecrypt() {
-        return decrypt;
-    }
-
-    public NetworkBuilder getNetwork() {
-        return network;
-    }
-
-    /**
-     * Proceeds to the next impl
-     */
-    public void next() {
-        current = current.next();
-    }
-
-    /**
-     * Decodes the incoming {@link String}
-     *
-     * @param encryptedMessage The encrypted incoming {@link String}
-     */
-    public void decode(String encryptedMessage) {
-        try {
-            IncomingPacket incoming = current.process(decrypt.getDecryption().decrypt(encryptedMessage));
-            if (incoming != null) {
-                network.checkId(incoming.getEchoCode());
-            }
-        } catch (Exception e) {
-            Client.logger.error("An error has occurred during decryption!", e);
+    public IncomingPacket decodePacket(String message){
+        Client.logger.debug("Processed incoming packet: " + message);
+        IncomingPacket ret = null;
+        try{
+            ret = getPacket(message);
+        }catch(Exception|Error e){
+            e.printStackTrace(MLogger.getErrorStream());
         }
+        return ret;
     }
+
+
 }

@@ -1,7 +1,6 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
 import main.java.lucia.client.content.menu.item.type.Addon;
-import main.java.lucia.client.content.menu.item.type.SimpleItem;
 
 /**
  * Represents the descriptor for an addon,
@@ -49,7 +48,7 @@ public class AddonDescriptor extends SimpleItemDescriptor {
 
     /**
      * Get this loaded item, as an item that can be added to an order
-     * @return a {@link SimpleItem} representing the item specified by this class.
+     * @return a {@link Addon} representing the item specified by this class.
      */
     public Addon getAsItem(){
         return new Addon(this.getBaseName(), this.getBasePrice(), this);
@@ -57,9 +56,9 @@ public class AddonDescriptor extends SimpleItemDescriptor {
 
     /**
      * Get this loaded item, as an item that can be added to an order
-     * @return a {@link SimpleItem} representing the item specified by this class.
+     * @return a {@link Addon} representing the item specified by this class.
      */
     public Addon getAsItem(int amt){
-        return new Addon(this.getBaseName(), this.getBasePrice(), this, amt);
+        return new Addon(this.getBaseName(), this.getBasePrice(), amt, this);
     }
 }

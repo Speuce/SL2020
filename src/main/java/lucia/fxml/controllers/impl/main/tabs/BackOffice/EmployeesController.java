@@ -6,8 +6,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
-import main.java.lucia.client.content.employee.Driver;
-import main.java.lucia.client.content.employee.Employee;
 import main.java.lucia.fxml.controllers.impl.main.tabs.Driver.DriverFramePane;
 
 public class EmployeesController {

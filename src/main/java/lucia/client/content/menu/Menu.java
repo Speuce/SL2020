@@ -5,10 +5,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
-import main.java.lucia.client.content.menu.item.IDAble;
 import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
+import main.java.lucia.client.content.utils.IDAble;
+import main.java.lucia.client.content.utils.IDManager;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.io.*;
@@ -44,12 +45,12 @@ public class Menu {
     /**
      * Maps integer ids to menu items.
      */
-    private Map<Integer, IDAble> menuItemMap;
+    //private Map<Integer, IDAble> menuItemMap;
 
     public Menu(){
         loadedSections = new ArrayList<>();
         sectionItems = new HashMap<>();
-        menuItemMap = new HashMap<>();
+        //menuItemMap = new HashMap<>();
         //registerMenuJsonSerializables();
     }
 
@@ -101,15 +102,17 @@ public class Menu {
      * @param id the id of the menu item
      * @return the associated {@link IDAble}
      */
+    @Deprecated
     public IDAble getItemFromId(Integer id){
-        return menuItemMap.get(id);
+        return IDManager.instance.getMapping(id);
     }
 
     /**
      * registers an item to the integer id table
      */
+    @Deprecated
     public void addMenuItem(IDAble t){
-        menuItemMap.put(t.getId(), t);
+       IDManager.instance.addMapping(t);
     }
 
     /**
@@ -121,11 +124,11 @@ public class Menu {
         if(sectionItems.containsKey(section)){
             sectionItems.get(section).add(item);
         }else {
-            List<SimpleItemDescriptor> items = new ArrayList<SimpleItemDescriptor>();
+            List<SimpleItemDescriptor> items = new ArrayList<>();
             items.add(item);
             sectionItems.put(section, items);
         }
-        addMenuItem(item);
+        IDManager.instance.addMapping(item);
     }
 
     /**
@@ -134,7 +137,6 @@ public class Menu {
     public void clearMenu(){
         sectionItems.clear();
         loadedSections.clear();
-        menuItemMap.clear();
         pizza.clear();
     }
 
@@ -143,9 +145,8 @@ public class Menu {
      * @param source the souce of the menu json
      */
     public void loadMenu(File source){
-        Gson gson = GsonTypeFactory.MENU_ITEM_GSON;
         JsonParser parse = new JsonParser();
-        FileReader r = null;
+        FileReader r;
         try {
             r = new FileReader(source);
             JsonObject parser = parse.parse(r).getAsJsonObject();
@@ -158,7 +159,7 @@ public class Menu {
             for(String section: loadedSections){
                 items = loader.loadSectionItems(section);
                 for(SimpleItemDescriptor item: items){
-                    addMenuItem(item);
+                    IDManager.instance.addMapping(item);
                 }
                 sectionItems.put(section, items);
             }
@@ -256,6 +257,21 @@ public class Menu {
                 a.getBaseName(), a.getId(), a.getBasePrice(), a.isDiscountable() );
     }
 
+    /**
+     * Loads the menu frm menutest.json
+     */
+    public static void loadFromTestMenu(){
+        File menu = new File("src/main/resources/menutest.json");
+        Menu.get.loadMenu(menu);
+    }
+
+    /**
+     * Loads the menu frm menu.json
+     */
+    public static void loadFromMenu(){
+        File menu = new File("src/main/resources/menu.json");
+        Menu.get.loadMenu(menu);
+    }
 
 
 

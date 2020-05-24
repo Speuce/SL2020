@@ -3,12 +3,11 @@ package main.java.lucia.client.content.order.impl;
 import main.java.lucia.Client;
 import main.java.lucia.client.content.customer.Complaint;
 import main.java.lucia.client.content.customer.CustomerDetails;
-import main.java.lucia.client.content.employee.Driver;
+import main.java.lucia.client.content.employee.type.Driver;
 import main.java.lucia.client.content.order.OrderType;
 import main.java.lucia.client.content.order.pricing.DiscountOthersCalculator;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.content.time.TimeFormat;
-import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
 
 import java.text.ParseException;
@@ -54,11 +53,6 @@ public abstract class OrderInfo extends TimedItemList implements Comparable<Orde
         this.setBuiltTime(new ClientTime(TimeFormat.FORMATTER_12_HOUR,
                 ClientTime.getWinnipegTimeZone())); // TODO When needed check saskatoon/winnipeg etc.
         this.calculateCost();
-        if(!this.isFuturePreorder()){
-            this.orderNumber = OrderManager.nextOrderNumber();
-        }else{
-            this.orderNumber = -1;
-        }
     }
 
     /**
@@ -214,11 +208,17 @@ public abstract class OrderInfo extends TimedItemList implements Comparable<Orde
         return orderNumber;
     }
 
+    /**
+     * @param orderNumber the order's order number
+     */
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
 
     @Override
     public int compareTo(OrderInfo o) {
         if(this.isFuturePreorder() || o.isFuturePreorder() || o.isPreOrder()){
-            return this.getOrderTime().getThisTime().compareTo(o.getOrderTime().getThisTime());
+            return this.getOrderTime().toLocalDate().compareTo(o.getOrderTime().toLocalDate());
         }
         return this.getOrderNumber() - o.getOrderNumber();
     }

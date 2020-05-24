@@ -4,10 +4,10 @@ import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
 import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.util.*;
@@ -228,7 +228,7 @@ public class PizzaMenu {
         basePizza = new SimplePizzaDescriptor(1, "", Objects.requireNonNull(loader.loadBasePizzaPricing()));
 
         specialties = loader.loadSpecialtyList();
-
+        specialties.forEach(m::addMenuItem);
     }
 
 

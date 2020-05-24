@@ -1,16 +1,13 @@
 package main.java.lucia.net.packet;
 
-public abstract class IncomingPacket {
-
-    private final int echoCode;
+/**
+ * Represents any packet incoming from the server.
+ */
+public abstract class IncomingPacket extends Packet{
 
     public IncomingPacket(final int echoCode) {
-        this.echoCode = echoCode;
+        setEchoCode(echoCode);
     }
 
-    public int getEchoCode() {
-        return echoCode;
-    }
 
-    public abstract OutgoingPacket createOutgoingPacket();
 }

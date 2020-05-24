@@ -11,8 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
-import main.java.lucia.client.content.employee.Employee;
-import main.java.lucia.client.content.employee.Manager;
+import main.java.lucia.client.content.employee.type.Employee;
+import main.java.lucia.client.content.employee.type.Manager;
 import main.java.lucia.client.content.employee.ManagerNote;
 import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessage;
 import main.java.lucia.fxml.controllers.ControllerType;
@@ -165,7 +165,7 @@ public class EmployeeManagerNotesPane implements Controller {
             employeeMNotesGridPane.getRowConstraints().add(new RowConstraints(120));
             employeeMNotesGridPane.getRowConstraints().set(row, new RowConstraints(120));
             employeeMNotesGridPane.add(e.getLabel(f.getSender()), 0, row);
-            employeeMNotesGridPane.add(e.getLabel(EmployeePane.getDateFormat().format(f.getClientTime().getThisTime())), 1, row);
+            employeeMNotesGridPane.add(e.getLabel(EmployeePane.getDateFormat().format(f.getClientTime().toLocalDate())), 1, row);
             employeeMNotesGridPane.add(text, 2, row);
             row+=1;
         }

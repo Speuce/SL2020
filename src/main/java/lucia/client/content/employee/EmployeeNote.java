@@ -1,7 +1,5 @@
 package main.java.lucia.client.content.employee;
 
-import java.util.Date;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.content.time.TimeFormat;
@@ -59,6 +57,6 @@ public class EmployeeNote implements Comparable<EmployeeNote>{
 
     @Override
     public int compareTo(EmployeeNote other) {
-        return other.getClientTime().getThisTime().compareTo(this.getClientTime().getThisTime());
+        return other.getClientTime().toLocalDate().compareTo(this.getClientTime().toLocalDate());
     }
 }

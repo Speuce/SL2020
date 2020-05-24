@@ -1,8 +1,12 @@
 package main.java.lucia.net.packet.impl.incoming.codec;
 
 import main.java.lucia.net.packet.IncomingPacket;
-import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
 
+/**
+ * Old incoming packet system.
+ * See {@link main.java.lucia.client.protocol.packet.IncomingAuthPacket}
+ */
+@Deprecated
 public class IncomingAuthenticatedPacket extends IncomingPacket {
 
     private final int opcode;
@@ -21,10 +25,5 @@ public class IncomingAuthenticatedPacket extends IncomingPacket {
 
     public String getJsonRequest() {
         return jsonRequest;
-    }
-
-    @Override
-    public OutgoingAuthenticatedPacket createOutgoingPacket() {
-        return new OutgoingAuthenticatedPacket(opcode);
     }
 }

@@ -1,7 +1,7 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.Sauce;
 
 import com.jfoenix.controls.JFXButton;
-import main.java.lucia.client.content.menu.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
 import main.java.lucia.consts.FoodConstants.SpecialInstruction.SauceConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 

@@ -2,7 +2,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 
 /**
  * Design Manager for Topping Selection in FXML

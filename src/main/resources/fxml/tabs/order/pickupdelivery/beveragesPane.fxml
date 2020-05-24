@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="beveragesPane" prefHeight="779.0" prefWidth="1341.0" style="-fx-background-color: #585858;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.BeveragesController">
+<Pane fx:id="beveragesPane" prefHeight="779.0" prefWidth="1341.0" style="-fx-background-color: #585858;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.BeveragesController">
    <children>
       <Line endX="701.0" endY="779.0" startX="701.0" startY="1.0" strokeWidth="3.0" />
       <JFXButton fx:id="coke" layoutX="62.0" layoutY="41.0" onMouseClicked="#selectedDrinks" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="109.0" prefWidth="257.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Coke" textAlignment="CENTER" textFill="WHITE">

@@ -1,10 +1,9 @@
 package main.java.lucia.client.manager;
 
 import com.google.common.base.Preconditions;
-import java.util.HashMap;
-import javafx.print.Printer;
-import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.client.manager.impl.PrinterManager;
+
+import java.util.HashMap;
 
 /**
  * The client processes manager, which handles
@@ -31,7 +30,6 @@ public class ClientProcessesManager {
    * A private constructor to support this singleton class
    */
   private ClientProcessesManager() {
-    register(ManagerType.ORDER_MANAGER, OrderManager.INSTANCE);
     register(ManagerType.PRINTER_MANAGER, new PrinterManager());
   }
 

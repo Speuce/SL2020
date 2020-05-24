@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.menu.io.serializer.local;
 
 import com.google.gson.*;
-import main.java.lucia.client.content.menu.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
 
 import java.lang.reflect.Type;
 

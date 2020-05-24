@@ -23,8 +23,8 @@ import main.java.lucia.client.content.menu.legacy.toppings.Topping;
 
 import main.java.lucia.client.content.menu.legacy.toppings.names.GourmetToppingNames;
 import main.java.lucia.client.content.time.ClientTime;
-import main.java.lucia.client.content.time.TimeFormat;
-import main.java.lucia.client.structures.Exclude;
+import main.java.lucia.client.content.structures.Exclude;
+import main.java.lucia.client.content.time.io.deserializer.ClientTimeDeserializer;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 /**
@@ -445,7 +445,7 @@ public class PremadePizza extends Pizza implements Premade {
                 CrustTypes.valueOf(o.get("crust").getAsString()), o.get("splitHalves").getAsBoolean(),
                 new GsonBuilder().registerTypeAdapter(Pizza.class, Pizza.getJsonDeserializer()).create()
                         .fromJson(o.get("secondHalf"), Pizza.class),new GsonBuilder().registerTypeAdapter(ClientTime.class,
-                ClientTime.getJsonDeserializer()).create()
+                new ClientTimeDeserializer()).create()
                 .fromJson(o.get("builtTime"), ClientTime.class),
                  new Gson().fromJson("pricing", PriceForSize.class),o.get("origin_name").getAsString());
 

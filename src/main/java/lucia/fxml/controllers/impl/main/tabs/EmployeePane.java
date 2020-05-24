@@ -14,6 +14,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.employee.*;
+import main.java.lucia.client.content.employee.type.Employee;
+import main.java.lucia.client.content.employee.type.Manager;
 import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessage;
 import main.java.lucia.client.protocol.message.impl.employee.SetEmployeeMessage;
 import main.java.lucia.fxml.controllers.ControllerMap;
@@ -24,8 +26,6 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPan
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeManagerNotesPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeSettingsPaneController;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import org.apache.commons.lang3.StringUtils;
-import org.joda.time.Interval;
 import org.joda.time.Period;
 
 

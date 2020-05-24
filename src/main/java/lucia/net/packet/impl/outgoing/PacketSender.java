@@ -2,8 +2,10 @@ package main.java.lucia.net.packet.impl.outgoing;
 
 import io.netty.channel.Channel;
 import main.java.lucia.Client;
+import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.net.NetworkConstants;
 import main.java.lucia.net.packet.OutgoingPacket;
+import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.security.encryption.Encrypt;
 
 import java.util.*;
@@ -82,13 +84,18 @@ public class PacketSender {
      * Sends the associated messages.
      */
     public void sendMessage(OutgoingPacket packet) {
+        if(!PacketListenerManager.get.callEvent(packet)){
+            return;
+        }
         packet.setSessionToken(secureToken);
-        int codeId = counter.get();
-        packet.setEchoCode(codeId);
+        int echoId = counter.get();
+        packet.setEchoCode(echoId);
         if (client.isOpen()) {
-            sendMessage(codeId, packet);
+            sendMessage(echoId, packet);
         } else if(history.size() < MAX_HISTORY) {
-            history.putIfAbsent(codeId, new History(packet));
+            history.putIfAbsent(echoId, new History(packet));
+        }else{
+            MLogger.logError("History size exceeded max history size.");
         }
     }
 
@@ -99,11 +106,11 @@ public class PacketSender {
         client.writeAndFlush(encrypted);
     }
 
+
     public void reattemptFailedMessages() {
         if (history.isEmpty()) {
             return;
         }
-
         int resent = 0;
         for (Map.Entry<Integer, History> entry : history.entrySet()) {
             if (entry.getValue().getTimeElapsed() >= TIME_ELAPSED_MILLIS) {

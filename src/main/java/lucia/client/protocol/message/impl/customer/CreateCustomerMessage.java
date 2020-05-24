@@ -1,6 +1,5 @@
 package main.java.lucia.client.protocol.message.impl.customer;
 
-import com.google.gson.Gson;
 import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.protocol.message.Message;
 import main.java.lucia.client.protocol.message.impl.MattMessage;
@@ -28,7 +27,7 @@ public class CreateCustomerMessage extends MattMessage {
    * @param details the {@link CustomerDetails}  to save
    */
   public static void saveCustomer(CustomerDetails details){
-    OutgoingAuthenticatedPacket out = new OutgoingAuthenticatedPacket(OpcodeConstants.SET_CUSTOMER_OPCODE);
+    OutgoingAuthenticatedPacket out = new OutgoingAuthenticatedPacket(OpcodeConstants.SAVE_CUSTOMER_OPCODE);
     out.setJsonRequest(GsonTypeFactory.BASIC_GSON.toJson(details));
     PacketSender.getCurrentPacketSender().sendMessage(out);
   }

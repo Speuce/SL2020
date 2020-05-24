@@ -1,6 +1,6 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
-import main.java.lucia.client.content.menu.item.IDAble;
+import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
 
 /**

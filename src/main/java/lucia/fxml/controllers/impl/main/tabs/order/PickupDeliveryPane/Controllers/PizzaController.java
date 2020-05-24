@@ -41,9 +41,9 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     /**
      * the pizza youre currently editing
      */
-    private main.java.lucia.client.content.menu.pizza.Pizza currentPizzaa = main.java.lucia.client.content.menu.Menu.pizza.getBasePizza().getAsItem(13);
+    private main.java.lucia.client.content.menu.item.type.pizza.Pizza currentPizzaa = main.java.lucia.client.content.menu.Menu.pizza.getBasePizza().getAsItem(13);
 
-    public main.java.lucia.client.content.menu.pizza.Pizza getCurrentPizza() {
+    public main.java.lucia.client.content.menu.item.type.pizza.Pizza getCurrentPizza() {
         return currentPizzaa;
     }
 

@@ -1,7 +1,6 @@
 package main.java.lucia.client.protocol.message.impl.order;
 
 import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.client.protocol.message.Message;
 import main.java.lucia.client.protocol.message.impl.MattMessage;
 import main.java.lucia.client.protocol.message.impl.W;
@@ -71,13 +70,12 @@ public class SetPreorderMessage extends MattMessage {
         W.p("receiving an preorder");
         if(getPacketProcessor().getJsonRequest() == null || getPacketProcessor().getJsonRequest().length() < 10){
             W.p("its null");
-            return;
         }else{
             try{
                 Order o = deserialize();
                 W.p("Got preorder: " + o.getOrderNumber());
                 System.out.println(getPacketProcessor().getJsonRequest());
-                OrderManager.INSTANCE.setPreorder(o);
+                //OrderManager.INSTANCE.setPreorder(o);
             }catch(Exception e){
                 e.printStackTrace();
                 System.out.println("error deserializing: " + getPacketProcessor().getJsonRequest());

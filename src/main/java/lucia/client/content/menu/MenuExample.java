@@ -4,12 +4,13 @@ import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.*;
 import main.java.lucia.client.content.menu.item.type.Addon;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
-import main.java.lucia.client.content.menu.pizza.Crust;
-import main.java.lucia.client.content.menu.pizza.Pizza;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
+import main.java.lucia.client.content.utils.IDCaster;
 
 import java.util.List;
 
@@ -141,14 +142,14 @@ public class MenuExample {
         //But we don't know its' id. And thats okay, we wont have to know its id!
         //Since the id will be provided by the clicking of the 'lasagna' button
         //as long as dynamic menu loading is properly implemented.
-        ItemModifiableDescriptor maybeLasagna = (ItemModifiableDescriptor) m.getItemFromId(6969);
+        ItemModifiableDescriptor maybeLasagna = new IDCaster<ItemModifiableDescriptor>().cast(6969);
         //We dont know that 6969 is lasagna. And you should NEVER hardcode values into
         //searches. USE THE VALUE PASSED FROM ONCLICK!!!!!
         //now create the item
         ItemModifiable probablyLasagna = maybeLasagna.getAsItem();
         //now add an addon to it. Again, same thing, you have to go by IDS.
         //NEVER HARDCODE ID VALUES.
-        AddonDescriptor definitelyNotMushrooms = (AddonDescriptor)m.getItemFromId(69420);
+        AddonDescriptor definitelyNotMushrooms = new IDCaster<AddonDescriptor>().cast(6969);
         //now that we got the addon, add it to the lasagna
         probablyLasagna.addAddon(definitelyNotMushrooms.getAsItem());
 
@@ -173,7 +174,7 @@ public class MenuExample {
         //Now add a topping
         //toppings are like items. You should have an id given to you by the button pressed
         //(onclick):
-        ToppingType type = (ToppingType) Menu.get.getItemFromId(696969420);
+        ToppingType type = new IDCaster<ToppingType>().cast(6969);
 
         //now we cant add a topping type to a pizza. We gotta specify HOW MUCH topping to put
         //1-light 2-regular 3-Xtra 4-XXtra
@@ -189,7 +190,7 @@ public class MenuExample {
 
         //Now what about specialty pizzas?
         //We'll have to get the SpecialtyPizzaDescriptor by id (no surprise there hopefully)
-        SpecialtyPizzaDescriptor sls = (SpecialtyPizzaDescriptor)Menu.get.getItemFromId(420420);
+        SpecialtyPizzaDescriptor sls = new IDCaster<SpecialtyPizzaDescriptor>().cast(6969);
         Pizza special = sls.getAsItem(selectedSize);
 
         //Thats it. If you want to remove a topping from a specialty

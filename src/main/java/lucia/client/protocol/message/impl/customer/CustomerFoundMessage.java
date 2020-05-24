@@ -2,21 +2,19 @@ package main.java.lucia.client.protocol.message.impl.customer;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import javax.security.auth.callback.Callback;
 import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.protocol.message.Message;
 import main.java.lucia.client.protocol.message.impl.MattMessage;
 import main.java.lucia.client.protocol.message.impl.W;
 import main.java.lucia.net.packet.PacketProcessor;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
-import main.java.lucia.net.protocol.opcode.OpcodeConstants;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
 public class CustomerFoundMessage extends MattMessage {
     /**
@@ -41,9 +39,9 @@ public class CustomerFoundMessage extends MattMessage {
         }else{
             JsonObject put = new JsonObject();
             put.addProperty("phoneNumber", phone);
-            OutgoingAuthenticatedPacket out = new OutgoingAuthenticatedPacket(OpcodeConstants.SEARCH_CUSTOMER_OPCODE);
-            out.setJsonRequest(GsonTypeFactory.BASIC_GSON.toJson(put));
-            PacketSender.getCurrentPacketSender().sendMessage(out);
+            //OutgoingAuthenticatedPacket out = new OutgoingAuthenticatedPacket(OpcodeConstants.SEARCH_CUSTOMER_OPCODE);
+            //out.setJsonRequest(GsonTypeFactory.BASIC_GSON.toJson(put));
+            //PacketSender.getCurrentPacketSender().sendMessage(out);
             Set<Consumer<CustomerDetails>> callbackSet = new HashSet<>();
             callbackSet.add(callback);
             callbackMap.put(Integer.valueOf(phone), callbackSet);

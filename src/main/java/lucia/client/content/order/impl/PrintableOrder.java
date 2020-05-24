@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.order.impl;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.structures.Exclude;
+import main.java.lucia.client.content.structures.Exclude;
 import main.java.lucia.util.currency.CurrencyConverter;
 
 import java.awt.*;
@@ -25,6 +25,7 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
     // TODO Printing information, such as Henderson/phone number etc should be loaded from Server as it differs from store to store
     //paper size 10cm/27m
     //Constants based on paper size and desired layout
+    @Exclude
     private static final int MAX_CHARS_PER_LINE = 35, MAX_LINES_PER_PAGE = 10,
             X_OFFSET = 170, Y_OFFSET = 130, LINE_SPACING = 17, PRICE_X_OFFSET = 395, STUB_SPACING = 500,
             HEADER_OFFSET = 50, HEADER2_OFFSET = 420;
@@ -32,6 +33,7 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
     /**
      * Standard Format for money on bills
      */
+    @Exclude
     private static final NumberFormat formatter = new DecimalFormat("#0.00");
 
     @Exclude
@@ -48,7 +50,7 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
 
     @Override
     public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) {
-        this.updatePrice();
+        this.recalculatePrice();
         graphics.setFont(new Font("Calibri", Font.PLAIN, 10));
         if (pageIndex == 0) {
             preparePrint();
@@ -129,12 +131,12 @@ public abstract class PrintableOrder extends OrderInfo implements Printable {
         }
 
         //Print Phone Number, Order Number, and payment type
-        if(this.getPayment() != null){
+        if(this.getPaymentType() != null){
             graphics.drawString("Phone: " + getCustomerDetails().getPhoneNumberFormatted() + " Order #" +
-                            this.getOrderNumber() + " Pay: " + this.getPayment().getPaymentType().getDisplayCode(), X_OFFSET,
+                            this.getOrderNumber() + " Pay: " + this.getPaymentType().getDisplayCode(), X_OFFSET,
                     HEADER_OFFSET + (LINE_SPACING * 3) + 6);
             graphics.drawString("Phone: " + getCustomerDetails().getPhoneNumberFormatted() + " Order #" +
-                            this.getOrderNumber() + " Pay: " + this.getPayment().getPaymentType().getDisplayCode(), X_OFFSET,
+                            this.getOrderNumber() + " Pay: " + this.getPaymentType().getDisplayCode(), X_OFFSET,
                     HEADER2_OFFSET + (LINE_SPACING * 3) + 6);
         }else{
             graphics.drawString("Phone: " + getCustomerDetails().getPhoneNumberFormatted() + " Order #" +

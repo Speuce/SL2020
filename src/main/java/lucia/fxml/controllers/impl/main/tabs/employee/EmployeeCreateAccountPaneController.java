@@ -10,7 +10,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.AsynchronousTaskService;
-import main.java.lucia.client.content.employee.Employee;
+import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;

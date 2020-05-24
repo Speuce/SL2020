@@ -1,7 +1,6 @@
 package main.java.lucia.net.packet.impl.incoming.codec;
 
 import main.java.lucia.net.packet.IncomingPacket;
-import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingHandshakePacket;
 
 public class IncomingHandshakePacket extends IncomingPacket {
 
@@ -16,8 +15,5 @@ public class IncomingHandshakePacket extends IncomingPacket {
         return sessionToken;
     }
 
-    @Override
-    public OutgoingHandshakePacket createOutgoingPacket() {
-        return new OutgoingHandshakePacket();
-    }
+
 }

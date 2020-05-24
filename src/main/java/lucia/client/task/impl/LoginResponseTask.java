@@ -44,7 +44,7 @@ public class LoginResponseTask extends Task {
         loginController.openPreview();
         break;
       default:
-        loginController.wrongLogin("TODO INCORRECT LOGIN"); // TODO From server
+        loginController.wrongLogin("INCORRECT LOGIN"); // TODO From server
         break;
     }
   }

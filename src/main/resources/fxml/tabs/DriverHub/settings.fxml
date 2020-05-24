@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="settings" prefHeight="835.0" prefWidth="1287.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.Driver.SettingsController">
+<Pane fx:id="settings" prefHeight="835.0" prefWidth="1287.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.Driver.SettingsController">
    <children>
       <JFXPasswordField layoutX="50.0" layoutY="50.0" maxWidth="274.0" minWidth="236.0" prefHeight="51.0" prefWidth="274.0" style="-fx-background-color: #FFFFFF;" />
       <JFXPasswordField layoutX="50.0" layoutY="120.0" maxWidth="274.0" minWidth="236.0" prefHeight="51.0" prefWidth="274.0" style="-fx-background-color: #FFFFFF;" />

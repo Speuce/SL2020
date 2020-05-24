@@ -7,9 +7,13 @@ import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.fxml.InterfaceBuilder;
 import main.java.lucia.net.NetworkBuilder;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
 
 import java.io.File;
 
@@ -17,6 +21,7 @@ import java.io.File;
  * The class which initializes the client.
  *
  * @author Brett Downey
+ * @author Matthew Kwiatkowski
  */
 public class Client {
 
@@ -26,13 +31,41 @@ public class Client {
     private static ClientBuilder client;
 
     /**
+     * Static block to disable the stupid netty warning.
+     * Allegedly its unfixable and actually an intended feature, but it clogs up the logger
+     * So its' disabled for the time being.
+     * See: https://github.com/netty/netty/issues/7769
+     */
+    static{
+        try {
+            Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+            theUnsafe.setAccessible(true);
+            Unsafe u = (Unsafe) theUnsafe.get(null);
+
+            Class cls = Class.forName("jdk.internal.module.IllegalAccessLogger");
+            Field logger = cls.getDeclaredField("logger");
+            u.putObjectVolatile(cls, u.staticFieldOffset(logger), null);
+        } catch (Exception e) {
+            // ignore
+        }
+    }
+
+//    static {
+//        System.out.println("static block");
+//        Configurator.initialize(LogConfigBuilder.buildDefaultConfig().build());
+//        Thread.currentThread().setName(ClientConstants.NAME);
+//        System.out.println("static block2");
+//
+//        //Configurator.setLevel("io.netty", Level.ALL);
+//    }
+
+    /**
      * The logger that will print important information.
      */
-    public static final Logger logger = Logger.getLogger(Client.class.getSimpleName());
-    static {
-        BasicConfigurator.configure();
-        logger.getLoggerRepository().getLogger("io.netty").setLevel(Level.INFO);
-        Thread.currentThread().setName(ClientConstants.NAME);
+    public static final Logger logger = LogManager.getLogger(Client.class);
+
+    static{
+        //LogManager.getLogger("io.netty").atInfo()
     }
 
     /**
@@ -51,7 +84,7 @@ public class Client {
     }
 
     public synchronized static void shutdown(int errorCode) {
-        logger.getLoggerRepository().getLogger("io.netty").setLevel(Level.OFF);
+        Configurator.setLevel("io.netty", Level.OFF);
         synchronized (Client.class) {
             Client.logger.info("The client is shutting down with an error code of : " + errorCode + "\n");
             Client.logger.info("Shutdown Trace:");

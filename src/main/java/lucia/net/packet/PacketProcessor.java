@@ -1,11 +1,12 @@
 package main.java.lucia.net.packet;
 
 import main.java.lucia.client.protocol.message.Message;
+import main.java.lucia.net.packet.impl.incoming.Decoder;
 import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
 
 /**
  * A packet that holds all the information that is
- * received from the {@link lucia.net.packet.impl.incoming.Decoder}
+ * received from the {@link Decoder}
  */
 public class PacketProcessor {
 

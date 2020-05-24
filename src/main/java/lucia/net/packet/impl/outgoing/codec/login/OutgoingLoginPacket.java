@@ -8,7 +8,15 @@ public abstract class OutgoingLoginPacket extends OutgoingPacket {
 
   private String hashedPassword;
 
-  public OutgoingLoginPacket setUsername(String username) {
+    public OutgoingLoginPacket(String username, String hashedPassword) {
+        this.username = username;
+        this.hashedPassword = hashedPassword;
+    }
+
+    public OutgoingLoginPacket() {
+    }
+
+    public OutgoingLoginPacket setUsername(String username) {
     this.username = username;
     return this;
   }

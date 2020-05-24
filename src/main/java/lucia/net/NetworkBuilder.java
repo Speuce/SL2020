@@ -10,14 +10,15 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.HashedWheelTimer;
 import io.netty.util.Timer;
 import io.netty.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 import main.java.lucia.Client;
-import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.client.Engine;
+import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.net.channel.ClientPipelineInitializer;
 import main.java.lucia.net.packet.OutgoingPacket;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingHandshakePacket;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * The network builder
@@ -92,7 +93,6 @@ public class NetworkBuilder implements Runnable {
    */
   @Override
   public void run() {
-
     if (shutdown || connected || connecting || !ClientConstants.ENABLE_NET) {
       return;
     }

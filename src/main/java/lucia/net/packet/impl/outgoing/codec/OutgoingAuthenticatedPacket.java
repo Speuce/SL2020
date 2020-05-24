@@ -1,9 +1,12 @@
 package main.java.lucia.net.packet.impl.outgoing.codec;
 
-import com.google.gson.Gson;
 import main.java.lucia.net.packet.OutgoingPacket;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
+/**
+ * Old Authenticated packet system
+ */
+@Deprecated
 public class OutgoingAuthenticatedPacket extends OutgoingPacket {
 
     private final int opcode;

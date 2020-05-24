@@ -5,7 +5,7 @@ public class ClientConstants {
     /**
      * true to enable networking, false otherwise.
      */
-    public static final boolean ENABLE_NET = false;
+    public static final boolean ENABLE_NET = true;
 
     /**
      * The name of the game.
@@ -31,7 +31,7 @@ public class ClientConstants {
     /**
      * The host that this client is going to run on.
      */
-    public static final String HOST = System.getProperty("host", "192.168.0.16");
+    public static final String HOST = System.getProperty("host", "99.79.88.213");
 
     /**
      * The port that this client is going to run on.

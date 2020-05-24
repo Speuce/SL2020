@@ -1,9 +1,5 @@
 package main.java.lucia.client.content.time;
 
-import com.google.gson.*;
-import main.java.lucia.Client;
-import java.lang.reflect.Type;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -129,7 +125,7 @@ public class ClientTime {
    *
    * @return The time
    */
-  public LocalDateTime getThisTime() {
+  public LocalDateTime toLocalDate() {
     return INSTANCE;
   }
 
@@ -178,7 +174,7 @@ public class ClientTime {
    * @return The time between this time and the given {@code time}
    */
   public long getTimeBetween(ClientTime time, ChronoUnit val) {
-    return Math.abs(val.between(INSTANCE, time.getThisTime()));
+    return Math.abs(val.between(INSTANCE, time.toLocalDate()));
   }
 
   /**
@@ -191,26 +187,5 @@ public class ClientTime {
     return Math.abs(val.between(INSTANCE, ClientTime.getWinnipegTime()));
   }
 
-  /**
-   * Creates the serializer for ClientTime objects
-   * @return the {@link JsonSerializer} for ClientTime objects
-   */
-  public static JsonSerializer<ClientTime> getJsonSerializer(){
-    return (src, typeOfSrc, context) -> new JsonPrimitive(src.toString(TimeFormat.FORMATTER_ISO_STANDARD));
-  }
 
-  /**
-   * Creates the deserializer for ClientTime objects
-   * @return the {@link JsonDeserializer} for ClientTime objects
-   */
-  public static JsonDeserializer<ClientTime> getJsonDeserializer(){
-    return (json, typeOfT, context) -> {
-      try {
-        return new ClientTime(LocalDateTime.parse(json.getAsString(), TimeFormat.FORMATTER_ISO_STANDARD.getFormat()));
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-      return null;
-    };
-  }
 }

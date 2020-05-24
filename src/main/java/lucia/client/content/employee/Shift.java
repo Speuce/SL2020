@@ -89,10 +89,10 @@ public class Shift implements Comparable<Shift> {
     public String getHoursWorkedStr(){
         DecimalFormat df = new DecimalFormat("#0.00");
         if(this.inProgress){
-            long workedMins = ChronoUnit.MINUTES.between(LocalDateTime.now(), started.getThisTime());
+            long workedMins = ChronoUnit.MINUTES.between(LocalDateTime.now(), started.toLocalDate());
             return df.format(workedMins/60.0);
         }else{
-            long workedMins = ChronoUnit.MINUTES.between(ended.getThisTime(), started.getThisTime());
+            long workedMins = ChronoUnit.MINUTES.between(ended.toLocalDate(), started.toLocalDate());
             return df.format(workedMins/60.0);
         }
 
@@ -104,10 +104,10 @@ public class Shift implements Comparable<Shift> {
      */
     public long getMinutesWorked(){
         if(this.inProgress){
-            long workedMins = ChronoUnit.MINUTES.between(LocalDateTime.now(), started.getThisTime());
+            long workedMins = ChronoUnit.MINUTES.between(LocalDateTime.now(), started.toLocalDate());
             return workedMins;
         }else{
-            long workedMins = ChronoUnit.MINUTES.between(ended.getThisTime(), started.getThisTime());
+            long workedMins = ChronoUnit.MINUTES.between(ended.toLocalDate(), started.toLocalDate());
             return workedMins;
         }
 
@@ -115,6 +115,6 @@ public class Shift implements Comparable<Shift> {
 
     @Override
     public int compareTo(Shift o) {
-        return o.getStarted().getThisTime().compareTo(this.getStarted().getThisTime());
+        return o.getStarted().toLocalDate().compareTo(this.getStarted().toLocalDate());
     }
 }

@@ -1,16 +1,9 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
-import com.google.gson.*;
-import main.java.lucia.client.content.files.MLogger;
-import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.item.IDCaster;
-import main.java.lucia.client.content.menu.pizza.*;
-import main.java.lucia.client.content.menu.size.Size;
+import main.java.lucia.client.content.menu.item.type.pizza.*;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

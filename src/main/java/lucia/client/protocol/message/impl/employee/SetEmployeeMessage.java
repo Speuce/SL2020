@@ -1,7 +1,7 @@
 package main.java.lucia.client.protocol.message.impl.employee;
 
 import com.google.gson.Gson;
-import main.java.lucia.client.content.employee.Employee;
+import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.client.protocol.message.Message;
 import main.java.lucia.client.protocol.message.impl.MattMessage;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;

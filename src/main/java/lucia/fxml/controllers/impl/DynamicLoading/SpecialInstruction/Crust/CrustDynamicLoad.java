@@ -1,7 +1,7 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.Crust;
 
 import com.jfoenix.controls.JFXButton;
-import main.java.lucia.client.content.menu.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
 import main.java.lucia.consts.FoodConstants.SpecialInstruction.CrustConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="complaintPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.ComplaintPaneController">
+<Pane fx:id="complaintPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.viewOrder.ComplaintPaneController">
    <children>
       <Pane fx:id="complaintInfoPane" prefHeight="749.0" prefWidth="779.0" visible="false">
          <children>

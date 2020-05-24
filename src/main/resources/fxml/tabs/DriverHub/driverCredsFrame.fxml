@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="driverCredsFrame" prefHeight="930.0" prefWidth="1700.0" style="-fx-background-color: #8a2929#8a2929#8a2929vv#8a2#8a2929929;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.Driver.DriverCredsController">
+<Pane fx:id="driverCredsFrame" prefHeight="930.0" prefWidth="1700.0" style="-fx-background-color: #8a2929#8a2929#8a2929vv#8a2#8a2929929;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.Driver.DriverCredsController">
    <children>
       <JFXButton fx:id="loginEmployee1" layoutX="574.0" layoutY="534.0" onAction="#login" prefHeight="64.0" prefWidth="225.0" style="-fx-background-color: #3E6E6E; -fx-background-radius: 20;" text="Confirm Login" textFill="WHITE">
          <font>

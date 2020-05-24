@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paymentPane" prefHeight="907.0" prefWidth="407.0" style="-fx-background: #D3D3D3;" visible="false" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.payment.PaymentPaneController">
+<Pane fx:id="paymentPane" prefHeight="907.0" prefWidth="407.0" style="-fx-background: #D3D3D3;" visible="false" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.payment.PaymentPaneController">
    <children>
       <JFXButton fx:id="finalizeOrder" layoutX="211.0" layoutY="809.0" onMouseClicked="#finalizePayment" prefHeight="87.0" prefWidth="188.0" style="-fx-background-color: #800000; -fx-background-radius: 20; -fx-border-radius: 20;" text="Finalize" textAlignment="CENTER" textFill="WHITE" visible="false">
          <cursor>

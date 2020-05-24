@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import main.java.lucia.client.content.menu.pizza.Crust;
+import main.java.lucia.client.content.menu.item.type.pizza.Crust;
 
 /**
  * Design Manager for Crust Selection in FXML

@@ -12,12 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
 import main.java.lucia.client.content.customer.Complaint;
 import main.java.lucia.client.content.customer.ComplaintAction;
 import main.java.lucia.client.content.employee.type.Employee;
-import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
@@ -85,15 +83,15 @@ public class ComplaintPaneController {
         Platform.runLater(() -> {
             complaintTextArea.setFont(new Font("Calibri", 20));
             complaintTextArea.setCache(false);
-            if(!complaintTextArea.getChildrenUnmodifiable().isEmpty()){
-                Region sp = (Region)complaintTextArea.getChildrenUnmodifiable().get(0);
-                sp.setCache(false);
-                for (Node n : sp.getChildrenUnmodifiable()) {
-                    n.setCache(false);
-                }
-            }else{
-                MLogger.logError("Something is fishy in ComplaintPaneCntroller init.");
-            }
+//            if(!complaintTextArea.getChildrenUnmodifiable().isEmpty()){
+//                Region sp = (Region)complaintTextArea.getChildrenUnmodifiable().get(0);
+//                sp.setCache(false);
+//                for (Node n : sp.getChildrenUnmodifiable()) {
+//                    n.setCache(false);
+//                }
+//            }else{
+//                MLogger.logError("Something is fishy in ComplaintPaneCntroller init.");
+//            }
 
         });
     }

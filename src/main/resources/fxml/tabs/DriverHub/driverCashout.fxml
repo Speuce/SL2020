@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="driverCashout" prefHeight="837.0" prefWidth="1290.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.Driver.DriverCashoutController">
+<Pane fx:id="driverCashout" prefHeight="837.0" prefWidth="1290.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.Driver.DriverCashoutController">
    <children>
       <Label layoutX="19.0" layoutY="-6.0" prefHeight="42.0" prefWidth="199.0" text="Totals" textAlignment="CENTER">
          <font>

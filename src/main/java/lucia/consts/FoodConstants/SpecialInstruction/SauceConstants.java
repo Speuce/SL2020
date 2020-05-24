@@ -2,7 +2,7 @@ package main.java.lucia.consts.FoodConstants.SpecialInstruction;
 
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.PizzaMenu;
-import main.java.lucia.client.content.menu.pizza.Sauce;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
 import main.java.lucia.consts.FoodConstants.FoodConstants;
 
 import java.util.List;

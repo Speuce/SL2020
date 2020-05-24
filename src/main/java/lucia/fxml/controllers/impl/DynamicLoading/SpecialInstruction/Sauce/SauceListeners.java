@@ -3,9 +3,9 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.
 import com.jfoenix.controls.JFXButton;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import main.java.lucia.client.content.menu.item.IDCaster;
-import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
+import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
+import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
 /**

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import main.java.lucia.Client;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
@@ -264,8 +265,13 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   }
 
   public void registerChild(ParentController c) {
-    children.add(c);
-    c.setParent(this);
+      if(c != null){
+          children.add(c);
+          c.setParent(this);
+      }else{
+          Client.logger.warn("Parent controller found was null!");
+      }
+
   }
 
   /**
@@ -292,10 +298,10 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
 
   public void initializeArrays() {
 
-    paneArray = new Pane[]{pizzaController.specialAnchor, pizzaController.sizeButtons, pizzaController.extraPane, pizzaController.pizzaButtons,
-            pizzaController.settingsButtons, pizzaController.cheeseAnchor, appetizersPane, italianPane,
-            saladsPane, chickenPaneController.chickenPane, beveragesPane};
-    specialPaneArray = new Pane[]{pizzaController.extraPane, pizzaController.pizzaButtons, pizzaController.settingsButtons, pizzaController.cheeseAnchor};
+//    paneArray = new Pane[]{pizzaController.specialAnchor, pizzaController.sizeButtons, pizzaController.extraPane, pizzaController.pizzaButtons,
+//            pizzaController.settingsButtons, pizzaController.cheeseAnchor, appetizersPane, italianPane,
+//            saladsPane, chickenPaneController.chickenPane, beveragesPane};
+//    specialPaneArray = new Pane[]{pizzaController.extraPane, pizzaController.pizzaButtons, pizzaController.settingsButtons, pizzaController.cheeseAnchor};
   }
 //  public void initializeTheOrderPizza() {
 //    pizzaPaneController.theOrderPizza.clear();
@@ -442,11 +448,11 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   @FXML
   public void removeAllSelected() {
     Pane pane;
-    for (int x = 0; x < paneArray.length; x++) {
-      pane = paneArray[x];
-      pane.getChildren().forEach(theButtons ->
-              theButtons.getStyleClass().removeAll("ToppingsSelectedGreen", "ToppingsSelected", "ToppingsSelectedEZ", "ToppingsSelectedX", "ToppingsSelectedXX", "ToppingsEnableHover"));
-    }
+//    for (int x = 0; x < paneArray.length; x++) {
+//      pane = paneArray[x];
+//      pane.getChildren().forEach(theButtons ->
+//              theButtons.getStyleClass().removeAll("ToppingsSelectedGreen", "ToppingsSelected", "ToppingsSelectedEZ", "ToppingsSelectedX", "ToppingsSelectedXX", "ToppingsEnableHover"));
+//    }
   }
 
   // ------ "CHANGE GROUP BUTTON" SERIES ------

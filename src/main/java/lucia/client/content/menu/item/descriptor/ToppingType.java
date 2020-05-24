@@ -26,7 +26,8 @@ public class ToppingType extends Descriptor {
         this.pricingScheme = pricingScheme;
     }
 
-    public ToppingType(int id, String baseName, String defaultColor, String selectedColor, String hoverColor, String textColor, String shortName, PricingScheme pricingScheme) {
+    public ToppingType(int id, String baseName, String defaultColor, String selectedColor, String hoverColor,
+                       String textColor, String shortName, PricingScheme pricingScheme) {
         super(id, baseName, defaultColor, selectedColor, hoverColor, textColor);
         this.shortName = shortName;
         this.pricingScheme = pricingScheme;

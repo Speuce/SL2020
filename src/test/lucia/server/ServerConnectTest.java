@@ -1,4 +1,4 @@
-package test.lucia;
+package test.lucia.server;
 
 import main.java.lucia.Client;
 import main.java.lucia.client.ClientBuilder;

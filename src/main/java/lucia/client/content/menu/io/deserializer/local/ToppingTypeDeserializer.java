@@ -31,6 +31,6 @@ public class ToppingTypeDeserializer implements JsonDeserializer<ToppingType> {
         String hoverColor = ColorUtils.parseHex(obj.get("hoverColor").getAsString());
         String textColor = ColorUtils.parseHex(obj.get("textColor").getAsString());
 
-        return new ToppingType(id, name,shortName, defaultColor, selectedColor, hoverColor, textColor, pricing);
+        return new ToppingType(id, name,defaultColor, selectedColor, hoverColor, textColor, shortName, pricing);
     }
 }

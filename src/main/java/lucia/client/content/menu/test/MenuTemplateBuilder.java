@@ -49,6 +49,8 @@ public class MenuTemplateBuilder {
         ItemModifiableDescriptor wings = new ItemModifiableDescriptor(6, "wings", 1295);
         wings.addAddon(hotSauce);
         wings.addAddon(bbqSauce);
+        wings.addDefaultAddon(bbqSauce, (byte) 2);
+        wings.addDefaultAddon(hotSauce, (byte)4);
         itemList1.add(wings);
 
         //pizza menu things
@@ -98,7 +100,7 @@ public class MenuTemplateBuilder {
 
 
 
-        File menu = new File("src/main/resources/menutest.json");
+        File menu = new File("src/main/resources/menu.json");
         if(!menu.exists()){
             menu.createNewFile();
         }

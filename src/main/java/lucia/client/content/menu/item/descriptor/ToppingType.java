@@ -9,10 +9,6 @@ import main.java.lucia.client.content.menu.size.PricingScheme;
  */
 public class ToppingType extends Descriptor {
 
-    /**
-     * The full name of this topping
-     */
-    private String name;
 
     /**
      * The short (display) name of this topping
@@ -24,10 +20,8 @@ public class ToppingType extends Descriptor {
      */
     private PricingScheme pricingScheme;
 
-
     public ToppingType(int id, String name,String shortName, PricingScheme pricingScheme) {
         super(id, name);
-        this.name = name;
         this.shortName = shortName;
         this.pricingScheme = pricingScheme;
     }
@@ -45,13 +39,16 @@ public class ToppingType extends Descriptor {
         return shortName;
     }
 
+    @Deprecated
     public String getName() {
-        return name;
+        return super.getBaseName();
     }
 
     public PricingScheme getPricingScheme() {
         return pricingScheme;
     }
+
+
 
     /**
      * Serializes the item into readable json format

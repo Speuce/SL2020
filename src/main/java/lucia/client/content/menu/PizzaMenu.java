@@ -3,11 +3,11 @@ package main.java.lucia.client.content.menu;
 import main.java.lucia.client.content.files.MLogger;
 import main.java.lucia.client.content.menu.io.MenuLoader;
 import main.java.lucia.client.content.menu.io.MenuSaver;
-import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
 import main.java.lucia.client.content.menu.item.type.pizza.Crust;
 import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
 import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
+import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 
 import java.util.*;

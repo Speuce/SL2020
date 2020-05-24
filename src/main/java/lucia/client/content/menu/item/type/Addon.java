@@ -1,7 +1,6 @@
 package main.java.lucia.client.content.menu.item.type;
 
 import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
-import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 
 /**
  * An addon, which can be added to any

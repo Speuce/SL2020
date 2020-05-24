@@ -1,17 +1,18 @@
 package main.java.lucia.client.content.menu.item.type.pizza;
 
-import com.google.gson.*;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.io.MenuJsonConstants;
 import main.java.lucia.client.content.menu.io.serializer.server.PizzaSerializer;
 import main.java.lucia.client.content.menu.item.AbstractItem;
-import main.java.lucia.client.content.menu.Menu;
-import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
-import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
+import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
 import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.util.*;
@@ -505,6 +506,14 @@ public class Pizza extends Item{
             }
         }
         return tp;
+    }
+
+//    public List<Topping> getToppings(){
+//        return toppings;
+//    }
+
+    public boolean hasToppingType(ToppingType t){
+        return false;
     }
 
 

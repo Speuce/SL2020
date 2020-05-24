@@ -994,7 +994,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         System.out.println(controller.getCurrentOrder().getGrandTotalTax().toString());
         //controller.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethod.getValue().toUpperCase()));
         controller.finalizeOrder();
-      }
+      } 
     }
     else controller.finalizeOrder();
   }

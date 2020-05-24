@@ -3,6 +3,7 @@ package main.java.lucia;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.ClientBuilder;
 import main.java.lucia.client.content.files.json.loader.JsonHandler;
+import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.fxml.InterfaceBuilder;
 import main.java.lucia.net.NetworkBuilder;
@@ -13,6 +14,8 @@ import org.apache.logging.log4j.core.config.Configurator;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
+
+import java.io.File;
 
 /**
  * The class which initializes the client.
@@ -70,7 +73,8 @@ public class Client {
      */
     public static void main(String[] args) {
         try {
-
+            File menu = new File("src/main/resources/menu.json");
+            Menu.get.loadMenu(menu);
             logger.info("Initializing " + ClientConstants.NAME);
             client = new ClientBuilder(new NetworkBuilder(), new InterfaceBuilder()).initialize();
         } catch (Exception e) {

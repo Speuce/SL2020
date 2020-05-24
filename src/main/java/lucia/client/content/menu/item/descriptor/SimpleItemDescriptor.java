@@ -39,7 +39,9 @@ public class SimpleItemDescriptor extends Descriptor {
 
     /**
      * Get this loaded item, as an item that can be added to an order
-     * @return a {@link SimpleItem} representing the item specified by this class.
+     * @return a {@link Item} representing the item specified by this class,
+     * returns an Item, not a SimpleItem as an itemMotifiable does not extend
+     * a simple item: To fix, cast the return type to a SimpleItem
      */
     public Item getAsItem(){
         return new SimpleItem(this.getBaseName(), this.price, this);

@@ -38,6 +38,18 @@ import java.util.stream.IntStream;
 
 public class PizzaController implements ParentController<PickupDeliveryPaneController> {
 
+    /**
+     * the pizza youre currently editing
+     */
+    private main.java.lucia.client.content.menu.pizza.Pizza currentPizzaa = main.java.lucia.client.content.menu.Menu.pizza.getBasePizza().getAsItem(13);
+
+    public main.java.lucia.client.content.menu.pizza.Pizza getCurrentPizza() {
+        return currentPizzaa;
+    }
+
+
+    /******************** OLD STUFF *********************/
+
     @FXML
     private Pane pizzaPane;
 
@@ -609,22 +621,22 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
 
     // ------ "HOVER" SERIES ------
     @FXML
-    void activateHover(MouseEvent event) {
+    public void activateHover(MouseEvent event) {
         if(parent == null){
             return;
         }
         parent.activateHover(event);
     }
     @FXML
-    void activateHoverGreen(MouseEvent event) {
+    public void activateHoverGreen(MouseEvent event) {
         parent.activateHoverGreen(event);
     }
     @FXML
-    void deactivateHover(MouseEvent event) {
+    public void deactivateHover(MouseEvent event) {
         Style.deactivateHover(event);
     }
     @FXML
-    void deactivateHoverGreen(MouseEvent event) {
+    public void deactivateHoverGreen(MouseEvent event) {
         Style.deactivateHoverGreen(event);
     }
 
@@ -713,18 +725,18 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     // ------ "SELECTED" SERIES ------
     @FXML
     void justCheeseSelected(MouseEvent event) {
-        if(isEnabled(chzPizza, "ToppingsSelected")) {
+        if (isEnabled(chzPizza, "ToppingsSelected")) {
             currentPizza.setJustCheese(false);
             chzPizza.getStyleClass().removeAll("ToppingsSelected");
-        }
-        else {
+        } else {
             currentPizza.setJustCheese(true);
             chzPizza.getStyleClass().add("ToppingsSelected");
         }
         currentPizza.setSize(Size.NINE);
     }
+
     @FXML
-    void selected(MouseEvent event) {
+    public void selected(MouseEvent event) {
         parent.setOptionPanesVisible(false);
         setButtonPane(pizzaButtons, "BackgroundNeed", "BackgroundDefault");
         JFXButton button = (JFXButton) event.getSource();
@@ -890,6 +902,10 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     @FXML
     void selectedSize30(MouseEvent event) {
         sizeSelected(Size.THIRTY);
+    }
+
+    public void test() {
+        pizzaButtons.getChildren().add(new JFXButton("TEST"));
     }
 
     @FXML

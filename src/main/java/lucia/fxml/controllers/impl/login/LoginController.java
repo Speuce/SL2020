@@ -43,7 +43,6 @@ import main.java.lucia.net.packet.impl.outgoing.codec.login.OutgoingLoginPacket;
 import main.java.lucia.net.packet.impl.outgoing.codec.login.OutgoingNewAccountPacket;
 import main.java.lucia.net.security.passwords.CryptographicHash;
 import org.apache.commons.lang3.StringUtils;
-
 import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -287,6 +286,7 @@ public class LoginController implements Controller, PacketHandler {
         exitCreateAccount.setVisible(false);
         enableLogin();
     }
+//<<<<<<< HEAD
 
     /**
      * Enables our user to be able to use the "enter"
@@ -306,6 +306,34 @@ public class LoginController implements Controller, PacketHandler {
                 createAccount();
             }
         }
+    }
+
+    /**
+     * Occurs when a user selects a new store
+     *
+     * @param event The button selected
+     */
+    @FXML
+    public void storeSelect(ActionEvent event) {
+        JFXButton button = (JFXButton) event.getSource();
+        String name = StringUtils.capitalize(button.getId());
+        storeDisplay.setText(name);
+        storeDisplayPreview.setText(name);
+        locationsPane.setVisible(false);
+        enableLogin();
+    }
+
+    /**
+     * Displayed when the wrong login credentials are inputted
+     */
+    public void wrongLogin(String errorMessage) {
+        Platform.runLater(() -> {
+            incorrectCredentials.setText(errorMessage);
+            incorrectCredentials.setVisible(true);
+            if (++failedLoginCount == 5) {
+                accessDenied();
+            }
+        });
     }
 
     @PacketEventHandler
@@ -369,34 +397,6 @@ public class LoginController implements Controller, PacketHandler {
             locationsPane.setVisible(true);
             disableLogin();
         }
-    }
-
-    /**
-     * Occurs when a user selects a new store
-     *
-     * @param event The button selected
-     */
-    @FXML
-    public void storeSelect(ActionEvent event) {
-        JFXButton button = (JFXButton) event.getSource();
-        String name = StringUtils.capitalize(button.getId());
-        storeDisplay.setText(name);
-        storeDisplayPreview.setText(name);
-        locationsPane.setVisible(false);
-        enableLogin();
-    }
-
-    /**
-     * Displayed when the wrong login credentials are inputted
-     */
-    public void wrongLogin(String errorMessage) {
-        Platform.runLater(() -> {
-            incorrectCredentials.setText(errorMessage);
-            incorrectCredentials.setVisible(true);
-            if (++failedLoginCount == 5) {
-                accessDenied();
-            }
-        });
     }
 
     /**

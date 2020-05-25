@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<Pane fx:id="enterNumberPane" prefHeight="515.0" prefWidth="804.0" style="-fx-background-color: #383838; -fx-border-radius: 20; -fx-background-radius: 20;" visible="false" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane">
+<Pane fx:id="enterNumberPane" prefHeight="515.0" prefWidth="804.0" style="-fx-background-color: #383838; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane">
    <children>
       <Pane fx:id="extendedMapPane" layoutX="769.0" prefHeight="515.0" prefWidth="536.0" style="-fx-background-color: #383838; -fx-background-radius: 20;" visible="false" />
       <Pane fx:id="toggleMappane" layoutX="690.0" layoutY="11.0" prefHeight="85.0" prefWidth="110.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
@@ -187,7 +187,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="createDelivery" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false">
+      <Pane fx:id="createDelivery" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
          <children>
             <Label layoutX="56.0" layoutY="68.0" text="Address">
                <font>
@@ -251,44 +251,33 @@
             </Pane>
          </children>
       </Pane>
-      <Pane fx:id="loadDelivery" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false">
+      <Pane fx:id="customerInfoPane" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
          <children>
-            <Label layoutX="15.0" layoutY="68.0" text="Street Name">
+             <Label fx:id="customerNameLabel" layoutX="72.0" layoutY="20.0" text="Name">
+                 <font>
+                     <Font size="20.0" />
+                 </font>
+             </Label>
+            <JFXTextField fx:id="customerNameField" layoutX="136.0" layoutY="12.0" maxWidth="271.0" minWidth="252.0" prefHeight="37.0" prefWidth="252.0" style="-fx-background-color: white;" />
+            <Label fx:id="Address" layoutX="56.0" layoutY="68.0" text="Address">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="loadDeliveryView" layoutX="5.0" layoutY="310.0" prefHeight="55.0" prefWidth="445.0" style="-fx-alignment: center; -fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" text="" textAlignment="CENTER">
-               <font>
-                  <Font name="Century" size="43.0" />
-               </font>
-            </Label>
-            <JFXTextField fx:id="loadDeliveryStreet" layoutX="136.0" layoutY="61.0" maxWidth="271.0" minWidth="252.0" prefHeight="37.0" prefWidth="252.0" style="-fx-background-color: white;" text="Linden" />
-            <JFXTextField fx:id="loadDeliveryNum" layoutX="427.0" layoutY="61.0" maxWidth="57.0" minWidth="57.0" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: white;" text="649" />
-            <Label layoutX="392.0" layoutY="68.0" text="No.">
+            <JFXTextField fx:id="customerStreetNumberField" layoutX="136.0" layoutY="62.0" maxWidth="57.0" minWidth="57.0" onAction="#clearErrorLabel" onKeyPressed="#updateAddress" onKeyReleased="#updateAddress" onKeyTyped="#updateAddress" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: white;" />
+            <JFXComboBox fx:id="customerStreetField" editable="true" layoutX="200.0" layoutY="62.0" onAction="#clearErrorLabel" onKeyPressed="#updateAddress" onKeyReleased="#updateAddress" onKeyTyped="#updateAddress" prefHeight="37.0" prefWidth="188.0" style="-fx-background-color: white; -fx-background-radius: 5;" visibleRowCount="5" />
+            <Label fx:id="customerAptNoLabel" layoutX="523.0" layoutY="68.0" text="Apt No.">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="loadDeliveryAppt" layoutX="593.0" layoutY="61.0" maxWidth="57.0" minWidth="57.0" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: white;" />
-            <Label layoutX="523.0" layoutY="68.0" text="Apt No.">
+            <JFXTextField fx:id="customerAptNoField" layoutX="593.0" layoutY="61.0" maxWidth="57.0" minWidth="57.0" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: white;" />
+            <Label fx:id="customerBuzzLabel" layoutX="659.0" layoutY="68.0" text="Buzz">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Line endX="674.0" layoutX="101.0" layoutY="295.0" startX="-100.0" />
-            <Label layoutX="72.0" layoutY="20.0" opacity="0.5" text="Name">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <JFXTextField layoutX="136.0" layoutY="12.0" maxWidth="271.0" minWidth="252.0" opacity="0.5" prefHeight="37.0" prefWidth="252.0" style="-fx-background-color: white;" />
-            <JFXTextField fx:id="loadDeliveryBuzz" layoutX="704.0" layoutY="61.0" maxWidth="57.0" minWidth="57.0" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: white;" />
-            <Label layoutX="659.0" layoutY="68.0" text="Buzz">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
+            <JFXTextField fx:id="customerBuzzField" layoutX="704.0" layoutY="61.0" maxWidth="57.0" minWidth="57.0" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: white;" />
             <JFXButton fx:id="loadCustomerDel" layoutX="616.0" layoutY="313.0" onAction="#addToCustomer" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #006600; -fx-background-radius: 20; -fx-border-radius: 20;" text="Load Customer" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -304,6 +293,12 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </JFXButton>
+            <Line endX="674.0" layoutX="101.0" layoutY="295.0" startX="-100.0" />
+            <Label fx:id="customerInfoView" layoutX="5.0" layoutY="310.0" prefHeight="55.0" prefWidth="445.0" style="-fx-alignment: center; -fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" text="" textAlignment="CENTER">
+               <font>
+                  <Font name="Century" size="43.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane fx:id="summaryOrder" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false">

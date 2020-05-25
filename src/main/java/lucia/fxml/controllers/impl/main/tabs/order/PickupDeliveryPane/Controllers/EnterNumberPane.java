@@ -2,8 +2,6 @@ package main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane
 
 import com.jfoenix.controls.*;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +22,9 @@ import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.content.javascript.JavaScriptBridge;
 import main.java.lucia.client.content.order.impl.Address;
 import main.java.lucia.client.content.time.ClientTime;
-import main.java.lucia.client.protocol.message.impl.customer.CreateCustomerMessage;
+import main.java.lucia.client.protocol.packet.in.customer.PacketInFoundCustomer;
+import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutFindCustomerByPhone;
+import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutSaveCustomer;
 import main.java.lucia.fxml.FxmlConstants;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
@@ -34,6 +34,10 @@ import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.PendingOrdersPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDelivery;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
+import main.java.lucia.net.packet.event.PacketEventHandler;
+import main.java.lucia.net.packet.event.PacketHandler;
+import main.java.lucia.net.packet.event.PacketListenerManager;
+import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import netscape.javascript.JSObject;
 import org.apache.commons.lang3.StringUtils;
 
@@ -92,74 +96,44 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     @FXML
     private JFXRadioButton pickup;
 
+    /**
+     * Customer info pane items
+     */
     @FXML
-    private Pane loadPickup;
+    private Pane customerInfoPane;
 
     @FXML
-    private Label loadPickupNameView;
+    private Label customerNameLabel;
 
     @FXML
-    private JFXButton loadCustomerPickup;
+    private JFXTextField customerNameField;
+    
+    @FXML
+    private Label Address;
 
     @FXML
-    private JFXTextField loadPickupName;
+    private JFXTextField customerStreetNumberField;
 
     @FXML
-    private Pane createPickup;
+    private JFXComboBox<?> customerStreetField;
 
     @FXML
-    private Label createPickupNameView;
+    private Label customerAptNoLabel;
 
     @FXML
-    private JFXButton createCustomerPickup;
+    private JFXTextField customerAptNoField;
 
     @FXML
-    private JFXTextField createPickupName;
+    private Label customerBuzzLabel;
 
     @FXML
-    private Pane createDelivery;
-
-    @FXML
-    private Label createDeliveryView;
-
-    @FXML
-    private JFXTextField createDeliveryAppt;
-
-    @FXML
-    private JFXButton createCustomerDel;
-
-    @FXML
-    private JFXTextField createDeliveryBuzz;
-
-    @FXML
-    private Label errorLabelCheckAddress;
-
-    @FXML
-    private JFXComboBox<String> createDeliveryStreet;
-
-    @FXML
-    private Pane loadDelivery;
-
-    @FXML
-    private Label loadDeliveryView;
-
-    @FXML
-    private JFXTextField loadDeliveryStreet;
-
-    @FXML
-    private JFXTextField loadDeliveryNum;
-
-    @FXML
-    private JFXTextField loadDeliveryAppt;
-
-    @FXML
-    private JFXTextField loadDeliveryBuzz;
-
-    @FXML
-    private JFXTextField createDeliveryStreetNum;
+    private JFXTextField customerBuzzField;
 
     @FXML
     private JFXButton loadCustomerDel;
+
+    @FXML
+    private Label customerInfoView;
 
     @FXML
     private Pane summaryOrder;
@@ -186,15 +160,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     private Pane addressNotConfirmed;
 
     @FXML
-    private Label customerName;
-
-    @FXML
-    private Label customerNumber;
-
-    @FXML
-    private Label customerAddress;
-
-    @FXML
     private Pane orderViewPane;
 
     @FXML
@@ -202,7 +167,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     private JFXToggleButton staffShiftToggle;
-
 
     @FXML
     private JFXComboBox<String> paymentMethod;
@@ -242,9 +206,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     private Pane staffPane;
-
-    @FXML
-    private Pane caaPane;
 
 
     public String[] blackListedStringsPickup = {"", " ", "Walkin", "Walk in", "No Name", "Null"};
@@ -304,24 +265,40 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     public void initialize() {
+        PacketListenerManager.get.registerListener(new PacketHandler() {
+            @PacketEventHandler
+            public void onCustomerFound(PacketInFoundCustomer in){
+                Client.logger.info("Found customer: " + in.getRequest() + " c: " + in.getCustomer());
+                if (in.getRequest().equals(areaCodeField.getText() + phoneField.getText())) {
+                    CustomerDetails d;
+                    if(in.getCustomer() != null){
+                        d = in.getCustomer();
+                    }else{
+                        d = new CustomerDetails(null,
+                                areaCodeField.getText() + phoneField.getText(), null);
+                    }
+                    parent.getCurrentOrder().setCustomerDetails(d);
+                }
+//                if (parent.getCurrentOrder().getCustomerDetails().getPhoneNumber().equals(in.getCustomer().getPhoneNumber())) {
+//                    parent.getCurrentOrder().setCustomerDetails(in.getCustomer());
+//                }
+            }
+        });
         ControllerMap.addController(ControllerType.ENTER_NUMBER_PANE_CONTROLLER, this);
         phoneField.setAlignment(Pos.CENTER_LEFT);
         Runnable phoneAreaChecks = phoneAreaChecks();
         phoneField.setTextFormatter(buildNumericFormatList(MAX_PHONE_LENGTH, phoneAreaChecks));
-        areaCodeField.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,
-                                Boolean newValue) {
-                if (newValue) {
-                    areaCodeField.setText("");
-                } else {
-                    if (areaCodeField.getText().length() == 0) {
-                        areaCodeField.setText("204");
-                    }
+        areaCodeField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                areaCodeField.setText("");
+            } else {
+                if (areaCodeField.getText().length() == 0) {
+                    areaCodeField.setText("204");
                 }
             }
         });
         areaCodeField.setTextFormatter(buildNumericFormatList(MAX_AREA_CODE_LENGTH, phoneAreaChecks));
+        //areaCodeField.setOnKeyPressed();
         AsynchronousTaskService.process(() -> Platform.runLater(this::enableMap));
 
         calendarPreorder.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
@@ -489,14 +466,13 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
      */
     private Runnable phoneAreaChecks() {
         return () -> {
-            boolean pickupOrDel = pickup.isSelected() || delivery.isSelected();
-            boolean lengthVerify = areaCodeField.getLength() >= MAX_AREA_CODE_LENGTH - 1
-                    && phoneField.getLength() >= MAX_PHONE_LENGTH - 1;
-            if (lengthVerify && pickupOrDel) {
-                //System.out.println("hey1");
-                //CustomerFoundMessage.findCustomerByPhone(areaCodeField.getText() + phoneField.getText(), this::customerFound);
-            } else if (pickupOrDel)
-                disableAll();
+            //boolean pickupOrDel = pickup.isSelected() || delivery.isSelected();
+            boolean lengthVerify = areaCodeField.getLength() == MAX_AREA_CODE_LENGTH
+                    && phoneField.getLength() == MAX_PHONE_LENGTH;
+            if (lengthVerify) {
+                Client.logger.info("Searching for customer with phone: " + areaCodeField.getText() + phoneField.getText());
+                PacketSender.sendPacket(new PacketOutFindCustomerByPhone(Integer.parseInt(areaCodeField.getText() + phoneField.getText())));
+            }
             else disableAll();
         };
     }
@@ -669,10 +645,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         disableAll();
         Object source = event.getSource();
         if (source.equals(delivery) || source.equals(pickup)) {
-            if (phoneField.getLength() >= MAX_PHONE_LENGTH) {
-                //System.out.println("hey2");
-                //CustomerFoundMessage.findCustomerByPhone(areaCodeField.getText() + phoneField.getText(), this::customerFound);
-            }
+
         }
         if (source.equals(delivery))
             isDelivery = true;
@@ -729,7 +702,9 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
                 }
             }
             //call create customer
-            CreateCustomerMessage.saveCustomer(parent.getCurrentOrder().getCustomerDetails());
+            //CreateCustomerMessage.saveCustomer(parent.getCurrentOrder().getCustomerDetails());
+            PacketOutSaveCustomer out = new PacketOutSaveCustomer(parent.getCurrentOrder().getCustomerDetails());
+            PacketSender.sendPacket(out);
             if (promptPreorder)
                 preorder();
             else if (pizzaFirst)
@@ -745,9 +720,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
      * @param i the {@link CustomerDetails} returned
      */
     public void gotCustomer(CustomerDetails i) {
-        if (parent.getCurrentOrder().getCustomerDetails().getPhoneNumber().equals(i.getPhoneNumber())) {
-            parent.getCurrentOrder().setCustomerDetails(i);
-        }
+
     }
 
     @FXML

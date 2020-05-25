@@ -3,6 +3,7 @@ package main.java.lucia.net.packet.impl.outgoing;
 import io.netty.channel.Channel;
 import main.java.lucia.Client;
 import main.java.lucia.client.content.files.MLogger;
+import main.java.lucia.client.protocol.packet.OutgoingAuthPacket;
 import main.java.lucia.net.NetworkConstants;
 import main.java.lucia.net.packet.OutgoingPacket;
 import main.java.lucia.net.packet.event.PacketListenerManager;
@@ -162,5 +163,13 @@ public class PacketSender {
         public long getTimeElapsed() {
             return System.currentTimeMillis() - saveTime;
         }
+    }
+
+    /**
+     * Sends out a packet to the current packet sender.
+     * @param out the packet to send out.
+     */
+    public static void sendPacket(OutgoingAuthPacket out){
+        getCurrentPacketSender().sendMessage(out);
     }
 }

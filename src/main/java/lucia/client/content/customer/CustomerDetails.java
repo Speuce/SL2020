@@ -94,11 +94,8 @@ public class CustomerDetails {
   public int getRowNum(){
     return rowNum;
    }
-  public String getNameDelivery() {
-    return String.valueOf(address);
-  }
 
-  public String getNamePickup() {
+    public String getNamePickup() {
     return name;
   }
 }

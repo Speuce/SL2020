@@ -77,7 +77,7 @@
       </Pane>
       <Pane layoutX="507.0" layoutY="10.0" prefHeight="85.0" prefWidth="177.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
          <children>
-            <JFXRadioButton fx:id="delivery" layoutX="10.0" layoutY="38.0" onAction="#onClick" text="Delivery">
+            <JFXRadioButton fx:id="delivery" layoutX="10.0" layoutY="38.0" onAction="#onSelectPickuporDel" text="Delivery">
                <font>
                   <Font size="28.0" />
                </font>
@@ -85,7 +85,7 @@
                   <ToggleGroup fx:id="togglegroup" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="pickup" layoutX="10.0" layoutY="3.0" onAction="#onClick" text="Pickup" toggleGroup="$togglegroup">
+            <JFXRadioButton fx:id="pickup" layoutX="10.0" layoutY="3.0" onAction="#onSelectPickuporDel" text="Pickup" toggleGroup="$togglegroup">
                <font>
                   <Font size="28.0" />
                </font>

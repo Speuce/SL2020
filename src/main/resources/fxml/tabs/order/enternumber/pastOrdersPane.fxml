@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pastOrders" prefHeight="293.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="11.0" layoutY="7.0" prefHeight="281.0" prefWidth="245.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <Label layoutX="6.0" layoutY="5.0" prefHeight="17.0" prefWidth="110.0" text="Most Recent Order:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="119.0" layoutY="5.0" prefHeight="17.0" prefWidth="71.0" text="02/02/2016">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="130.0" layoutY="238.0" onAction="#loadOrder" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #005100; -fx-background-radius: 10; -fx-border-radius: 10;" text="Load Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="265.0" layoutY="7.0" prefHeight="281.0" prefWidth="245.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <Label layoutX="6.0" layoutY="5.0" prefHeight="17.0" prefWidth="71.0" text="Past Order:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="5.0" prefHeight="17.0" prefWidth="71.0" text="02/02/2016">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="130.0" layoutY="238.0" onAction="#loadOrder" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #005100; -fx-background-radius: 10; -fx-border-radius: 10;" text="Load Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="519.0" layoutY="8.0" prefHeight="281.0" prefWidth="245.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <Label layoutX="11.0" layoutY="5.0" prefHeight="17.0" prefWidth="71.0" text="Past Order:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="5.0" prefHeight="17.0" prefWidth="71.0" text="02/02/2016">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="130.0" layoutY="238.0" onAction="#loadOrder" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #005100; -fx-background-radius: 10; -fx-border-radius: 10;" text="Load Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</Pane>

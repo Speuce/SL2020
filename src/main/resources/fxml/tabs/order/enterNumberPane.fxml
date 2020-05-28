@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXToggleButton?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.web.WebView?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 
-<Pane fx:id="enterNumberPane" prefHeight="515.0" prefWidth="804.0" style="-fx-background-color: #383838; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane">
+<Pane fx:id="enterNumberPane" prefHeight="515.0" prefWidth="804.0" style="-fx-background-color: #383838; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane">
    <children>
       <Pane fx:id="extendedMapPane" layoutX="769.0" prefHeight="515.0" prefWidth="536.0" style="-fx-background-color: #383838; -fx-background-radius: 20;" visible="false" />
       <Pane fx:id="toggleMappane" layoutX="690.0" layoutY="11.0" prefHeight="85.0" prefWidth="110.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
@@ -187,7 +177,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="createDelivery" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <Pane fx:id="createDelivery" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false">
          <children>
             <Label layoutX="56.0" layoutY="68.0" text="Address">
                <font>
@@ -251,7 +241,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane fx:id="customerInfoPane" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <Pane fx:id="customerInfoPane" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false">
          <children>
              <Label fx:id="customerNameLabel" layoutX="72.0" layoutY="20.0" text="Name">
                  <font>
@@ -297,6 +287,11 @@
             <Label fx:id="customerInfoView" layoutX="5.0" layoutY="310.0" prefHeight="55.0" prefWidth="445.0" style="-fx-alignment: center; -fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" text="" textAlignment="CENTER">
                <font>
                   <Font name="Century" size="43.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorLabelCheckAddress" layoutX="14.0" layoutY="249.0" prefHeight="37.0" prefWidth="755.0" textFill="#ff2f2f">
+               <font>
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>

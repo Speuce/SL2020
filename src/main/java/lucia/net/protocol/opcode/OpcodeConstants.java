@@ -156,6 +156,16 @@ public class OpcodeConstants {
      */
     public static final int SAVE_CUSTOMER_OPCODE = 302;
 
+    /**
+     * Opcode for requesting past orders of a customer
+     */
+    public static final int FIND_PAST_ORDERS_OF_CUSTOMER_OPCODE = 303;
+
+    /**
+     * Opcode for when past orders of a customer are found
+     */
+    public static final int FOUND_PAST_ORDER_OF_CUSTOMER_OPCODE = 304;
+
 
     // TODO Server report for every owner for the morning that reports
     // TODO All notable events that possibly shouldn't have happened.

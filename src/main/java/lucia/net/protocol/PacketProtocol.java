@@ -2,6 +2,7 @@ package main.java.lucia.net.protocol;
 
 import main.java.lucia.client.content.menu.io.ItemGson;
 import main.java.lucia.client.protocol.packet.in.customer.PacketInFoundCustomer;
+import main.java.lucia.client.protocol.packet.in.customer.PacketInFoundPastCustomerOrder;
 import main.java.lucia.client.protocol.packet.in.employee.PacketInEmployeePermissionDenied;
 import main.java.lucia.client.protocol.packet.in.employee.PacketInSetEmployee;
 import main.java.lucia.client.protocol.packet.in.employee.PacketInSetEmployeeMap;
@@ -25,6 +26,7 @@ public class PacketProtocol extends Protocol{
         register(OpcodeConstants.ECHO_ONLY, PacketInEchoOnly.class, GsonTypeFactory.BASIC_GSON);
 
         register(OpcodeConstants.CUSTOMER_FOUND_OPCODE, PacketInFoundCustomer.class, GsonTypeFactory.BASIC_GSON);
+        register(OpcodeConstants.CUSTOMER_FOUND_OPCODE, PacketInFoundPastCustomerOrder.class, ItemGson.ITEM_GSON);
 
         register(OpcodeConstants.EMPLOYEE_PERMISSION_DENIED, PacketInEmployeePermissionDenied.class, GsonTypeFactory.BASIC_GSON);
         register(OpcodeConstants.SET_EMPLOYEE_OPCODE, PacketInSetEmployee.class, GsonTypeFactory.BASIC_GSON);

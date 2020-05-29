@@ -99,12 +99,27 @@ public abstract class OrderInfo extends TimedItemList implements Comparable<Orde
         return false;
     }
 
-    public String getFormattedSetTime() {
+    /**
+     * Get the order time (and date), formatted for 24h time
+     */
+    public String getFormattedSet24Time() {
         try {
             SimpleDateFormat format = new SimpleDateFormat(TimeFormat.FORMATTER_24_HOUR.PATTERN);
-            Date first = format.parse(getBuiltTime().toString(TimeFormat.FORMATTER_24_HOUR));
+            Date first = format.parse(getOrderTime().toString(TimeFormat.FORMATTER_24_HOUR));
             return EmployeePane.getTimeFormat().format(first);
         } catch (ParseException e) {
+            Client.logger.error("An error occurred while parsing the given dates!", e);
+            return null;
+        }
+    }
+
+    /**
+     * Get the order time, formatted for 12h time
+     */
+    public String getFormattedSet12TimeDate() {
+        try {
+           return getOrderTime().toString(TimeFormat.FORMATTER_12_HOUR);
+        } catch (Exception e) {
             Client.logger.error("An error occurred while parsing the given dates!", e);
             return null;
         }

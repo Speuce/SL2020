@@ -182,7 +182,7 @@ public class PendingOrdersPane implements Controller {
     public void setTime() {
         int x = 0;
         for (Order o: orderManager.getPendingOrders()) {
-            Label time = new Label(" " + o.getFormattedSetTime());
+            Label time = new Label(" " + o.getFormattedSet24Time());
             time.setPrefSize(175, 50);
             time.setFont(pt20Font);
             orderGridPane.add(time, 2, x);

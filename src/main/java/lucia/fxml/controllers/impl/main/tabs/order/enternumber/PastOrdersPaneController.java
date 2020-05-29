@@ -21,9 +21,6 @@ import java.util.function.Consumer;
 public class PastOrdersPaneController implements PacketHandler {
 
     @FXML
-    private Pane pastOrders;
-
-    @FXML
     private Pane pastOrderView1;
 
     @FXML

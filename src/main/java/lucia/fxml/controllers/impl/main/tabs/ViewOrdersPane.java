@@ -203,7 +203,7 @@ public class ViewOrdersPane implements Controller {
       registerItem(phoneNum, 3);
       viewOrderGridpane.add(phoneNum, 3, row);
 
-      Label time = new Label(" "+ r.getFormattedSetTime());
+      Label time = new Label(" "+ r.getFormattedSet24Time());
       registerItem(time, 4);
       viewOrderGridpane.add(time, 4, row);
 

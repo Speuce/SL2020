@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pastOrders" prefHeight="293.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.PastOrdersPaneController">
+<Pane fx:id="pastOrders" prefHeight="293.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.PastOrdersPaneController">
    <children>
       <fx:include fx:id="pastOrderView1" layoutX="11.0" layoutY="7.0" source="pastOrderViewPane.fxml" />
       <fx:include fx:id="pastOrderView2" layoutX="265.0" layoutY="7.0" source="pastOrderViewPane.fxml" />

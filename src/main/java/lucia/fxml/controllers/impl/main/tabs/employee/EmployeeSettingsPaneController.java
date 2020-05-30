@@ -12,6 +12,7 @@ import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
+import main.java.lucia.fxml.utils.BlinkUtils;
 
 import java.awt.*;
 
@@ -57,7 +58,7 @@ public class EmployeeSettingsPaneController implements Controller {
     @FXML
     void changeAddress(MouseEvent event) {
         if(employeeSettingsAddress.getText().equals("")){
-            wrong(employeeSettingsAddress);
+            BlinkUtils.wrong(employeeSettingsAddress);
             return;
         }
         e.getCurrentEmployee().setAddress(employeeSettingsAddress.getText());
@@ -79,14 +80,14 @@ public class EmployeeSettingsPaneController implements Controller {
     @FXML
     void changePassword(MouseEvent event) {
         if(!employeeSettingsNewPassword.getText().equals(employeeSettingsConfirmPassword.getText())){
-            wrong(employeeSettingsConfirmPassword);
-            wrong(employeeSettingsNewPassword);
+            BlinkUtils.wrong(employeeSettingsConfirmPassword);
+            BlinkUtils.wrong(employeeSettingsNewPassword);
             clearPassField();
             return;
         }
         e.getCurrentEmployee().testPass(employeeSettingsCurrentPassword.getText(), b ->{
             if(!b){
-                wrong(employeeSettingsCurrentPassword);
+                BlinkUtils.wrong(employeeSettingsCurrentPassword);
                 clearPassField();
                 return;
             }else{
@@ -109,11 +110,8 @@ public class EmployeeSettingsPaneController implements Controller {
         employeeSettingsCurrentPassword.clear();
     }
 
-    private void wrong(Node f){ EmployeePane.blink(f, Color.white, Color.decode("#AA0000"));
-    }
-
     private void right(Node f){
-        EmployeePane.blink(f, Color.white, Color.decode("#00AA00"), 1, 300L);
+        BlinkUtils.blink(f, Color.white, Color.decode("#00AA00"), 1, 300L);
     }
 
     /**

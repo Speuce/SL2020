@@ -28,9 +28,9 @@ public enum PaymentType {
     /**
      * The display text for this payment type
      */
-    private String displayCode;
+    private final String displayCode;
 
-    private PaymentType(String displayCode){
+    PaymentType(String displayCode){
         this.displayCode = displayCode;
     }
 
@@ -40,4 +40,10 @@ public enum PaymentType {
     public String getDisplayCode(){
         return this.displayCode;
     }
+
+    @Override
+    public String toString(){
+        return displayCode;
+    }
+
 }

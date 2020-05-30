@@ -18,6 +18,7 @@ import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessa
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
+import main.java.lucia.fxml.utils.BlinkUtils;
 
 import java.awt.*;
 
@@ -83,7 +84,7 @@ public class EmployeeManagerNotesPane implements Controller {
     }
 
     private void right(Node f){
-        EmployeePane.blink(f, Color.white, Color.decode("#00AA00"), 1, 300L);
+        BlinkUtils.blink(f, Color.white, Color.decode("#00AA00"), 1, 300L);
     }
 
     /**

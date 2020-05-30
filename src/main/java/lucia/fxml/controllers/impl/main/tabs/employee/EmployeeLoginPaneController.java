@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -14,9 +13,9 @@ import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessa
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
+import main.java.lucia.fxml.utils.BlinkUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.ParsePosition;
 
@@ -68,7 +67,7 @@ public class EmployeeLoginPaneController implements Controller {
         }
 
         if(enterUsernameEmployee1.getText().equals("")){
-            wrong(enterUsernameEmployee1);
+            BlinkUtils.wrong(enterUsernameEmployee1);
             return;
         }
         Employee testEmployee = e.getTestEmployee();
@@ -80,7 +79,7 @@ public class EmployeeLoginPaneController implements Controller {
                         Platform.runLater(() ->e.accessGranted());
                         enableLoginButton();
                     }else{
-                        wrong(enterPasswordEmployee1);
+                        BlinkUtils.wrong(enterPasswordEmployee1);
                         System.out.println("Wrong Password!! :(((");
                         enableLoginButton();
                     }
@@ -96,7 +95,7 @@ public class EmployeeLoginPaneController implements Controller {
             disableLoginButton();
             if(e.getEmployeeMap() != null){
                 if(!e.getEmployeeMap().containsKey(Integer.parseInt(enterUsernameEmployee1.getText()))){
-                    wrong(enterUsernameEmployee1);
+                    BlinkUtils.wrong(enterUsernameEmployee1);
                     return;
                 }
             }else{
@@ -137,9 +136,6 @@ public class EmployeeLoginPaneController implements Controller {
         });
     }
 
-    private void wrong(Node f){ EmployeePane.blink(f, Color.white, Color.decode("#AA0000"));
-    }
-
     /**
      * Clears username and password fields.
      */
@@ -162,7 +158,7 @@ public class EmployeeLoginPaneController implements Controller {
 
     private void setFoundEmployee(Employee foundEmployee) {
         if(foundEmployee == null){
-            wrong(enterUsernameEmployee1);
+            BlinkUtils.wrong(enterUsernameEmployee1);
             enableLoginButton();
         }else{
             this.foundEmployee = foundEmployee;
@@ -193,7 +189,7 @@ public class EmployeeLoginPaneController implements Controller {
                 Platform.runLater(() ->e.accessGranted());
                 enableLoginButton();
             }else{
-                wrong(enterPasswordEmployee1);
+                BlinkUtils.wrong(enterPasswordEmployee1);
                 System.out.println("Wrong Password!! :(((");
                 enableLoginButton();
             }
@@ -203,7 +199,7 @@ public class EmployeeLoginPaneController implements Controller {
         foundEmployee = null;
     }
     public void employeeNotFound(){
-        wrong(enterUsernameEmployee1);
+        BlinkUtils.wrong(enterUsernameEmployee1);
     }
 
     @Override

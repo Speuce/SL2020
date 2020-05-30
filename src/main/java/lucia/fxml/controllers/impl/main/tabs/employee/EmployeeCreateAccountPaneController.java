@@ -13,6 +13,7 @@ import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane;
+import main.java.lucia.fxml.utils.BlinkUtils;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
@@ -75,20 +76,20 @@ public class EmployeeCreateAccountPaneController {
     @FXML
     void onCreateButtonClicked(MouseEvent event) {
         if(employeeCreateID.getText().equals("") || e.getEmployeeMap().containsKey(Integer.parseInt(employeeCreateID.getText()))){
-            wrong(employeeCreateID);
+            BlinkUtils.wrong(employeeCreateID);
             return;
         }
         if(employeeCreateName.getText().equals("")){
-            wrong(employeeCreateName);
+            BlinkUtils.wrong(employeeCreateName);
             return;
         }
         if(employeeCreateAddress.getText().equals("")){
-            wrong(employeeCreateAddress);
+            BlinkUtils.wrong(employeeCreateAddress);
             return;
         }
         if(!employeeCreateConfirm.getText().equals(employeeCreatePassword.getText()) || employeeCreateConfirm.getText().equals("")){
-            wrong(employeeCreateConfirm);
-            wrong(employeeCreatePassword);
+            BlinkUtils.wrong(employeeCreateConfirm);
+            BlinkUtils.wrong(employeeCreatePassword);
             return;
         }
         create();
@@ -141,11 +142,9 @@ public class EmployeeCreateAccountPaneController {
         });
     }
 
-    private void wrong(Node f){ EmployeePane.blink(f, Color.white, Color.decode("#AA0000"));
-    }
 
     private void right(Node f){
-        EmployeePane.blink(f, Color.white, Color.decode("#00AA00"), 1, 300L);
+        BlinkUtils.blink(f, Color.white, Color.decode("#00AA00"), 1, 300L);
     }
 
 }

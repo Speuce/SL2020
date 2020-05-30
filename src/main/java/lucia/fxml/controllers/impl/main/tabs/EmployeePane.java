@@ -9,11 +9,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import main.java.lucia.client.AsynchronousTaskService;
-import main.java.lucia.client.content.employee.*;
+import main.java.lucia.client.content.employee.ManagerNote;
 import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.client.content.employee.type.Manager;
 import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessage;
@@ -25,13 +25,16 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeCreateAc
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeManagerNotesPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeSettingsPaneController;
+import main.java.lucia.fxml.utils.BlinkUtils;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import org.joda.time.Period;
 
-
 import java.awt.*;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.function.Consumer;
 
@@ -263,36 +266,6 @@ public class EmployeePane implements Controller {
     }
 
     /**
-     * Blinks a textbox, as seen with employee login
-     * @param f the field to make blink
-     * @param original the original color to revert to
-     * @param blink the color to blink to
-     *
-     */
-    public static void blink(Node f, Color original, Color blink, int blinks, long lasting){
-        for(int x = 1; x <(blinks*2+1); x++){
-            final int y = x;
-            AsynchronousTaskService.scheduleProcessMils(() ->{
-                if(y % 2 == 0){
-                    f.setStyle("-fx-background-color: " + getHex(original));
-                }else{
-                    f.setStyle("-fx-background-color: " + getHex(blink));
-                }
-            }, x*lasting);
-        }
-    }
-
-    /**
-     * Blinks a textbox, as seen with employee login
-     * @param f the field to make blink
-     * @param original the original color to revert to
-     * @param blink the color to blink to
-     */
-    public static void blink(Node f, Color original, Color blink){
-        blink(f, original, blink, 3, 180L);
-    }
-
-    /**
      * Used for converting {@link Color}
      * @param c the Color you wish to convert
      * @return the Hex String beginning with an '#'
@@ -414,7 +387,7 @@ public class EmployeePane implements Controller {
      * @param r the color to change to
      */
     public static void setColor(Node n, Color r){
-        n.setStyle("-fx-background-color: " + getHex(r));
+        n.setStyle("-fx-background-color: " + BlinkUtils.getHex(r));
     }
 
     /**

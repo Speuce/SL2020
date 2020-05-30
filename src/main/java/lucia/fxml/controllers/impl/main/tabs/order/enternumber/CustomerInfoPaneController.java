@@ -13,8 +13,10 @@ import main.java.lucia.Client;
 import main.java.lucia.Zach.StreetNames;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.customer.CustomerDetails;
+import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutSaveCustomer;
 import main.java.lucia.fxml.controllers.impl.main.Utils.AutoCompleteComboBoxListener;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane;
+import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 
 /**
  * The controller for the customer information pane
@@ -106,7 +108,14 @@ public class CustomerInfoPaneController {
      */
     @FXML
     void submit(ActionEvent event) {
-
+        PacketOutSaveCustomer out = new PacketOutSaveCustomer(customer);
+        PacketSender.sendPacket(out);
+//        if (promptPreorder)
+//            preorder();
+//        else if (pizzaFirst)
+//            loadSummaryPane();
+//        else
+//            addToCustomerPickupDel();
     }
 
     @FXML
@@ -255,7 +264,7 @@ public class CustomerInfoPaneController {
 
     public void enableGeocodeError(String errorMessage) {
         Platform.runLater(() -> {
-            confirmationPane.setVisible(true);
+            //confirmationPane.setVisible(true);
 //            errorLabelConfirmationAddress.setVisible(true);
 //            errorLabelConfirmationAddress.setText(errorMessage);
         });

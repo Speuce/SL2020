@@ -8,8 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.CustomerInfoPaneController">
+<Pane visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.CustomerInfoPaneController">
    <children>
       <Pane fx:id="customerInfoPane" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
          <children>

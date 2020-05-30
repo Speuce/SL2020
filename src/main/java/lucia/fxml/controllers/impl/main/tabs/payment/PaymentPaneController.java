@@ -22,6 +22,7 @@ import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.PendingOrdersPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPaneController;
+import main.java.lucia.fxml.utils.BlinkUtils;
 
 import java.awt.*;
 import java.math.BigDecimal;
@@ -646,6 +647,6 @@ public class PaymentPaneController {
         switchButton(cash);
     }
 
-    private void wrong(Node f){ EmployeePane.blink(f, Color.decode("#D3D3D3"), Color.decode("#AA0000"));
+    private void wrong(Node f){ BlinkUtils.blink(f, Color.decode("#D3D3D3"), Color.decode("#AA0000"));
     }
 }

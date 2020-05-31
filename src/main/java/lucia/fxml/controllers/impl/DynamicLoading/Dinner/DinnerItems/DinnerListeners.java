@@ -46,7 +46,8 @@ public class DinnerListeners {
      */
     public void activateHover(MouseEvent event) {
         //   button.setStyle(dinnerModuleDesigns.g());
-        button.setStyle(dinnerDesigns.getHoveredStyleString());
+        if(!button.getStyle().equalsIgnoreCase(dinnerDesigns.getSelectedStyleString())) // if it is not selected!
+            button.setStyle(dinnerDesigns.getHoveredStyleString());
     }
 
     /**
@@ -54,7 +55,8 @@ public class DinnerListeners {
      */
     public void deactivateHover(MouseEvent event) {
         //  button.setStyle(toppingDesigns.getDefaultStyleString());
-        button.setStyle(dinnerDesigns.getDefaultStyleString());
+        if(!button.getStyle().equalsIgnoreCase(dinnerDesigns.getSelectedStyleString())) // if it is not selected!
+            button.setStyle(dinnerDesigns.getDefaultStyleString());
     }
     /**
      *  Event Handler for when the button is 'clicked'
@@ -79,8 +81,25 @@ public class DinnerListeners {
     private void itemClicked(int id) {
         DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
         Menu menuInstance = Menu.get;
-        if(item.equals(menuInstance.getItemFromId(id)))
-            dinnerOrderManager.currentItem = item;
+
+        if(item.equals(menuInstance.getItemFromId(id))) {
+            if(dinnerOrderManager.currentItem == null) {
+                dinnerOrderManager.currentItem = item;
+
+                System.out.println("ADDED " + item + " to Order");
+                button.setStyle(dinnerDesigns.getSelectedStyleString());
+            }
+            else if(dinnerOrderManager.currentItem.equals(item)) {
+                dinnerOrderManager.currentItem = null;
+                button.setStyle(dinnerDesigns.getDefaultStyleString());
+                System.out.println("REMOVED " + item + " from Order");
+            } else {
+                dinnerOrderManager.currentItem = item;
+
+                System.out.println("ADDED " + item + " to Order");
+                button.setStyle(dinnerDesigns.getSelectedStyleString());
+            }
+        }
         else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
     }
 }

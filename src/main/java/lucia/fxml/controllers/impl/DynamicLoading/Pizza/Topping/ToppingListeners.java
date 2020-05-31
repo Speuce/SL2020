@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
 /**
@@ -11,15 +12,17 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
  */
 public class ToppingListeners {
     private PizzaController pizzaController; // the instance for the pizza controllers so the fxml methods can be called
-    private ToppingType name; // topping information
+    private ToppingType toppingType; // topping information
     private JFXButton button; // the button instance
     private ToppingDesigns toppingDesigns;
+    PizzaOrderManager pizzaOrderManager;
 
-    public ToppingListeners(PizzaController pizzaController, ToppingType name, JFXButton button) {
+    public ToppingListeners(PizzaController pizzaController, ToppingType toppingType, JFXButton button) {
         this.pizzaController = pizzaController;
-        this.name = name;
+        this.toppingType = toppingType;
         this.button = button;
-        toppingDesigns = new ToppingDesigns(name);
+        toppingDesigns = new ToppingDesigns(toppingType);
+        pizzaOrderManager = PizzaOrderManager.getPizzaOrderInstance();
     }
 
     /**
@@ -55,21 +58,27 @@ public class ToppingListeners {
      *  Goes to Order System
      */
     public void toppingSelected(MouseEvent event) {
-        toppingClicked(name.getId());
+        toppingClicked(toppingType.getId());
     }
 
     /**
      *  Implements with the Order System
      */
     private void toppingClicked(int id) {
-        // add to order system
-        ToppingType type = new IDCaster<ToppingType>().cast(id);
-        if(pizzaController.getCurrentPizza().hasToppingType(type)){
-            //add topping
-        }else{
-            //remove topping
-        }
+        ToppingType theTopping = new IDCaster<ToppingType>().cast(id);
 
+        if(theTopping.equals(toppingType)) {
+            if (pizzaOrderManager.currentPizza == null) {
+                pizzaOrderManager.toppings.add(toppingType);
+            } else if (pizzaOrderManager.toppings.contains(toppingType)) {
+                pizzaOrderManager.toppings.remove(toppingType);
+            } else {
+                pizzaOrderManager.toppings.add(toppingType);
+            }
+        } else System.out.println("ERROR WHEN TOPPING CLICKED!");
+
+        System.out.println("CHECKING TOPPING LIST: " + pizzaOrderManager.printToppings());
 
     }
+
 }

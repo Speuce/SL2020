@@ -34,6 +34,7 @@ public class DinnerOrderManager {
 
     private DinnerOrderManager() {
         addons = new ArrayList<>();
+        currentItem = null;
     }
 
     /**
@@ -78,7 +79,4 @@ public class DinnerOrderManager {
              itemModifiable.addAddon(addon.getAsItem());
            }
     }
-
-
-
 }

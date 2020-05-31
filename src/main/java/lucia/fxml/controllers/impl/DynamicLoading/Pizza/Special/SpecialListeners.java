@@ -2,7 +2,9 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Special;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
+import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
 /**
@@ -10,15 +12,17 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
  */
 public class SpecialListeners {
     private PizzaController pizzaController; // the instance for the pizza controllers so the fxml methods can be called
-    private SpecialtyPizzaDescriptor name; // specialty pizza information
+    private SpecialtyPizzaDescriptor specialtyPizzaDescriptor; // specialty pizza information
     private JFXButton button;
     private SpecialDesigns specialDesigns;
+    private PizzaOrderManager pizzaOrderManager;
 
-    public SpecialListeners(PizzaController pizzaController, SpecialtyPizzaDescriptor name, JFXButton button) {
+    public SpecialListeners(PizzaController pizzaController, SpecialtyPizzaDescriptor specialtyPizzaDescriptor, JFXButton button) {
         this.pizzaController = pizzaController;
-        this.name = name;
+        this.specialtyPizzaDescriptor = specialtyPizzaDescriptor;
         this.button = button;
-        specialDesigns = new SpecialDesigns(name);
+        specialDesigns = new SpecialDesigns(specialtyPizzaDescriptor);
+        pizzaOrderManager = PizzaOrderManager.getPizzaOrderInstance();
     }
 
     /**
@@ -54,19 +58,34 @@ public class SpecialListeners {
      *  Goes to Order System
      */
     private void specialSelected(MouseEvent event) {
-        specialClicked(name.getId());
+        specialClicked(specialtyPizzaDescriptor.getId());
     }
 
     /**
      *  Implements with the Order System
      */
     private void specialClicked(int id) {
-        // add to order system
-    //    ToppingType type = new IDCaster<ToppingType>().cast(id);
-       // if(pizzaController.getCurrentPizza().has(type)){
-            //add topping
-  //      }else{
-            //remove topping
-        }
+        Menu menuInstance = Menu.get;
+       // System.out.println(specialtyPizzaDescriptor + " | " + menuInstance.getItemFromId(id));
+       // if(specialtyPizzaDescriptor.equals(menuInstance.getItemFromId(id))) {
+            if(pizzaOrderManager.currentSpecialPizza == null) {
+                pizzaOrderManager.currentSpecialPizza = specialtyPizzaDescriptor;
+
+                System.out.println("ADDED " + specialtyPizzaDescriptor.getBaseName() + " to Order");
+                button.setStyle(specialDesigns.getSelectedStyleString());
+            }
+            else if(pizzaOrderManager.currentSpecialPizza.equals(specialtyPizzaDescriptor)) {
+                pizzaOrderManager.currentSpecialPizza = null;
+                button.setStyle(specialDesigns.getDefaultStyleString());
+                System.out.println("REMOVED " + specialtyPizzaDescriptor.getBaseName() + " from Order");
+            } else {
+                pizzaOrderManager.currentSpecialPizza = specialtyPizzaDescriptor;
+
+                System.out.println("ADDED " + specialtyPizzaDescriptor.getBaseName() + " to Order");
+                button.setStyle(specialDesigns.getSelectedStyleString());
+            }
+       // } else System.out.println("Something is Wrong! Pizzas clicked and class instance does not match!");
+
+    }
 
 }

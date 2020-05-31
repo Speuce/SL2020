@@ -26,11 +26,11 @@ public class SidesListeners {
     }
 
     /**
-     *  Initial method to set the listeners for the button
-     *
-     *  Originally under "Code" in SceneBuilder
-     *
-     *  todo will have the designs for the buttons changed once the new design is implemented
+     * Initial method to set the listeners for the button
+     * <p>
+     * Originally under "Code" in SceneBuilder
+     * <p>
+     * todo will have the designs for the buttons changed once the new design is implemented
      */
     public void setListeners() {
         button.setOnMouseClicked(this::sideSelected);
@@ -39,37 +39,47 @@ public class SidesListeners {
     }
 
     /**
-     *  Event Handler for when the button is hovered into
+     * Event Handler for when the button is hovered into
      */
     public void activateHover(MouseEvent event) {
         button.setStyle(sidesDesigns.getHoveredStyleString());
     }
 
     /**
-     *  Event Handler for when the button is hovered out of
+     * Event Handler for when the button is hovered out of
      */
     public void deactivateHover(MouseEvent event) {
         button.setStyle(sidesDesigns.getDefaultStyleString());
     }
+
     /**
-     *  Event Handler for when the button is 'clicked'
-     *
-     *  Goes to Order System
+     * Event Handler for when the button is 'clicked'
+     * <p>
+     * Goes to Order System
      */
     private void sideSelected(MouseEvent event) {
         sideClicked(addonDescriptor.getId());
     }
 
     /**
-     *  Implements with the Order System
+     * Implements with the Order System
      */
     private void sideClicked(int id) {
         DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
         Menu menuInstance = Menu.get;
-        if(addonDescriptor.equals(menuInstance.getItemFromId(id))) {
-            dinnerOrderManager.addons.add(addonDescriptor);
-            System.out.println("Added " + addonDescriptor.getBaseName() + " to addons");
+
+        if (dinnerOrderManager.addons.contains(addonDescriptor)) {
+            dinnerOrderManager.addons.remove(addonDescriptor);
+            System.out.println("Removed " + addonDescriptor.getBaseName() + " to addons");
+
+            button.setStyle(sidesDesigns.getDefaultStyleString());
+        } else {
+            if (addonDescriptor.equals(menuInstance.getItemFromId(id))) {
+                dinnerOrderManager.addons.add(addonDescriptor);
+                System.out.println("Added " + addonDescriptor.getBaseName() + " to addons");
+
+                button.setStyle(sidesDesigns.getSelectedStyleString());
+            } else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
         }
-        else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
     }
 }

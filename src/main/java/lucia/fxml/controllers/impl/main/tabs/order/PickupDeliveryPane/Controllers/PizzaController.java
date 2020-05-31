@@ -26,6 +26,7 @@ import main.java.lucia.client.content.menu.legacy.premade.impl.names.PremadePizz
 import main.java.lucia.client.content.menu.legacy.size.Size;
 import main.java.lucia.client.content.menu.legacy.toppings.Topping;
 import main.java.lucia.client.content.menu.legacy.toppings.names.GourmetToppingNames;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Style;
@@ -879,29 +880,40 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
         setButtonPane(sizeButtons, "BackgroundNeed", "BackgroundDefault");
     }
 
+    // TODO NEED***************************
+    PizzaOrderManager pizzaOrderManager = PizzaOrderManager.getPizzaOrderInstance();
     @FXML
     void selectedSize10(MouseEvent event) {
-        sizeSelected(Size.TEN);
+        if(pizzaOrderManager.selectedSize == 10) {
+            pizzaOrderManager.selectedSize = -1;
+            ten.getStyleClass().remove("ToppingsSelected");
+            ten.getStyleClass().add("ToppingsDefault");
+        }
+        else {
+            pizzaOrderManager.selectedSize = 10;
+            ten.getStyleClass().add("ToppingsSelected");
+            ten.getStyleClass().remove("ToppingsDefault");
+        }
     }
 
     @FXML
     void selectedSize13(MouseEvent event) {
-        sizeSelected(Size.THIRTEEN);
+        pizzaOrderManager.selectedSize = 13;
     }
 
     @FXML
     void selectedSize15(MouseEvent event) {
-        sizeSelected(Size.FIFTEEN);
+        pizzaOrderManager.selectedSize = 15;
     }
 
     @FXML
     void selectedSize18(MouseEvent event) {
-        sizeSelected(Size.EIGHTEEN);
+        pizzaOrderManager.selectedSize = 18;
     }
 
     @FXML
     void selectedSize30(MouseEvent event) {
-        sizeSelected(Size.THIRTY);
+        pizzaOrderManager.selectedSize = 30;
     }
 
     public void test() {

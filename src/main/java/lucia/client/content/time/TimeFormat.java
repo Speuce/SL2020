@@ -25,6 +25,11 @@ public enum TimeFormat {
      */
     FORMATTER_12_HOUR(DateTimeFormatter.ofPattern("MM/dd/yyyy 'at' hh:mm a"), "yyyy/MM/dd HH:mm:ss"),
 
+    /**cr
+     * The formatter used to have neatly formatted time strings in 12 hour time, excludes the date
+     */
+    FORMATTER_12_HOUR_TIME(DateTimeFormatter.ofPattern("hh:mm a"), "HH:mm:ss"),
+
     FORMATTER_ISO_STANDARD(DateTimeFormatter.ISO_DATE_TIME, "yyyy-MM-dd'T'HH:mm:ss"),
 
     FORMATTER_ISO_STANDARD_DATE(DateTimeFormatter.ISO_DATE, "yyyy-MM-dd"),

@@ -10,17 +10,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputControl;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import main.java.lucia.Client;
-import main.java.lucia.Zach.StreetNames;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.content.javascript.JavaScriptBridge;
-import main.java.lucia.client.content.order.impl.Address;
+import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.order.OrderType;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.protocol.packet.in.customer.PacketInFoundCustomer;
 import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutFindCustomerByPhone;
@@ -29,11 +29,14 @@ import main.java.lucia.fxml.FxmlConstants;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
-import main.java.lucia.fxml.controllers.impl.main.Utils.AutoCompleteComboBoxListener;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.PendingOrdersPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDelivery;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
+import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.CustomerInfoPaneController;
+import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.MapPaneController;
+import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.OrderSummaryPaneController;
+import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.PreorderTimeSelectPaneController;
 import main.java.lucia.net.packet.event.PacketEventHandler;
 import main.java.lucia.net.packet.event.PacketHandler;
 import main.java.lucia.net.packet.event.PacketListenerManager;
@@ -82,7 +85,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     private Pane mappane;
 
     @FXML
-    private WebView webvis;
+    private MapPaneController mappaneController;
 
     @FXML
     private JFXTextField areaCodeField;
@@ -96,122 +99,89 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     @FXML
     private JFXRadioButton pickup;
 
-    /**
-     * Customer info pane items
-     */
     @FXML
     private Pane customerInfoPane;
 
     @FXML
-    private Label customerNameLabel;
+    private CustomerInfoPaneController customerInfoPaneController;
+
+//    /**
+//     * Customer info pane items
+//     */
+//    @FXML
+//    private Pane customerInfoPane;
+//
+//    @FXML
+//    private Label customerNameLabel;
+//
+//    @FXML
+//    private JFXTextField customerNameField;
+//
+//    @FXML
+//    private Label Address;
+//
+//    @FXML
+//    private JFXTextField customerStreetNumberField;
+//
+//    @FXML
+//    private JFXComboBox<String> customerStreetField;
+//
+//    @FXML
+//    private Label customerAptNoLabel;
+//
+//    @FXML
+//    private JFXTextField customerAptNoField;
+//
+//    @FXML
+//    private Label customerBuzzLabel;
+//
+//    @FXML
+//    private JFXTextField customerBuzzField;
+//
+//    @FXML
+//    private JFXButton customerInfoSubmit;
+//
+//    @FXML
+//    private JFXButton customerInfoCheckAddress;
+//
+//    @FXML
+//    private Label customerInfoView;
+//
+//    @FXML
+//    private Label errorLabelCheckAddress;
+//
+//    @FXML
+//    private JFXButton customerInfoBack;
+
+
 
     @FXML
-    private JFXTextField customerNameField;
-    
-    @FXML
-    private Label Address;
+    private Pane orderSummaryPane;
 
     @FXML
-    private JFXTextField customerStreetNumberField;
-
-    @FXML
-    private JFXComboBox<?> customerStreetField;
-
-    @FXML
-    private Label customerAptNoLabel;
-
-    @FXML
-    private JFXTextField customerAptNoField;
-
-    @FXML
-    private Label customerBuzzLabel;
-
-    @FXML
-    private JFXTextField customerBuzzField;
-
-    @FXML
-    private JFXButton loadCustomerDel;
-
-    @FXML
-    private Label customerInfoView;
-
-    @FXML
-    private Pane summaryOrder;
-
-    @FXML
-    private Label takeoutMethodLabel;
-
-    @FXML
-    private Label orderETA;
-
-    @FXML
-    private Label errorLabelSummary;
-
-    @FXML
-    private Pane orderRecieved;
-
-    @FXML
-    private Pane addressConfirmed;
-
-    @FXML
-    private Pane orderNotRecieved;
-
-    @FXML
-    private Pane addressNotConfirmed;
-
-    @FXML
-    private Pane orderViewPane;
-
-    @FXML
-    private Pane paymentMethodPane;
-
-    @FXML
-    private JFXToggleButton staffShiftToggle;
-
-    @FXML
-    private JFXComboBox<String> paymentMethod;
-
-    @FXML
-    private Pane pastOrders;
+    private OrderSummaryPaneController orderSummaryPaneController;
 
     @FXML
     private Pane preorderPane;
 
     @FXML
-    private JFXDatePicker calendarPreorder;
+    private PreorderTimeSelectPaneController preorderPaneController;
 
     @FXML
-    private JFXComboBox<String> comboBoxTimeHour;
+    private Pane pastOrders;
 
-    @FXML
-    private JFXComboBox<String> comboBoxTimeMin;
+//    @FXML
+//    private Label takeoutTime;
 
-    @FXML
-    private JFXComboBox<String> comboBoxTimeAMPM;
-
-    @FXML
-    private JFXComboBox<String> paymentMethodPreorder;
-
-    @FXML
-    private Label errorLabelPreorder;
-
-    @FXML
-    private Label errorLabelConfirmationAddress;
-
-    @FXML
-    private Label takeoutTime;
-
-    @FXML
-    private Pane discountPane;
-
-    @FXML
-    private Pane staffPane;
+//    @FXML
+//    private Pane discountPane;
+//
+//    @FXML
+//    private Pane staffPane;
 
 
     public String[] blackListedStringsPickup = {"", " ", "Walkin", "Walk in", "No Name", "Null"};
     public String[] blackListedStringsDelivery = {"", " ", "675 Harbison Avenue East"};
-
-    private final String DEFAULT_ERROR_MESSAGE = "The entered address does not exist!";
 
     /**
      * The max length of a phone number that can be given
@@ -223,32 +193,18 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
      */
     private final int MAX_AREA_CODE_LENGTH = 3;
 
-    /**
-     * The flag which indicates if the Google Maps {@link WebView} was loaded
-     */
-    private boolean loadedMap;
+
 
     /**
      * Indicates if the current {@link CustomerDetails} that was loaded is a delivery
      */
     private boolean isDelivery = false;
 
-    /**
-     * The loaded HTML file
-     */
-    private String HTML;
+
 
     /**
-     * The loaded JavaScript file
+     * Whether or not the delivery address has been checked
      */
-    private String JS;
-
-    /**
-     * The bridge from javascript to Java for our
-     * geocoding asynchronous response
-     */
-    private JavaScriptBridge bridge;
-
     private boolean deliveryChecked = false;
 
     /**
@@ -265,6 +221,8 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     public void initialize() {
+        assert(customerInfoPaneController != null);
+        customerInfoPaneController.setParent(this);
         PacketListenerManager.get.registerListener(new PacketHandler() {
             @PacketEventHandler
             public void onCustomerFound(PacketInFoundCustomer in){
@@ -278,6 +236,9 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
                                 areaCodeField.getText() + phoneField.getText(), null);
                     }
                     parent.getCurrentOrder().setCustomerDetails(d);
+                    Platform.runLater(() -> {
+                        customerInfoPaneController.loadCustomer(d);
+                    });
                 }
 //                if (parent.getCurrentOrder().getCustomerDetails().getPhoneNumber().equals(in.getCustomer().getPhoneNumber())) {
 //                    parent.getCurrentOrder().setCustomerDetails(in.getCustomer());
@@ -286,8 +247,10 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         });
         ControllerMap.addController(ControllerType.ENTER_NUMBER_PANE_CONTROLLER, this);
         phoneField.setAlignment(Pos.CENTER_LEFT);
-        Runnable phoneAreaChecks = phoneAreaChecks();
-        phoneField.setTextFormatter(buildNumericFormatList(MAX_PHONE_LENGTH, phoneAreaChecks));
+        phoneField.setTextFormatter(buildNumericFormatList(MAX_PHONE_LENGTH));
+        phoneField.setOnKeyTyped(keyEvent -> {
+            phoneAreaChecks();
+        });
         areaCodeField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 areaCodeField.setText("");
@@ -297,36 +260,35 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
                 }
             }
         });
-        areaCodeField.setTextFormatter(buildNumericFormatList(MAX_AREA_CODE_LENGTH, phoneAreaChecks));
+        areaCodeField.setTextFormatter(buildNumericFormatList(MAX_AREA_CODE_LENGTH));
+        areaCodeField.setOnKeyTyped(keyEvent -> {
+            phoneAreaChecks();
+        });
         //areaCodeField.setOnKeyPressed();
-        AsynchronousTaskService.process(() -> Platform.runLater(this::enableMap));
-
-        calendarPreorder.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        calendarPreorder.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue)
-                calendarPreorder.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        });
-        for (int x = 3; x >= 0; x--)
-            comboBoxTimeMin.getItems().add(String.valueOf(15 * x));
-        for (int x = 1; x <= 12; x++)
-            comboBoxTimeHour.getItems().add(String.valueOf(x));
-        comboBoxTimeAMPM.getItems().addAll("AM", "PM");
-        paymentMethodPreorder.getItems().addAll("Debit", "Cash", "Mastercard", "Visa", "Gift", "Cheque");
-        paymentMethod.getItems().addAll("Debit", "Cash", "Mastercard", "Visa", "Gift", "Cheque");
-
-        createDeliveryStreet.getEditor().textProperty().addListener((obs, oldText, newText) -> {
-            clearErrorLabel();
-            resetBackgrounds();
-            updateAddress();
-        });
-
-        StreetNames streetNames = new StreetNames();
-        createDeliveryStreet.getItems().addAll(streetNames.getNames());
 
 
-        new AutoCompleteComboBoxListener<>(createDeliveryStreet);
+        //calendarPreorder.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+//        calendarPreorder.focusedProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue)
+//                calendarPreorder.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+//        });
+//        for (int x = 3; x >= 0; x--)
+//            comboBoxTimeMin.getItems().add(String.valueOf(15 * x));
+//        for (int x = 1; x <= 12; x++)
+//            comboBoxTimeHour.getItems().add(String.valueOf(x));
+//        comboBoxTimeAMPM.getItems().addAll("AM", "PM");
+//        paymentMethodPreorder.getItems().addAll("Debit", "Cash", "Mastercard", "Visa", "Gift", "Cheque");
+//        paymentMethod.getItems().addAll("Debit", "Cash", "Mastercard", "Visa", "Gift", "Cheque");
 
-        delivery.setTooltip(new Tooltip("test"));
+//        createDeliveryStreet.getEditor().textProperty().addListener((obs, oldText, newText) -> {
+//            clearErrorLabel();
+//            resetBackgrounds();
+//            updateAddress();
+//        });
+
+
+
+        //delivery.setTooltip(new Tooltip("test"));
 
 
         // orderView.setScaleX(0.75);
@@ -338,7 +300,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     public void setParent(PickupDeliveryPaneController p) {
         this.parent = p;
-
     }
 
     /**
@@ -354,88 +315,30 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
      *
      * @param justOpen
      */
-    private void toggleMap(boolean justOpen) {
+    public void toggleMap(boolean justOpen) {
+        if(parent.getCurrentOrder().getCustomerDetails() == null || parent.getCurrentOrder().getCustomerDetails().getAddress() == null){
+            return;
+        }
         if (!justOpen && mappane.isVisible()) {
-            mappane.setVisible(false);
             extendedMapPane.setVisible(false);
+            mappaneController.showAddress(parent.getCurrentOrder().getCustomerDetails().getAddress().getName());
             enterNumberPane.setLayoutX(385);
         } else {
-            mappane.setVisible(true);
             extendedMapPane.setVisible(true);
             enterNumberPane.setLayoutX(200);
         }
     }
 
     /**
-     * Enables the driverMap, if the JavaScript and HTML files have not yet been loaded, then they will be.
-     */
-    private void enableMap() {
-        if (loadedMap) {
-            return;
-        }
-
-        if (JS == null || HTML == null) {
-            HTML = load(FxmlConstants.HTML_MAPS_DIRECTORY);
-            JS = load(FxmlConstants.JAVASCRIPT_MAPS_DIRECTORY);
-
-            webvis.getEngine().setCreatePopupHandler(config -> {
-                Stage stage = new Stage(StageStyle.UTILITY);
-                WebView popup = new WebView();
-                stage.setScene(new Scene(popup));
-                stage.show();
-                return popup.getEngine();
-            });
-        }
-
-        webvis.getEngine().loadContent(HTML);
-        webvis.getEngine().executeScript(JS);
-
-        bridge = new JavaScriptBridge();
-        webvis.getEngine().getLoadWorker().stateProperty().addListener((observableValue, oldState, newState) -> {
-            if (newState == State.SUCCEEDED) {
-                JSObject window = (JSObject) webvis.getEngine().executeScript("window");
-                window.setMember("javaBridge", bridge);
-                loadedMap = true;
-            }
-        });
-    }
-
-    /**
-     * Loads the given directory into a single String
-     *
-     * @param directory The directory to load
-     * @return The loaded String
-     */
-    private String load(String directory) {
-        String loaded = null;
-        try (Stream<String> reader = Files
-                .lines(Paths.get(getClass().getResource(directory).toURI()))) {
-            loaded = reader.collect(Collectors.joining());
-        } catch (IOException | URISyntaxException e) {
-            Client.logger.error("An error has occurred while loading the HTML maps information", e);
-        }
-
-        return loaded;
-    }
-
-    /**
-     * Opens the Santa Lucia website with a JavaScript link
-     */
-    public void openWebsite() {
-        webvis.getEngine().executeScript("openWebsite()");
-    }
-
-    /**
      * Builds our number format listener used different numeric only text fields
      *
      * @param maxLength The max length the field can hold
-     * @param addition  Any additional checks that need to be performed
      * @return The text formatter
      */
-    public static TextFormatter<Object> buildNumericFormatList(int maxLength, Runnable addition) {
+    public static TextFormatter<Object> buildNumericFormatList(int maxLength) {
         DecimalFormat format = new DecimalFormat("#");
         return new TextFormatter<>(change -> {
-            addition.run();
+            //addition.run();
             return getChange(maxLength, format, change);
         });
     }
@@ -461,20 +364,17 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     /**
      * The additional checks required for the phone area checks
-     *
-     * @return The checks
      */
-    private Runnable phoneAreaChecks() {
-        return () -> {
-            //boolean pickupOrDel = pickup.isSelected() || delivery.isSelected();
-            boolean lengthVerify = areaCodeField.getLength() == MAX_AREA_CODE_LENGTH
-                    && phoneField.getLength() == MAX_PHONE_LENGTH;
-            if (lengthVerify) {
-                Client.logger.info("Searching for customer with phone: " + areaCodeField.getText() + phoneField.getText());
-                PacketSender.sendPacket(new PacketOutFindCustomerByPhone(Integer.parseInt(areaCodeField.getText() + phoneField.getText())));
-            }
-            else disableAll();
-        };
+    private void phoneAreaChecks() {
+
+        //boolean pickupOrDel = pickup.isSelected() || delivery.isSelected();
+        boolean lengthVerify = areaCodeField.getLength() == MAX_AREA_CODE_LENGTH
+                && phoneField.getLength() == MAX_PHONE_LENGTH;
+        if (lengthVerify) {
+            Client.logger.info("Searching for customer with phone: " + areaCodeField.getText() + phoneField.getText());
+            PacketSender.sendPacket(new PacketOutFindCustomerByPhone(Integer.parseInt(areaCodeField.getText() + phoneField.getText())));
+        }
+        else disableAll();
     }
 
     @FXML
@@ -492,37 +392,20 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     private void checkAddress() {
-        deliveryChecked = true;
-        AsynchronousTaskService.process(() -> Platform.runLater(() -> {
-            String streetName = null;
-            if (createDelivery.isVisible()) {
-                streetName = createDeliveryStreetNum.getText() + " " + createDeliveryStreet.getValue();
-            } else if (loadDelivery.isVisible()) {
-                streetName = loadDeliveryStreet.getText();
-            }
 
-            if (streetName != null) {
-                String combined = streetName + " Manitoba Canada";
-                System.out.println("----------- : " + combined);
-                String script = ("findLocation(" + "'" + combined + "'" + ")");
-                webvis.getEngine().executeScript(script); // TODO Make work for more than just Winnipeg when we need to
-            }
-
-            toggleMap(true);
-        }));
     }
 
     @FXML
     private void updateAddress() {
-        String name = StringUtils.capitalize(createDeliveryStreet.getEditor().getText());
-        String num = createDeliveryStreetNum.getText() + " ";
-        String appt = createDeliveryAppt.getText();
-        String buzz = createDeliveryBuzz.getText();
-        if (buzz.equals("") && appt.equals(""))
-            createDeliveryView.setText(num + name);
-        else if (buzz.equals(""))
-            createDeliveryView.setText(appt + " " + name);
-        else createDeliveryView.setText(buzz + "-" + appt + " " + name);
+//        String name = StringUtils.capitalize(createDeliveryStreet.getEditor().getText());
+//        String num = createDeliveryStreetNum.getText() + " ";
+//        String appt = createDeliveryAppt.getText();
+//        String buzz = createDeliveryBuzz.getText();
+//        if (buzz.equals("") && appt.equals(""))
+//            createDeliveryView.setText(num + name);
+//        else if (buzz.equals(""))
+//            createDeliveryView.setText(appt + " " + name);
+//        else createDeliveryView.setText(buzz + "-" + appt + " " + name);
     }
 
     @FXML
@@ -530,100 +413,76 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         //createPickupNameView.setText(StringUtils.capitalize(createPickupName.getText()));
     }
 
-    private void customerFound(CustomerDetails c) {
-        if (c == null) {
-            getCustomerPane("");
-        } else {
-            parent.getCurrentOrder().setCustomerDetails(c);
-            getCustomerPane(c.getPhoneNumber());
-        }
-    }
-
-    private void getCustomerPane(String knownNumber) {
-        String phoneNumber = parent.getCurrentOrder().getCustomerDetails().getPhoneNumber();
-        if (pickup.isSelected()) {
-            if (phoneNumber != null && phoneNumber.equals(knownNumber)) {
-                loadPickupPane();
-            } else {
-                loadCreatePickupPane();
-            }
-        } else {
-            if (phoneNumber != null && phoneNumber.equals(knownNumber)) {
-                loadDeliveryPane();
-            } else {
-                loadCreateDeliveryPane();
-            }
-        }
-    }
 
 
-    /**
-     * Prin
-     * Loads the delivery pane and unloads all other panes
-     */
-    public void loadDeliveryPane() {
-        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-        controller.setDelivery();
-        loadCustomerFields();
-        loadDelivery.setVisible(true);
-        createDelivery.setVisible(false);
-        loadPickup.setVisible(false);
-        createPickup.setVisible(false);
-        isDelivery = true;
-    }
 
-    private void loadCustomerFields() {
-        if (parent.getCurrentOrder().getCustomerDetails() != null) {
-            loadPickupName.setText(parent.getCurrentOrder().getCustomerDetails().getName());
-            if (parent.getCurrentOrder().getCustomerDetails().getAddress() != null) {
-                loadDeliveryAppt.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getApartmentNumber());
-                loadDeliveryBuzz.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getBuzzCode());
-                loadDeliveryNum.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getNumber());
-                loadDeliveryStreet.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getStreet());
-            }
-        }
-    }
-
-    /**
-     * Loads the create delivery pane and unloads all other panes
-     */
-    public void loadCreateDeliveryPane() {
-        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-        controller.setDelivery();
-        loadDelivery.setVisible(false);
-        createDelivery.setVisible(true);
-        loadPickup.setVisible(false);
-        createPickup.setVisible(false);
-        isDelivery = true;
-    }
-
-    /**
-     * Loads the pickup pane and unloads all other panes
-     */
-    public void loadPickupPane() {
-        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-        controller.setPickup();
-        //updateName();
-        loadCustomerFields();
-
-        loadDelivery.setVisible(false);
-        createDelivery.setVisible(false);
-        loadPickup.setVisible(true);
-        createPickup.setVisible(false);
-        isDelivery = false;
-    }
-
-    /**
-     * Loads the create pickup pane and unloads all other panes
-     */
-    public void loadCreatePickupPane() {
-        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-        controller.setPickup();
-        loadDelivery.setVisible(false);
-        createDelivery.setVisible(false);
-        loadPickup.setVisible(false);
-        createPickup.setVisible(true);
-    }
+//    /**
+//     * Prin
+//     * Loads the delivery pane and unloads all other panes
+//     */
+//    public void loadDeliveryPane() {
+//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
+//        controller.setDelivery();
+//        loadCustomerFields();
+//        loadDelivery.setVisible(true);
+//        createDelivery.setVisible(false);
+//        loadPickup.setVisible(false);
+//        createPickup.setVisible(false);
+//        isDelivery = true;
+//    }
+//
+//    private void loadCustomerFields() {
+//        if (parent.getCurrentOrder().getCustomerDetails() != null) {
+//            loadPickupName.setText(parent.getCurrentOrder().getCustomerDetails().getName());
+//            if (parent.getCurrentOrder().getCustomerDetails().getAddress() != null) {
+//                loadDeliveryAppt.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getApartmentNumber());
+//                loadDeliveryBuzz.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getBuzzCode());
+//                loadDeliveryNum.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getNumber());
+//                loadDeliveryStreet.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getStreet());
+//            }
+//        }
+//    }
+//
+//    /**
+//     * Loads the create delivery pane and unloads all other panes
+//     */
+//    public void loadCreateDeliveryPane() {
+//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
+//        controller.setDelivery();
+//        loadDelivery.setVisible(false);
+//        createDelivery.setVisible(true);
+//        loadPickup.setVisible(false);
+//        createPickup.setVisible(false);
+//        isDelivery = true;
+//    }
+//
+//    /**
+//     * Loads the pickup pane and unloads all other panes
+//     */
+//    public void loadPickupPane() {
+//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
+//        controller.setPickup();
+//        //updateName();
+//        loadCustomerFields();
+//
+//        loadDelivery.setVisible(false);
+//        createDelivery.setVisible(false);
+//        loadPickup.setVisible(true);
+//        createPickup.setVisible(false);
+//        isDelivery = false;
+//    }
+//
+//    /**
+//     * Loads the create pickup pane and unloads all other panes
+//     */
+//    public void loadCreatePickupPane() {
+//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
+//        controller.setPickup();
+//        loadDelivery.setVisible(false);
+//        createDelivery.setVisible(false);
+//        loadPickup.setVisible(false);
+//        createPickup.setVisible(true);
+//    }
 
     /**
      * Sets the phone field and the area code field editable
@@ -641,22 +500,24 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
      * @param event The click event
      */
     @FXML
-    public void onClick(ActionEvent event) {
+    public void onSelectPickuporDel(ActionEvent event) {
         disableAll();
         Object source = event.getSource();
-        if (source.equals(delivery) || source.equals(pickup)) {
-
-        }
-        if (source.equals(delivery))
+        if (source.equals(delivery)){
             isDelivery = true;
-        if (source.equals(pickup))
+            parent.getCurrentOrder().setOrderType(OrderType.DELIVERY);
+            customerInfoPaneController.highlightDeliveryFields();
+        }else if(source.equals(pickup)){
             isDelivery = false;
+            parent.getCurrentOrder().setOrderType(OrderType.PICKUP);
+            customerInfoPaneController.highlightPickupFields();
+        }
     }
 
     @FXML
     public void resetBackgrounds() {
-        createPickupName.setStyle("-fx-background-color: white");
-        createDeliveryStreet.setStyle("-fx-background-color: white");
+        //createPickupName.setStyle("-fx-background-color: white");
+        //createDeliveryStreet.setStyle("-fx-background-color: white");
     }
 
     /**
@@ -667,51 +528,58 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     public void addToCustomer() {
         checkAddress();
         if (confirm) {
-            if (loadPickup.isVisible()) {
-                parent.getCurrentOrder().getCustomerDetails().setName(loadPickupName.getText());
-                PickupDeliveryPaneController cont = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-                //cont.getCompletedOrder().
-                parent.getCurrentOrder().getCustomerDetails().setPhoneNumber(areaCodeField.getText() + phoneField.getText());
-            } else if (createPickup.isVisible()) {
-                if (checkValidStringPickup(createPickupName.getText())) {
-                    parent.getCurrentOrder().getCustomerDetails().setName(createPickupName.getText());
-                    parent.getCurrentOrder().getCustomerDetails().setPhoneNumber(areaCodeField.getText() + phoneField.getText());
-                } else {
-                    createPickupName.setStyle("-fx-background-color: #717516");
-                    return;
-                }
-            } else if (createDelivery.isVisible() || loadDelivery.isVisible()) {
-
-                String address = "null";
-                String streetNumber = "null";
-                try {
-                    address = String.valueOf(createDeliveryStreet.getValue());
-                    streetNumber = createDeliveryStreetNum.getText() + " ";
-                } catch (Exception e) {
-                    errorLabelCheckAddress.setText("Invalid Address!");
-                }
-                if (checkValidStringDelivery(streetNumber + address)) {
-                    parent.getCurrentOrder().getCustomerDetails().setPhoneNumber(areaCodeField.getText() + phoneField.getText());
-                    parent.getCurrentOrder().getCustomerDetails().setAddress(
-                            new Address(address, streetNumber, createDeliveryAppt.getText(), createDeliveryBuzz.getText()));
-                    PickupDeliveryPaneController cont = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-                    cont.getCurrentOrder().setDelivery(true);
-                } else {
-                    createDeliveryStreet.setStyle("-fx-background-color: #717516");
-                    return;
-                }
-            }
+//            if (loadPickup.isVisible()) {
+//                parent.getCurrentOrder().getCustomerDetails().setName(loadPickupName.getText());
+//                PickupDeliveryPaneController cont = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
+//                //cont.getCompletedOrder().
+//                parent.getCurrentOrder().getCustomerDetails().setPhoneNumber(areaCodeField.getText() + phoneField.getText());
+//            } else if (createPickup.isVisible()) {
+//                if (checkValidStringPickup(createPickupName.getText())) {
+//                    parent.getCurrentOrder().getCustomerDetails().setName(createPickupName.getText());
+//                    parent.getCurrentOrder().getCustomerDetails().setPhoneNumber(areaCodeField.getText() + phoneField.getText());
+//                } else {
+//                    createPickupName.setStyle("-fx-background-color: #717516");
+//                    return;
+//                }
+//            } else if (createDelivery.isVisible() || loadDelivery.isVisible()) {
+//
+//                String address = "null";
+//                String streetNumber = "null";
+//                try {
+//                    address = String.valueOf(createDeliveryStreet.getValue());
+//                    streetNumber = createDeliveryStreetNum.getText() + " ";
+//                } catch (Exception e) {
+//                    errorLabelCheckAddress.setText("Invalid Address!");
+//                }
+//                if (checkValidStringDelivery(streetNumber + address)) {
+//                    parent.getCurrentOrder().getCustomerDetails().setPhoneNumber(areaCodeField.getText() + phoneField.getText());
+//                    parent.getCurrentOrder().getCustomerDetails().setAddress(
+//                            new Address(address, streetNumber, createDeliveryAppt.getText(), createDeliveryBuzz.getText()));
+//                    PickupDeliveryPaneController cont = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
+//                    cont.getCurrentOrder().setDelivery(true);
+//                } else {
+//                    createDeliveryStreet.setStyle("-fx-background-color: #717516");
+//                    return;
+//                }
+//            }
             //call create customer
             //CreateCustomerMessage.saveCustomer(parent.getCurrentOrder().getCustomerDetails());
             PacketOutSaveCustomer out = new PacketOutSaveCustomer(parent.getCurrentOrder().getCustomerDetails());
             PacketSender.sendPacket(out);
             if (promptPreorder)
-                preorder();
+                openPreorder();
             else if (pizzaFirst)
                 loadSummaryPane();
             else
                 addToCustomerPickupDel();
         }
+    }
+
+    /**
+     * Returns the current order from the pickupdelpane
+     */
+    public Order getCurrentOrder(){
+        return parent.getCurrentOrder();
     }
 
     /**
@@ -768,27 +636,27 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     }
 
     public void disableAll() {
-        createPickup.setVisible(false);
-        createDelivery.setVisible(false);
-        loadPickup.setVisible(false);
-        loadDelivery.setVisible(false);
-        summaryOrder.setVisible(false);
+//        createPickup.setVisible(false);
+//        createDelivery.setVisible(false);
+//        loadPickup.setVisible(false);
+//        loadDelivery.setVisible(false);
+        orderSummaryPane.setVisible(false);
     }
 
     public void reset() {
         disableAll();
-        Pane[] panes = {createDelivery, createPickup, loadDelivery, createDelivery};
-        for (int x = 0; x < panes.length; x++) {
-            panes[x].getChildren().forEach(theButtons -> {
-                if (theButtons instanceof JFXTextField) {
-                    JFXTextField text = (JFXTextField) theButtons;
-                    text.clear();
-                }
-            });
-        }
-        resetPreorder();
+//        Pane[] panes = {createDelivery, createPickup, loadDelivery, createDelivery};
+//        for (int x = 0; x < panes.length; x++) {
+//            panes[x].getChildren().forEach(theButtons -> {
+//                if (theButtons instanceof JFXTextField) {
+//                    JFXTextField text = (JFXTextField) theButtons;
+//                    text.clear();
+//                }
+//            });
+//        }
+//        resetPreorder();
         areaCodeField.setText("204");
-        paymentMethodPane.setVisible(false);
+        //paymentMethodPane.setVisible(false);
         confirmationPane.setVisible(false);
         clearErrorLabel();
         updateAddress();
@@ -813,27 +681,8 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         reset();
     }
 
-    public void enableGeocodeError() {
-        Platform.runLater(() -> {
-            errorLabelCheckAddress.setVisible(true);
-            errorLabelCheckAddress.setText(DEFAULT_ERROR_MESSAGE);
-        });
-    }
-
-    public void enableGeocodeError(String errorMessage) {
-        Platform.runLater(() -> {
-            confirmationPane.setVisible(true);
-            errorLabelConfirmationAddress.setVisible(true);
-            errorLabelConfirmationAddress.setText(errorMessage);
-        });
-    }
-
-    public void disableGeocodeError() {
-        Platform.runLater(() -> errorLabelCheckAddress.setVisible(false));
-    }
-
     public void setStoreName(String name) {
-        System.out.println("WORK");
+        //System.out.println("WORK");
         Platform.runLater(() -> {
             foundStoreLabel.setVisible(true);
             // TODO Clean loose strings up
@@ -841,22 +690,22 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
                 if (confirm) {
                     confirmationPane.setVisible(true);
                     confirmationPane.setVisible(true);
-                    errorLabelConfirmationAddress.setText("Address is not in the Delivery Area");
+                    //errorLabelConfirmationAddress.setText("Address is not in the Delivery Area");
                 } else {
                     confirmationPane.setVisible(true);
-                    errorLabelConfirmationAddress.setText("The given location is not within any store location's delivery area");
-                    errorLabelConfirmationAddress.setStyle("-fx-text-fill: #ff2f2f");
+//                    errorLabelConfirmationAddress.setText("The given location is not within any store location's delivery area");
+//                    errorLabelConfirmationAddress.setStyle("-fx-text-fill: #ff2f2f");
                 }
             } else {
                 if (confirm) {
                     System.out.println("HERE");
                     confirmationPane.setVisible(true);
-                    errorLabelConfirmationAddress.setText("Address is within within " + name + "'s delivery area");
+//                    errorLabelConfirmationAddress.setText("Address is within within " + name + "'s delivery area");
                 } else {
                     System.out.println("HERE");
                     confirmationPane.setVisible(true);
-                    errorLabelConfirmationAddress.setText("The given location is within " + name + "'s delivery area");
-                    errorLabelConfirmationAddress.setStyle("-fx-text-fill: black");
+//                    errorLabelConfirmationAddress.setText("The given location is within " + name + "'s delivery area");
+//                    errorLabelConfirmationAddress.setStyle("-fx-text-fill: black");
                 }
             }
         });
@@ -868,99 +717,57 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     }
 
     @FXML
-    public void resetPreorder() {
-        calendarPreorder.setValue(ClientTime.getWinnipegLocalDate());
-        paymentMethodPreorder.setValue(null);
-        comboBoxTimeAMPM.setValue(null);
-        comboBoxTimeHour.setValue(null);
-        comboBoxTimeMin.setValue(null);
-    }
-
-    @FXML
     public void loadSummaryPane() {
-        clearSummary();
-        this.orderViewPane.getChildren().clear();
-        this.orderViewPane.getChildren().add(((PickupDeliveryPaneController) parent).getOrderView());
-        this.orderViewPane.setScaleX(0.75);
-        this.orderViewPane.setScaleY(0.60);
-        this.orderViewPane.setLayoutX(-20);
-        this.orderViewPane.setLayoutY(0);
-        summaryOrder.setVisible(true);
-        if (pickup.isSelected()) {
-            takeoutMethodLabel.setText("PICKUP");
-            orderETA.setText("15 - 20 MIN");
-        } else if (delivery.isSelected()) {
-            takeoutMethodLabel.setText("DELIVERY");
-            orderETA.setText("45 MIN - 1 HR");
-        }
-        if (parent.getCurrentOrder().isPreOrder()) {
-            if (!parent.getCurrentOrder().isFuturePreorder()) {
-                takeoutTime.setText(parent.getCurrentOrder().getOrderTime().toLocalDate().getHour() + ":"
-                        + parent.getCurrentOrder().getOrderTime().toLocalDate().getMinute());
-                takeoutTime.setStyle("-fx-font-size: 15");
-                orderETA.setText(parent.getCurrentOrder().getOrderTime().toLocalDate().getHour() + ":"
-                        + parent.getCurrentOrder().getOrderTime().toLocalDate().getMinute());
-            } else {
-                //TODO its an order for a future day.
-            }
-        }
-        confirmGeneralInfo();
-        loadCustomerInfo();
+
     }
 
     public void loadCustomerInfo() {
-        if (pickup.isSelected())
-            customerName.setText(StringUtils.capitalize(parent.getCurrentOrder().getCustomerDetails().getName()));
-        customerNumber.setText(parent.getCurrentOrder().getCustomerDetails().getPhoneNumberFormatted());
-        if (delivery.isSelected())
-            customerAddress.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().toString());
+//        if (pickup.isSelected())
+//            customerName.setText(StringUtils.capitalize(parent.getCurrentOrder().getCustomerDetails().getName()));
+//        customerNumber.setText(parent.getCurrentOrder().getCustomerDetails().getPhoneNumberFormatted());
+//        if (delivery.isSelected())
+//            customerAddress.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().toString());
     }
 
-    public void clearGeneralInfoImages() {
-        orderRecieved.setVisible(false);
-        orderNotRecieved.setVisible(false);
-        addressConfirmed.setVisible(false);
-        addressNotConfirmed.setVisible(false);
+
+    /**
+     * Whether or not the delivery address has been checked
+     */
+    public boolean isDeliveryChecked() {
+        return deliveryChecked;
     }
 
-    public void clearSummary() {
-        customerAddress.setText("");
-        customerNumber.setText("");
-        customerName.setText("");
+    /**
+     * Whether or not the delivery address has been checked
+     */
+    public void setDeliveryChecked(boolean deliveryChecked) {
+        this.deliveryChecked = deliveryChecked;
     }
 
-    public void confirmGeneralInfo() {
-        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-        clearGeneralInfoImages();
-        if (controller.getCurrentOrder().isEmpty())
-            orderNotRecieved.setVisible(true);
-        else orderRecieved.setVisible(true);
-        if (delivery.isSelected()) {
-            if (deliveryChecked)
-                addressConfirmed.setVisible(true);
-            else addressNotConfirmed.setVisible(true);
-        }
+    /**
+     * Opens the preorder pane
+     */
+    public void openPreorder(){
+
     }
 
-    @FXML
+    /**
+     * Opens the discount pane
+     */
+    public void openDiscountPane(){
+
+    }
+
+    /**
+     * Confirms the order
+     */
     public void confirmOrder() {
         PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-
-        if (!orderRecieved.isVisible())
-            errorLabelSummary.setText("Place the Order");
         if (delivery.isSelected()) {
-            controller.setDelivery();
-            paymentMethodPane.setVisible(true);
-        } else controller.setPickup();
-        if (delivery.isSelected()) {
-            if (paymentMethod.getValue() == null)
-                errorLabelSummary.setText("Payment Method Needed!");
-            else {
                 System.out.println(controller.getCurrentOrder().isDelivery());
                 System.out.println(controller.getCurrentOrder().getGrandTotalTax().toString());
                 //controller.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethod.getValue().toUpperCase()));
                 controller.finalizeOrder();
-            }
         } else controller.finalizeOrder();
     }
 
@@ -973,9 +780,10 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     @FXML
     public void clearErrorLabel() {
         errorLabelSummary.setText(" ");
-        errorLabelCheckAddress.setText(" ");
-        errorLabelConfirmationAddress.setText(" ");
+        //errorLabelCheckAddress.setText(" ");
+//        errorLabelConfirmationAddress.setText(" ");
     }
+
 
     @FXML
     public void changeInfo() {
@@ -1007,52 +815,8 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     }
 
     @FXML
-    public void backPreorder() {
-        preorderPane.setVisible(false);
-        resetPreorder();
-    }
-
-    @FXML
     public void preorder() {
         preorderPane.setVisible(true);
-    }
-
-    @FXML
-    public void promptPreorder() {
-        promptPreorder = true;
-    }
-
-    @FXML
-    public void confirmPreorder() {
-        if (paymentMethodPreorder.getValue() == null)
-            errorLabelPreorder.setText("Payment Method Needed!");
-        else if (comboBoxTimeHour.getValue() == null)
-            errorLabelPreorder.setText("Hour Needed!");
-        else if (comboBoxTimeMin.getValue() == null)
-            errorLabelPreorder.setText("Minutes Needed!");
-        else if (comboBoxTimeAMPM.getValue() == null)
-            errorLabelPreorder.setText("AM/PM Needed!");
-        else if (calendarPreorder.getValue() == null)
-            errorLabelPreorder.setText("Date Needed!");
-        else {
-            //parent.getCurrentOrder().setPaymentType(PaymentType.valueOf(paymentMethodPreorder.getValue().toUpperCase()));
-            int hour;
-            if (Integer.valueOf(comboBoxTimeHour.getValue()) == 12)
-                if (comboBoxTimeAMPM.equals("AM"))
-                    hour = 0;
-                else
-                    hour = 12;
-            else if (comboBoxTimeAMPM.getValue().equals("PM"))
-                hour = Integer.valueOf(comboBoxTimeHour.getValue()) + 12;
-            else hour = Integer.valueOf(comboBoxTimeHour.getValue());
-            parent.getCurrentOrder().setPreorder(true);
-            parent.getCurrentOrder().setPreorderTime(calendarPreorder.getValue().getYear(), calendarPreorder.getValue().getMonth(),
-                    calendarPreorder.getValue().getDayOfMonth(), hour, Integer.valueOf(comboBoxTimeMin.getValue()));
-            preorderPane.setVisible(false);
-            if (promptPreorder)
-                addToCustomerPickupDel();
-            else loadSummaryPane();
-        }
     }
 
     @FXML

@@ -11,6 +11,7 @@ import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.content.time.TimeFormat;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane;
+import main.java.lucia.fxml.utils.BlinkUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -183,12 +184,16 @@ public class OrderSummaryPaneController {
 
     @FXML
     void clearErrorLabel(MouseEvent event) {
-
+        errorLabelSummary.setVisible(false);
     }
 
     @FXML
     void onConfirmOrder(ActionEvent event) {
-
+        if(parent.getCurrentOrder().isDelivery() && paymentMethod.getValue() == null){
+            BlinkUtils.wrong(paymentMethod);
+            return;
+        }
+        parent.confirmOrder();
     }
 
     @FXML

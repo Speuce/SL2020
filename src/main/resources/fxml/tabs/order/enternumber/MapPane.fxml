@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.web.WebView?>
 
-<Pane fx:id="mappane" cache="true" prefHeight="489.0" prefWidth="488.0" style="-fx-background-color: #D3D3D3; -fx-border-radius: 20; -fx-background-radius: 20;" visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.MapPaneController">
+<Pane fx:id="mappane" cache="true" prefHeight="489.0" prefWidth="488.0" style="-fx-background-color: #D3D3D3; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.MapPaneController">
    <children>
       <WebView fx:id="webvis" cache="true" prefHeight="491.0" prefWidth="488.0" />
       <AnchorPane layoutX="455.0" onMouseClicked="#openWebsite" prefHeight="31.0" prefWidth="29.0" style="-fx-background-color: transparent;">

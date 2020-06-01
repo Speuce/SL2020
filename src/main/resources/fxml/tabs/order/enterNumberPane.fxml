@@ -18,7 +18,10 @@
 
 <Pane fx:id="enterNumberPane" prefHeight="515.0" prefWidth="804.0" style="-fx-background-color: #383838; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane">
    <children>
-      <Pane fx:id="extendedMapPane" layoutX="769.0" prefHeight="515.0" prefWidth="536.0" style="-fx-background-color: #383838; -fx-background-radius: 20;" visible="false" />
+      <Pane fx:id="extendedMapPane" layoutX="769.0" prefHeight="515.0" prefWidth="536.0" style="-fx-background-color: #383838; -fx-background-radius: 20;" visible="false">
+         <children>
+            <fx:include fx:id="mappane" layoutX="35.0" layoutY="14.0" source="enternumber/MapPane.fxml" />
+         </children></Pane>
       <Pane fx:id="toggleMappane" layoutX="690.0" layoutY="11.0" prefHeight="85.0" prefWidth="110.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;">
          <children>
             <JFXButton fx:id="toggleMapButton" buttonType="RAISED" layoutX="1.0" onMouseClicked="#toggleMap" prefHeight="85.0" prefWidth="110.0" text="Toggle Map" textAlignment="CENTER" wrapText="true">
@@ -28,7 +31,6 @@
             </JFXButton>
          </children>
       </Pane>
-      <fx:include fx:id="mappane" layoutX="804.0" layoutY="14.0" source="enternumber/MapPane.fxml" />
       <Pane layoutX="12.0" layoutY="10.0" prefHeight="85.0" prefWidth="488.0" style="-fx-background-color: #D3D3D3; -fx-border-radius: 20; -fx-background-radius: 20;">
          <children>
             <JFXTextField fx:id="areaCodeField" focusColor="BLACK" layoutX="11.0" layoutY="8.0" maxHeight="76.0" maxWidth="420.0" minHeight="76.0" minWidth="85.0" onKeyPressed="#checkArea" onKeyReleased="#checkArea" onKeyTyped="#checkArea" onMouseClicked="#setEditable" prefHeight="76.0" prefWidth="85.0" style="-fx-highlight-text-fill: BLACK; -fx-prompt-text-fill: BLACK; -fx-alignment: CENTER" text="204" unFocusColor="BLACK">

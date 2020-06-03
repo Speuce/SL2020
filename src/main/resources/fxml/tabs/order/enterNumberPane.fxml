@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane fx:id="enterNumberPane" prefHeight="515.0" prefWidth="804.0" style="-fx-background-color: #383838; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane">
    <children>
+      <fx:include fx:id="orderSummaryPane" layoutX="12.0" layoutY="110.0" source="enternumber/orderSummaryPane.fxml" />
       <Pane fx:id="extendedMapPane" layoutX="769.0" prefHeight="515.0" prefWidth="536.0" style="-fx-background-color: #383838; -fx-background-radius: 20;" visible="false">
          <children>
             <fx:include fx:id="mappane" layoutX="35.0" layoutY="14.0" source="enternumber/MapPane.fxml" />
@@ -88,74 +85,6 @@
          </tooltip>
       </JFXButton>
       <fx:include fx:id="preorderPane" layoutX="12.0" layoutY="110.0" source="enternumber/preorderPane.fxml" />
-      <Pane fx:id="discountPane" layoutX="12.0" layoutY="110.0" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false">
-         <children>
-            <JFXButton layoutX="228.0" layoutY="13.0" onAction="#staffOrder" opacity="0.85" prefHeight="51.0" prefWidth="145.0" style="-fx-background-color: #800000; -fx-background-radius: 10;" text="Staff Order" textFill="WHITE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </JFXButton>
-            <Label layoutX="14.0" layoutY="9.0" prefHeight="32.0" prefWidth="110.0" text="Discounts">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <JFXComboBox layoutX="15.0" layoutY="41.0" prefHeight="25.0" prefWidth="155.0" />
-            <Line endX="-17.0" endY="372.0" layoutX="408.0" layoutY="9.0" startX="-17.0" startY="-9.0" strokeWidth="3.0" />
-            <Pane fx:id="staffPane" layoutX="393.0" layoutY="6.0" prefHeight="371.0" prefWidth="375.0" style="-fx-background-color: #D3D3D3;" visible="false">
-               <children>
-                  <JFXComboBox layoutX="15.0" layoutY="37.0" prefHeight="25.0" prefWidth="155.0" />
-                  <Label layoutX="16.0" layoutY="5.0" prefHeight="32.0" prefWidth="110.0" text="Staff">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="225.0" layoutY="315.0" onAction="#acceptStaff" prefHeight="51.0" prefWidth="145.0" style="-fx-background-color: #800000; -fx-background-radius: 10;" text="Accept" textFill="WHITE">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXToggleButton fx:id="staffShiftToggle" layoutX="248.0" layoutY="9.0" onAction="#shiftToggle" text="Off Shift" toggleColor="#006f04" toggleLineColor="BLACK" unToggleColor="#610000" unToggleLineColor="#252525">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </JFXToggleButton>
-               </children>
-            </Pane>
-            <Pane fx:id="caaPane" layoutX="393.0" layoutY="6.0" prefHeight="371.0" prefWidth="375.0" style="-fx-background-color: #D3D3D3;" visible="false">
-               <children>
-                  <JFXButton layoutX="222.0" layoutY="314.0" onAction="#acceptCAA" prefHeight="51.0" prefWidth="145.0" style="-fx-background-color: #800000; -fx-background-radius: 10;" text="Accept" textFill="WHITE">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </JFXButton>
-                  <Label layoutX="10.0" layoutY="7.0" prefHeight="32.0" prefWidth="216.0" text="CAA Customer Info">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="59.0" text="Name">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="106.0" text="Number">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="153.0" text="Expiry Date">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="70.0" layoutY="52.0" maxWidth="205.0" minWidth="205.0" opacity="0.87" prefHeight="31.0" prefWidth="205.0" style="-fx-background-color: white;" />
-                  <JFXTextField focusColor="BLACK" layoutX="71.0" layoutY="99.0" maxWidth="205.0" minWidth="205.0" opacity="0.87" prefHeight="31.0" prefWidth="205.0" style="-fx-background-color: white;" />
-                  <JFXTextField focusColor="BLACK" layoutX="93.0" layoutY="148.0" maxWidth="205.0" minWidth="91.0" opacity="0.87" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: white;" />
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-      <fx:include fx:id="orderSummaryPane" layoutX="12.0" layoutY="110.0" source="enternumber/orderSummaryPane.fxml" />
+      <fx:include fx:id="discountPane" layoutX="12.0" layoutY="110.0" source="enternumber/discountPane.fxml" />
    </children>
 </Pane>

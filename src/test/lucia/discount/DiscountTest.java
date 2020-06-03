@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.order.discount.test;
+package test.lucia.discount;
 
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;

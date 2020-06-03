@@ -37,7 +37,6 @@ public class CustomDiscount extends Discount{
      */
     private Set<DiscountTime> time;
 
-
     /**
      * Indicates if this discount can be stacked with other discounts
      */

@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.order.io;
+package main.java.lucia.client.content.order.discount.io;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

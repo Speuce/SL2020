@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import main.java.lucia.client.content.menu.legacy.size.Size;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
@@ -96,11 +96,6 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     private double pos = 0; //todo use new scrollpane method
 
     /**
-     * The currently selected size
-     */
-    private Size selectedSize;
-
-    /**
      * Size List for the pizza sizes
      * //todo update with dynamic loading
      */
@@ -121,6 +116,23 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     @FXML
     public void makeClicked(ActionEvent event) {
         PizzaOrderManager pizzaOrderManager = PizzaOrderManager.getPizzaOrderInstance();
+        String halfText = DynamicLoader.dynamicLoaderInstance.pizzaController.half.getText();
+
+        if(pizzaOrderManager.isSecondHalf() && pizzaOrderManager.findSize()) {
+            if(halfText.equalsIgnoreCase("1st half")) {
+                pizzaOrderManager.makePizza();
+
+                // resetting some variables
+                pizzaOrderManager.currentPizza = null;
+                DynamicLoader.dynamicLoaderInstance.getToppingDynamicLoad().clearSelectedButtons();
+                DynamicLoader.dynamicLoaderInstance.getSpecialDynamicLoad().clearSelectedButtons();
+                DynamicLoader.dynamicLoaderInstance.pizzaController.half.setText("2nd Half");
+            } else if(halfText.equalsIgnoreCase("2nd half") && pizzaOrderManager.findSize()) {
+                pizzaOrderManager.makeSecondHalf();
+                DynamicLoader.dynamicLoaderInstance.pizzaController.half.setText("1st Half");
+            }
+
+        }
         pizzaOrderManager.addPizzaToOrder();
 
     }
@@ -316,9 +328,8 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     public void selectedHalf(MouseEvent event) {
         parent.setOptionPanesVisible(false);
         if (half.getText().equalsIgnoreCase("1st half")) {
-            //  currentPizza.enableSecondHalf();
+            pizzaOrderManager.enableSecondHalf();
             half.getStyleClass().add("ToppingsSelected");
-            //     isFirstHalf = true;
         }
     }
 
@@ -357,7 +368,6 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
 
     @Override
     public void open() {
-        selectedSize = null;
         resetSizeArea();
     }
 

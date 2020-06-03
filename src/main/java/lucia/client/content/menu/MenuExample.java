@@ -186,7 +186,6 @@ public class MenuExample {
         //To remove a topping:
         pizza.removeTopping(type); //amount is irrelevant when removing
 
-
         //Now what about specialty pizzas?
         //We'll have to get the SpecialtyPizzaDescriptor by id (no surprise there hopefully)
         SpecialtyPizzaDescriptor sls = (SpecialtyPizzaDescriptor)Menu.get.getItemFromId(420420);

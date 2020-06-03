@@ -154,7 +154,7 @@
       </Pane>
       <Pane fx:id="halfPane" layoutX="899.0" prefHeight="99.0" prefWidth="442.0">
          <children>
-            <JFXButton fx:id="half" layoutX="7.0" layoutY="8.0" onMouseClicked="#activateHover" onMouseDragged="#deactivateHover" prefHeight="87.0" prefWidth="203.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="1st Half" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="half" layoutX="7.0" layoutY="8.0" onMouseClicked="#selectedHalf" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="203.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="1st Half" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>

@@ -60,13 +60,16 @@ public class Pizza extends Item{
     /**
      * Flag which indicates whether or not this pizza is a part of a split halves pizza
      * AND that this is the FIRST pizza of the split pizza
+     *
+     * false by default (zach)
      */
-    private boolean splitHalves;
+    private boolean splitHalves = false;
 
     /**
      * If this pizza is the first half, this object is the second half.
      */
     private Pizza secondHalf;
+
 
     /**
      * Construct a new specialty premade pizza with the provided toppings
@@ -172,6 +175,10 @@ public class Pizza extends Item{
 
     /**
      * Enables the pizza to have a second half
+     *
+     * Temporarily disabled secondhalf = ...
+     *      Cant have a new pizza if the size is not yet selected!
+     *      -Zach
      */
     public void enableSecondHalf(){
         this.splitHalves = true;
@@ -512,6 +519,19 @@ public class Pizza extends Item{
             }
         }
         return tp;
+    }
+
+    /**
+     * Sets the pizza for the second half
+     *
+     * or a GETTER
+     *
+     * Zach added these next two, if theres any issues
+     */
+    public void setSecondHalf(Pizza secondHalf) {
+        this.secondHalf = secondHalf;
+    }public boolean isSecondHalf() {
+        return splitHalves;
     }
 
 //    public List<Topping> getToppings(){

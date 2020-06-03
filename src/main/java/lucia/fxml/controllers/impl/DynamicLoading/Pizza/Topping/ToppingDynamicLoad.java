@@ -3,6 +3,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping;
 import com.jfoenix.controls.JFXButton;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.consts.FoodConstants.Pizza.PizzaToppingConstants;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
 import java.util.ArrayList;
@@ -100,6 +101,7 @@ public class ToppingDynamicLoad {
             ToppingDesigns toppingDesigns = new ToppingDesigns(toppingListeners.getToppingType());
             toppingListeners.setStyle(toppingDesigns.defaultStyleString);
         }
-        pizzaController.resetSizeArea();
+        PizzaOrderManager.getPizzaOrderInstance().toppings.clear();
+
     }
 }

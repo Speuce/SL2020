@@ -5,6 +5,7 @@ import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.consts.FoodConstants.Pizza.PizzaToppingConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +14,12 @@ import java.util.List;
 public class ToppingDynamicLoad {
 
     private PizzaController pizzaController; // the instance of the pizzaController in order to control FXML methods
-    PizzaToppingConstants pizzaToppingConstants = new PizzaToppingConstants();
-    ToppingCoordinates tC = new ToppingCoordinates();
+    private PizzaToppingConstants pizzaToppingConstants = new PizzaToppingConstants();
+    private ToppingCoordinates tC = new ToppingCoordinates();
+    public ToppingListeners toppingListeners;
+    private ArrayList<JFXButton> toppingButtons = new ArrayList<>(); // the list of current topping buttons
+    private ArrayList<ToppingListeners> toppingListenersList = new ArrayList<>(); // the list of the current listeners
+
 
     // list for the toppings
     private List<ToppingType> toppingsList = pizzaToppingConstants.getToppingsList();
@@ -50,6 +55,7 @@ public class ToppingDynamicLoad {
             }
             //else
             JFXButton button = createButton(tC.getCurrX(), tC.getCurrY(), toppingsList.get(x), tC.getGetSizeX(), tC.getGetSizeY());
+            toppingButtons.add(button);
             pizzaController.pizzaButtons.getChildren().add(button); // gets the pane at which the buttons are to be stored
         }
     }
@@ -62,11 +68,38 @@ public class ToppingDynamicLoad {
      */
     private JFXButton createButton(int getX, int getY, ToppingType name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getDefaultColor());
+        button.setId(name.getId() + "");
         ToppingDesigns toppingDesigns = new ToppingDesigns(name);
-        ToppingListeners toppingListeners = new ToppingListeners(pizzaController, name, button);
+        toppingListeners = new ToppingListeners(pizzaController, name, button);
+        toppingListenersList.add(toppingListeners);
 
         toppingDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
         toppingListeners.setListeners(); // gets the pane at which the buttons are to be stored
         return button;
+    }
+
+    /**
+     * Finds the listener for the given topping
+     * @param toppingType the current topping being looked at
+     * @return the listener IF there is any
+     */
+    public ToppingListeners getToppingListener(ToppingType toppingType) {
+        for (ToppingListeners toppingListeners : toppingListenersList) {
+            if (toppingListeners.getToppingType().equals(toppingType))
+                return toppingListeners;
+        }
+        System.out.println("NO TOPPING LISTENER FOUND FOR: " + toppingType.getShortName());
+        return null;
+    }
+
+    /**
+     * Clears the selected buttons in the GUI
+     */
+    public void clearSelectedButtons() {
+        for(ToppingListeners toppingListeners : toppingListenersList) {
+            ToppingDesigns toppingDesigns = new ToppingDesigns(toppingListeners.getToppingType());
+            toppingListeners.setStyle(toppingDesigns.defaultStyleString);
+        }
+        pizzaController.resetSizeArea();
     }
 }

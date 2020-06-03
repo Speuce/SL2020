@@ -1,7 +1,6 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
 import main.java.lucia.client.content.menu.item.AbstractItem;
-import main.java.lucia.client.content.menu.size.Size;
 import main.java.lucia.client.content.menu.size.PricingScheme;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,10 +47,10 @@ public abstract class SizeableItemDescriptor extends Descriptor{
 
     /**
      * Convert this descriptor to an actual item
-     * @param s the size of the item
+     * @param size the size of the item
      * @return the item
      */
-    public abstract AbstractItem getAsItem(Integer s);
+    public abstract AbstractItem getAsItem(Integer size);
 
 
 }

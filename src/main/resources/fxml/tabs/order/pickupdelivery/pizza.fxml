@@ -29,7 +29,7 @@
                   <Font name="Century" size="39.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="make" layoutX="1149.0" layoutY="22.0" onAction="#addToOrder" prefHeight="87.0" prefWidth="185.0" style="-fx-background-color: #003300; -fx-background-radius: 20; -fx-border-radius: 20;" text="Make" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="make" layoutX="1149.0" layoutY="22.0" onAction="#makeClicked" prefHeight="87.0" prefWidth="185.0" style="-fx-background-color: #003300; -fx-background-radius: 20; -fx-border-radius: 20;" text="Make" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -65,7 +65,7 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <JFXButton fx:id="light_sauce" layoutX="489.0" layoutY="22.0" onAction="#selectedGreen" onMouseClicked="#sauceBuild" prefHeight="87.0" prefWidth="127.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="LS" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="light_sauce" disable="true" layoutX="489.0" layoutY="22.0" prefHeight="87.0" prefWidth="127.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="LS" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -73,7 +73,7 @@
                   <Font name="Century" size="39.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="well_done" layoutX="185.0" layoutY="22.0" onAction="#selectedGreen" onMouseClicked="#crustBuild" prefHeight="87.0" prefWidth="127.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="WD" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="well_done" disable="true" layoutX="185.0" layoutY="22.0" prefHeight="87.0" prefWidth="127.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="WD" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -87,494 +87,23 @@
          <children>
             <ScrollPane fx:id="scrollPane" layoutX="4.0" layoutY="111.0" onScroll="#scroll" onScrollFinished="#scroll" onScrollStarted="#scroll" prefHeight="97.0" prefWidth="1335.0" styleClass="BackgroundDefault" stylesheets="@../../../css/main.css" vbarPolicy="NEVER">
                <content>
-                  <AnchorPane fx:id="specialAnchor" minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="2485.0" style="-fx-background-color: #585858;">
-                     <children>
-                        <JFXButton fx:id="sls" layoutX="5.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="SLS" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="meat_lover" layoutX="160.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="ML" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="veggie" layoutX="315.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Veggie" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="aloha" layoutX="470.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Aloha" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="mexican" layoutX="625.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Mexican" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="greek" layoutX="780.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Greek" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="mediterranean" layoutX="935.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="MED" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="chicken_supreme" layoutX="1090.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="CKN SUP" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="healthy_choice" layoutX="1245.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="HH" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="santa_fe" layoutX="1400.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Santa Fe" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="montenegro" layoutX="1555.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Montenegro" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="bbq_chicken" layoutX="1710.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="BBQ CKN" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="italian" layoutX="1865.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Italian" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="hal_joe" layoutX="2020.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Hal &amp; Joe" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="citi92" layoutX="2175.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="92 City Anniversary" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="gyro" layoutX="2330.0" layoutY="5.0" onMouseClicked="#selectedSpecials" onMouseEntered="#activateHoverGreen" onMouseExited="#deactivateHoverGreen" prefHeight="68.0" prefWidth="150.0" styleClass="ToppingsDefaultGreen" stylesheets="@../../../css/main.css" text="Gyro" textAlignment="CENTER" textFill="WHITE" visible="false">
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="Century" size="24.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane fx:id="specialAnchor" minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="2485.0" style="-fx-background-color: #585858;" />
                </content>
             </ScrollPane>
          </children>
       </Pane>
       <Pane fx:id="pizzaButtons" layoutY="214.0" prefHeight="452.0" prefWidth="1339.0" styleClass="BackgroundDefault" stylesheets="@../../../css/main.css">
          <children>
-            <JFXButton fx:id="pepperoni" layoutX="18.0" layoutY="5.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Pep" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="chorizo" layoutX="774.0" layoutY="275.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Chorizo" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="banana_pepper" layoutX="396.0" layoutY="185.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Banana" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="shrimp" layoutX="18.0" layoutY="95.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Shrimp" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="broccoli" layoutX="207.0" layoutY="365.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Broc" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="jalapeno" layoutX="963.0" layoutY="95.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Jalapeño" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="chicken" layoutX="963.0" layoutY="275.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Chicken" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="sausage" layoutX="963.0" layoutY="5.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Sausage" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="prosciutto" layoutX="1152.0" layoutY="275.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Prosciutto" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="spinach" layoutX="18.0" layoutY="365.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Spinach" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="marinated_eggplant" layoutX="396.0" layoutY="365.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Eggplant" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="feta" layoutX="18.0" layoutY="275.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Feta" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="red_onion" layoutX="774.0" layoutY="185.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Red Onion" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="salami" layoutX="207.0" layoutY="5.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Salami" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="onion" layoutX="585.0" layoutY="185.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Onion" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="chili_pepper" layoutX="774.0" layoutY="365.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="ChiliP" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="green_olives" layoutX="207.0" layoutY="185.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="GOlive" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="black_olives" layoutX="18.0" layoutY="185.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="BOlive" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="anchovies" layoutX="1152.0" layoutY="95.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Anch" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="artichoke" layoutX="1152.0" layoutY="185.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Artichoke" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="sundried_tomato" layoutX="963.0" layoutY="185.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="SunTom" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="green_pepper" layoutX="774.0" layoutY="95.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="GPepper" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="pineapple" layoutX="585.0" layoutY="95.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Pineapple" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="tomato" layoutX="396.0" layoutY="95.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Tomato" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="mushroom" layoutX="207.0" layoutY="95.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Mush" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="beef" layoutX="396.0" layoutY="5.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Beef" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="side_bacon" layoutX="585.0" layoutY="5.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="S.Bacon" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="red_pepper" layoutX="585.0" layoutY="365.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="RPepper" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="back_bacon" layoutX="774.0" layoutY="5.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="B.Bacon" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="ham" layoutX="1152.0" layoutY="5.0" onMouseClicked="#selected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Ham" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
-            <AnchorPane fx:id="cheeseAnchor" layoutX="203.0" layoutY="272.0" prefHeight="91.0" prefWidth="563.0">
-               <children>
-                  <JFXButton fx:id="chz" layoutX="4.0" layoutY="3.0" onMouseClicked="#selectedChz" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Cheese" textAlignment="CENTER" textFill="WHITE" visible="false">
-                     <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Modern No. 20" size="30.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="nochz" layoutX="382.0" layoutY="3.0" onMouseClicked="#selectedChz" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="NoCheese" textAlignment="CENTER" textFill="WHITE" visible="false">
-                     <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Modern No. 20" size="30.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="cheddar" layoutX="193.0" layoutY="3.0" onMouseClicked="#selectedChz" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Cheddar" textAlignment="CENTER" textFill="WHITE" visible="false">
-                     <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Modern No. 20" size="30.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </AnchorPane>
             <Pane fx:id="saucePane" layoutX="321.0" layoutY="5.0" prefHeight="464.0" prefWidth="161.0" style="-fx-background-color: #585858; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" visible="false">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
-               <children>
-                  <JFXButton fx:id="extra_sauce" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectedSauce" prefHeight="65.0" prefWidth="140.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Extra Sauce">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="none" layoutX="10.0" layoutY="85.0" onMouseClicked="#selectedSauce" prefHeight="65.0" prefWidth="140.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="No Sauce">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="regular" layoutX="10.0" layoutY="160.0" onMouseClicked="#selectedSauce" prefHeight="65.0" prefWidth="140.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Reg. Sauce">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="greek_sauce" layoutX="10.0" layoutY="235.0" onMouseClicked="#selectedSauce" prefHeight="65.0" prefWidth="140.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Greek Sauce">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="barbeque" layoutX="10.0" layoutY="311.0" onMouseClicked="#selectedSauce" prefHeight="65.0" prefWidth="140.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="BBQ Sauce">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="alfredo" layoutX="10.0" layoutY="387.0" onMouseClicked="#selectedSauce" prefHeight="65.0" prefWidth="140.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Alf. Sauce">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-               </children>
             </Pane>
             <Pane fx:id="crustPane" layoutX="8.0" layoutY="5.0" prefHeight="464.0" prefWidth="170.0" style="-fx-background-color: #585858; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black; -fx-border-width: 3;" visible="false">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
-               <children>
-                  <JFXButton fx:id="thin" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectedCrust" prefHeight="65.0" prefWidth="152.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Thin">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="thick" layoutX="10.0" layoutY="85.0" onMouseClicked="#selectedCrust" prefHeight="65.0" prefWidth="152.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Thick">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="regular_crust" layoutX="10.0" layoutY="160.0" onMouseClicked="#selectedCrust" prefHeight="65.0" prefWidth="152.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Regular">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="gluten_free" layoutX="10.0" layoutY="235.0" onMouseClicked="#selectedCrust" prefHeight="65.0" prefWidth="152.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Gluten Free">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="keto" layoutX="10.0" layoutY="311.0" onMouseClicked="#selectedCrust" prefHeight="65.0" prefWidth="152.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Keto">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="whole_wheat" layoutX="10.0" layoutY="387.0" onMouseClicked="#selectedCrust" prefHeight="65.0" prefWidth="152.0" styleClass="ToppingsDefaultCrustSauce" stylesheets="@../../../css/main.css" text="Whole Wheat">
-                     <font>
-                        <Font name="Calibri Bold" size="21.0" />
-                     </font>
-                  </JFXButton>
-               </children>
             </Pane>
-            <JFXButton fx:id="chzPizza" layoutX="963.0" layoutY="365.0" onMouseClicked="#justCheeseSelected" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="80.0" prefWidth="171.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Chz Pizza" textAlignment="CENTER" textFill="WHITE" visible="false">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Modern No. 20" size="30.0" />
-               </font>
-            </JFXButton>
          </children>
       </Pane>
       <Pane fx:id="sizeButtons" prefHeight="103.0" prefWidth="895.0" styleClass="BackgroundDefault" stylesheets="@../../../css/main.css">
@@ -625,7 +154,7 @@
       </Pane>
       <Pane fx:id="halfPane" layoutX="899.0" prefHeight="99.0" prefWidth="442.0">
          <children>
-            <JFXButton fx:id="half" layoutX="7.0" layoutY="8.0" onMouseClicked="#selectedHalf" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="203.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="1st Half" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="half" layoutX="7.0" layoutY="8.0" onMouseClicked="#activateHover" onMouseDragged="#deactivateHover" prefHeight="87.0" prefWidth="203.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="1st Half" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -633,7 +162,7 @@
                   <Font name="Century" size="37.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="togglePrice" layoutX="219.0" layoutY="8.0" onMouseClicked="#togglePrice" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="214.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Toggle Prices" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <JFXButton fx:id="togglePrice" layoutX="219.0" layoutY="8.0" onMouseClicked="#activateHover" onMouseDragged="#deactivateHover" prefHeight="87.0" prefWidth="214.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="Toggle Prices" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>

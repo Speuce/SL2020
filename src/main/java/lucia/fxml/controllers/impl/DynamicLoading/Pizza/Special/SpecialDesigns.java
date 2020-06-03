@@ -10,9 +10,9 @@ import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescrip
 public class SpecialDesigns {
     private SpecialtyPizzaDescriptor special; // information for the specialty pizza
     private SpecialCoordinates specialCoordinates; // information for the specialty coordinates
-    private String defaultStyleString; // for css
-    private String hoveredStyleString;
-    private String selectedStyleString;
+    public String defaultStyleString; // for css
+    public String hoveredStyleString;
+    public String selectedStyleString;
 
     public SpecialDesigns(SpecialtyPizzaDescriptor special) {
         this.special = special;

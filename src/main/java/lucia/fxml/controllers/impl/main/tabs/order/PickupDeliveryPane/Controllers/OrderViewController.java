@@ -82,7 +82,7 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
     @FXML
     public void editPizza() {
         Pizza originalPizza = currentlySelectedPizza;
-        parent.getPizzaController().setCurrentPizza(originalPizza);
+   //     parent.getPizzaController().setCurrentPizza(originalPizza);
         removePizza();
     }
 

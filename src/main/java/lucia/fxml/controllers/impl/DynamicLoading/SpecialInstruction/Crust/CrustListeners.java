@@ -29,8 +29,8 @@ public class CrustListeners {
      */
     public JFXButton setListeners(JFXButton button) {
         button.setOnMouseClicked(crustSelected(name));
-        button.setOnMouseEntered(pizzaController::activateHover);
-        button.setOnMouseExited(pizzaController::deactivateHover);
+//        button.setOnMouseEntered(pizzaController::activateHover);
+//        button.setOnMouseExited(pizzaController::deactivateHover);
         return button;
     }
 

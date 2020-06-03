@@ -270,8 +270,9 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
      * Dynamic Loading
      */
     pizza.setId("pizza"); // ensures that the pizza module can be selected
-    DynamicLoader dynamicLoader = new DynamicLoader(this, pizzaController);
+    DynamicLoader dynamicLoader = DynamicLoader.getDynamicLoaderInstance(this, pizzaController);
     dynamicLoader.runDynamicLoader();
+    pizza.toFront();
     open();
   }
 
@@ -305,9 +306,9 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
   public void initializeArrays() {
 
     paneArray = new Pane[]{pizzaController.specialAnchor, pizzaController.sizeButtons, pizzaController.extraPane, pizzaController.pizzaButtons,
-            pizzaController.settingsButtons, pizzaController.cheeseAnchor, appetizersPane, italianPane,
+            pizzaController.settingsButtons, appetizersPane, italianPane,
             saladsPane, chickenPaneController.chickenPane, beveragesPane};
-    specialPaneArray = new Pane[]{pizzaController.extraPane, pizzaController.pizzaButtons, pizzaController.settingsButtons, pizzaController.cheeseAnchor};
+    specialPaneArray = new Pane[]{pizzaController.extraPane, pizzaController.pizzaButtons, pizzaController.settingsButtons};
   }
 //  public void initializeTheOrderPizza() {
 //    pizzaPaneController.theOrderPizza.clear();
@@ -325,6 +326,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     return orderViewController;
   }
   public SidesController getSidesPaneController() { return  sidesPaneController;}
+
 
   // ------ "PANE" SERIES ------
 

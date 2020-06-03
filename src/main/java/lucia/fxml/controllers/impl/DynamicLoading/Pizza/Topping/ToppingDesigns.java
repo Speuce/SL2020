@@ -10,9 +10,9 @@ import main.java.lucia.client.content.menu.pizza.ToppingType;
 public class ToppingDesigns {
     private ToppingType topping; // information for the topping selection
     private ToppingCoordinates toppingCoordinates; // information for the topping coordinates
-    private String defaultStyleString; // for css
-    private String hoveredStyleString;
-    private String selectedStyleString;
+    public String defaultStyleString; // for css
+    public String hoveredStyleString;
+    public String selectedStyleString;
 
     public ToppingDesigns(ToppingType topping) {
         this.topping = topping;

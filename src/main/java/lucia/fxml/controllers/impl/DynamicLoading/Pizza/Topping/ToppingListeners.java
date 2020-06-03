@@ -42,14 +42,18 @@ public class ToppingListeners {
      *  Event Handler for when the button is hovered into
      */
     public void activateHover(MouseEvent event) {
-        button.setStyle(toppingDesigns.getHoveredStyleString());
+        //   button.setStyle(dinnerModuleDesigns.g());
+        if(!button.getStyle().equalsIgnoreCase(toppingDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(toppingDesigns.getHoveredStyleString());
     }
 
     /**
      *  Event Handler for when the button is hovered out of
      */
     public void deactivateHover(MouseEvent event) {
-        button.setStyle(toppingDesigns.getDefaultStyleString());
+        //  button.setStyle(toppingDesigns.getDefaultStyleString());
+        if(!button.getStyle().equalsIgnoreCase(toppingDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(toppingDesigns.getDefaultStyleString());
     }
 
     /**
@@ -64,21 +68,40 @@ public class ToppingListeners {
     /**
      *  Implements with the Order System
      */
-    private void toppingClicked(int id) {
+    public void toppingClicked(int id) {
         ToppingType theTopping = new IDCaster<ToppingType>().cast(id);
+
+        //if(pizzaOrderManager.)
 
         if(theTopping.equals(toppingType)) {
             if (pizzaOrderManager.currentPizza == null) {
                 pizzaOrderManager.toppings.add(toppingType);
+                setStyle(toppingDesigns.getSelectedStyleString());
             } else if (pizzaOrderManager.toppings.contains(toppingType)) {
                 pizzaOrderManager.toppings.remove(toppingType);
+                setStyle(toppingDesigns.getDefaultStyleString());
             } else {
                 pizzaOrderManager.toppings.add(toppingType);
+                setStyle(toppingDesigns.getSelectedStyleString());
             }
         } else System.out.println("ERROR WHEN TOPPING CLICKED!");
 
-        System.out.println("CHECKING TOPPING LIST: " + pizzaOrderManager.printToppings());
+       // System.out.println("CHECKING TOPPING LIST: " + pizzaOrderManager.printToppings());
 
     }
 
+    /**
+     * Sets the style of the current button
+     * @param type the style to be changed to
+     */
+    public void setStyle(String type) {
+        button.setStyle(type);
+    }
+
+    /**
+     * GETTERS
+     */
+    public ToppingType getToppingType() {
+        return toppingType;
+    }
 }

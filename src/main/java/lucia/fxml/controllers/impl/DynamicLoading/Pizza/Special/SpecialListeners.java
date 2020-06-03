@@ -4,8 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
+import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping.ToppingDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
+
+import java.util.Map;
 
 /**
  *  Manager for the Listeners for the Specialty Pizzas in the FXML
@@ -42,14 +47,18 @@ public class SpecialListeners {
      *  Event Handler for when the button is hovered into
      */
     public void activateHover(MouseEvent event) {
-        button.setStyle(specialDesigns.getHoveredStyleString());
+        //   button.setStyle(dinnerModuleDesigns.g());
+        if(!button.getStyle().equalsIgnoreCase(specialDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(specialDesigns.getHoveredStyleString());
     }
 
     /**
      *  Event Handler for when the button is hovered out of
      */
     public void deactivateHover(MouseEvent event) {
-        button.setStyle(specialDesigns.getDefaultStyleString());
+        //  button.setStyle(toppingDesigns.getDefaultStyleString());
+        if(!button.getStyle().equalsIgnoreCase(specialDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(specialDesigns.getDefaultStyleString());
     }
 
     /**
@@ -72,20 +81,50 @@ public class SpecialListeners {
                 pizzaOrderManager.currentSpecialPizza = specialtyPizzaDescriptor;
 
                 System.out.println("ADDED " + specialtyPizzaDescriptor.getBaseName() + " to Order");
-                button.setStyle(specialDesigns.getSelectedStyleString());
+                setStyle(specialDesigns.getSelectedStyleString());
+                setSelectedToppings();
             }
             else if(pizzaOrderManager.currentSpecialPizza.equals(specialtyPizzaDescriptor)) {
                 pizzaOrderManager.currentSpecialPizza = null;
-                button.setStyle(specialDesigns.getDefaultStyleString());
+                setStyle(specialDesigns.getDefaultStyleString());
                 System.out.println("REMOVED " + specialtyPizzaDescriptor.getBaseName() + " from Order");
+                DynamicLoader.dynamicLoaderInstance.getToppingDynamicLoad().clearSelectedButtons();
             } else {
                 pizzaOrderManager.currentSpecialPizza = specialtyPizzaDescriptor;
 
                 System.out.println("ADDED " + specialtyPizzaDescriptor.getBaseName() + " to Order");
-                button.setStyle(specialDesigns.getSelectedStyleString());
+                setStyle(specialDesigns.getSelectedStyleString());
+                setSelectedToppings();
             }
        // } else System.out.println("Something is Wrong! Pizzas clicked and class instance does not match!");
 
     }
 
+    /**
+     * Sets the DEFAULT Selected Toppings for the Specialty Pizza
+     */
+    private void setSelectedToppings() {
+        ToppingDynamicLoad toppingDynamicLoad = DynamicLoader.dynamicLoaderInstance.getToppingDynamicLoad();
+        // gets the dynamic load class of the current instance
+
+        Map<ToppingType, Integer> toppings = pizzaOrderManager.currentSpecialPizza.getToppings();
+        for (Map.Entry<ToppingType, Integer> entry : toppings.entrySet()) {
+            toppingDynamicLoad.getToppingListener(entry.getKey()).toppingClicked(entry.getKey().getId());
+        }
+    }
+
+    /**
+     * Sets the style of the current button
+     * @param type the style to be changed to
+     */
+    public void setStyle(String type) {
+        button.setStyle(type);
+    }
+
+    /**
+     * GETTERS
+     */
+    public SpecialtyPizzaDescriptor getSpecialtyPizzaDescriptor() {
+        return specialtyPizzaDescriptor;
+    }
 }

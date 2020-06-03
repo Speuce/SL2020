@@ -13,16 +13,33 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
  * A class built purely to keep things neat
  */
 public class DynamicLoader {
+    public static DynamicLoader dynamicLoaderInstance;
+
+
     private DinnerModuleDynamicLoad dinnerModuleDynamicLoad;
     private DinnerDynamicLoad dinnerDynamicLoad;
     private SpecialDynamicLoad specialDynamicLoad;
     private ToppingDynamicLoad toppingDynamicLoad;
+    public PizzaController pizzaController;
 
     public DynamicLoader(PickupDeliveryPaneController pickupDeliveryPaneController, PizzaController pizzaController) {
         dinnerDynamicLoad = new DinnerDynamicLoad(pickupDeliveryPaneController);
         dinnerModuleDynamicLoad = new DinnerModuleDynamicLoad(pickupDeliveryPaneController, dinnerDynamicLoad);
         specialDynamicLoad = new SpecialDynamicLoad(pizzaController);
         toppingDynamicLoad = new ToppingDynamicLoad(pizzaController);
+        this.pizzaController = pizzaController;
+
+    }
+
+    /**
+     * Creates the instance if there is none, gives the instance if there is one
+     *
+     * @return DynamicLoader instance
+     */
+    public static DynamicLoader getDynamicLoaderInstance(PickupDeliveryPaneController pickupDeliveryPaneController, PizzaController pizzaController) {
+        if(dynamicLoaderInstance == null)
+            dynamicLoaderInstance = new DynamicLoader(pickupDeliveryPaneController, pizzaController);
+        return dynamicLoaderInstance;
     }
 
     /**
@@ -33,5 +50,16 @@ public class DynamicLoader {
         specialDynamicLoad.createSpecials();
         dinnerModuleDynamicLoad.createDinnerModules();
         dinnerDynamicLoad.createDinners();
+    }
+
+    /**
+     * GETTERS
+     */
+    public SpecialDynamicLoad getSpecialDynamicLoad() {
+        return specialDynamicLoad;
+    }
+
+    public ToppingDynamicLoad getToppingDynamicLoad() {
+        return toppingDynamicLoad;
     }
 }

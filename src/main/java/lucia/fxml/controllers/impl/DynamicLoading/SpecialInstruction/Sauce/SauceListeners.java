@@ -29,8 +29,8 @@ public class SauceListeners {
      */
     public JFXButton setListeners(JFXButton button) {
         button.setOnMouseClicked(sauceSelected(name));
-        button.setOnMouseEntered(pizzaController::activateHover);
-        button.setOnMouseExited(pizzaController::deactivateHover);
+//        button.setOnMouseEntered(pizzaController::activateHover);
+//        button.setOnMouseExited(pizzaController::deactivateHover);
         return button;
     }
 

@@ -5,6 +5,7 @@ import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescrip
 import main.java.lucia.consts.FoodConstants.Pizza.PizzaSpecialsConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,8 +13,11 @@ import java.util.List;
  */
 public class SpecialDynamicLoad {
     private PizzaController pizzaController; // the instance of the pizzaController in order to control FXML methods
-    PizzaSpecialsConstants pizzaSpecialsConstants = new PizzaSpecialsConstants();
-    SpecialCoordinates sC = new SpecialCoordinates();
+    private PizzaSpecialsConstants pizzaSpecialsConstants = new PizzaSpecialsConstants();
+    private SpecialCoordinates sC = new SpecialCoordinates();
+    public SpecialListeners specialListeners;
+    private ArrayList<JFXButton> specialButtons = new ArrayList<>(); // the list of current specialty buttons
+    private ArrayList<SpecialListeners> specialListenersList = new ArrayList<>();
 
     // list of the specialty pizzas
     private List<SpecialtyPizzaDescriptor> specialsList = pizzaSpecialsConstants.getSpecialPizzaList();
@@ -46,6 +50,7 @@ public class SpecialDynamicLoad {
             else System.out.println("WARNING: ScrollPane for Specialty Pizzas may get large!");
 
             JFXButton button = createButton(sC.getCurrX(), sC.getGetStartY(), specialsList.get(x), sC.getGetSizeX(), sC.getGetSizeY());
+            specialButtons.add(button);
             pizzaController.specialAnchor.getChildren().add(button); // gets the pane at which the buttons are to be stored
         }
     }
@@ -59,11 +64,22 @@ public class SpecialDynamicLoad {
     private JFXButton createButton(int getX, int getY, SpecialtyPizzaDescriptor name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getBaseName());
         SpecialDesigns specialDesigns = new SpecialDesigns(name);
-        SpecialListeners specialListeners = new SpecialListeners(pizzaController, name, button);
+        specialListeners = new SpecialListeners(pizzaController, name, button);
+        specialListenersList.add(specialListeners);
 
         specialDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
         specialListeners.setListeners();
 
         return button;
+    }
+
+    /**
+     * Clears the selected buttons in the GUI
+     */
+    public void clearSelectedButtons() {
+        for(SpecialListeners specialListeners : specialListenersList) {
+            SpecialDesigns specialDesigns = new SpecialDesigns(specialListeners.getSpecialtyPizzaDescriptor());
+            specialListeners.setStyle(specialDesigns.defaultStyleString);
+        }
     }
 }

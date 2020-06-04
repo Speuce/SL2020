@@ -26,5 +26,5 @@ public abstract class DiscountAmount extends DiscountAttribute {
      * @param order the order being applied to.
      * @return the amount (in cents) saved by applying this discount
      */
-    public abstract long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order);
+    public abstract int applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order);
 }

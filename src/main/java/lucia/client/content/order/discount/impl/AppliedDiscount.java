@@ -18,14 +18,14 @@ public class AppliedDiscount {
     /**
      * The amount saved with the discount
      */
-    private long amtSaved;
+    private int amtSaved;
 
     /**
      * The field name:value pairs for the discount's required fields.
      */
     private final Map<String, Object> filledFields;
 
-    public AppliedDiscount(Discount applied, long amtSaved, Map<String, Object> filledFields) {
+    public AppliedDiscount(Discount applied, int amtSaved, Map<String, Object> filledFields) {
         this.applied = applied;
         this.amtSaved = amtSaved;
         this.filledFields = filledFields;
@@ -46,6 +46,13 @@ public class AppliedDiscount {
     }
 
     /**
+     * Adds the given amount to the total amount saved.
+     */
+    public void addAmtSaved(int add){
+        amtSaved+=add;
+    }
+
+    /**
      * The field name:value pairs for the discount's required fields.
      */
     public Map<String, Object> getFilledFields() {
@@ -55,7 +62,7 @@ public class AppliedDiscount {
     /**
      * The amount saved with the discount
      */
-    public void setAmtSaved(long amtSaved) {
+    public void setAmtSaved(int amtSaved) {
         this.amtSaved = amtSaved;
     }
 }

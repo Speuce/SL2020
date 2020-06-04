@@ -35,12 +35,12 @@ public class PercentageOff extends DiscountAmount{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
-        long totalDis = 0;
-        long discountAmt;
+    public int applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
+        int totalDis = 0;
+        int discountAmt;
         for(Item i: list){
             i.getAppledDiscounts().add(o);
-            discountAmt = (long)(i.getPrice()*percent);
+            discountAmt = (int)(i.getPrice()*percent);
             i.setDiscountedPrice(i.getDiscountedPrice() - discountAmt);
             totalDis+=discountAmt;
         }

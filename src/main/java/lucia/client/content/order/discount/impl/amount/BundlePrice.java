@@ -34,11 +34,11 @@ public class BundlePrice extends DiscountAmount{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
+    public int applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
         order.getItems().removeAll(list);
         ItemBundle b = new ItemBundle(bundleDescriptor, new ArrayList<>(list));
-        long beforePrice = 0;
+        int beforePrice = 0;
         for(Item i: list){
             beforePrice += i.getDiscountedPrice();
             i.setDiscountedPrice(0);
@@ -46,7 +46,7 @@ public class BundlePrice extends DiscountAmount{
         }
         b.getAppledDiscounts().add(o);
         order.addItem(b);
-        return beforePrice - bundleDescriptor.getBasePrice();
+        return beforePrice - (int)bundleDescriptor.getBasePrice();
     }
 
     public ItemBundleDescriptor getBundleDescriptor() {

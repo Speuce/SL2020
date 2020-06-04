@@ -32,10 +32,9 @@ public abstract class Discount extends IDAble {
     /**
      * Calculates the total discount amount for an Order
      * @param p the order to get the total discount amount of.
-     * @param fields the filled fields of the discount
      * @return the total amount saved by this discount
      */
-    public abstract long calcDiscount(Order p, Map<String, Object> fields);
+    public abstract long calcDiscount(Order p);
 
     /**
      * Applies the discount to the given order

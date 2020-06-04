@@ -26,10 +26,10 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
      * The maximum amount that the bundle can have spent on addons
      * before addons are charged extra.
      */
-    private final long addonAllowance;
+    private final int addonAllowance;
 
     public BundlePriceAddonAllowance(ItemBundleDescriptor bundleDescriptor
-            ,long toppingAllowance,long addonAllowance) {
+            ,int toppingAllowance,int addonAllowance) {
         super(bundleDescriptor, toppingAllowance);
         this.addonAllowance = addonAllowance;
     }
@@ -42,13 +42,13 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
+    public int applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
         long allowanceLeft = addonAllowance;
         long pizzaAllowance = getToppingAllowance();
         order.getItems().removeAll(list);
         ItemBundle b = new ItemBundle(getBundleDescriptor(), new ArrayList<>(list));
-        long beforePrice = 0;
+        int beforePrice = 0;
 
         for(Item i: list){
             beforePrice += i.getDiscountedPrice();
@@ -56,13 +56,13 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
             if(i instanceof ItemModifiable){
                 allowanceLeft = handleItemModifiable((ItemModifiable) i, allowanceLeft);
             }else if(i instanceof Pizza){
-                pizzaAllowance = handlePizza((Pizza)i, pizzaAllowance);
+                pizzaAllowance = handlePizza((Pizza)i, (int) pizzaAllowance);
             }
             i.getAppledDiscounts().add(o);
         }
         b.getAppledDiscounts().add(o);
         order.addItem(b);
-        return beforePrice - b.calcNameAndPrice().getVal2();
+        return beforePrice - b.calcNameAndPrice().getVal2().intValue();
     }
 
     /**

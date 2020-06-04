@@ -16,9 +16,9 @@ public class BundlePriceToppingAllowance extends BundlePrice {
      * The maximum amount that the bundle can have spent on toppings
      * before toppings are charged extra.
      */
-    private long toppingAllowance;
+    private final int toppingAllowance;
 
-    public BundlePriceToppingAllowance(ItemBundleDescriptor bundleDescriptor, long toppingAllowance) {
+    public BundlePriceToppingAllowance(ItemBundleDescriptor bundleDescriptor, int toppingAllowance) {
         super(bundleDescriptor);
         this.toppingAllowance = toppingAllowance;
     }
@@ -31,12 +31,12 @@ public class BundlePriceToppingAllowance extends BundlePrice {
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
+    public int applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
-        long allowanceLeft = toppingAllowance;
+        int allowanceLeft = toppingAllowance;
         order.getItems().removeAll(list);
         ItemBundle b = new ItemBundle(getBundleDescriptor(), new ArrayList<>(list));
-        long beforePrice = 0;
+        int beforePrice = 0;
 
         for(Item i: list){
             beforePrice += i.getDiscountedPrice();
@@ -48,7 +48,7 @@ public class BundlePriceToppingAllowance extends BundlePrice {
         }
         b.getAppledDiscounts().add(o);
         order.addItem(b);
-        return beforePrice - b.calcNameAndPrice().getVal2();
+        return beforePrice - b.calcNameAndPrice().getVal2().intValue();
     }
 
     /**
@@ -57,8 +57,8 @@ public class BundlePriceToppingAllowance extends BundlePrice {
      * @param allowanceLeft how much of the allowance is left
      * @return the remaining balance of the allowance
      */
-    protected long handlePizza(Pizza p, long allowanceLeft){
-        long cost = p.getToppingPrice();
+    protected int handlePizza(Pizza p, int allowanceLeft){
+        int cost = (int) p.getToppingPrice();
         if(allowanceLeft > cost){
             allowanceLeft -= cost;
         }else if(allowanceLeft > 0){

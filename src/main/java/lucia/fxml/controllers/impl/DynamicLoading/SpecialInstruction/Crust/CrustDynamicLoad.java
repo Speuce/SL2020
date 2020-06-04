@@ -47,7 +47,7 @@ public class CrustDynamicLoad {
             //else
 
             JFXButton button = createButton(cC.getGetStartX(), cC.getCurrY(), crustList.get(x), cC.getGetSizeX(), cC.getGetSizeY());
-            pizzaController.pizzaButtons.getChildren().add(button); // gets the pane at which the buttons are to be stored
+            pizzaController.crustPane.getChildren().add(button); // gets the pane at which the buttons are to be stored
         }
     }
 
@@ -60,10 +60,10 @@ public class CrustDynamicLoad {
     private JFXButton createButton(int getX, int getY, Crust name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getDisplayName());
         CrustDesigns crustDesigns = new CrustDesigns(name);
-        CrustListeners crustListeners = new CrustListeners(pizzaController, name);
+        CrustListeners crustListeners = new CrustListeners(pizzaController, name, button);
 
         crustDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        crustListeners.setListeners(button);
+        crustListeners.setListeners();
 
         return button;
     }

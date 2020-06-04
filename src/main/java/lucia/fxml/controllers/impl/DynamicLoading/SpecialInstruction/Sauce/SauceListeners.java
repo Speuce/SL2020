@@ -1,11 +1,9 @@
 package main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.Sauce;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import main.java.lucia.client.content.menu.item.IDCaster;
 import main.java.lucia.client.content.menu.pizza.Sauce;
-import main.java.lucia.client.content.menu.pizza.ToppingType;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
 /**
@@ -14,10 +12,16 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
 public class SauceListeners {
     private PizzaController pizzaController; // the instance for the pizza controllers so the fxml methods can be called
     private Sauce name; // sauce information
+    private JFXButton button; // the button instance
+    private SauceDesigns sauceDesigns;
+    PizzaOrderManager pizzaOrderManager;
 
-    public SauceListeners(PizzaController pizzaController, Sauce name) {
+    public SauceListeners(PizzaController pizzaController, Sauce name, JFXButton button) {
         this.pizzaController = pizzaController;
         this.name = name;
+        this.button = button;
+        sauceDesigns = new SauceDesigns(name);
+        pizzaOrderManager = PizzaOrderManager.getPizzaOrderInstance();
     }
 
     /**
@@ -27,11 +31,28 @@ public class SauceListeners {
      *
      *  todo will have the designs for the buttons changed once the new design is implemented
      */
-    public JFXButton setListeners(JFXButton button) {
-        button.setOnMouseClicked(sauceSelected(name));
-//        button.setOnMouseEntered(pizzaController::activateHover);
-//        button.setOnMouseExited(pizzaController::deactivateHover);
-        return button;
+    public void setListeners() {
+        button.setOnMouseClicked(this::sauceSelected);
+        button.setOnMouseEntered(this::activateHover);
+        button.setOnMouseExited(this::deactivateHover);
+    }
+
+    /**
+     *  Event Handler for when the button is hovered into
+     */
+    public void activateHover(MouseEvent event) {
+        //   button.setStyle(dinnerModuleDesigns.g());
+        if(!button.getStyle().equalsIgnoreCase(sauceDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(sauceDesigns.getHoveredStyleString());
+    }
+
+    /**
+     *  Event Handler for when the button is hovered out of
+     */
+    public void deactivateHover(MouseEvent event) {
+        //  button.setStyle(toppingDesigns.getDefaultStyleString());
+        if(!button.getStyle().equalsIgnoreCase(sauceDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(sauceDesigns.getDefaultStyleString());
     }
 
     /**
@@ -39,9 +60,8 @@ public class SauceListeners {
      *
      *  Goes to Order System
      */
-    private EventHandler<? super MouseEvent> sauceSelected(Sauce name) {
+    public void sauceSelected(MouseEvent event) {
         sauceClicked(name.getId());
-        return null; //setOnMouseClicked must be an 'Event'
     }
 
     /**
@@ -49,13 +69,22 @@ public class SauceListeners {
      */
     private void sauceClicked(int id) {
         // add to order system
-        ToppingType type = new IDCaster<ToppingType>().cast(id);
+      //  ToppingType type = new IDCaster<ToppingType>().cast(id);
         // if(pizzaController.getCurrentPizza().hasToppingType(type)){
-        //add sauce option
+        //add crust option
         //  }else{
-        //remove sauce option
+        //remove crust option
         //    }
 
 
     }
+
+    /**
+     * Sets the style of the current button
+     * @param type the style to be changed to
+     */
+    public void setStyle(String type) {
+        button.setStyle(type);
+    }
 }
+

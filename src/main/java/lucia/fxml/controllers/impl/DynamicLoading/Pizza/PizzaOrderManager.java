@@ -85,7 +85,12 @@ public class  PizzaOrderManager {
      * Creates a new instance
      */
     public void resetOrderManager() {
-        pizzaOrderInstance = new PizzaOrderManager();
+        toppings = new ArrayList<>();
+        currentPizza = null;
+        currentSpecialPizza = null;
+        madePizza = null;
+        selectedSize = -1;
+        secondHalf = null;
     }
 
     /**
@@ -123,28 +128,25 @@ public class  PizzaOrderManager {
      * When 'Make' is clicked, puts pizza in the Order system
      */
     public void addPizzaToOrder() {
-        if(isSecondHalf() && findSize()) {
-            OrderManager orderManager = OrderManager.INSTANCE;
-            Order order = new Order(OrderType.UNSELECTED); // todo
+        if(hasToppings()) {
+            if (isSecondHalf() && findSize()) {
+                OrderManager orderManager = OrderManager.INSTANCE;
+                Order order = new Order(OrderType.UNSELECTED); // todo
 
-            order.addItem(makeSecondHalf());
+                order.addItem(makeSecondHalf());
 
-            DynamicLoader.dynamicLoaderInstance.getToppingDynamicLoad().clearSelectedButtons();
-            DynamicLoader.dynamicLoaderInstance.getSpecialDynamicLoad().clearSelectedButtons();
+                DynamicLoader.dynamicLoaderInstance.clearDynamicLoaders();
+                resetOrderManager();
+            } else if (findSize()) {
+                OrderManager orderManager = OrderManager.INSTANCE;
+                Order order = new Order(OrderType.UNSELECTED); // todo
+                order.addItem(makePizza());
+                //     orderManager.registerOrder(order);
 
-            resetOrderManager();
-        }
-        else if(findSize()) {
-            OrderManager orderManager = OrderManager.INSTANCE;
-            Order order = new Order(OrderType.UNSELECTED); // todo
-            order.addItem(makePizza());
-       //     orderManager.registerOrder(order);
-            DynamicLoader.dynamicLoaderInstance.getToppingDynamicLoad().clearSelectedButtons();
-            DynamicLoader.dynamicLoaderInstance.getSpecialDynamicLoad().clearSelectedButtons();
-            DynamicLoader.dynamicLoaderInstance.pizzaController.resetSizeArea();
-            resetOrderManager();
-        } else System.out.println("WAITING FOR A SIZE!");
-
+                DynamicLoader.dynamicLoaderInstance.clearDynamicLoaders();
+                resetOrderManager();
+            } else System.out.println("WAITING FOR A SIZE! " + selectedSize);
+        } else DynamicLoader.dynamicLoaderInstance.pizzaController.setToppingsNeed(true);
     }
 
     /**
@@ -211,8 +213,14 @@ public class  PizzaOrderManager {
      * Assisting method to enable the second half for half and half pizzas
      */
     public void enableSecondHalf() {
-        System.out.println("ENABLED SECOND HALF!");
         splitHalves = true;
+    }
+
+    /**
+     * Assisting method to disable the second half for half and half pizzas
+     */
+    public void disableSecondHalf() {
+        splitHalves = false;
     }
 
     /**
@@ -222,6 +230,15 @@ public class  PizzaOrderManager {
      */
     public boolean isSecondHalf() {
         return splitHalves;
+    }
+
+    /**
+     * Checks to see if there are any toppings chosen on the GUI
+     *
+     * @return if there are toppings are not
+     */
+    public boolean hasToppings() {
+        return !toppings.isEmpty();
     }
 
     /**

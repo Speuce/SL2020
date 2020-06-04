@@ -2,8 +2,11 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading;
 
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems.DinnerDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerModuleDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.SizeButtons.SizeButtonDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Special.SpecialDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.Topping.ToppingDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.Crust.CrustDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.Sauce.SauceDynamicLoad;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
@@ -20,6 +23,9 @@ public class DynamicLoader {
     private DinnerDynamicLoad dinnerDynamicLoad;
     private SpecialDynamicLoad specialDynamicLoad;
     private ToppingDynamicLoad toppingDynamicLoad;
+    private SizeButtonDynamicLoad sizeButtonDynamicLoad;
+    private CrustDynamicLoad crustDynamicLoad;
+    private SauceDynamicLoad sauceDynamicLoad;
     public PizzaController pizzaController;
 
     public DynamicLoader(PickupDeliveryPaneController pickupDeliveryPaneController, PizzaController pizzaController) {
@@ -27,6 +33,9 @@ public class DynamicLoader {
         dinnerModuleDynamicLoad = new DinnerModuleDynamicLoad(pickupDeliveryPaneController, dinnerDynamicLoad);
         specialDynamicLoad = new SpecialDynamicLoad(pizzaController);
         toppingDynamicLoad = new ToppingDynamicLoad(pizzaController);
+        sizeButtonDynamicLoad = new SizeButtonDynamicLoad(pizzaController);
+        crustDynamicLoad = new CrustDynamicLoad(pizzaController);
+        sauceDynamicLoad = new SauceDynamicLoad(pizzaController);
         this.pizzaController = pizzaController;
 
     }
@@ -50,6 +59,23 @@ public class DynamicLoader {
         specialDynamicLoad.createSpecials();
         dinnerModuleDynamicLoad.createDinnerModules();
         dinnerDynamicLoad.createDinners();
+        sizeButtonDynamicLoad.createSizeButtons();
+
+        sauceDynamicLoad.createSauces();
+        crustDynamicLoad.createCrusts();
+        pizzaController.saucePane.toFront();
+        pizzaController.crustPane.toFront();
+    }
+
+    /**
+     * Assisting method to clean up code
+     * Resets the buttons to unselected
+     */
+    public void clearDynamicLoaders() {
+        specialDynamicLoad.clearSelectedButtons();
+        toppingDynamicLoad.clearSelectedButtons();
+        sizeButtonDynamicLoad.clearSelectedButtons();
+        pizzaController.resetSizeArea();
     }
 
     /**
@@ -61,5 +87,9 @@ public class DynamicLoader {
 
     public ToppingDynamicLoad getToppingDynamicLoad() {
         return toppingDynamicLoad;
+    }
+
+    public SizeButtonDynamicLoad getSizeButtonDynamicLoad() {
+        return sizeButtonDynamicLoad;
     }
 }

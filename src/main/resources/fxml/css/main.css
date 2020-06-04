@@ -58,7 +58,7 @@
 }
 
 .ToppingsSelectedCrustSauce {
-    -fx-background-color: rgba(53, 53, 53, 0.72);
+    -fx-background-color: #353535;
     -fx-background-radius: 20;
     -fx-border-radius: 20;
     -fx-text-fill: WHITE;
@@ -147,7 +147,7 @@
 }
 
 .ToppingsDefaultGourmetTopping {
-    -fx-background-color: #1C1B9A;
+    -fx-background-color: #4c4a4a;
     -fx-background-radius: 5;
     -fx-border-radius: 20;
     -fx-text-alignment: center;

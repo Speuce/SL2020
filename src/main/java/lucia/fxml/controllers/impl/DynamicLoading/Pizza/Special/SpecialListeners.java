@@ -48,6 +48,8 @@ public class SpecialListeners {
      */
     public void activateHover(MouseEvent event) {
         //   button.setStyle(dinnerModuleDesigns.g());
+        pizzaController.parent.setOptionPanesVisible(false); // ensures the crust, sauce panes disappear
+
         if(!button.getStyle().equalsIgnoreCase(specialDesigns.getSelectedStyleString())) // if it is not selected!
             setStyle(specialDesigns.getHoveredStyleString());
     }
@@ -74,6 +76,8 @@ public class SpecialListeners {
      *  Implements with the Order System
      */
     private void specialClicked(int id) {
+        pizzaController.setToppingsNeed(false);
+
         Menu menuInstance = Menu.get;
        // System.out.println(specialtyPizzaDescriptor + " | " + menuInstance.getItemFromId(id));
        // if(specialtyPizzaDescriptor.equals(menuInstance.getItemFromId(id))) {
@@ -82,7 +86,7 @@ public class SpecialListeners {
                 pizzaOrderManager.secondHalf = specialtyPizzaDescriptor;
                 // makes it the second half as well, wont be used unless its a half and half. Saves code.
 
-                System.out.println("ADDED " + specialtyPizzaDescriptor.getBaseName() + " to Order");
+
                 setStyle(specialDesigns.getSelectedStyleString());
                 setSelectedToppings();
             }

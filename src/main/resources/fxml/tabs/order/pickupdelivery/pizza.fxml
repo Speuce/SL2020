@@ -108,46 +108,6 @@
       </Pane>
       <Pane fx:id="sizeButtons" prefHeight="103.0" prefWidth="895.0" styleClass="BackgroundDefault" stylesheets="@../../../css/main.css">
          <children>
-            <JFXButton fx:id="ten" layoutX="17.0" layoutY="8.0" onMouseClicked="#selectedSize10" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="162.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="10" textAlignment="CENTER" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Century" size="39.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="thirteen" layoutX="193.0" layoutY="8.0" onMouseClicked="#selectedSize13" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="162.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="13" textAlignment="CENTER" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Century" size="39.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="fifteen" layoutX="368.0" layoutY="8.0" onMouseClicked="#selectedSize15" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="162.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="15" textAlignment="CENTER" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Century" size="39.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="eighteen" layoutX="543.0" layoutY="8.0" onMouseClicked="#selectedSize18" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="162.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="18" textAlignment="CENTER" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Century" size="39.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="thirty" layoutX="718.0" layoutY="8.0" onMouseClicked="#selectedSize30" onMouseEntered="#activateHover" onMouseExited="#deactivateHover" prefHeight="87.0" prefWidth="161.0" styleClass="ToppingsDefault" stylesheets="@../../../css/main.css" text="30" textAlignment="CENTER" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="Century" size="39.0" />
-               </font>
-            </JFXButton>
             <Line endX="16.6666259765625" endY="-38.0" layoutX="878.0" layoutY="40.0" startX="16.6666259765625" startY="61.0" strokeWidth="4.0" />
             <Line endX="451.0" endY="61.0" layoutX="888.0" layoutY="45.0" startX="-888.0" startY="61.0" strokeWidth="4.0" />
          </children>

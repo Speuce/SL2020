@@ -43,6 +43,8 @@ public class ToppingListeners {
      */
     public void activateHover(MouseEvent event) {
         //   button.setStyle(dinnerModuleDesigns.g());
+        pizzaController.parent.setOptionPanesVisible(false); // ensures the crust, sauce panes disappear
+
         if(!button.getStyle().equalsIgnoreCase(toppingDesigns.getSelectedStyleString())) // if it is not selected!
             setStyle(toppingDesigns.getHoveredStyleString());
     }
@@ -69,6 +71,8 @@ public class ToppingListeners {
      *  Implements with the Order System
      */
     public void toppingClicked(int id) {
+        pizzaController.setToppingsNeed(false);
+
         ToppingType theTopping = new IDCaster<ToppingType>().cast(id);
 
         //if(pizzaOrderManager.)

@@ -63,21 +63,6 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     public Pane sizeButtons;
 
     @FXML
-    private JFXButton ten;
-
-    @FXML
-    private JFXButton thirteen;
-
-    @FXML
-    private JFXButton fifteen;
-
-    @FXML
-    private JFXButton eighteen;
-
-    @FXML
-    private JFXButton thirty;
-
-    @FXML
     private JFXButton half;
 
     /**
@@ -88,23 +73,12 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     /**
      * The parent controller
      */
-    private PickupDeliveryPaneController parent;
+    public PickupDeliveryPaneController parent;
 
     /**
      * Used for scrolling, will be updated!
      */
     private double pos = 0; //todo use new scrollpane method
-
-    /**
-     * Size List for the pizza sizes
-     * //todo update with dynamic loading
-     */
-    JFXButton[] sizeList;
-
-    @FXML
-    public void initialize() {
-        sizeList = new JFXButton[]{ten, thirteen, fifteen, eighteen, thirty};
-    }
 
 
     /**
@@ -129,9 +103,11 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
                 DynamicLoader.dynamicLoaderInstance.pizzaController.half.setText("2nd Half");
             } else if(halfText.equalsIgnoreCase("2nd half") && pizzaOrderManager.findSize()) {
                 pizzaOrderManager.makeSecondHalf();
+                pizzaOrderManager.addPizzaToOrder();
+                DynamicLoader.dynamicLoaderInstance.pizzaController.resetHalfButton();
                 DynamicLoader.dynamicLoaderInstance.pizzaController.half.setText("1st Half");
             }
-
+            return;
         }
         pizzaOrderManager.addPizzaToOrder();
 
@@ -213,111 +189,27 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     }
 
     /**
+     * Sets the pane background with the toppings buttons
+     *
+     * If there is a need for toppings or not it will show
+     *
+     * @param toppingsNeed if there is a need or not
+     */
+    public void setToppingsNeed(boolean toppingsNeed) {
+        if(toppingsNeed) {
+            setButtonPane(pizzaButtons, "BackgroundDefault", "BackgroundNeed");
+        } else setButtonPane(pizzaButtons, "BackgroundNeed", "BackgroundDefault");
+    }
+
+    /**
      * If applicable, resets the size area.
      */
     public void resetSizeArea() {
-        for (JFXButton button : sizeList) {
-            if(button.getStyleClass().contains("ToppingsSelected")) {
-                button.getStyleClass().remove("ToppingsSelected");
-                button.getStyleClass().add("ToppingsDefault");
-            }
-        }
         setButtonPane(sizeButtons, "BackgroundNeed", "BackgroundDefault");
     }
 
-    /**
-     * When the button is selected, will coordinate with the order manager and change styles
-     * @param event useless
-     */
-    @FXML
-    void selectedSize10(MouseEvent event) {
-        resetSizeArea();
-
-        if (pizzaOrderManager.selectedSize == 10) {
-            pizzaOrderManager.selectedSize = -1;
-            ten.getStyleClass().remove("ToppingsSelected");
-            ten.getStyleClass().add("ToppingsDefault");
-        } else {
-            pizzaOrderManager.selectedSize = 10;
-            ten.getStyleClass().add("ToppingsSelected");
-            ten.getStyleClass().remove("ToppingsDefault");
-        }
-    }
-
-    /**
-     * When the button is selected, will coordinate with the order manager and change styles
-     * @param event useless
-     */
-    @FXML
-    void selectedSize13(MouseEvent event) {
-        resetSizeArea();
-
-        if (pizzaOrderManager.selectedSize == 13) {
-            pizzaOrderManager.selectedSize = -1;
-            thirteen.getStyleClass().remove("ToppingsSelected");
-            thirteen.getStyleClass().add("ToppingsDefault");
-        } else {
-            pizzaOrderManager.selectedSize = 13;
-            thirteen.getStyleClass().add("ToppingsSelected");
-            thirteen.getStyleClass().remove("ToppingsDefault");
-        }
-    }
-
-    /**
-     * When the button is selected, will coordinate with the order manager and change styles
-     * @param event useless
-     */
-    @FXML
-    void selectedSize15(MouseEvent event) {
-        resetSizeArea();
-
-        if (pizzaOrderManager.selectedSize == 15) {
-            pizzaOrderManager.selectedSize = -1;
-            fifteen.getStyleClass().remove("ToppingsSelected");
-            fifteen.getStyleClass().add("ToppingsDefault");
-        } else {
-            pizzaOrderManager.selectedSize = 15;
-            fifteen.getStyleClass().add("ToppingsSelected");
-            fifteen.getStyleClass().remove("ToppingsDefault");
-        }
-    }
-
-    /**
-     * When the button is selected, will coordinate with the order manager and change styles
-     * @param event useless
-     */
-    @FXML
-    void selectedSize18(MouseEvent event) {
-        resetSizeArea();
-
-        if (pizzaOrderManager.selectedSize == 18) {
-            pizzaOrderManager.selectedSize = -1;
-            eighteen.getStyleClass().remove("ToppingsSelected");
-            eighteen.getStyleClass().add("ToppingsDefault");
-        } else {
-            pizzaOrderManager.selectedSize = 18;
-            eighteen.getStyleClass().add("ToppingsSelected");
-            eighteen.getStyleClass().remove("ToppingsDefault");
-        }
-    }
-
-    /**
-     * When the button is selected, will coordinate with the order manager and change styles
-     * @param event useless
-     */
-    @FXML
-    void selectedSize30(MouseEvent event) {
-        resetSizeArea();
-
-        if (pizzaOrderManager.selectedSize == 30) {
-            pizzaOrderManager.selectedSize = -1;
-            thirty.getStyleClass().remove("ToppingsSelected");
-            thirty.getStyleClass().add("ToppingsDefault");
-        } else {
-            pizzaOrderManager.selectedSize = 30;
-            thirty.getStyleClass().add("ToppingsSelected");
-            thirty.getStyleClass().remove("ToppingsDefault");
-        }
+    public void resetHalfButton() {
+        half.getStyleClass().remove("ToppingsSelected");
     }
 
     /**
@@ -328,6 +220,11 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     public void selectedHalf(MouseEvent event) {
         parent.setOptionPanesVisible(false);
         if (half.getText().equalsIgnoreCase("1st half")) {
+            if(pizzaOrderManager.isSecondHalf()) {
+                pizzaOrderManager.disableSecondHalf();
+                resetHalfButton();
+                return;
+            }
             pizzaOrderManager.enableSecondHalf();
             half.getStyleClass().add("ToppingsSelected");
         }

@@ -27,7 +27,7 @@ public class SauceDynamicLoad {
      */
     public void createSauces() {
         JFXButton firstButton = createButton(sC.getGetStartX(), sC.getGetStartY(), sauceList.get(0), sC.getGetSizeX(), sC.getGetSizeY());
-        pizzaController.pizzaButtons.getChildren().add(firstButton); // gets the pane at which the buttons are to be stored
+        pizzaController.saucePane.getChildren().add(firstButton); // gets the pane at which the buttons are to be stored
         iterateSauces();
     }
 
@@ -60,10 +60,10 @@ public class SauceDynamicLoad {
     private JFXButton createButton(int getX, int getY, Sauce name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getDisplayName());
         SauceDesigns sauceDesigns = new SauceDesigns(name);
-        SauceListeners sauceListeners = new SauceListeners(pizzaController, name);
+        SauceListeners sauceListeners = new SauceListeners(pizzaController, name, button);
 
         sauceDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
-        sauceListeners.setListeners(button);
+        sauceListeners.setListeners();
 
         return button;
     }

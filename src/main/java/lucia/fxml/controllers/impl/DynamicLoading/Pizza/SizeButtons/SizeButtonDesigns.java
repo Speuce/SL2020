@@ -1,35 +1,34 @@
-package main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.Sauce;
+package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.SizeButtons;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
-import main.java.lucia.client.content.menu.pizza.Sauce;
 
 /**
- * Design Manager for Sauce Selection in FXML
+ * Design Manager for Size Buttons in FXML
  */
-public class SauceDesigns {
-    private Sauce sauce; // information for the sauce
-    private SauceCoordinates sauceCoordinates; // information for the sauce coordinates
+public class SizeButtonDesigns {
+    private int button; // information for the button
+    private SizeButtonCoordinates sizeButtonCoordinates; // information for the button coordinates
     public String defaultStyleString; // for css
     public String hoveredStyleString;
     public String selectedStyleString;
 
-    public SauceDesigns(Sauce sauce) {
-        this.sauce = sauce;
-        sauceCoordinates = new SauceCoordinates();
+    public SizeButtonDesigns(int button) {
+        this.button = button;
+        sizeButtonCoordinates = new SizeButtonCoordinates();
 
-        defaultStyleString = "-fx-font-size: 30; -fx-background-color: #D3D3D3 " +
-                "; -fx-background-radius: 20; fx-border-radius: 20; -fx-text-alignment: center;" +
-                "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: white" +
-                "; -fx-font-family: 'Modern No. 20'";
-        hoveredStyleString = "-fx-font-size: 30; -fx-background-color: #2A2929" +
+        defaultStyleString = "-fx-font-size: 30; -fx-background-color: #400D0D" +
                 "; -fx-background-radius: 5; fx-border-radius: 20; -fx-text-alignment: center;" +
                 "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: white" +
-                "; -fx-font-family: 'Modern No. 20'";
-        selectedStyleString = "-fx-font-size: 30; -fx-background-color: #353535" +
+                "; -fx-font-family: Century";
+        hoveredStyleString = "-fx-font-size: 30; -fx-background-color: #401E1A" +
                 "; -fx-background-radius: 5; fx-border-radius: 20; -fx-text-alignment: center;" +
                 "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: white" +
-                "; -fx-font-family: 'Modern No. 20'";
+                "; -fx-font-family: Century";
+        selectedStyleString = "-fx-font-size: 30; -fx-background-color: #871406" +
+                "; -fx-background-radius: 5; fx-border-radius: 20; -fx-text-alignment: center;" +
+                "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: white" +
+                "; -fx-font-family: Century";
     }
 
     /**
@@ -42,10 +41,13 @@ public class SauceDesigns {
      */
     public JFXButton initButtonDesign(JFXButton button, int getX, int getY, int getSizeX, int getSizeY) {
         button.setCursor(Cursor.OPEN_HAND);
-        //button.setFont(Font.font("'Modern No. 20'"));
+        // button.setTextFill(Paint.valueOf("white")); //todo
+        // button.setFont(Font.font("Modern No. 20"));
         //button.getStyleClass().add("ToppingsDefault");
+
+        // String hex = "#" + Integer.toHexString(special.getButtonColor().getRGB()).substring(2).toUpperCase();
         button.setStyle(defaultStyleString);
-        //button.getStylesheets().add("..\\..\\..\\css\\main.css"); //todo
+
         button.setLayoutX(getX);
         button.setLayoutY(getY);
         button.setPrefSize(getSizeX, getSizeY);
@@ -79,4 +81,6 @@ public class SauceDesigns {
     public void setSelectedStyleString(String selectedStyleString) {
         this.selectedStyleString = selectedStyleString;
     }
+
 }
+

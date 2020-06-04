@@ -48,7 +48,7 @@ public abstract class AbstractItem{
      */
     private Descriptor itemDescriptor;
 
-    private Set<AppliedDiscount> appledDiscounts;
+    private final Set<AppliedDiscount> appledDiscounts;
 
 
 //    @Deprecated
@@ -92,7 +92,7 @@ public abstract class AbstractItem{
         this.appledDiscounts = new HashSet<>();
     }
 
-    public AbstractItem(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<Discount> appledDiscounts) {
+    public AbstractItem(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<AppliedDiscount> appledDiscounts) {
         this.rowNum = rowNum;
         this.displayName = displayName;
         this.name = name;
@@ -126,7 +126,7 @@ public abstract class AbstractItem{
         this.displayName = generateDisplayName();
         this.price = calculatePrice();
         this.discountedPrice = this.price;
-        return new Tuple<String, Long>(this.getName(), this.getPrice());
+        return new Tuple<>(this.getName(), this.getPrice());
     }
 
     /**

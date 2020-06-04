@@ -11,6 +11,12 @@ import java.util.Map;
 public class AppliedDiscount {
 
     /**
+     * row num, for server saving.
+     * Set by gson.
+     */
+    private final int rowNum;
+
+    /**
      * The discount that was applied
      */
     private final Discount applied;
@@ -26,6 +32,14 @@ public class AppliedDiscount {
     private final Map<String, Object> filledFields;
 
     public AppliedDiscount(Discount applied, int amtSaved, Map<String, Object> filledFields) {
+        this.applied = applied;
+        this.amtSaved = amtSaved;
+        rowNum = -1;
+        this.filledFields = filledFields;
+    }
+
+    public AppliedDiscount(int rowNum, Discount applied, int amtSaved, Map<String, Object> filledFields) {
+        this.rowNum = rowNum;
         this.applied = applied;
         this.amtSaved = amtSaved;
         this.filledFields = filledFields;
@@ -64,5 +78,12 @@ public class AppliedDiscount {
      */
     public void setAmtSaved(int amtSaved) {
         this.amtSaved = amtSaved;
+    }
+
+    /**
+     * row num, for server saving.
+     */
+    public int getRowNum() {
+        return rowNum;
     }
 }

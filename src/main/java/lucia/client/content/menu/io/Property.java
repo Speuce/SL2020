@@ -17,5 +17,10 @@ public class Property {
     PRICING = "pricingSchemes",
     REGULAR_SAUCE = "regularSauce",
     REGULAR_PIZZA = "regularPizza",
-    REGULAR_CRUST = "regularCrust";
+    REGULAR_CRUST = "regularCrust",
+    DISCOUNT = "discount",
+    DISCOUNT_AMT_SAVED = "amtSaved",
+    DISCOUNT_FIELDS = "discountFields",
+    TYPE = "type",
+    ROW_NUM = "rowNum";
 }

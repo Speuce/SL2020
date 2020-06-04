@@ -4,6 +4,7 @@ import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.discount.impl.amount.DiscountAmount;
+import main.java.lucia.client.content.order.discount.impl.fields.DiscountField;
 import main.java.lucia.client.content.order.discount.impl.items.AmountRequirement;
 import main.java.lucia.client.content.order.discount.impl.stacking.DiscountStacking;
 import main.java.lucia.client.content.order.discount.impl.times.DiscountTime;
@@ -13,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,7 +37,12 @@ public class CustomDiscount extends Discount{
     /**
      * Indicates when (date) this discount applies
      */
-    private Set<DiscountTime> time;
+    private final Set<DiscountTime> time;
+
+    /**
+     * The fields that must be filled in for this discount.
+     */
+    private final List<DiscountField> fields;
 
     /**
      * Indicates if this discount can be stacked with other discounts
@@ -55,11 +62,12 @@ public class CustomDiscount extends Discount{
     private boolean multiplies;
 
     public CustomDiscount(String name, int id, LinkedList<AmountRequirement> applicables,
-                          Set<DiscountTime> timeDay, DiscountStacking stacking,
+                          Set<DiscountTime> timeDay, List<DiscountField> field, DiscountStacking stacking,
                           DiscountAmount amount, boolean multiplies) {
         super(name, id);
         this.applicables = applicables;
         this.time = timeDay;
+        this.fields = field;
         this.stacking = stacking;
         this.amount = amount;
         this.multiplies = multiplies;
@@ -221,6 +229,10 @@ public class CustomDiscount extends Discount{
      */
     public DiscountAmount getAmount() {
         return amount;
+    }
+
+    public List<DiscountField> getFields() {
+        return fields;
     }
 
     /**

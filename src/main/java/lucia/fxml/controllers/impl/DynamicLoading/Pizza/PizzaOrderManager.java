@@ -2,14 +2,16 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza;
 
 import main.java.lucia.client.content.menu.item.descriptor.SizeableItemDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
+import main.java.lucia.client.content.menu.pizza.Crust;
 import main.java.lucia.client.content.menu.pizza.Pizza;
+import main.java.lucia.client.content.menu.pizza.Sauce;
 import main.java.lucia.client.content.menu.pizza.ToppingType;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Instance for the pizza order listeners
@@ -21,7 +23,7 @@ public class  PizzaOrderManager {
     /**
      * TOPPINGS instance
      */
-    public ArrayList<ToppingType> toppings;
+    public HashMap<ToppingType, Integer> toppings;
 
     /**
      * CURRENT pizza instance
@@ -49,6 +51,21 @@ public class  PizzaOrderManager {
     public int selectedSize;
 
     /**
+     * The selected crust
+     */
+    public Crust crustOption;
+
+    /**
+     * The selected sauce
+     */
+    public Sauce sauceOption;
+
+    /**
+     * Determines what the topping strength will be
+     */
+    public int easyToExtraOption;
+
+    /**
      * The current instance!
      */
     private static PizzaOrderManager pizzaOrderInstance;
@@ -62,12 +79,14 @@ public class  PizzaOrderManager {
 
 
     private PizzaOrderManager() {
-        toppings = new ArrayList<>();
+        toppings = new HashMap<>();
         currentPizza = null;
         currentSpecialPizza = null;
         madePizza = null;
         selectedSize = -1;
         secondHalf = null;
+        crustOption = null;
+        sauceOption = null;
     }
 
     /**
@@ -85,12 +104,14 @@ public class  PizzaOrderManager {
      * Creates a new instance
      */
     public void resetOrderManager() {
-        toppings = new ArrayList<>();
+        toppings = new HashMap<>();
         currentPizza = null;
         currentSpecialPizza = null;
         madePizza = null;
         selectedSize = -1;
         secondHalf = null;
+        crustOption = null;
+        sauceOption = null;
     }
 
     /**
@@ -103,6 +124,7 @@ public class  PizzaOrderManager {
             madePizza = (Pizza)currentPizza.getAsItem(selectedSize);
             setToppings(madePizza);
         }
+        setCrustSauceOptions();
 
         return madePizza;
     }
@@ -120,6 +142,7 @@ public class  PizzaOrderManager {
             setToppings(secondHalf);
             madePizza.setSecondHalf(secondHalf);
         }
+        setCrustSauceOptions();
 
         return madePizza;
     }
@@ -169,12 +192,24 @@ public class  PizzaOrderManager {
     private void setToppingsSpecial() {
         madePizza = currentSpecialPizza.getAsItem(selectedSize);
         if(!toppings.isEmpty()) {
-           for (ToppingType topping : toppings) {
+           for (ToppingType topping : toppings.keySet()) {
 //                if (!currentSpecialPizza.hasToppingType(topping)) {
-                    madePizza.addTopping(topping, 2); //TODO GET AMOUNT
+                    madePizza.addTopping(topping, toppings.get(topping)); //TODO GET AMOUNT
                 }
 //            }
        }
+    }
+
+    /**
+     * Sets the crust and sauce options if there are any
+     */
+    private void setCrustSauceOptions() {
+        if(crustOption != null) {
+            madePizza.setCrust(crustOption);
+        }
+        if(sauceOption != null) {
+            madePizza.setSauce(sauceOption);
+        }
     }
 
     /**
@@ -185,9 +220,9 @@ public class  PizzaOrderManager {
     private void setToppingsSpecialSecondHalf() {
         Pizza secondHalfPizza = (Pizza)secondHalf.getAsItem(selectedSize);
         if(!toppings.isEmpty()) {
-            for (ToppingType topping : toppings) {
+            for (ToppingType topping : toppings.keySet()) {
 //                if (!currentSpecialPizza.hasToppingType(topping)) {
-                secondHalfPizza.addTopping(topping, 2); //TODO GET AMOUNT
+                secondHalfPizza.addTopping(topping, toppings.get(topping)); //TODO GET AMOUNT
             }
 //            }
         }
@@ -201,12 +236,20 @@ public class  PizzaOrderManager {
      */
     private void setToppings(Pizza toBeMade) {
         if (!toppings.isEmpty()) {
-            for (ToppingType topping : toppings) {
+            for (ToppingType topping : toppings.keySet()) {
 //                if (currentPizza.hasToppingType(topping)) {
-                    toBeMade.addTopping(topping, 2); //todo get amnt
+                    toBeMade.addTopping(topping, toppings.get(topping)); //todo get amnt
                 }
 //            }
         }
+    }
+
+    /**
+     * Loads a pizza from the input
+     */
+    public void loadPizza(Pizza pizza) {
+        toppings.clear();
+     //   toppings.addAll(pizza.getAllToppingsOnPizza());
     }
 
     /**
@@ -257,15 +300,15 @@ public class  PizzaOrderManager {
         return currentSpecialPizza == null;
     }
 
-    /**
-     * Iterated through toppings list
-     *
-     * Meant for debug
-     */
-    public String printToppings() {
-        String s = "";
-        for (ToppingType topping : toppings)
-            s += topping.getShortName() + " | ";
-        return s;
-    }
+//    /**
+//     * Iterated through toppings list
+//     *
+//     * Meant for debug
+//     */
+//    public String printToppings() {
+//        String s = "";
+//        for (ToppingType topping : toppings.)
+//            s += topping.getShortName() + " | ";
+//        return s;
+//    }
 }

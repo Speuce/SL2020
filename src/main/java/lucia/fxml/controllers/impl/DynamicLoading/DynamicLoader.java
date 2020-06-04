@@ -92,4 +92,12 @@ public class DynamicLoader {
     public SizeButtonDynamicLoad getSizeButtonDynamicLoad() {
         return sizeButtonDynamicLoad;
     }
+
+    public CrustDynamicLoad getCrustDynamicLoad() {
+        return crustDynamicLoad;
+    }
+
+    public SauceDynamicLoad getSauceDynamicLoad() {
+        return sauceDynamicLoad;
+    }
 }

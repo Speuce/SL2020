@@ -86,7 +86,6 @@ public class SpecialListeners {
                 pizzaOrderManager.secondHalf = specialtyPizzaDescriptor;
                 // makes it the second half as well, wont be used unless its a half and half. Saves code.
 
-
                 setStyle(specialDesigns.getSelectedStyleString());
                 setSelectedToppings();
             }
@@ -96,7 +95,6 @@ public class SpecialListeners {
                 // makes it the second half as well, wont be used unless its a half and half. Saves code.
 
                 setStyle(specialDesigns.getDefaultStyleString());
-                System.out.println("REMOVED " + specialtyPizzaDescriptor.getBaseName() + " from Order");
                 DynamicLoader.dynamicLoaderInstance.getToppingDynamicLoad().clearSelectedButtons();
             } else {
                 pizzaOrderManager.currentSpecialPizza = specialtyPizzaDescriptor;
@@ -106,7 +104,6 @@ public class SpecialListeners {
                 DynamicLoader.dynamicLoaderInstance.getToppingDynamicLoad().clearSelectedButtons();
                 DynamicLoader.dynamicLoaderInstance.getSpecialDynamicLoad().clearSelectedButtons();
 
-                System.out.println("ADDED " + specialtyPizzaDescriptor.getBaseName() + " to Order");
                 setStyle(specialDesigns.getSelectedStyleString());
                 setSelectedToppings();
             }

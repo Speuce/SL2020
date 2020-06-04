@@ -240,6 +240,14 @@ public class PizzaController implements ParentController<PickupDeliveryPaneContr
     public void selectedExtra(MouseEvent event) {
         parent.setOptionPanesVisible(false);
         parent.changeGroupButton(event, extraPane, "ToppingsSelectedGreen");
+
+        if (Style.isEnabled(easy, "ToppingsSelectedGreen"))
+            pizzaOrderManager.easyToExtraOption = 1;
+        else if (Style.isEnabled(extra, "ToppingsSelectedGreen"))
+            pizzaOrderManager.easyToExtraOption = 3;
+        else if (Style.isEnabled(xextra, "ToppingsSelectedGreen"))
+            pizzaOrderManager.easyToExtraOption = 4;
+        else pizzaOrderManager.easyToExtraOption = 2;
     }
 
     /**

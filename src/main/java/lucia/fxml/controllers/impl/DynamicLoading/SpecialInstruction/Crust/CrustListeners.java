@@ -3,6 +3,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.pizza.Crust;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
@@ -68,15 +69,17 @@ public class CrustListeners {
      *  Implements with the Order System
      */
     private void crustClicked(int id) {
-        // add to order system
-   //     ToppingType type = new IDCaster<ToppingType>().cast(id);
-       // if(pizzaController.getCurrentPizza().hasToppingType(type)){
-            //add crust option
-      //  }else{
-            //remove crust option
-    //    }
-
-
+        if(pizzaOrderManager.crustOption == null) {
+            pizzaOrderManager.crustOption = name;
+            setStyle(crustDesigns.getSelectedStyleString());
+        }else if(name.equals(pizzaOrderManager.crustOption)) {
+            pizzaOrderManager.crustOption = null;
+            setStyle(crustDesigns.getDefaultStyleString());
+        } else {
+            DynamicLoader.dynamicLoaderInstance.getCrustDynamicLoad().clearSelectedButtons();
+            pizzaOrderManager.crustOption = name;
+            setStyle(crustDesigns.getSelectedStyleString());
+        }
     }
 
     /**
@@ -85,5 +88,13 @@ public class CrustListeners {
      */
     public void setStyle(String type) {
         button.setStyle(type);
+    }
+
+    /**
+     * ACCESSOR
+     * @return the crust
+     */
+    public Crust getCrust() {
+        return name;
     }
 }

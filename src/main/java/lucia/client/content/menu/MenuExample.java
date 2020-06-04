@@ -167,6 +167,7 @@ public class MenuExample {
         Pizza pizza = basePizza.getAsItem(selectedSize);
         //OR you can just do
         pizza = new Pizza(selectedSize);
+
         //But you should be aware that when doing the constructor way,
         //it will set it to a cheese pizza, and will call .getBasePizza for a pricing scheme.
 

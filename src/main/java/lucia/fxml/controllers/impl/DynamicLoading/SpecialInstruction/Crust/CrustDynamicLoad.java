@@ -5,6 +5,7 @@ import main.java.lucia.client.content.menu.pizza.Crust;
 import main.java.lucia.consts.FoodConstants.SpecialInstruction.CrustConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,8 @@ public class CrustDynamicLoad {
     private PizzaController pizzaController; // the instance of the pizzaController in order to control FXML methods
     CrustConstants crustConstants = new CrustConstants();
     CrustCoordinates cC = new CrustCoordinates();
+    CrustListeners crustListeners;
+    ArrayList<CrustListeners> crustListenerList = new ArrayList<>();
 
     // list for the crusts
     private List<Crust> crustList = crustConstants.getCrustList();
@@ -60,11 +63,22 @@ public class CrustDynamicLoad {
     private JFXButton createButton(int getX, int getY, Crust name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getDisplayName());
         CrustDesigns crustDesigns = new CrustDesigns(name);
-        CrustListeners crustListeners = new CrustListeners(pizzaController, name, button);
+        crustListeners = new CrustListeners(pizzaController, name, button);
+        crustListenerList.add(crustListeners);
 
         crustDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
         crustListeners.setListeners();
 
         return button;
+    }
+
+    /**
+     * Clears the selected buttons in the GUI
+     */
+    public void clearSelectedButtons() {
+        for(CrustListeners crustListeners : crustListenerList) {
+            CrustDesigns crustDesigns = new CrustDesigns(crustListeners.getCrust());
+            crustListeners.setStyle(crustDesigns.getDefaultStyleString());
+        }
     }
 }

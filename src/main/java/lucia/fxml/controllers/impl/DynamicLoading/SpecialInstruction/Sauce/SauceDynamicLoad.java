@@ -5,6 +5,7 @@ import main.java.lucia.client.content.menu.pizza.Sauce;
 import main.java.lucia.consts.FoodConstants.SpecialInstruction.SauceConstants;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,8 @@ public class SauceDynamicLoad {
     private PizzaController pizzaController; // the instance of the pizzaController in order to control FXML methods
     SauceConstants sauceConstants = new SauceConstants();
     SauceCoordinates sC = new SauceCoordinates();
+    SauceListeners sauceListeners;
+    ArrayList<SauceListeners> sauceListenerList = new ArrayList<>();
 
     // list for the sauces
     private List<Sauce> sauceList = sauceConstants.getSauceList();
@@ -60,11 +63,22 @@ public class SauceDynamicLoad {
     private JFXButton createButton(int getX, int getY, Sauce name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getDisplayName());
         SauceDesigns sauceDesigns = new SauceDesigns(name);
-        SauceListeners sauceListeners = new SauceListeners(pizzaController, name, button);
+        sauceListeners = new SauceListeners(pizzaController, name, button);
+        sauceListenerList.add(sauceListeners);
 
         sauceDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
         sauceListeners.setListeners();
 
         return button;
+    }
+
+    /**
+     * Clears the selected buttons in the GUI
+     */
+    public void clearSelectedButtons() {
+        for(SauceListeners sauceListeners : sauceListenerList) {
+            SauceDesigns sauceDesigns = new SauceDesigns(sauceListeners.getSauce());
+            sauceListeners.setStyle(sauceDesigns.getDefaultStyleString());
+        }
     }
 }

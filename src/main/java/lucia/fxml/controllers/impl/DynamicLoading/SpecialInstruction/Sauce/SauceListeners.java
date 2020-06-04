@@ -3,6 +3,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.SpecialInstruction.
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.pizza.Sauce;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.PizzaController;
 
@@ -68,15 +69,17 @@ public class SauceListeners {
      *  Implements with the Order System
      */
     private void sauceClicked(int id) {
-        // add to order system
-      //  ToppingType type = new IDCaster<ToppingType>().cast(id);
-        // if(pizzaController.getCurrentPizza().hasToppingType(type)){
-        //add crust option
-        //  }else{
-        //remove crust option
-        //    }
-
-
+        if(pizzaOrderManager.sauceOption == null) {
+            pizzaOrderManager.sauceOption = name;
+            setStyle(sauceDesigns.getSelectedStyleString());
+        }else if(name.equals(pizzaOrderManager.sauceOption)) {
+            pizzaOrderManager.sauceOption = null;
+            setStyle(sauceDesigns.getDefaultStyleString());
+        } else {
+            DynamicLoader.dynamicLoaderInstance.getSauceDynamicLoad().clearSelectedButtons();
+            pizzaOrderManager.sauceOption = name;
+            setStyle(sauceDesigns.getSelectedStyleString());
+        }
     }
 
     /**
@@ -85,6 +88,14 @@ public class SauceListeners {
      */
     public void setStyle(String type) {
         button.setStyle(type);
+    }
+
+    /**
+     * ACCESSOR
+     * @return the sauce
+     */
+    public Sauce getSauce() {
+        return name;
     }
 }
 

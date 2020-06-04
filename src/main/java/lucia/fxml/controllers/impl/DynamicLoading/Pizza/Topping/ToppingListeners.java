@@ -45,7 +45,7 @@ public class ToppingListeners {
         //   button.setStyle(dinnerModuleDesigns.g());
         pizzaController.parent.setOptionPanesVisible(false); // ensures the crust, sauce panes disappear
 
-        if(!button.getStyle().equalsIgnoreCase(toppingDesigns.getSelectedStyleString())) // if it is not selected!
+        if(!toppingDesigns.isSelectedStyleString(button)) // if it is not selected!
             setStyle(toppingDesigns.getHoveredStyleString());
     }
 
@@ -54,7 +54,7 @@ public class ToppingListeners {
      */
     public void deactivateHover(MouseEvent event) {
         //  button.setStyle(toppingDesigns.getDefaultStyleString());
-        if(!button.getStyle().equalsIgnoreCase(toppingDesigns.getSelectedStyleString())) // if it is not selected!
+        if(!toppingDesigns.isSelectedStyleString(button)) // if it is not selected!
             setStyle(toppingDesigns.getDefaultStyleString());
     }
 
@@ -78,14 +78,15 @@ public class ToppingListeners {
         //if(pizzaOrderManager.)
 
         if(theTopping.equals(toppingType)) {
-            if (pizzaOrderManager.currentPizza == null) {
-                pizzaOrderManager.toppings.add(toppingType);
-                setStyle(toppingDesigns.getSelectedStyleString());
-            } else if (pizzaOrderManager.toppings.contains(toppingType)) {
+            if (pizzaOrderManager.toppings.containsKey(toppingType)) {
                 pizzaOrderManager.toppings.remove(toppingType);
                 setStyle(toppingDesigns.getDefaultStyleString());
+            }
+            else if (pizzaOrderManager.currentPizza == null) {
+                pizzaOrderManager.toppings.put(toppingType, pizzaOrderManager.easyToExtraOption);
+                setStyle(toppingDesigns.getSelectedStyleString());
             } else {
-                pizzaOrderManager.toppings.add(toppingType);
+                pizzaOrderManager.toppings.put(toppingType, pizzaOrderManager.easyToExtraOption);
                 setStyle(toppingDesigns.getSelectedStyleString());
             }
         } else System.out.println("ERROR WHEN TOPPING CLICKED!");

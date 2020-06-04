@@ -1,9 +1,9 @@
 package main.java.lucia.client.content.order.discount.impl.amount;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
+import main.java.lucia.client.content.menu.item.type.ItemBundle;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class BundlePrice extends DiscountAmount{
     /**
      * The price/name of the given bundle
      */
-    private ItemBundleDescriptor bundleDescriptor;
+    private final ItemBundleDescriptor bundleDescriptor;
 
     public BundlePrice(ItemBundleDescriptor bundleDescriptor) {
         this.bundleDescriptor = bundleDescriptor;
@@ -34,7 +34,7 @@ public class BundlePrice extends DiscountAmount{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(CustomDiscount o, Set<Item> list, ItemList order) {
+    public long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
         order.getItems().removeAll(list);
         ItemBundle b = new ItemBundle(bundleDescriptor, new ArrayList<>(list));

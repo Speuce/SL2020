@@ -3,6 +3,8 @@ package main.java.lucia.client.content.order.discount;
 import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.client.content.order.Order;
 
+import java.util.Map;
+
 /**
  * Object representing a discount on an order
  * @author Matt Kwiatkowski
@@ -30,15 +32,16 @@ public abstract class Discount extends IDAble {
     /**
      * Calculates the total discount amount for an Order
      * @param p the order to get the total discount amount of.
+     * @param fields the filled fields of the discount
      * @return the total amount saved by this discount
      */
-    public abstract long calcDiscount(Order p);
+    public abstract long calcDiscount(Order p, Map<String, Object> fields);
 
     /**
      * Applies the discount to the given order
      * @param p the order to apply this discount to.
      */
-    public abstract void applyDiscount(Order p);
+    public abstract void applyDiscount(Order p, Map<String, Object> fields);
 
     public String getName() {
         return name;

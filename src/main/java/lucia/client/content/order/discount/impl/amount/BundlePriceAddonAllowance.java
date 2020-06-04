@@ -1,12 +1,12 @@
 package main.java.lucia.client.content.order.discount.impl.amount;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
 import main.java.lucia.client.content.menu.item.type.Addon;
+import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
      * The maximum amount that the bundle can have spent on addons
      * before addons are charged extra.
      */
-    private long addonAllowance;
+    private final long addonAllowance;
 
     public BundlePriceAddonAllowance(ItemBundleDescriptor bundleDescriptor
             ,long toppingAllowance,long addonAllowance) {
@@ -42,7 +42,7 @@ public class BundlePriceAddonAllowance extends BundlePriceToppingAllowance{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(CustomDiscount o, Set<Item> list, ItemList order) {
+    public long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
         long allowanceLeft = addonAllowance;
         long pizzaAllowance = getToppingAllowance();

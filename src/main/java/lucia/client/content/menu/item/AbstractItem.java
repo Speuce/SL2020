@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.utils.Tuple;
 
 import java.util.HashSet;
@@ -47,7 +48,7 @@ public abstract class AbstractItem{
      */
     private Descriptor itemDescriptor;
 
-    private Set<Discount> appledDiscounts;
+    private Set<AppliedDiscount> appledDiscounts;
 
 
 //    @Deprecated
@@ -208,7 +209,7 @@ public abstract class AbstractItem{
 
     }
 
-    public Set<Discount> getAppledDiscounts() {
+    public Set<AppliedDiscount> getAppledDiscounts() {
         return appledDiscounts;
     }
 }

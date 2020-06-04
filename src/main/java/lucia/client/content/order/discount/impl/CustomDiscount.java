@@ -1,5 +1,6 @@
 package main.java.lucia.client.content.order.discount.impl;
 
+import main.java.lucia.Client;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
@@ -12,10 +13,7 @@ import main.java.lucia.client.content.order.impl.ItemList;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * A Discount that can be customized
@@ -162,7 +160,11 @@ public class CustomDiscount extends Discount{
      * @param p the order to apply this discount to.
      */
     @Override
-    public void applyDiscount(Order p) {
+    public void applyDiscount(Order p, Map<String, Object> fields) {
+        //precondition: all fields are filled.
+        if(!verifyFields(fields)){
+            return;
+        }
         //precondition: the order is actually eligible for the discount
         assert(isDiscountEligible(p));
         Set<Item> items = getStackableItems(p);
@@ -183,6 +185,20 @@ public class CustomDiscount extends Discount{
             cont = multiplies;
             amount.applyDiscount(this, bundle, p);
         }
+    }
+
+    /**
+     * Verify that all required fields are filled.
+     * @param filledField the map of field label:value pairs.
+     */
+    private boolean verifyFields(Map<String, Object> filledField){
+        for(DiscountField f: this.fields){
+            if(!filledField.containsKey(f.getLabel())){
+                Client.logger.error("Could not find a field entry for field " + f.getLabel() + " in discount: " + this.getName());
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

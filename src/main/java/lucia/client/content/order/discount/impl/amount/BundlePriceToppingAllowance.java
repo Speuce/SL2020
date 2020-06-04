@@ -1,10 +1,10 @@
 package main.java.lucia.client.content.order.discount.impl.amount;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
+import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class BundlePriceToppingAllowance extends BundlePrice {
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public long applyDiscount(CustomDiscount o, Set<Item> list, ItemList order) {
+    public long applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
         //create the bundle
         long allowanceLeft = toppingAllowance;
         order.getItems().removeAll(list);

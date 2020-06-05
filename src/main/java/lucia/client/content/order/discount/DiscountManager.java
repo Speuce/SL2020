@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import main.java.lucia.Client;
 import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.discount.io.DiscountGson;
+import main.java.lucia.client.content.utils.IDManager;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.io.File;
@@ -42,8 +43,11 @@ public class DiscountManager {
             JsonArray arr = parser.parse(r).getAsJsonArray();
             loadedCustomDiscounts.clear();
 
+            CustomDiscount curr;
             for(JsonElement e: arr){
-                loadedCustomDiscounts.add(DiscountGson.DISCOUNT_GSON.fromJson(e, CustomDiscount.class));
+                curr = DiscountGson.DISCOUNT_GSON.fromJson(e, CustomDiscount.class);
+                IDManager.instance.addMapping(curr);
+                loadedCustomDiscounts.add(curr);
             }
 
             Client.logger.info("Successfully loaded: " + loadedCustomDiscounts.size() + " custom discounts!");

@@ -49,7 +49,7 @@ public class IDManager {
         }
         return null;
     }
-    
+
     /**
      * Increments the next available id, returns it
      */

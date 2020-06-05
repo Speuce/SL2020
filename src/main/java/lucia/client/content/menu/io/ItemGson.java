@@ -16,6 +16,9 @@ import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.io.deserializer.AppliedDiscountDeserializer;
+import main.java.lucia.client.content.order.discount.io.serializer.AppliedDiscountSerializer;
 import main.java.lucia.client.content.order.io.deserializer.ListOfItemsDeserializer;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 import main.java.lucia.client.content.time.io.TimeGson;
@@ -53,6 +56,8 @@ public class ItemGson {
         builder.registerTypeAdapter(ItemModifiable.class, new ItemModifiableSerializer());
         builder.registerTypeAdapter(ItemBundle.class, new ItemBundleSerializer());
         builder.registerTypeAdapter(ItemBundle.class, new ItemBundleDeserializer());
+        builder.registerTypeAdapter(AppliedDiscount.class, new AppliedDiscountSerializer());
+        builder.registerTypeAdapter(AppliedDiscount.class, new AppliedDiscountDeserializer());
 
 
         return builder.create();

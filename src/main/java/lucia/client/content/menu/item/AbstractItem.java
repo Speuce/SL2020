@@ -2,8 +2,8 @@ package main.java.lucia.client.content.menu.item;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import main.java.lucia.client.content.menu.io.ItemGson;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.utils.Tuple;
 
@@ -203,7 +203,7 @@ public abstract class AbstractItem{
 
         //add applied discounts
         JsonArray discounts = new JsonArray();
-        appledDiscounts.forEach(d -> discounts.add(d.getId()));
+        appledDiscounts.forEach(d -> discounts.add(ItemGson.ITEM_GSON.toJsonTree(d)));
         o.add("appliedDiscounts", discounts);
 
 

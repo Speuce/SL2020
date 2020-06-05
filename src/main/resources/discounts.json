@@ -1,0 +1,41 @@
+[
+  {
+    "applicables": [
+      {
+        "subject": {
+          "type": "RequireANY"
+        },
+        "amt": 1
+      }
+    ],
+    "time": [
+      {
+        "type": "TimeEveryDay"
+      }
+    ],
+    "fields": [
+      {
+        "label": "Name",
+        "type": "TEXT"
+      },
+      {
+        "label": "CAA Number",
+        "type": "NUMBER"
+      },
+      {
+        "label": "Expiry Date",
+        "type": "TIME"
+      }
+    ],
+    "stacking": {
+      "stackableDiscounts": []
+    },
+    "amount": {
+      "type": "PercentageOff",
+      "percent": 0.1
+    },
+    "multiplies": true,
+    "name": "caa",
+    "id": 101
+  }
+]

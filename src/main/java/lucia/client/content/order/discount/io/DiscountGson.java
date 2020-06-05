@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import main.java.lucia.client.content.order.discount.impl.amount.*;
 import main.java.lucia.client.content.order.discount.impl.items.*;
+import main.java.lucia.client.content.order.discount.impl.times.*;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 import main.java.lucia.util.gson.RuntimeTypeAdapterFactory;
 
@@ -26,7 +27,7 @@ public class DiscountGson {
         GsonTypeFactory.addExclusionPolicy(b);
         b.registerTypeAdapterFactory(getPriceAdapter());
         b.registerTypeAdapterFactory(getItemAdapter());
-
+        b.registerTypeAdapterFactory(getTimeAdapter());
 
         return b.create();
     }
@@ -53,5 +54,15 @@ public class DiscountGson {
                 .registerSubtype(RequirePizzaSize.class)
                 .registerSubtype(RequireSimpleItem.class)
                 .registerSubtype(RequireSpecialtyPizza.class);
+    }
+
+    private static RuntimeTypeAdapterFactory<DiscountTime> getTimeAdapter(){
+        return RuntimeTypeAdapterFactory.of(DiscountTime.class)
+                .registerSubtype(TimeDaysPerWeek.class)
+                .registerSubtype(TimeEveryDay.class)
+                .registerSubtype(TimeHourRange.class)
+                .registerSubtype(TimeRange.class)
+                .registerSubtype(TimeSpecificDatesAndTimes.class)
+                .registerSubtype(TimeSpecifiedDays.class);
     }
 }

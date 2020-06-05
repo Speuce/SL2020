@@ -7,7 +7,6 @@ import main.java.lucia.Client;
 import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.discount.io.DiscountGson;
 import main.java.lucia.client.content.utils.IDManager;
-import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
 import java.io.File;
 import java.io.FileReader;
@@ -70,7 +69,7 @@ public class DiscountManager {
         }
         try {
             FileWriter r = new FileWriter(discountDef);
-            GsonTypeFactory.BASIC_GSON.toJson(arr, r);
+            DiscountGson.DISCOUNT_GSON.toJson(arr, r);
             r.close();
         } catch (IOException e) {
             e.printStackTrace();

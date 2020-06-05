@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.menu.item;
 
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 
 import java.util.Set;
 
@@ -19,7 +19,7 @@ public abstract class Item extends AbstractItem implements Comparable<Item> {
         super(name, n);
     }
 
-    public Item(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<Discount> appliedDiscounts) {
+    public Item(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<AppliedDiscount> appliedDiscounts) {
         super(rowNum,displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
     }
 

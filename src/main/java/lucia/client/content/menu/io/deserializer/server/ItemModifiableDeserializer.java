@@ -5,7 +5,7 @@ import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
 import main.java.lucia.client.content.menu.item.type.Addon;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
-import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.utils.SerializationUtils;
 
@@ -53,7 +53,7 @@ public class ItemModifiableDeserializer implements JsonDeserializer<ItemModifiab
                 addons.add(curr.getAsItem(ent.getValue().getAsInt()));
             }
         }
-        Set<Discount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
+        Set<AppliedDiscount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
         return new ItemModifiable(rowNum, displayName, name, price, discountedPrice, desc, appliedDiscounts, addons);
     }
 }

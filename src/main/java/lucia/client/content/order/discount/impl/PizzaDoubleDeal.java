@@ -108,7 +108,7 @@ public class PizzaDoubleDeal extends Discount {
      * @param p the order to apply this discount to.
      */
     @Override
-    public void applyDiscount(Order p) {
+    public void applyDiscount(Order p, Map<String, Object> mapa) {
         Queue<Pizza> pizzaSorted = getEligiblePizzasSorted(p);
         //Take out groups of two, calc discount price on that
         Pizza p1 = pizzaSorted.poll(); // the more expensive of the pair (will NOT be discounted)

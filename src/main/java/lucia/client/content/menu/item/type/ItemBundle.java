@@ -8,7 +8,7 @@ import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
-import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,7 +44,7 @@ public class ItemBundle extends Item implements Iterable<Item>{
     }
 
     public ItemBundle(int rowNum, String displayName, String name, long price, long discountedPrice,
-                      ItemBundleDescriptor itemDescriptor, Set<Discount> appliedDiscounts, List<Item> items) {
+                      ItemBundleDescriptor itemDescriptor, Set<AppliedDiscount> appliedDiscounts, List<Item> items) {
         super(rowNum, displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
         this.items = items;
     }

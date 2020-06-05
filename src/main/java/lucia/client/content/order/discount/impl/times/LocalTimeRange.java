@@ -12,7 +12,8 @@ public class LocalTimeRange {
     /**
      * The times defining the range, respectively.
      */
-    private LocalTime from, to;
+    private final LocalTime from;
+    private final LocalTime to;
 
     public LocalTimeRange(LocalTime from, LocalTime to) {
         this.from = from;

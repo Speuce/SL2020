@@ -17,9 +17,7 @@ import main.java.lucia.client.content.order.discount.impl.times.TimeEveryDay;
 import main.java.lucia.client.content.order.test.ItemListPrinter;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Quick class for testing discounts, ensuring that they work
@@ -52,7 +50,7 @@ public class DiscountTest {
         System.out.println("Order before discount: ");
         p.printList(o1, System.out);
         if(d1.isDiscountEligible(o1)){
-            d1.applyDiscount(o1);
+            d1.applyDiscount(o1, new HashMap<>());
         }else{
             System.out.println("ORDER NOT DISCOUNT ELGIBLE!!");
         }
@@ -72,7 +70,7 @@ public class DiscountTest {
         System.out.println("Order before discount: ");
         p.printList(o1, System.out);
         if(d1.isDiscountEligible(o1)){
-            d1.applyDiscount(o1);
+            d1.applyDiscount(o1, new HashMap<>());
         }else{
             System.out.println("ORDER NOT DISCOUNT ELGIBLE!!");
         }
@@ -116,7 +114,7 @@ public class DiscountTest {
         Set<DiscountTime> time = new HashSet<>();
         time.add(getEveryDay());
         return new CustomDiscount("test1", 2, lis,
-                time, new DiscountStacking(),get10PercentOff(), true);
+                time,new ArrayList<>(), new DiscountStacking(),get10PercentOff(), true);
     }
 
     /**
@@ -129,7 +127,7 @@ public class DiscountTest {
         Set<DiscountTime> time = new HashSet<>();
         time.add(getEveryDay());
         return new CustomDiscount("test2", 3, lis,
-                time, new DiscountStacking(),getBundlePrice(), true);
+                time,new ArrayList<>(), new DiscountStacking(),getBundlePrice(), true);
     }
 
 

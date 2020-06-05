@@ -2,7 +2,8 @@ package main.java.lucia.client.content.utils;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.menu.io.ItemGson;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,17 +19,12 @@ public class SerializationUtils {
      * @param o the jsonobject to look in
      * @return the discount set found
      */
-    public static Set<Discount> getAppliedDiscounts(JsonObject o){
-        Set<Discount> appliedDiscounts = new HashSet<>();
-        int id;
-        IDCaster<Discount> discountCaster = new IDCaster<>();
-        Discount curr;
+    public static Set<AppliedDiscount> getAppliedDiscounts(JsonObject o){
+        Set<AppliedDiscount> appliedDiscounts = new HashSet<>();
+        AppliedDiscount curr;
         for(JsonElement e: o.getAsJsonArray("appliedDiscounts")){
-            id = e.getAsInt();
-            curr = discountCaster.cast(id);
-            if(curr != null){
-                appliedDiscounts.add(curr);
-            }
+            curr = ItemGson.ITEM_GSON.fromJson(e, AppliedDiscount.class);
+            appliedDiscounts.add(curr);
         }
         return appliedDiscounts;
     }

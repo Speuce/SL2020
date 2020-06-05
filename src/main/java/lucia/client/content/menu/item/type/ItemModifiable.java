@@ -6,7 +6,7 @@ import main.java.lucia.client.content.menu.io.MenuJsonConstants;
 import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescriptor;
-import main.java.lucia.client.content.order.discount.Discount;
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class ItemModifiable extends Item {
     }
 
     public ItemModifiable(int rowNum, String displayName, String name, long price, long discountedPrice,
-                          ItemModifiableDescriptor itemDescriptor, Set<Discount> appliedDiscounts,
+                          ItemModifiableDescriptor itemDescriptor, Set<AppliedDiscount> appliedDiscounts,
                           List<Addon> addonList) {
         super(rowNum, displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
         this.addonList = addonList;

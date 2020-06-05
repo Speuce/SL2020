@@ -2,6 +2,7 @@ package main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTimePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ import main.java.lucia.fxml.utils.BlinkUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * The controller for the preorder time pane
@@ -27,19 +29,14 @@ public class PreorderTimeSelectPaneController {
     private JFXDatePicker calendarPreorder;
 
     @FXML
-    private JFXComboBox<Integer> comboBoxTimeHour;
-
-    @FXML
-    private JFXComboBox<Integer> comboBoxTimeMin;
-
-    @FXML
-    private JFXComboBox<String> comboBoxTimeAMPM;
-
-    @FXML
     private JFXComboBox<PaymentType> paymentMethodPreorder;
 
     @FXML
     private Label errorLabelPreorder;
+
+    @FXML
+    private JFXTimePicker timePicker;
+
 
     /**
      * The return value interface for selections made here.
@@ -48,31 +45,11 @@ public class PreorderTimeSelectPaneController {
 
     @FXML
     private void initialize(){
-        for(int i = 1; i <= 12; i++){
-            comboBoxTimeHour.getItems().add(i);
-        }
-        for(int i = 0; i<=60; i+= 5){
-            comboBoxTimeMin.getItems().add(i);
-        }
-        comboBoxTimeAMPM.getItems().add("AM");
-        comboBoxTimeAMPM.getItems().add("PM");
-
         paymentMethodPreorder.getItems().addAll(PaymentType.values());
     }
 
     public void setParent(PreorderInterface parent) {
         this.parent = parent;
-    }
-
-    /**
-     * Resets fields in pane
-     */
-    public void reset(){
-        calendarPreorder.setValue(LocalDate.now());
-        comboBoxTimeHour.setValue(null);
-        comboBoxTimeAMPM.setValue("PM");
-        comboBoxTimeMin.setValue(null);
-        paymentMethodPreorder.setValue(null);
     }
 
     /**
@@ -82,13 +59,7 @@ public class PreorderTimeSelectPaneController {
     public void setForOrder(Order o){
         LocalDateTime time = o.getOrderTime().toLocalDate();
         calendarPreorder.setValue(time.toLocalDate());
-        comboBoxTimeHour.setValue(time.getHour()%12);
-        comboBoxTimeMin.setValue(time.getMinute());
-        if(time.getHour() >= 12){
-            comboBoxTimeAMPM.setValue("PM");
-        }else{
-            comboBoxTimeAMPM.setValue("AM");
-        }
+        timePicker.setValue(time.toLocalTime());
         paymentMethodPreorder.setValue(o.getPaymentType());
     }
 
@@ -111,16 +82,8 @@ public class PreorderTimeSelectPaneController {
      */
     private LocalDateTime readDateTime(){
         LocalDate date = calendarPreorder.getValue();
-        int hour = comboBoxTimeHour.getValue();
-        int min = comboBoxTimeMin.getValue();
-        if(comboBoxTimeAMPM.getValue().equals("PM")){
-            if(hour != 12){
-                hour += 12;
-            }
-        }else if(hour == 12){
-            hour = 0;
-        }
-        return date.atTime(hour, min);
+        LocalTime time = timePicker.getValue();
+        return date.atTime(time);
     }
 
     /**
@@ -132,16 +95,8 @@ public class PreorderTimeSelectPaneController {
             BlinkUtils.wrong(paymentMethodPreorder);
             return false;
         }
-        if(comboBoxTimeHour.getValue() == null){
-            BlinkUtils.wrong(comboBoxTimeHour);
-            return false;
-        }
-        if(comboBoxTimeMin.getValue() == null){
-            BlinkUtils.wrong(comboBoxTimeMin);
-            return false;
-        }
-        if(comboBoxTimeAMPM.getValue() == null){
-            BlinkUtils.wrong(comboBoxTimeAMPM);
+        if(timePicker.getValue() == null){
+            BlinkUtils.wrong(timePicker);
             return false;
         }
         if(calendarPreorder.getValue() == null){

@@ -2,7 +2,7 @@ package main.java.lucia.client.content.utils;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Maintains a map of all {@link IDAble} objects, used for ID casting.
@@ -21,7 +21,7 @@ public class IDManager {
     /**
      * Provides mappings of IDAble objects.
      */
-    private ArrayList<IDAble> map = new ArrayList<>();
+    private Map<Integer, IDAble> map;
 
     /**
      * The Next available id
@@ -34,13 +34,8 @@ public class IDManager {
      */
     public void addMapping(IDAble idAble){
         int id = idAble.getId();
-        if(nextAvailID <= id){
-            nextAvailID = id;
-        }
-        if(map.size() < id+1){
-            addItems(id - map.size()+1);
-        }
-        map.set(id, idAble);
+        nextAvailID = Math.max(nextAvailID, id+1);
+        map.put(id, idAble);
     }
 
     /**
@@ -54,16 +49,7 @@ public class IDManager {
         }
         return null;
     }
-
-    /**
-     * Adds x null entries into the list
-     */
-    private void addItems(int x){
-        for(int i = 0; i < x; i++){
-            map.add(null);
-        }
-    }
-
+    
     /**
      * Increments the next available id, returns it
      */

@@ -733,7 +733,7 @@
         "price": 475,
         "baseName": "Meatballs",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6001
@@ -744,7 +744,7 @@
         "price": 495,
         "baseName": "Chicken",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6002
@@ -755,7 +755,7 @@
         "price": 495,
         "baseName": "Shrimp",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6003
@@ -766,7 +766,7 @@
         "price": 250,
         "baseName": "Cheese Toast Upgrade",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6004
@@ -777,7 +777,7 @@
         "price": 250,
         "baseName": "Mushroom",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6005
@@ -788,7 +788,7 @@
         "price": 400,
         "baseName": "Poutine Upgrade",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6006
@@ -799,7 +799,7 @@
         "price": 0,
         "baseName": "Starter Caesar Salad",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6007
@@ -810,7 +810,7 @@
         "price": 0,
         "baseName": "Coleslaw",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6008
@@ -821,7 +821,7 @@
         "price": 0,
         "baseName": "Small Fett Alfredo",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6009
@@ -832,7 +832,7 @@
         "price": 0,
         "baseName": "Alfredo Sauce",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6010
@@ -843,7 +843,7 @@
         "price": 0,
         "baseName": "Garlic Toast",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 6011
@@ -854,7 +854,7 @@
         "price": 0,
         "baseName": "Mustard",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7001
@@ -865,7 +865,7 @@
         "price": 0,
         "baseName": "Mayo",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7002
@@ -876,7 +876,7 @@
         "price": 0,
         "baseName": "Hot",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7003
@@ -887,7 +887,7 @@
         "price": 0,
         "baseName": "BBQ",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7004
@@ -898,7 +898,7 @@
         "price": 0,
         "baseName": "Marinara",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7005
@@ -909,7 +909,7 @@
         "price": 0,
         "baseName": "Honey Dill",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7006
@@ -920,7 +920,7 @@
         "price": 0,
         "baseName": "Honey Mustard",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7007
@@ -931,7 +931,7 @@
         "price": 0,
         "baseName": "Sweet Chili",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7008
@@ -942,7 +942,7 @@
         "price": 0,
         "baseName": "Caesar Dressing",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7009
@@ -953,7 +953,7 @@
         "price": 0,
         "baseName": "Greek Dressing",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7010
@@ -964,7 +964,7 @@
         "price": 0,
         "baseName": "Ranch Dressing",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7011
@@ -975,7 +975,7 @@
         "price": 0,
         "baseName": "Rasp. Vin",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7012
@@ -986,7 +986,7 @@
         "price": 0,
         "baseName": "Suicidal",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7013
@@ -997,7 +997,7 @@
         "price": 0,
         "baseName": "Fire",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7014
@@ -1008,7 +1008,7 @@
         "price": 0,
         "baseName": "Spicy Caesar",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7015
@@ -1019,7 +1019,7 @@
         "price": 0,
         "baseName": "Cajun",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7016
@@ -1030,7 +1030,7 @@
         "price": 0,
         "baseName": "Parmesan",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7017
@@ -1041,7 +1041,7 @@
         "price": 0,
         "baseName": "Chili Flakes",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7018
@@ -1052,7 +1052,7 @@
         "price": 0,
         "baseName": "Honey Garlic",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7019
@@ -1063,7 +1063,7 @@
         "price": 0,
         "baseName": "Meatsauce",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7020
@@ -1074,7 +1074,7 @@
         "price": 0,
         "baseName": "1000 isl. Dressing",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7021
@@ -1085,7 +1085,7 @@
         "price": 0,
         "baseName": "Italian Dressing",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7022
@@ -1096,7 +1096,7 @@
         "price": 0,
         "baseName": "Sour Cream",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7023
@@ -1107,7 +1107,7 @@
         "price": 0,
         "baseName": "Pineapple Curry",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7024
@@ -1118,7 +1118,7 @@
         "price": 0,
         "baseName": "Tzatziki",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7025
@@ -1129,7 +1129,7 @@
         "price": 0,
         "baseName": "Salt & Pepper",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7026
@@ -1140,7 +1140,7 @@
         "price": 0,
         "baseName": "Red Onion",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7027
@@ -1151,7 +1151,7 @@
         "price": 0,
         "baseName": "Feta",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7028
@@ -1162,7 +1162,7 @@
         "price": 0,
         "baseName": "Olives",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7029
@@ -1173,7 +1173,7 @@
         "price": 0,
         "baseName": "Croutons",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 7030
@@ -1184,7 +1184,7 @@
         "price": 0,
         "baseName": "Extra Dip",
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "id": 1
@@ -1820,7 +1820,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -1850,7 +1850,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -1880,7 +1880,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -1902,7 +1902,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -1936,7 +1936,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -1962,7 +1962,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -1992,7 +1992,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2018,7 +2018,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2048,7 +2048,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2078,7 +2078,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2108,7 +2108,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2138,7 +2138,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2164,7 +2164,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2190,7 +2190,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2224,7 +2224,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []
@@ -2254,7 +2254,7 @@
           }
         ],
         "defaultColor": "#003300",
-        "selectedColor": "#377a31",
+        "selectedColor": "#377A31",
         "hoverColor": "#1a3416",
         "textColor": "#FFFFFF",
         "specialInstructions": []

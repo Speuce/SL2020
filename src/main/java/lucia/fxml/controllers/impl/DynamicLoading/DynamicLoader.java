@@ -100,4 +100,10 @@ public class DynamicLoader {
     public SauceDynamicLoad getSauceDynamicLoad() {
         return sauceDynamicLoad;
     }
+
+    public DinnerDynamicLoad getDinnerDynamicLoad() {
+        return dinnerDynamicLoad;
+    }
+
+
 }

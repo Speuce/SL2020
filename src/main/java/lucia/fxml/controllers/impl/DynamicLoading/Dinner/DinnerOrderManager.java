@@ -74,9 +74,10 @@ public class DinnerOrderManager {
      * For purpose if when 'Make' is clicked
      */
     private void setItemModifiableAddons() {
-        if(!addons.isEmpty())
-          for (AddonDescriptor addon : addons) {
-             itemModifiable.addAddon(addon.getAsItem());
-           }
+        if(!addons.isEmpty()) {
+            for (AddonDescriptor addon : addons) {
+                itemModifiable.addAddon(addon.getAsItem());
+            }
+        }
     }
 }

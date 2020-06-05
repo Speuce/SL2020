@@ -39,17 +39,21 @@ public class SidesListeners {
     }
 
     /**
-     * Event Handler for when the button is hovered into
+     *  Event Handler for when the button is hovered into
      */
     public void activateHover(MouseEvent event) {
-        button.setStyle(sidesDesigns.getHoveredStyleString());
+        //   button.setStyle(dinnerModuleDesigns.g());
+        if(!button.getStyle().equalsIgnoreCase(sidesDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(sidesDesigns.getHoveredStyleString());
     }
 
     /**
-     * Event Handler for when the button is hovered out of
+     *  Event Handler for when the button is hovered out of
      */
     public void deactivateHover(MouseEvent event) {
-        button.setStyle(sidesDesigns.getDefaultStyleString());
+        //  button.setStyle(toppingDesigns.getDefaultStyleString());
+        if(!button.getStyle().equalsIgnoreCase(sidesDesigns.getSelectedStyleString())) // if it is not selected!
+            setStyle(sidesDesigns.getDefaultStyleString());
     }
 
     /**
@@ -64,22 +68,43 @@ public class SidesListeners {
     /**
      * Implements with the Order System
      */
-    private void sideClicked(int id) {
+    public void sideClicked(int id) {
         DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
         Menu menuInstance = Menu.get;
 
-        if (dinnerOrderManager.addons.contains(addonDescriptor)) {
-            dinnerOrderManager.addons.remove(addonDescriptor);
-            System.out.println("Removed " + addonDescriptor.getBaseName() + " to addons");
+        if(dinnerOrderManager.addons.isEmpty()) {
+            if (addonDescriptor.equals(menuInstance.getItemFromId(id))) {
+                dinnerOrderManager.addons.add(addonDescriptor);
 
-            button.setStyle(sidesDesigns.getDefaultStyleString());
+                setStyle(sidesDesigns.getSelectedStyleString());
+
+            } else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
+        } else if (dinnerOrderManager.addons.contains(addonDescriptor)) {
+            dinnerOrderManager.addons.remove(addonDescriptor);
+
+            setStyle(sidesDesigns.getDefaultStyleString());
         } else {
             if (addonDescriptor.equals(menuInstance.getItemFromId(id))) {
                 dinnerOrderManager.addons.add(addonDescriptor);
-                System.out.println("Added " + addonDescriptor.getBaseName() + " to addons");
 
-                button.setStyle(sidesDesigns.getSelectedStyleString());
+                setStyle(sidesDesigns.getSelectedStyleString());
             } else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
         }
+    }
+
+    /**
+     * Sets the style of the current button
+     *
+     * @param type the style to be changed to
+     */
+    public void setStyle(String type) {
+        button.setStyle(type);
+    }
+
+    /**
+     * GETTERS
+     */
+    public AddonDescriptor getItem() {
+        return addonDescriptor;
     }
 }

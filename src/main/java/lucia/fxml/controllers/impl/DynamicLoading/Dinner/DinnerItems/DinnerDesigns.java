@@ -20,17 +20,17 @@ public class DinnerDesigns {
         this.item = item;
         toppingCoordinates = new ToppingCoordinates();
 
-        defaultStyleString = "-fx-font-size: 30; -fx-background-color: " + item.getDefaultColor() +
+        defaultStyleString = "-fx-font-size: 25; -fx-background-color: " + item.getDefaultColor() +
                 "; -fx-background-radius: 5; fx-border-radius: 20; -fx-text-alignment: center;" +
-                "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: " + item.getTextColor() +
+                "-fx-alignment: center; -fx-font-size: 25; -fx-text-fill: " + item.getTextColor() +
                 "; -fx-font-family: 'Modern No. 20'";
-        hoveredStyleString = "-fx-font-size: 30; -fx-background-color: " + item.getHoverColor() +
+        hoveredStyleString = "-fx-font-size: 25; -fx-background-color: " + item.getHoverColor() +
                 "; -fx-background-radius: 5; fx-border-radius: 20; -fx-text-alignment: center;" +
-                "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: " + item.getTextColor() +
+                "-fx-alignment: center; -fx-font-size: 25; -fx-text-fill: " + item.getTextColor() +
                 "; -fx-font-family: 'Modern No. 20'";
-        selectedStyleString = "-fx-font-size: 30; -fx-background-color: " + item.getSelectedColor() +
+        selectedStyleString = "-fx-font-size: 25; -fx-background-color: " + item.getSelectedColor() +
                 "; -fx-background-radius: 5; fx-border-radius: 20; -fx-text-alignment: center;" +
-                "-fx-alignment: center; -fx-font-size: 30; -fx-text-fill: " + item.getTextColor() +
+                "-fx-alignment: center; -fx-font-size: 25; -fx-text-fill: " + item.getTextColor() +
                 "; -fx-font-family: 'Modern No. 20'";
     }
 
@@ -44,6 +44,7 @@ public class DinnerDesigns {
      */
     public JFXButton initButtonDesign(JFXButton button, int getX, int getY, int getSizeX, int getSizeY) {
         button.setCursor(Cursor.OPEN_HAND);
+        button.setWrapText(true);
 //        button.setTextFill(Paint.valueOf("white")); //todo
 //        button.setFont(Font.font("Modern No. 20"));
         //button.getStyleClass().add("ToppingsDefault");

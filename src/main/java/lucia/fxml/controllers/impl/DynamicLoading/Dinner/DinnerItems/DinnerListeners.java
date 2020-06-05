@@ -4,8 +4,10 @@ import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.Menu;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
+import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 /**
@@ -14,12 +16,12 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.
 public class DinnerListeners {
     private PickupDeliveryPaneController pickupDeliveryPaneController;
     // the instance for the pickup delivery controllers so the fxml methods can be called
-    private Descriptor item; // dinner information
+    private SimpleItemDescriptor item; // dinner information
     private JFXButton button;
     private DinnerDesigns dinnerDesigns;
     private SidesDynamicLoad sidesDynamicLoad;
 
-    public DinnerListeners(PickupDeliveryPaneController pickupDeliveryPaneController, Descriptor item,
+    public DinnerListeners(PickupDeliveryPaneController pickupDeliveryPaneController, SimpleItemDescriptor item,
                            JFXButton button, DinnerDesigns dinnerDesigns, SidesDynamicLoad sidesDynamicLoad) {
         this.pickupDeliveryPaneController = pickupDeliveryPaneController;
         this.item = item;
@@ -47,7 +49,7 @@ public class DinnerListeners {
     public void activateHover(MouseEvent event) {
         //   button.setStyle(dinnerModuleDesigns.g());
         if(!button.getStyle().equalsIgnoreCase(dinnerDesigns.getSelectedStyleString())) // if it is not selected!
-            button.setStyle(dinnerDesigns.getHoveredStyleString());
+            setStyle(dinnerDesigns.getHoveredStyleString());
     }
 
     /**
@@ -56,7 +58,7 @@ public class DinnerListeners {
     public void deactivateHover(MouseEvent event) {
         //  button.setStyle(toppingDesigns.getDefaultStyleString());
         if(!button.getStyle().equalsIgnoreCase(dinnerDesigns.getSelectedStyleString())) // if it is not selected!
-            button.setStyle(dinnerDesigns.getDefaultStyleString());
+            setStyle(dinnerDesigns.getDefaultStyleString());
     }
     /**
      *  Event Handler for when the button is 'clicked'
@@ -82,24 +84,42 @@ public class DinnerListeners {
         DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
         Menu menuInstance = Menu.get;
 
+        DinnerOrderManager.getDinnerOrderInstance().addons.clear();
+
         if(item.equals(menuInstance.getItemFromId(id))) {
             if(dinnerOrderManager.currentItem == null) {
                 dinnerOrderManager.currentItem = item;
 
-                System.out.println("ADDED " + item + " to Order");
-                button.setStyle(dinnerDesigns.getSelectedStyleString());
+                setStyle(dinnerDesigns.getSelectedStyleString());
+                sidesDynamicLoad.loadDefaultSides(item);
             }
             else if(dinnerOrderManager.currentItem.equals(item)) {
                 dinnerOrderManager.currentItem = null;
-                button.setStyle(dinnerDesigns.getDefaultStyleString());
-                System.out.println("REMOVED " + item + " from Order");
+                setStyle(dinnerDesigns.getDefaultStyleString());
             } else {
+                DynamicLoader.dynamicLoaderInstance.getDinnerDynamicLoad().clearSelectedButtons();
                 dinnerOrderManager.currentItem = item;
 
-                System.out.println("ADDED " + item + " to Order");
-                button.setStyle(dinnerDesigns.getSelectedStyleString());
+                setStyle(dinnerDesigns.getSelectedStyleString());
+                sidesDynamicLoad.loadDefaultSides(item);
             }
         }
         else System.out.println("Something is Wrong! Items clicked and class instance does not match!");
+    }
+
+    /**
+     * Sets the style of the current button
+     *
+     * @param type the style to be changed to
+     */
+    public void setStyle(String type) {
+        button.setStyle(type);
+    }
+
+    /**
+     * GETTERS
+     */
+    public Descriptor getItem() {
+        return item;
     }
 }

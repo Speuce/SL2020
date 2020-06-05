@@ -6,6 +6,7 @@ import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 
 /**
  *  Manager for the Listeners for the Make Button in the FXML
@@ -35,10 +36,14 @@ public class MakeButtonListeners {
      * Goes to Order System
      */
     public void makeSelected(MouseEvent event) {
+        DynamicLoader.dynamicLoaderInstance.getDinnerDynamicLoad().clearSelectedButtons();
+        DynamicLoader.dynamicLoaderInstance.getDinnerDynamicLoad().clearSelectedButtonsSides();
+
         DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
         OrderManager orderManager = OrderManager.INSTANCE;
         Order order = new Order(OrderType.UNSELECTED);
         order.addItem(dinnerOrderManager.makeItem());
+
         orderManager.registerOrder(order);
     }
 }

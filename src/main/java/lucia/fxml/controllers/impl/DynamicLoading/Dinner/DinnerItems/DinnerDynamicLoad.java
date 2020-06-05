@@ -21,10 +21,14 @@ public class DinnerDynamicLoad {
     public ArrayList<Pane> menuPaneModules = new ArrayList<>(); //panes for the dinners
     private DinnerConstants dinnerConstants = new DinnerConstants();
     private DinnerCoordinates dC;
-    private SidesDynamicLoad sidesDynamicLoad;
+    public SidesDynamicLoad sidesDynamicLoad;
     private DinnerPaneCoordinates dinnerPaneCoordinates;
     private DinnerPaneDesigns dinnerPaneDesigns;
     private List<SimpleItemDescriptor> dinnerItems;
+    private DinnerListeners dinnerListeners;
+    private ArrayList<DinnerListeners> dinnerListenerList = new ArrayList<>();
+    private ArrayList<SidesDynamicLoad> sidesDynamicLoadList = new ArrayList<>();
+
 
     /**
      * Pickup Delivery Controller
@@ -55,11 +59,11 @@ public class DinnerDynamicLoad {
     private void iterateDinnerSections() {
         for(int x = 0; x < dinnerList.size(); x++) {
             dinnerItems = menuInstance.getSection(dinnerList.get(x));
-            Pane pane = new Pane();
-            pane.setId(dinnerList.get(x));
-            createDinnerPane(pane, dinnerItems); //todo check
-            iterateItems(pane, dinnerItems);
-            menuPaneModules.add(pane);
+            Pane parentPane = new Pane();
+            parentPane.setId(dinnerList.get(x));
+            createDinnerPane(parentPane, dinnerItems); //todo check
+            iterateItems(parentPane, dinnerItems);
+            menuPaneModules.add(parentPane);
         }
         pickupDeliveryPaneController.paneModules.getChildren().addAll(menuPaneModules);
     }
@@ -74,6 +78,7 @@ public class DinnerDynamicLoad {
         createDinnerPaneDesigns(pane);
         sidesDynamicLoad = new SidesDynamicLoad(pickupDeliveryPaneController, dinnerItems);
         sidesDynamicLoad.createAddOnPanes(pane);
+        sidesDynamicLoadList.add(sidesDynamicLoad);
     }
 
     /**
@@ -126,12 +131,33 @@ public class DinnerDynamicLoad {
     private JFXButton createButton(int getX, int getY, SimpleItemDescriptor name, int getSizeX, int getSizeY) {
         JFXButton button = new JFXButton(name.getBaseName());
         DinnerDesigns dinnerDesigns = new DinnerDesigns(name);
-        DinnerListeners dinnerListeners = new DinnerListeners(pickupDeliveryPaneController, name, button, dinnerDesigns, sidesDynamicLoad);
+        dinnerListeners = new DinnerListeners(pickupDeliveryPaneController, name, button, dinnerDesigns, sidesDynamicLoad);
+        dinnerListenerList.add(dinnerListeners);
 
         dinnerDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
         dinnerListeners.setListeners(); // gets the pane at which the buttons are to be stored
 
         return button;
+    }
+
+    /**
+     * Clears the selected buttons in the GUI
+     */
+    public void clearSelectedButtons() {
+        for(DinnerListeners dinnerListeners : dinnerListenerList) {
+            DinnerDesigns dinnerDesigns = new DinnerDesigns(dinnerListeners.getItem());
+            dinnerListeners.setStyle(dinnerDesigns.getDefaultStyleString());
+        }
+    }
+
+    /**
+     * Clears the selected buttons in each sidesdynamicload
+     */
+    public void clearSelectedButtonsSides() {
+        for (SidesDynamicLoad dynamicLoad : sidesDynamicLoadList) {
+            dynamicLoad.clearSelectedButtons();
+            dynamicLoad.blankPane.toFront();
+        }
     }
 
     /**

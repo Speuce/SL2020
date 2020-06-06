@@ -10,7 +10,7 @@ import main.java.lucia.client.content.menu.item.type.pizza.Crust;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.menu.item.type.pizza.Sauce;
 import main.java.lucia.client.content.menu.item.type.pizza.Topping;
-import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.utils.SerializationUtils;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
@@ -84,7 +84,7 @@ public class PizzaDeserializer implements JsonDeserializer<Pizza> {
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();
-        Set<AppliedDiscount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
+        Set<Discount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
         int size = o.get("size").getAsInt();
         int sauceId = o.get("sauce").getAsInt();
         Sauce sauce = new IDCaster<Sauce>().cast(sauceId);

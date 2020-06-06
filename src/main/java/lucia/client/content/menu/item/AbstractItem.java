@@ -2,9 +2,8 @@ package main.java.lucia.client.content.menu.item;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import main.java.lucia.client.content.menu.io.ItemGson;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
-import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.utils.Tuple;
 
 import java.util.HashSet;
@@ -48,7 +47,7 @@ public abstract class AbstractItem{
      */
     private Descriptor itemDescriptor;
 
-    private final Set<AppliedDiscount> appledDiscounts;
+    private final Set<Discount> appledDiscounts;
 
 
 //    @Deprecated
@@ -92,7 +91,7 @@ public abstract class AbstractItem{
         this.appledDiscounts = new HashSet<>();
     }
 
-    public AbstractItem(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<AppliedDiscount> appledDiscounts) {
+    public AbstractItem(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<Discount> appledDiscounts) {
         this.rowNum = rowNum;
         this.displayName = displayName;
         this.name = name;
@@ -203,13 +202,13 @@ public abstract class AbstractItem{
 
         //add applied discounts
         JsonArray discounts = new JsonArray();
-        appledDiscounts.forEach(d -> discounts.add(ItemGson.ITEM_GSON.toJsonTree(d)));
+        appledDiscounts.forEach(d -> discounts.add(d.getId()));
         o.add("appliedDiscounts", discounts);
 
 
     }
 
-    public Set<AppliedDiscount> getAppledDiscounts() {
+    public Set<Discount> getAppledDiscounts() {
         return appledDiscounts;
     }
 }

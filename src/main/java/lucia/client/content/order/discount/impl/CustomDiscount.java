@@ -43,7 +43,7 @@ public class CustomDiscount extends Discount{
     private final List<DiscountField> fields;
 
     /**
-     * Indicates if this discount can be stacked with other discounts
+     * Indicates if this discount can be stacked with other discounts (on the same items)
      */
     private DiscountStacking stacking;
 
@@ -88,14 +88,11 @@ public class CustomDiscount extends Discount{
                 return false;
             }
         }
-        //now see if it can be stacked
+        //now see if it can be stacked withitself
         if(!multiplies){
-            //TODO optimize
-            for(Item i: p){
-                for(AppliedDiscount d: i.getAppledDiscounts()){
-                    if(d.getApplied() == this){
-                        return false;
-                    }
+            for(AppliedDiscount dis: p.getDiscountList()){
+                if(dis.getApplied() == this){
+                    return false;
                 }
             }
         }
@@ -129,11 +126,11 @@ public class CustomDiscount extends Discount{
         boolean add;
         for(Item i: p){
             add = true;
-            for(AppliedDiscount r: i.getAppledDiscounts()){
-                if(!multiplies && r.getApplied() == this){
+            for(Discount r: i.getAppledDiscounts()){
+                if(!multiplies && r == this){
                     return null;
                 }
-                if(!this.stacking.canStack(r.getApplied().getId())){
+                if(!this.stacking.canStack(r.getId())){
                     add = false;
                     break;
                 }
@@ -189,6 +186,7 @@ public class CustomDiscount extends Discount{
             cont = multiplies;
             d.addAmtSaved(amount.applyDiscount(d, bundle, p));
         }
+
     }
 
     /**

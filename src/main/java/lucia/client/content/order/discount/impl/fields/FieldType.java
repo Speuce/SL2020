@@ -32,12 +32,6 @@ public enum FieldType {
     DATE_TIME("DateTime"),
 
     /**
-     * An 'a or b or c or d....' type input
-     * i.e staff on/off shift
-     */
-    MULTI_VALUE("Multi"),
-
-    /**
      * Input requires staff login/permissions
      */
     STAFF("Staff"),

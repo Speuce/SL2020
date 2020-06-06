@@ -6,7 +6,7 @@ import main.java.lucia.client.content.menu.item.AbstractItem;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
-import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.Discount;
 
 import java.util.Set;
 
@@ -21,7 +21,7 @@ public class SimpleItem extends Item {
         super(name, price, desc);
     }
 
-    public SimpleItem(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<AppliedDiscount> appliedDiscounts) {
+    public SimpleItem(int rowNum, String displayName, String name, long price, long discountedPrice, Descriptor itemDescriptor, Set<Discount> appliedDiscounts) {
         super(rowNum, displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);
     }
 

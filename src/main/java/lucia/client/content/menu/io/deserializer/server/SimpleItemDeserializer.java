@@ -3,7 +3,7 @@ package main.java.lucia.client.content.menu.io.deserializer.server;
 import com.google.gson.*;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
-import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.utils.SerializationUtils;
 
@@ -39,7 +39,7 @@ public class SimpleItemDeserializer implements JsonDeserializer<SimpleItem> {
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();
-        Set<AppliedDiscount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
+        Set<Discount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
         return new SimpleItem(rowNum, displayName, name, price, discountedPrice, desc, appliedDiscounts);
     }
 }

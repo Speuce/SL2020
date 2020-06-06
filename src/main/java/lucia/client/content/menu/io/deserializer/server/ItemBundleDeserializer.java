@@ -5,7 +5,7 @@ import main.java.lucia.client.content.menu.io.ItemGson;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.descriptor.ItemBundleDescriptor;
 import main.java.lucia.client.content.menu.item.type.ItemBundle;
-import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.utils.IDCaster;
 import main.java.lucia.client.content.utils.SerializationUtils;
 
@@ -43,7 +43,7 @@ public class ItemBundleDeserializer implements JsonDeserializer<ItemBundle> {
         String displayName = o.get("displayName").getAsString();
         long price = o.get("price").getAsLong();
         long discountedPrice = o.get("discountedPrice").getAsLong();
-        Set<AppliedDiscount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
+        Set<Discount> appliedDiscounts = SerializationUtils.getAppliedDiscounts(o);
 
         //deserialize sub items
         List<Item> itemList = new ArrayList<>();

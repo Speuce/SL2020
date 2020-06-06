@@ -11,7 +11,7 @@ import main.java.lucia.client.content.menu.item.descriptor.Descriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimplePizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.ToppingType;
-import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.utils.IDAble;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
 
@@ -106,7 +106,7 @@ public class Pizza extends Item{
      * Use with caution,
      */
     public Pizza(int rowNum, String displayName, String name, long price, long discountedPrice,
-                 Descriptor itemDescriptor, Set<AppliedDiscount> appliedDiscounts, List<String> specialInstructions,
+                 Descriptor itemDescriptor, Set<Discount> appliedDiscounts, List<String> specialInstructions,
                  List<Topping> toppings, Integer size, boolean specialty, Sauce sauce, Crust crust,
                  boolean splitHalves, Pizza secondHalf) {
         super(rowNum,displayName, name, price, discountedPrice, itemDescriptor, appliedDiscounts);

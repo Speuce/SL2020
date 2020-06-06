@@ -1,11 +1,13 @@
 package main.java.lucia.client.content.order;
 
+import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.order.impl.PrintableOrder;
 import main.java.lucia.client.content.order.impl.SpecialOrderInstructions;
 import main.java.lucia.client.content.time.TimeFormat;
 
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A representation of an order
@@ -33,6 +35,11 @@ public class Order extends PrintableOrder {
     private String type = "foodOrder";
 
     /**
+     * The list of discounts applied.
+     */
+    private final List<AppliedDiscount> discountList;
+
+    /**
      * The list of special instructions an order can contain
      */
     private ArrayList<SpecialOrderInstructions> specialOrderInstructions;
@@ -46,6 +53,7 @@ public class Order extends PrintableOrder {
         super();
         setOrderType(type);
         this.specialOrderInstructions = new ArrayList<>();
+        this.discountList = new ArrayList<>();
     }
 
     /**
@@ -87,5 +95,9 @@ public class Order extends PrintableOrder {
             }
         }
         return false;
+    }
+
+    public List<AppliedDiscount> getDiscountList() {
+        return discountList;
     }
 }

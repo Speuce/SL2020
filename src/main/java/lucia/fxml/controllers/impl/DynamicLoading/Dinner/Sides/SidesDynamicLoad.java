@@ -10,6 +10,7 @@ import main.java.lucia.consts.FoodConstants.Dinner.DinnerSidesConstants;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerAddonPaneCoordinates;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerAddonPaneDesigns;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.MakeButton.MakeButtonDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 import java.util.ArrayList;
@@ -28,18 +29,16 @@ public class SidesDynamicLoad {
     private SidesCoordinates sC;
     private DinnerAddonPaneCoordinates dinnerAddonPaneCoordinates;
     private DinnerAddonPaneDesigns dinnerAddonPaneDesigns;
+    public String parentItem;
     private List<SimpleItemDescriptor> dinnerItems;
     private SidesListeners sidesListeners;
     public ArrayList<SidesListeners> sidesListenerList = new ArrayList<>();
     public Pane blankPane;
 
-
-    // list for the toppings
-    private List<AddonDescriptor> sidesList;
-
-    public SidesDynamicLoad(PickupDeliveryPaneController pickupDeliveryPaneController, List<SimpleItemDescriptor> dinnerItems) {
+    public SidesDynamicLoad(PickupDeliveryPaneController pickupDeliveryPaneController, List<SimpleItemDescriptor> dinnerItems, String parentItem) {
         this.pickupDeliveryPaneController = pickupDeliveryPaneController;
         this.dinnerItems = dinnerItems;
+        this.parentItem = parentItem;
     }
 
     /**
@@ -56,7 +55,7 @@ public class SidesDynamicLoad {
             dinnerSidesConstants = new DinnerSidesConstants((ItemModifiableDescriptor)dinnerItem);
             sC = new SidesCoordinates((ItemModifiableDescriptor)dinnerItem);
             List<AddonDescriptor> addonList = sC.getDinnerSidesConstants().getDinnerSides();
-            JFXButton firstButton = createAddOnButton(sC.getGetStartX(), sC.getGetStartY(), addonList.get(0), sC.getGetSizeX(), sC.getGetSizeY());
+            JFXButton firstButton = createAddOnButton(sC.getGetStartX(), sC.getGetStartY(), addonList.get(0), sC.getGetSizeX(), sC.getGetSizeY(), dinnerItem.getBaseName());
             pane.getChildren().add(firstButton);
 
             for (int x = 1; x < addonList.size(); x++) {
@@ -68,7 +67,7 @@ public class SidesDynamicLoad {
                 }
                 //else
 
-                JFXButton button = createAddOnButton(sC.getCurrX(), sC.getCurrY(), addonList.get(x), sC.getGetSizeX(), sC.getGetSizeY());
+                JFXButton button = createAddOnButton(sC.getCurrX(), sC.getCurrY(), addonList.get(x), sC.getGetSizeX(), sC.getGetSizeY(), dinnerItem.getBaseName());
                 pane.getChildren().add(button); // gets the pane at which the buttons are to be stored
             }
         } else { //The pane will be empty, what we want!
@@ -123,10 +122,10 @@ public class SidesDynamicLoad {
      *  Calls the design, and creates the listeners for the button
      *  Adds button to the pane, after the fact that the button is tested true that it can be placed
      */
-    private JFXButton createAddOnButton(int getX, int getY, AddonDescriptor name, int getSizeX, int getSizeY) {
+    private JFXButton createAddOnButton(int getX, int getY, AddonDescriptor name, int getSizeX, int getSizeY, String parentItem) {
         JFXButton button = new JFXButton(name.getBaseName());
         SidesDesigns sidesDesigns = new SidesDesigns(name);
-        sidesListeners = new SidesListeners(pickupDeliveryPaneController, name, button, sidesDesigns);
+        sidesListeners = new SidesListeners(pickupDeliveryPaneController, name, button, sidesDesigns, parentItem);
         sidesListenerList.add(sidesListeners);
 
         sidesDesigns.initButtonDesign(button, getX, getY, getSizeX, getSizeY); //todo check button = ...
@@ -139,31 +138,16 @@ public class SidesDynamicLoad {
      * Loads the default items accompanied with the dinner
      */
     public void loadDefaultSides(SimpleItemDescriptor dinnerItem) {
+        System.out.println("LOADING SIDES FROM THE INSTANCE OF " + dinnerItem.getBaseName());
         if(dinnerItem instanceof ItemModifiableDescriptor) {
             clearSelectedButtons();
             Map<Integer, Byte> addonsDefault = ((ItemModifiableDescriptor) dinnerItem).getAddonsDefault();
             for (Map.Entry<Integer, Byte> entry : addonsDefault.entrySet()) {
-                getSidesListener(new IDCaster<AddonDescriptor>().cast(entry.getKey())).sideClicked(entry.getKey());
+                DynamicLoader.dynamicLoaderInstance.getDinnerDynamicLoad().getSidesListener(
+                        new IDCaster<AddonDescriptor>().cast(entry.getKey()), dinnerItem).sideClicked(entry.getKey());
             }
         }
     }
-
-    /**
-     * Finds the listener for the given dinner
-     * @param dinnerItem the current dinner being looked at
-     * @return the listener IF there is any
-     */
-    public SidesListeners getSidesListener(AddonDescriptor dinnerItem) {
-        for (SidesListeners sidesListeners : sidesListenerList) {
-            if (sidesListeners.getItem().equals(dinnerItem)) {
-                return sidesListeners;
-            }
-        }
-            System.out.println("NO SIDES LISTENER FOUND FOR: " + dinnerItem.getBaseName());
-        return null;
-    }
-
-
 
     /**
      * Clears the selected buttons in the GUI

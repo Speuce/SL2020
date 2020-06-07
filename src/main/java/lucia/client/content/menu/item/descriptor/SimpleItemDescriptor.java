@@ -46,4 +46,5 @@ public class SimpleItemDescriptor extends Descriptor {
     public Item getAsItem(){
         return new SimpleItem(this.getBaseName(), this.price, this);
     }
+
 }

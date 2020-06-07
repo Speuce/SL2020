@@ -3,11 +3,13 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerItems;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.content.menu.Menu;
+import main.java.lucia.client.content.menu.item.descriptor.AddonDescriptor;
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.consts.FoodConstants.Dinner.DinnerConstants;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerPaneCoordinates;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerModules.DinnerPaneDesigns;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesDynamicLoad;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.Sides.SidesListeners;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 import java.util.ArrayList;
@@ -76,7 +78,7 @@ public class DinnerDynamicLoad {
      */
     private void createDinnerPane(Pane pane, List<SimpleItemDescriptor> dinnerItems) {
         createDinnerPaneDesigns(pane);
-        sidesDynamicLoad = new SidesDynamicLoad(pickupDeliveryPaneController, dinnerItems);
+        sidesDynamicLoad = new SidesDynamicLoad(pickupDeliveryPaneController, dinnerItems, pane.getId());
         sidesDynamicLoad.createAddOnPanes(pane);
         sidesDynamicLoadList.add(sidesDynamicLoad);
     }
@@ -138,6 +140,26 @@ public class DinnerDynamicLoad {
         dinnerListeners.setListeners(); // gets the pane at which the buttons are to be stored
 
         return button;
+    }
+
+    /**
+     * Finds the listener for the given dinner
+     * @param dinnerItem the current dinner being looked at
+     * @return the listener IF there is any
+     */
+    public SidesListeners getSidesListener(AddonDescriptor dinnerItem, SimpleItemDescriptor parent) {
+        for(int x = 0; x < sidesDynamicLoadList.size(); x++) {
+            List<SimpleItemDescriptor> dinnerItems = menuInstance.getSection(sidesDynamicLoadList.get(x).parentItem);
+            if(dinnerItems.contains(parent)) {
+                for (SidesListeners sidesListeners : sidesDynamicLoadList.get(x).sidesListenerList) {
+                    if (sidesListeners.getItem().equals(dinnerItem) && sidesListeners.parentItem.equalsIgnoreCase(parent.getBaseName())) {
+                        return sidesListeners;
+                    }
+                }
+            }
+        }
+        System.out.println("NO SIDES LISTENER FOUND FOR: " + dinnerItem.getBaseName());
+        return null;
     }
 
     /**

@@ -16,9 +16,11 @@ public class SidesListeners {
     private AddonDescriptor addonDescriptor; // sides information
     private SidesDesigns sidesDesigns;
     private JFXButton button;
+    public String parentItem;
 
     public SidesListeners(PickupDeliveryPaneController pickupDeliveryPaneController, AddonDescriptor addonDescriptor,
-                          JFXButton button, SidesDesigns sidesDesigns) {
+                          JFXButton button, SidesDesigns sidesDesigns, String parentItem) {
+        this.parentItem = parentItem;
         this.pickupDeliveryPaneController = pickupDeliveryPaneController;
         this.addonDescriptor = addonDescriptor;
         this.button = button;

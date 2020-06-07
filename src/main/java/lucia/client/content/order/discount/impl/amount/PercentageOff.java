@@ -1,7 +1,7 @@
 package main.java.lucia.client.content.order.discount.impl.amount;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
 import java.util.Set;
@@ -35,7 +35,7 @@ public class PercentageOff extends DiscountAmount{
      * @return the amount (in cents) saved by applying this discount
      */
     @Override
-    public int applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order) {
+    public int applyDiscount(Discount o, Set<Item> list, ItemList order) {
         int totalDis = 0;
         int discountAmt;
         for(Item i: list){

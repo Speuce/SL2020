@@ -42,6 +42,12 @@ public abstract class Discount extends IDAble {
      */
     public abstract void applyDiscount(Order p, Map<String, Object> fields);
 
+    /**
+     * UN applies this discount from the given order.
+     * @param p the order to take the discount from.
+     */
+    public abstract void unApplyDiscount(Order p);
+
     public String getName() {
         return name;
     }

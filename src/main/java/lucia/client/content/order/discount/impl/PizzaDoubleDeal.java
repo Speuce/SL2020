@@ -119,4 +119,14 @@ public class PizzaDoubleDeal extends Discount {
             p2 = pizzaSorted.poll(); //the less expensive of the pair (WILL be discounted)
         }
     }
+
+    /**
+     * UN applies this discount from the given order.
+     *
+     * @param p the order to take the discount from.
+     */
+    @Override
+    public void unApplyDiscount(Order p) {
+
+    }
 }

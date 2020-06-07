@@ -1,6 +1,7 @@
 package main.java.lucia.client.content.order.discount.impl.amount;
 
 import main.java.lucia.client.content.menu.item.Item;
+import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.discount.impl.AppliedDiscount;
 import main.java.lucia.client.content.order.discount.impl.DiscountAttribute;
 import main.java.lucia.client.content.order.impl.ItemList;
@@ -26,5 +27,5 @@ public abstract class DiscountAmount extends DiscountAttribute {
      * @param order the order being applied to.
      * @return the amount (in cents) saved by applying this discount
      */
-    public abstract int applyDiscount(AppliedDiscount o, Set<Item> list, ItemList order);
+    public abstract int applyDiscount(Discount o, Set<Item> list, ItemList order);
 }

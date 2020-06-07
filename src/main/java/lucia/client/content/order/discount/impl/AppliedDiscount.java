@@ -1,5 +1,6 @@
 package main.java.lucia.client.content.order.discount.impl;
 
+import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
 
 import java.util.Map;
@@ -85,5 +86,14 @@ public class AppliedDiscount {
      */
     public int getRowNum() {
         return rowNum;
+    }
+
+    /**
+     * Removes this discount from the given order
+     */
+    public void remove(Order o){
+        if(o.getDiscountList().remove(this)){
+
+        }
     }
 }

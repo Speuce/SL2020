@@ -77,6 +77,13 @@ public class Order extends PrintableOrder {
     }
 
     /**
+     * Sorts the order into default order ordering
+     */
+    public void sortOrder(){
+        //TODO
+    }
+
+    /**
      * Custom hashing for orders
      */
     @Override

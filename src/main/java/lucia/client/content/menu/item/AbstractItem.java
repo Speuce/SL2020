@@ -129,6 +129,14 @@ public abstract class AbstractItem{
     }
 
     /**
+     * Wipes all discounts on this item. Recalculates price.
+     */
+    public void wipeDiscounts(){
+        appledDiscounts.clear();
+        recalculatePrice();
+    }
+
+    /**
      * Recalculates the undiscounted price of this item.
      * Also resets any applied discounts.
      */

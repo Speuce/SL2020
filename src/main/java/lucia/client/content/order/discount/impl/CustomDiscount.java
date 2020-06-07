@@ -2,6 +2,7 @@ package main.java.lucia.client.content.order.discount.impl;
 
 import main.java.lucia.Client;
 import main.java.lucia.client.content.menu.item.Item;
+import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.discount.impl.amount.DiscountAmount;
@@ -184,9 +185,42 @@ public class CustomDiscount extends Discount{
                 bundle.addAll(curr);
             }
             cont = multiplies;
-            d.addAmtSaved(amount.applyDiscount(d, bundle, p));
+            d.addAmtSaved(amount.applyDiscount(this, bundle, p));
         }
 
+    }
+
+    /**
+     * UN applies this discount from the given order.
+     *
+     * @param p the order to take the discount from.
+     */
+    @Override
+    public void unApplyDiscount(Order p) {
+        Iterator<Item> it = p.iterator();
+        //first remove discount from all items
+        //break bundles back up;
+        Item curr;
+        Set<Item> itemsToAdd = new HashSet<>();
+        while(it.hasNext()){
+            curr = it.next();
+            if(curr instanceof ItemBundle){
+               itemsToAdd.addAll(((ItemBundle)curr).getItems());
+               it.remove();
+            }else{
+                curr.wipeDiscounts();
+            }
+        }
+        itemsToAdd.forEach(p::addItem);
+
+        //sort order again
+        p.sortOrder();
+
+        //remove applied discounts before adding them back so we dont have duplicates
+        Map<Discount, Map<String, Object>> discountMap = new HashMap<>();
+        p.getDiscountList().forEach(d -> discountMap.put(d.getApplied(), d.getFilledFields()));
+        p.getDiscountList().clear();
+        discountMap.forEach((d, m) -> d.applyDiscount(p, m));
     }
 
     /**

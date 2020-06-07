@@ -32,7 +32,16 @@ public class ColorUtils {
      * @return the color, as {@link Color}
      */
     public static Color fromHex(String hex){
-        return Color.decode("hex");
+        return Color.decode(hex);
+    }
+
+    /**
+     * Converts a given hex string to javafx scene paint color
+     * @param hex the color, in hex format #ABCDEF
+     * @return the color as {@link javafx.scene.paint.Color}
+     */
+    public static javafx.scene.paint.Color fromHexfx(String hex){
+        return javafx.scene.paint.Color.web(hex);
     }
 
     /**

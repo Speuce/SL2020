@@ -15,11 +15,6 @@ import java.util.function.Consumer;
  */
 public class GridHighlighter {
 
-    /**
-     * the pane for which this highlighter is added to
-     */
-    private GridPane pane;
-
     public static final String BORDER_STYLE = "-fx-border-color: black;-fx-border-width: 0 0 1 1;";
 
     /**
@@ -30,14 +25,11 @@ public class GridHighlighter {
     /**
      * Stores frequently used eventhandlers
      */
-    private EventHandler<? super MouseEvent> highlightHandler, unHighlightHandler, selectHandler;
+    private final EventHandler<? super MouseEvent> highlightHandler;
+    private final EventHandler<? super MouseEvent> unHighlightHandler;
+    private final EventHandler<? super MouseEvent> selectHandler;
 
-    private Set<Consumer<Boolean>> selectHandlers;
-
-    /**
-     * The background color of the gridpane
-     */
-    private String backgroundColor;
+    private final Set<Consumer<Boolean>> selectHandlers;
 
     /**
      * Creates a new grid highlighter with background color white
@@ -53,15 +45,19 @@ public class GridHighlighter {
      * @param backgroundColor the background color to revert to after it is highlighted
      */
     public GridHighlighter(GridPane pane, String backgroundColor) {
-        this.backgroundColor = backgroundColor;
-        selectHandlers = new HashSet<Consumer<Boolean>>();
-        this.pane = pane;
+        /*
+         * The background color of the gridpane
+         */
+        selectHandlers = new HashSet<>();
+        /*
+         * the pane for which this highlighter is added to
+         */
         highlightHandler = e -> pane.getChildren().forEach(c -> {
             Integer targetIndex = GridPane.getRowIndex((Node)e.getSource());
             if(targetIndex.equals(highLightedRow)){
                 return;
             }
-            if (GridPane.getRowIndex(c) == targetIndex) {
+            if (GridPane.getRowIndex(c).equals(targetIndex)) {
                 c.setStyle("-fx-background-color:#f9f3c5;" + BORDER_STYLE);
             }
         });
@@ -70,7 +66,7 @@ public class GridHighlighter {
             if(targetIndex.equals(highLightedRow)){
                 return;
             }
-            if (GridPane.getRowIndex(c) == targetIndex) {
+            if (GridPane.getRowIndex(c).equals(targetIndex)) {
                 c.setStyle("-fx-background-color: "+backgroundColor+";" + BORDER_STYLE);
             }
         });
@@ -80,14 +76,11 @@ public class GridHighlighter {
                 int index = GridPane.getRowIndex(n);
                 if(targetIndex == highLightedRow && index == targetIndex){
                     n.setStyle("-fx-background-color:#f9f3c5;" + BORDER_STYLE);
-                    continue;
                 }else{
                     if(index == targetIndex){
                         n.setStyle("-fx-background-color:#f0e381;" + BORDER_STYLE);
-                        continue;
                     }else if(index == highLightedRow) {
                         n.setStyle("-fx-background-color:"+backgroundColor+";" + BORDER_STYLE);
-                        continue;
                     }
                 }
             }
@@ -112,7 +105,7 @@ public class GridHighlighter {
      * @param opened {@code true} if the area is being selected, {@code false} if unselected
      */
     private void callHandlers(Boolean opened){
-        selectHandlers.stream().forEach( r -> r.accept(opened));
+        selectHandlers.forEach(r -> r.accept(opened));
     }
 
     /**
@@ -150,7 +143,6 @@ public class GridHighlighter {
     public void reset(){
         highLightedRow = -1;
     }
-
 
 
 }

@@ -1,9 +1,12 @@
 package main.java.lucia.client.content.order.discount.impl.items;
 
 import main.java.lucia.client.content.menu.item.Item;
+import main.java.lucia.client.content.menu.item.descriptor.SpecialtyPizzaDescriptor;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.order.impl.ItemList;
+import main.java.lucia.client.content.utils.IDCaster;
 
+import java.io.PrintStream;
 import java.util.*;
 
 /**
@@ -56,5 +59,15 @@ public class RequireSpecialtyPizza extends DiscountApplicable{
             }
         }
         return ret;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print(" Specialty: " + new IDCaster<SpecialtyPizzaDescriptor>().cast(pizzaId).getBaseName());
     }
 }

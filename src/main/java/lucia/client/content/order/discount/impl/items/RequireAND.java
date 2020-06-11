@@ -2,12 +2,10 @@ package main.java.lucia.client.content.order.discount.impl.items;
 
 import com.google.common.collect.Sets;
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.order.discount.Discount;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
+import java.io.PrintStream;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * 'AND' Connective for discount item requirement
@@ -55,4 +53,17 @@ public class RequireAND extends DiscountApplicable{
     }
 
 
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("(");
+        a.printInfo(out);
+        out.print(") AND (");
+        b.printInfo(out);
+        out.print(")");
+    }
 }

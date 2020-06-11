@@ -3,6 +3,7 @@ package main.java.lucia.client.content.order.discount.impl.items;
 import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 
+import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -58,5 +59,15 @@ public class RequireNumToppings extends DiscountApplicable{
             }
         }
         return ret;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print(" " + numToppings + " Toppings.");
     }
 }

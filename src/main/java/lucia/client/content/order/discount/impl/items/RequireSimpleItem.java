@@ -1,12 +1,13 @@
 package main.java.lucia.client.content.order.discount.impl.items;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
+import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.order.impl.ItemList;
+import main.java.lucia.client.content.utils.IDCaster;
 
+import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Implemented Discount Attribute to include a specific item
@@ -57,5 +58,15 @@ public class RequireSimpleItem extends DiscountApplicable{
             }
         }
         return ret;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print( " Item: " + new IDCaster<SimpleItemDescriptor>().cast(itemId).getBaseName());
     }
 }

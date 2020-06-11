@@ -2,11 +2,10 @@ package main.java.lucia.client.content.order.discount.impl.items;
 
 import com.google.common.collect.Sets;
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
+import java.io.PrintStream;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * 'OR' Connective for discount item requirement
@@ -58,4 +57,17 @@ public class RequireOR extends DiscountApplicable{
         return Sets.union(a.appliesTo(o), b.appliesTo(o));
     }
 
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("(");
+        a.printInfo(out);
+        out.print(") OR (");
+        b.printInfo(out);
+        out.print(")");
+    }
 }

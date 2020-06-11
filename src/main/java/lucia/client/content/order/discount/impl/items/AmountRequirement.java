@@ -1,9 +1,9 @@
 package main.java.lucia.client.content.order.discount.impl.items;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
-import main.java.lucia.client.content.order.impl.ItemList;
+import main.java.lucia.client.content.order.discount.impl.DiscountAttribute;
 
+import java.io.PrintStream;
 import java.util.*;
 
 /**
@@ -12,7 +12,7 @@ import java.util.*;
  * item, wrap the Requirement in this.
  * @author Matthew Kwiatkowski
  */
-public class AmountRequirement {
+public class AmountRequirement extends DiscountAttribute {
 
     /**
      * The subject of the requirement
@@ -79,6 +79,18 @@ public class AmountRequirement {
             return ret;
         }
         return null;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print(" " + amt + "of {");
+        subject.printInfo(out);
+        out.print("}");
     }
 
 //    /**

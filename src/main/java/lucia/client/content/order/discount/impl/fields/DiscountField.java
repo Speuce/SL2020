@@ -2,6 +2,8 @@ package main.java.lucia.client.content.order.discount.impl.fields;
 
 import main.java.lucia.client.content.order.discount.impl.DiscountAttribute;
 
+import java.io.PrintStream;
+
 /**
  * Represents a field that must be filled in before
  * a discount can be applied.
@@ -51,5 +53,15 @@ public class DiscountField extends DiscountAttribute {
      */
     public void setType(FieldType type) {
         this.type = type;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("Field: " + label + " Type: " + type.getTypeName());
     }
 }

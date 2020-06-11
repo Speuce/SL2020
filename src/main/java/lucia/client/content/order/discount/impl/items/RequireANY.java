@@ -1,11 +1,9 @@
 package main.java.lucia.client.content.order.discount.impl.items;
 
 import main.java.lucia.client.content.menu.item.Item;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 
-import java.util.HashSet;
+import java.io.PrintStream;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Implemented Discount attribute to include ANY item
@@ -16,6 +14,16 @@ public class RequireANY extends DiscountApplicable{
 
 
     public RequireANY(){
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print(" Require ANY!");
     }
 
     /**

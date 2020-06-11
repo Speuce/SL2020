@@ -4,6 +4,7 @@ import com.jfoenix.controls.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
@@ -20,13 +21,17 @@ import main.java.lucia.client.content.order.discount.impl.fields.DiscountField;
 import main.java.lucia.client.content.order.discount.impl.fields.FieldType;
 import main.java.lucia.consts.ColorUtils;
 import main.java.lucia.fxml.controllers.impl.main.Utils.GridHighlighter;
+import main.java.lucia.fxml.utils.BlinkUtils;
 import main.java.lucia.fxml.utils.Fonts;
 import org.jetbrains.annotations.Nullable;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.function.UnaryOperator;
 
 /**
@@ -51,6 +56,11 @@ public class DiscountPaneController {
     private JFXButton removeButton;
 
     private GridHighlighter highlighter;
+
+    /**
+     * The current discount being displayed
+     */
+    private CustomDiscount currentDiscount;
 
     private int viewPaneRows = 0;
 
@@ -129,6 +139,7 @@ public class DiscountPaneController {
     private void showFields(CustomDiscount discount,@Nullable Map<String, Object> objMap){
         discountFurtherInfoPane.getChildren().clear();
         List<DiscountField> fields = discount.getFields();
+        this.currentDiscount = discount;
         DiscountField f;
         Object o;
         int i;
@@ -153,7 +164,7 @@ public class DiscountPaneController {
         button.setLayoutY((i*verticalSpacing)+topMargin);
         button.setPrefWidth(66);
         button.setPrefHeight(44);
-        button.setOnAction();
+        button.setOnAction( value -> {onDiscountAdd();});
         discountFurtherInfoPane.getChildren().add(button);
     }
 
@@ -185,7 +196,50 @@ public class DiscountPaneController {
         viewPaneRows++;
     }
 
+    /**
+     * Called when the 'add' button is hit for a discount.
+     */
+    private void onDiscountAdd(){
+        Map<String, Object> objs = readObject();
+        if(objs == null){
+            return;
+        }
+        currentDiscount.applyDiscount(curr, objs);
+        open(curr);
+    }
 
+    /**
+     * Reads the objects from the discount info pane.
+     * @return the object map, if reading was sucessful, null otherwise.
+     */
+    private Map<String, Object> readObject(){
+        String currlab = null;
+        Object currData = null;
+        Map<String, Object> objAdd = new HashMap<>();
+        for (Node child : discountFurtherInfoPane.getChildren()) {
+            if(child instanceof JFXButton){
+                continue;
+            }
+            if(child instanceof Label){
+                currlab = ((Label)child).getText();
+            }else{
+                Object ret = getObjectFrom(child);
+                if(ret != null){
+                    currData = ret;
+                }else{
+                    BlinkUtils.wrong(child);
+                    return null;
+                }
+            }
+
+            if(currlab != null && currData != null){
+                objAdd.put(currlab, currData);
+                currlab = null;
+                currData = null;
+            }
+        }
+        return objAdd;
+    }
 
     @FXML
     void onConfirm(ActionEvent event) {
@@ -234,6 +288,20 @@ public class DiscountPaneController {
                 throw new IllegalArgumentException("Could not find defined node for field type: " + type);
 
         }
+    }
+
+    /**
+     * Attempts to read a field from a node
+     */
+    private Object getObjectFrom(Node r){
+        if(r instanceof JFXTextField){
+            return ((JFXTextField)r).getText();
+        }else if(r instanceof JFXTimePicker){
+            return ((JFXTimePicker)r).getValue();
+        }else if(r instanceof JFXDatePicker){
+            return ((JFXDatePicker)r).getValue();
+        }
+        return null;
     }
 
 //    /**

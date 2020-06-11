@@ -1,7 +1,5 @@
 package main.java.lucia.client.content.order.discount.impl.times;
 
-import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.discount.impl.DiscountAttribute;
 
 import java.time.LocalDateTime;
@@ -23,4 +21,6 @@ public abstract class DiscountTime extends DiscountAttribute {
      * @return true if the discount applies at this time, false otherwise
      */
     public abstract boolean applies(LocalDateTime time);
+
+
 }

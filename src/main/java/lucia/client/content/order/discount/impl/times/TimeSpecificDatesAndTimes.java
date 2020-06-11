@@ -1,11 +1,11 @@
 package main.java.lucia.client.content.order.discount.impl.times;
 
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
+import main.java.lucia.client.content.time.TimeFormat;
 
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * An implemented {@link DiscountTime} where the
@@ -36,5 +36,21 @@ public class TimeSpecificDatesAndTimes extends DiscountTime{
             return valid.get(time.toLocalDate()).isWithin(time);
         }
         return false;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("On Days/Times: [");
+        valid.forEach((key, value) -> {
+            out.print(key.format(TimeFormat.FORMATTER_ISO_STANDARD_DATE.getFormat()) + " ");
+            value.print(out);
+            out.print(",");
+        });
+        out.print("]");
     }
 }

@@ -1,7 +1,6 @@
 package main.java.lucia.client.content.order.discount.impl.times;
 
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
-
+import java.io.PrintStream;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -31,5 +30,18 @@ public class TimeDaysPerWeek extends DiscountTime{
     @Override
     public boolean applies(LocalDateTime time) {
         return daysApplied.contains(time.getDayOfWeek());
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("Days per week: ");
+        out.print("[");
+        daysApplied.forEach(d ->{out.print(d.toString() + ",");});
+        out.print("]");
     }
 }

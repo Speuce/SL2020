@@ -1,7 +1,6 @@
 package main.java.lucia.client.content.order.discount.impl.times;
 
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
-
+import java.io.PrintStream;
 import java.time.LocalDateTime;
 
 /**
@@ -18,6 +17,16 @@ public class TimeRange extends DiscountTime{
 
     public TimeRange(LocalTimeRange range) {
         this.range = range;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        range.print(out);
     }
 
     /**

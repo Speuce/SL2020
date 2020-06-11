@@ -1,7 +1,6 @@
 package main.java.lucia.client.content.order.discount.impl.times;
 
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
-
+import java.io.PrintStream;
 import java.time.LocalDateTime;
 
 /**
@@ -12,6 +11,16 @@ import java.time.LocalDateTime;
 public class TimeEveryDay extends DiscountTime{
 
     public TimeEveryDay() {
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("EVERYDAY");
     }
 
     /**

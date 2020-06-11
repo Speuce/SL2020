@@ -1,7 +1,8 @@
 package main.java.lucia.client.content.order.discount.impl.times;
 
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
+import main.java.lucia.client.content.time.TimeFormat;
 
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -32,5 +33,17 @@ public class TimeSpecifiedDays extends DiscountTime{
     @Override
     public boolean applies(LocalDateTime time) {
        return dateApplies.contains(time.toLocalDate());
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("On Days: [");
+        dateApplies.forEach( d -> out.print(d.format(TimeFormat.FORMATTER_ISO_STANDARD_DATE.getFormat()) + ","));
+        out.print("]");
     }
 }

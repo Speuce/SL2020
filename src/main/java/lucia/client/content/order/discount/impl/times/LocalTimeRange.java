@@ -1,5 +1,8 @@
 package main.java.lucia.client.content.order.discount.impl.times;
 
+import main.java.lucia.client.content.time.TimeFormat;
+
+import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -34,5 +37,18 @@ public class LocalTimeRange {
      */
     public boolean isWithin(LocalTime time){
         return time.isAfter(from) && time.isBefore(to);
+    }
+
+    public LocalTime getFrom() {
+        return from;
+    }
+
+    public LocalTime getTo() {
+        return to;
+    }
+
+    public void print(PrintStream out){
+        out.print("From: " + getFrom().format(TimeFormat.FORMATTER_12_HOUR_TIME.getFormat()));
+        out.print(" To: " + getTo().format(TimeFormat.FORMATTER_12_HOUR_TIME.getFormat()));
     }
 }

@@ -1,31 +1,22 @@
 package main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
-import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.Pane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import main.java.lucia.Client;
-import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.customer.CustomerDetails;
-import main.java.lucia.client.content.javascript.JavaScriptBridge;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
-import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.protocol.packet.in.customer.PacketInFoundCustomer;
 import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutFindCustomerByPhone;
 import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutSaveCustomer;
-import main.java.lucia.fxml.FxmlConstants;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
@@ -33,27 +24,15 @@ import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.PendingOrdersPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDelivery;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.CustomerInfoPaneController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.MapPaneController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.OrderSummaryPaneController;
-import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.PreorderTimeSelectPaneController;
+import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.*;
 import main.java.lucia.net.packet.event.PacketEventHandler;
 import main.java.lucia.net.packet.event.PacketHandler;
 import main.java.lucia.net.packet.event.PacketListenerManager;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
-import netscape.javascript.JSObject;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.text.ParsePosition;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 /**
@@ -73,7 +52,10 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     private Pane extendedMapPane;
 
     @FXML
-    private Pane confirmationPane;
+    private Pane orderSummaryPane;
+
+    @FXML
+    private OrderSummaryPaneController orderSummaryPaneController;
 
     @FXML
     private Pane toggleMappane;
@@ -104,6 +86,12 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     private CustomerInfoPaneController customerInfoPaneController;
+
+    @FXML
+    private Pane discountPane;
+
+    @FXML
+    private DiscountPaneController discountPaneController;
 
 //    /**
 //     * Customer info pane items
@@ -152,14 +140,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 //
 //    @FXML
 //    private JFXButton customerInfoBack;
-
-
-
-    @FXML
-    private Pane orderSummaryPane;
-
-    @FXML
-    private OrderSummaryPaneController orderSummaryPaneController;
 
     @FXML
     private Pane preorderPane;
@@ -223,6 +203,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     public void initialize() {
         assert(customerInfoPaneController != null);
         customerInfoPaneController.setParent(this);
+        orderSummaryPaneController.setParent(this);
         PacketListenerManager.get.registerListener(new PacketHandler() {
             @PacketEventHandler
             public void onCustomerFound(PacketInFoundCustomer in){
@@ -657,14 +638,15 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 //        resetPreorder();
         areaCodeField.setText("204");
         //paymentMethodPane.setVisible(false);
-        confirmationPane.setVisible(false);
+        //confirmationPane.setVisible(false);
+        orderSummaryPane.setVisible(false);
         clearErrorLabel();
         updateAddress();
         updateName();
         phoneField.clear();
         pickup.setSelected(false);
         delivery.setSelected(false);
-        takeoutTime.setText("NOW");
+        //takeoutTime.setText("NOW");
         pizzaFirst = false;
         PendingOrdersPane controller = (PendingOrdersPane) ControllerMap.getController(ControllerType.PENDING_ORDERS_PANE_CONTROLLER);
         controller.refresh();
@@ -677,7 +659,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
                 .getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
         controller.cancelOrder();
         //parent.setChild();
-        clearSummary();
+        //clearSummary();
         reset();
     }
 
@@ -688,22 +670,22 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
             // TODO Clean loose strings up
             if (name.equals("undefined")) {
                 if (confirm) {
-                    confirmationPane.setVisible(true);
-                    confirmationPane.setVisible(true);
+                    orderSummaryPane.setVisible(true);
+                    orderSummaryPane.setVisible(true);
                     //errorLabelConfirmationAddress.setText("Address is not in the Delivery Area");
                 } else {
-                    confirmationPane.setVisible(true);
+                    orderSummaryPane.setVisible(true);
 //                    errorLabelConfirmationAddress.setText("The given location is not within any store location's delivery area");
 //                    errorLabelConfirmationAddress.setStyle("-fx-text-fill: #ff2f2f");
                 }
             } else {
                 if (confirm) {
                     System.out.println("HERE");
-                    confirmationPane.setVisible(true);
+                    orderSummaryPane.setVisible(true);
 //                    errorLabelConfirmationAddress.setText("Address is within within " + name + "'s delivery area");
                 } else {
                     System.out.println("HERE");
-                    confirmationPane.setVisible(true);
+                    orderSummaryPane.setVisible(true);
 //                    errorLabelConfirmationAddress.setText("The given location is within " + name + "'s delivery area");
 //                    errorLabelConfirmationAddress.setStyle("-fx-text-fill: black");
                 }
@@ -748,14 +730,16 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
      * Opens the preorder pane
      */
     public void openPreorder(){
-
+        preorderPane.setVisible(true);
+        preorderPaneController.setForOrder(parent.getCurrentOrder());
     }
 
     /**
      * Opens the discount pane
      */
     public void openDiscountPane(){
-
+        discountPane.setVisible(true);
+        discountPaneController.open(parent.getCurrentOrder());
     }
 
     /**
@@ -779,7 +763,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     public void clearErrorLabel() {
-        errorLabelSummary.setText(" ");
+        //errorLabelSummary.setText(" ");
         //errorLabelCheckAddress.setText(" ");
 //        errorLabelConfirmationAddress.setText(" ");
     }
@@ -787,7 +771,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     public void changeInfo() {
-        summaryOrder.setVisible(false);
+        //summaryOrder.setVisible(false);
     }
 
     /**
@@ -821,13 +805,13 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     public void discounts() {
-        discountPane.toFront();
-        discountPane.setVisible(true);
+//        discountPane.toFront();
+//        discountPane.setVisible(true);
     }
 
     @FXML
     void acceptCAA(ActionEvent event) {
-        discountPane.setVisible(false);
+        //discountPane.setVisible(false);
     }
 
     @FXML
@@ -835,15 +819,15 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 //    if(staffShiftToggle.isSelected())
 //      parent.getCurrentOrder().addStaffDiscount(true);
 //    else parent.getCurrentOrder().addStaffDiscount(false);
-        staffPane.setVisible(false);
-        discountPane.setVisible(false);
-        staffShiftToggle.setText("Off Shift");
-        staffShiftToggle.setSelected(false);
+//        staffPane.setVisible(false);
+//        discountPane.setVisible(false);
+//        staffShiftToggle.setText("Off Shift");
+//        staffShiftToggle.setSelected(false);
     }
 
     @FXML
     void staffOrder(ActionEvent event) {
-        staffPane.setVisible(true);
+        //staffPane.setVisible(true);
     }
 
     @Override
@@ -869,8 +853,8 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     public void shiftToggle() {
-        if (staffShiftToggle.isSelected())
-            staffShiftToggle.setText("On Shift");
-        else staffShiftToggle.setText("Off Shift");
+//        if (staffShiftToggle.isSelected())
+//            staffShiftToggle.setText("On Shift");
+//        else staffShiftToggle.setText("Off Shift");
     }
 }

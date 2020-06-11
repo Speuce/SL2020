@@ -79,6 +79,14 @@ public class OrderSummaryPaneController {
     }
 
     /**
+     * Sets the parent pane of this summary pane.
+     * @param parent the parent of this pane
+     */
+    public void setParent(EnterNumberPane parent) {
+        this.parent = parent;
+    }
+
+    /**
      * Loads the pane and info
      * @param o the order to display info for.
      */
@@ -173,11 +181,6 @@ public class OrderSummaryPaneController {
     }
 
     @FXML
-    void cancelOrder(MouseEvent event) {
-
-    }
-
-    @FXML
     void changeOrder(ActionEvent event) {
 
     }
@@ -203,11 +206,11 @@ public class OrderSummaryPaneController {
 
     @FXML
     void openDiscount(ActionEvent event) {
-
+        parent.openDiscountPane();
     }
 
     @FXML
     void openPreorder(ActionEvent event) {
-
+        parent.openPreorder();
     }
 }

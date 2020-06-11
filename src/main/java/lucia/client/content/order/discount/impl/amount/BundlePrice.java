@@ -6,6 +6,7 @@ import main.java.lucia.client.content.menu.item.type.ItemBundle;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -51,6 +52,17 @@ public class BundlePrice extends DiscountAmount{
 
     public ItemBundleDescriptor getBundleDescriptor() {
         return bundleDescriptor;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("Bundle price: ");
+        bundleDescriptor.print(out);
     }
 
 

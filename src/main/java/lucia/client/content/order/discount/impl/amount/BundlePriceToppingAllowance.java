@@ -7,6 +7,7 @@ import main.java.lucia.client.content.menu.item.type.pizza.Pizza;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -72,5 +73,17 @@ public class BundlePriceToppingAllowance extends BundlePrice {
 
     public long getToppingAllowance() {
         return toppingAllowance;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("Bundle price: ");
+        getBundleDescriptor().print(out);
+        out.print("Topping allowance: " + getToppingAllowance());
     }
 }

@@ -4,6 +4,7 @@ import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.content.order.discount.Discount;
 import main.java.lucia.client.content.order.impl.ItemList;
 
+import java.io.PrintStream;
 import java.util.Set;
 
 /**
@@ -61,5 +62,15 @@ public class PercentageOff extends DiscountAmount{
      */
     public void setPercent(float percent) {
         this.percent = percent;
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+        out.print("Percentage Discount: " + getPercent());
     }
 }

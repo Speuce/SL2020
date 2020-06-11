@@ -1,5 +1,7 @@
 package main.java.lucia.client.content.menu.item.descriptor;
 
+import java.io.PrintStream;
+
 public class ItemBundleDescriptor extends Descriptor {
 
     /**
@@ -23,5 +25,9 @@ public class ItemBundleDescriptor extends Descriptor {
      */
     public long getBasePrice() {
         return basePrice;
+    }
+
+    public void print(PrintStream out){
+        out.print("Name: " + getBaseName() + " Price: " + basePrice);
     }
 }

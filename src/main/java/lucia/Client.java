@@ -4,6 +4,7 @@ import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.ClientBuilder;
 import main.java.lucia.client.content.files.json.loader.JsonHandler;
 import main.java.lucia.client.content.menu.Menu;
+import main.java.lucia.client.content.order.discount.DiscountManager;
 import main.java.lucia.consts.ClientConstants;
 import main.java.lucia.fxml.InterfaceBuilder;
 import main.java.lucia.net.NetworkBuilder;
@@ -75,6 +76,7 @@ public class Client {
         try {
             File menu = new File("src/main/resources/menu.json");
             Menu.get.loadMenu(menu);
+            DiscountManager.initialize(new File("src/main/resources/discounts.json"));
             logger.info("Initializing " + ClientConstants.NAME);
             client = new ClientBuilder(new NetworkBuilder(), new InterfaceBuilder()).initialize();
         } catch (Exception e) {

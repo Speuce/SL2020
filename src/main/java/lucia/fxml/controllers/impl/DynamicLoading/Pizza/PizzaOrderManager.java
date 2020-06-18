@@ -10,6 +10,7 @@ import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
+import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 
 import java.util.HashMap;
 
@@ -77,6 +78,16 @@ public class  PizzaOrderManager {
      */
     private boolean splitHalves = false;
 
+    /**
+     * The current order for this instance
+     */
+    private Order currentOrder;
+
+    /**
+     * The current pickupDelivery controller instance
+     */
+    private PickupDeliveryPaneController pickupDeliveryPaneController;
+
 
     private PizzaOrderManager() {
         toppings = new HashMap<>();
@@ -87,6 +98,7 @@ public class  PizzaOrderManager {
         secondHalf = null;
         crustOption = null;
         sauceOption = null;
+        currentOrder = new Order(OrderType.UNSELECTED);
     }
 
     /**
@@ -120,10 +132,10 @@ public class  PizzaOrderManager {
     public Pizza makePizza() {
         if (currentSpecialPizza != null) {
             setToppingsSpecial();
-        } else if (currentPizza != null) {
-            madePizza = (Pizza)currentPizza.getAsItem(selectedSize);
+        } else if (!toppings.isEmpty()) {
+            madePizza = new Pizza(selectedSize);
             setToppings(madePizza);
-        }
+        } else System.out.println("SOMETHING WENT WRONG!!");
         setCrustSauceOptions();
 
         return madePizza;
@@ -154,16 +166,21 @@ public class  PizzaOrderManager {
         if(hasToppings()) {
             if (isSecondHalf() && findSize()) {
                 OrderManager orderManager = OrderManager.INSTANCE;
-                Order order = new Order(OrderType.UNSELECTED); // todo
 
-                order.addItem(makeSecondHalf());
+                currentOrder.addItem(makeSecondHalf());
+
+                pickupDeliveryPaneController = DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController;
+                pickupDeliveryPaneController.getOrderViewController().updateOrderView();
 
                 DynamicLoader.dynamicLoaderInstance.clearDynamicLoaders();
                 resetOrderManager();
             } else if (findSize()) {
-                OrderManager orderManager = OrderManager.INSTANCE;
-                Order order = new Order(OrderType.UNSELECTED); // todo
-                order.addItem(makePizza());
+//                OrderManager orderManager = OrderManager.INSTANCE;
+//                Order order = new Order(OrderType.UNSELECTED); // todo
+                currentOrder.addItem(makePizza());
+
+                pickupDeliveryPaneController = DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController;
+                pickupDeliveryPaneController.getOrderViewController().updateOrderView();
                 //     orderManager.registerOrder(order);
 
                 DynamicLoader.dynamicLoaderInstance.clearDynamicLoaders();
@@ -300,6 +317,21 @@ public class  PizzaOrderManager {
         return currentSpecialPizza == null;
     }
 
+    /**
+     * GETTER FOR THE CURRENT ORDER
+     */
+    public Order getCurrentOrder() {
+        return currentOrder;
+    }
+
+    /**
+     * Checks to see if the order is empty or not
+     */
+    public boolean isOrderEmpty() {
+        if(currentOrder == null)
+            return true;
+        return currentOrder.isEmpty();
+    }
 //    /**
 //     * Iterated through toppings list
 //     *

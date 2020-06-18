@@ -368,7 +368,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
 //  }
   public void clearPrices() {
     for(int x = 0; x < priceList.size(); x++)
-      orderViewController.orderGrid.getChildren().removeAll(priceList);
+   //   orderViewController.orderGrid.getChildren().removeAll(priceList);
     priceList.clear();
   }
 //  public void updateGridPrice(ArrayList<Item> order) {

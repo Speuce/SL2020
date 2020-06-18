@@ -7,6 +7,7 @@ import main.java.lucia.client.content.menu.item.descriptor.ItemModifiableDescrip
 import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
+import main.java.lucia.client.content.order.Order;
 
 import java.util.ArrayList;
 
@@ -29,12 +30,14 @@ public class DinnerOrderManager {
 
     private ItemModifiable itemModifiable; // created order item when 'Make' is clicked
     private SimpleItem simpleItem; // created order item when 'Make' is clicked
+    private Order currentOrder;
 
     private static DinnerOrderManager dinnerOrderInstance;
 
     private DinnerOrderManager() {
         addons = new ArrayList<>();
         currentItem = null;
+        currentOrder = null;
     }
 
     /**
@@ -57,13 +60,11 @@ public class DinnerOrderManager {
             ItemModifiableDescriptor itemDescriptor = (ItemModifiableDescriptor) currentItem;
             itemModifiable = itemDescriptor.getAsItem();
             setItemModifiableAddons();
-            System.out.println("added " + itemModifiable.getName());
             return itemModifiable;
         }
         else {
             SimpleItemDescriptor simpleItemDescriptor = (SimpleItemDescriptor)currentItem;
             simpleItem = (SimpleItem)simpleItemDescriptor.getAsItem();
-            System.out.println("added " + simpleItem.getName());
             return simpleItem;
         }
     }
@@ -79,5 +80,26 @@ public class DinnerOrderManager {
                 itemModifiable.addAddon(addon.getAsItem());
             }
         }
+    }
+
+    /**
+     * GETTERS AND SETTERS
+     */
+
+    public Order getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public void setCurrentOrder(Order currentOrder) {
+        this.currentOrder = currentOrder;
+    }
+
+    /**
+     * Checks to see if the order is empty or not
+     */
+    public boolean isOrderEmpty() {
+        if(currentOrder == null)
+            return true;
+        return currentOrder.isEmpty();
     }
 }

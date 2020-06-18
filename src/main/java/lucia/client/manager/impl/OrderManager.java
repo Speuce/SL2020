@@ -1,7 +1,5 @@
 package main.java.lucia.client.manager.impl;
 
-import java.util.*;
-
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.manager.Manager;
 import main.java.lucia.client.manager.ManagerType;
@@ -10,13 +8,16 @@ import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 import main.java.lucia.net.packet.impl.outgoing.codec.OutgoingAuthenticatedPacket;
 import main.java.lucia.net.protocol.opcode.OpcodeConstants;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The order manager, which keeps track of all
  * orders this client is currently maintaining.
  * This class will receive orders from the server
  * and orders that are directly places within the client.
  *
- * @author Brett Downey
+ * @author Brett Downey sucks
  * @author Matt Kwiatkowski
  * @author Zachery Unrau
  */

@@ -26,9 +26,11 @@ public class DynamicLoader {
     private SizeButtonDynamicLoad sizeButtonDynamicLoad;
     private CrustDynamicLoad crustDynamicLoad;
     private SauceDynamicLoad sauceDynamicLoad;
+    public PickupDeliveryPaneController pickupDeliveryPaneController;
     public PizzaController pizzaController;
 
     public DynamicLoader(PickupDeliveryPaneController pickupDeliveryPaneController, PizzaController pizzaController) {
+        this.pickupDeliveryPaneController = pickupDeliveryPaneController;
         dinnerDynamicLoad = new DinnerDynamicLoad(pickupDeliveryPaneController);
         dinnerModuleDynamicLoad = new DinnerModuleDynamicLoad(pickupDeliveryPaneController, dinnerDynamicLoad);
         specialDynamicLoad = new SpecialDynamicLoad(pizzaController);

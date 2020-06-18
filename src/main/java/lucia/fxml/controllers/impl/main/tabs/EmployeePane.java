@@ -9,11 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import main.java.lucia.client.AsynchronousTaskService;
-import main.java.lucia.client.content.employee.*;
+import main.java.lucia.client.content.employee.Employee;
+import main.java.lucia.client.content.employee.Manager;
+import main.java.lucia.client.content.employee.ManagerNote;
 import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessage;
 import main.java.lucia.client.protocol.message.impl.employee.SetEmployeeMessage;
 import main.java.lucia.fxml.controllers.ControllerMap;
@@ -24,14 +26,14 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeLoginPan
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeManagerNotesPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.employee.EmployeeSettingsPaneController;
 import main.java.lucia.net.packet.impl.GsonTypeFactory;
-import org.apache.commons.lang3.StringUtils;
-import org.joda.time.Interval;
 import org.joda.time.Period;
-
 
 import java.awt.*;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.function.Consumer;
 
@@ -122,6 +124,8 @@ public class EmployeePane implements Controller {
 
     /**
      * Set to true if you want an employee to test with
+     *
+     * BudzBunny420
      */
     private boolean testing = true;
 

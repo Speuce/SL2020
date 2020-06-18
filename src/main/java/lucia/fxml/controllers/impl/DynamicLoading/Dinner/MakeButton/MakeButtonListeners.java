@@ -2,8 +2,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.MakeButton;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
-import main.java.lucia.client.content.order.Order;
-import main.java.lucia.client.content.order.OrderType;
+import main.java.lucia.client.content.menu.item.Item;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
@@ -41,9 +40,10 @@ public class MakeButtonListeners {
 
         DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
         OrderManager orderManager = OrderManager.INSTANCE;
-        Order order = new Order(OrderType.UNSELECTED);
-        order.addItem(dinnerOrderManager.makeItem());
+        Item madeItem = dinnerOrderManager.makeItem();
 
-        orderManager.registerOrder(order);
+        DinnerOrderManager.getDinnerOrderInstance().getCurrentOrder().addItem(madeItem);
+
+    //    orderManager.registerOrder(order); NOT YET
     }
 }

@@ -543,7 +543,7 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
       cateringPane.toFront();
     else if(source.equals(preorder)) {
       getCustomerPanes();
-      controller.promptPreorder();
+      //controller.promptPreorder();
     }
     else if(source.equals(misc)) {
       miscPane.setVisible(true);

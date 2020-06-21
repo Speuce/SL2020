@@ -93,6 +93,7 @@ public abstract class TimedItemList extends ItemList {
      */
     public void setPreorderTime(int year, Month month, int dayOfMonth, int hour, int minute) {
         this.orderTime = new ClientTime(LocalDateTime.of(year, month, dayOfMonth, hour, minute));
+        this.preorder = true;
     }
 
     /**

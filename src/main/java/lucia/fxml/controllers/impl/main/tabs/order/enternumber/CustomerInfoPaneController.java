@@ -108,6 +108,9 @@ public class CustomerInfoPaneController {
      */
     @FXML
     void submit(ActionEvent event) {
+        if(!parent.isMethodSelected()){
+            parent.flashPickupDel();
+        }
         PacketOutSaveCustomer out = new PacketOutSaveCustomer(customer);
         PacketSender.sendPacket(out);
 //        if (promptPreorder)
@@ -127,7 +130,7 @@ public class CustomerInfoPaneController {
                 String combined = streetName + " Manitoba Canada";
                 //System.out.println("----------- : " + combined);
                 String script = ("findLocation(" + "'" + combined + "'" + ")");
-                parent.getEngine().executeScript(script); // TODO Make work for more than just Winnipeg when we need to
+                //parent.getEngine().executeScript(script); // TODO Make work for more than just Winnipeg when we need to
             }
             parent.toggleMap(true);
         }));
@@ -141,8 +144,22 @@ public class CustomerInfoPaneController {
 
     @FXML
     void openPastOrders(ActionEvent event) {
+        pastOrdersPane.setVisible(true);
         pastOrdersPaneController.loadForCustomer(customer, o ->{
             Client.logger.info("TODO: load order into editor");
+        });
+        customerInfoBack.setVisible(true);
+        customerInfoBack.setOnAction(v ->{
+            pastOrdersPane.setVisible(false);
+            customerInfoBack.setVisible(false);
+        });
+    }
+
+    @FXML
+    void openPreorder(ActionEvent event){
+        parent.openPreorder();
+        parent.getPreorderController().setOnBack(() ->{
+            parent.closePreorder();
         });
     }
 
@@ -279,5 +296,12 @@ public class CustomerInfoPaneController {
      */
     public void setParent(EnterNumberPane parent) {
         this.parent = parent;
+    }
+
+    /**
+     * @return the 'submit' button
+     */
+    public JFXButton getSubmitButton(){
+        return customerInfoSubmit;
     }
 }

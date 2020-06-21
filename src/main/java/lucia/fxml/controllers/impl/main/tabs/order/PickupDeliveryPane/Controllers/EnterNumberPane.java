@@ -14,9 +14,9 @@ import main.java.lucia.Client;
 import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.order.OrderType;
+import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.protocol.packet.in.customer.PacketInFoundCustomer;
 import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutFindCustomerByPhone;
-import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutSaveCustomer;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
@@ -25,6 +25,8 @@ import main.java.lucia.fxml.controllers.impl.main.tabs.PendingOrdersPane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDelivery;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.*;
+import main.java.lucia.fxml.controllers.intf.PreorderInterface;
+import main.java.lucia.fxml.utils.BlinkUtils;
 import main.java.lucia.net.packet.event.PacketEventHandler;
 import main.java.lucia.net.packet.event.PacketHandler;
 import main.java.lucia.net.packet.event.PacketListenerManager;
@@ -33,6 +35,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.text.DecimalFormat;
 import java.text.ParsePosition;
+import java.time.LocalDateTime;
 
 
 /**
@@ -42,7 +45,7 @@ import java.text.ParsePosition;
  * @author Brett Downey
  * @author Matthew Kwiatkowski
  */
-public class EnterNumberPane implements Controller, ParentController<PickupDelivery> {
+public class EnterNumberPane implements Controller, ParentController<PickupDelivery>, PreorderInterface {
 
 
     @FXML
@@ -53,6 +56,9 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     private Pane orderSummaryPane;
+
+    @FXML
+    private Pane pickupDelSelectPane;
 
     @FXML
     private OrderSummaryPaneController orderSummaryPaneController;
@@ -93,54 +99,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     @FXML
     private DiscountPaneController discountPaneController;
 
-//    /**
-//     * Customer info pane items
-//     */
-//    @FXML
-//    private Pane customerInfoPane;
-//
-//    @FXML
-//    private Label customerNameLabel;
-//
-//    @FXML
-//    private JFXTextField customerNameField;
-//
-//    @FXML
-//    private Label Address;
-//
-//    @FXML
-//    private JFXTextField customerStreetNumberField;
-//
-//    @FXML
-//    private JFXComboBox<String> customerStreetField;
-//
-//    @FXML
-//    private Label customerAptNoLabel;
-//
-//    @FXML
-//    private JFXTextField customerAptNoField;
-//
-//    @FXML
-//    private Label customerBuzzLabel;
-//
-//    @FXML
-//    private JFXTextField customerBuzzField;
-//
-//    @FXML
-//    private JFXButton customerInfoSubmit;
-//
-//    @FXML
-//    private JFXButton customerInfoCheckAddress;
-//
-//    @FXML
-//    private Label customerInfoView;
-//
-//    @FXML
-//    private Label errorLabelCheckAddress;
-//
-//    @FXML
-//    private JFXButton customerInfoBack;
-
     @FXML
     private Pane preorderPane;
 
@@ -149,6 +107,11 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @FXML
     private Pane pastOrders;
+
+    /**
+     * Indicates whether or not a order type has been selected.
+     */
+    private boolean methodSelected;
 
 //    @FXML
 //    private Label takeoutTime;
@@ -203,6 +166,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     public void initialize() {
         assert(customerInfoPaneController != null);
         customerInfoPaneController.setParent(this);
+        preorderPaneController.setParent(this);
         orderSummaryPaneController.setParent(this);
         PacketListenerManager.get.registerListener(new PacketHandler() {
             @PacketEventHandler
@@ -219,6 +183,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
                     parent.getCurrentOrder().setCustomerDetails(d);
                     Platform.runLater(() -> {
                         customerInfoPaneController.loadCustomer(d);
+                        customerInfoPane.setVisible(true);
                     });
                 }
 //                if (parent.getCurrentOrder().getCustomerDetails().getPhoneNumber().equals(in.getCustomer().getPhoneNumber())) {
@@ -376,95 +341,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     }
 
-    @FXML
-    private void updateAddress() {
-//        String name = StringUtils.capitalize(createDeliveryStreet.getEditor().getText());
-//        String num = createDeliveryStreetNum.getText() + " ";
-//        String appt = createDeliveryAppt.getText();
-//        String buzz = createDeliveryBuzz.getText();
-//        if (buzz.equals("") && appt.equals(""))
-//            createDeliveryView.setText(num + name);
-//        else if (buzz.equals(""))
-//            createDeliveryView.setText(appt + " " + name);
-//        else createDeliveryView.setText(buzz + "-" + appt + " " + name);
-    }
-
-    @FXML
-    private void updateName() {
-        //createPickupNameView.setText(StringUtils.capitalize(createPickupName.getText()));
-    }
-
-
-
-
-//    /**
-//     * Prin
-//     * Loads the delivery pane and unloads all other panes
-//     */
-//    public void loadDeliveryPane() {
-//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-//        controller.setDelivery();
-//        loadCustomerFields();
-//        loadDelivery.setVisible(true);
-//        createDelivery.setVisible(false);
-//        loadPickup.setVisible(false);
-//        createPickup.setVisible(false);
-//        isDelivery = true;
-//    }
-//
-//    private void loadCustomerFields() {
-//        if (parent.getCurrentOrder().getCustomerDetails() != null) {
-//            loadPickupName.setText(parent.getCurrentOrder().getCustomerDetails().getName());
-//            if (parent.getCurrentOrder().getCustomerDetails().getAddress() != null) {
-//                loadDeliveryAppt.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getApartmentNumber());
-//                loadDeliveryBuzz.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getBuzzCode());
-//                loadDeliveryNum.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getNumber());
-//                loadDeliveryStreet.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().getStreet());
-//            }
-//        }
-//    }
-//
-//    /**
-//     * Loads the create delivery pane and unloads all other panes
-//     */
-//    public void loadCreateDeliveryPane() {
-//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-//        controller.setDelivery();
-//        loadDelivery.setVisible(false);
-//        createDelivery.setVisible(true);
-//        loadPickup.setVisible(false);
-//        createPickup.setVisible(false);
-//        isDelivery = true;
-//    }
-//
-//    /**
-//     * Loads the pickup pane and unloads all other panes
-//     */
-//    public void loadPickupPane() {
-//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-//        controller.setPickup();
-//        //updateName();
-//        loadCustomerFields();
-//
-//        loadDelivery.setVisible(false);
-//        createDelivery.setVisible(false);
-//        loadPickup.setVisible(true);
-//        createPickup.setVisible(false);
-//        isDelivery = false;
-//    }
-//
-//    /**
-//     * Loads the create pickup pane and unloads all other panes
-//     */
-//    public void loadCreatePickupPane() {
-//        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap.getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-//        controller.setPickup();
-//        loadDelivery.setVisible(false);
-//        createDelivery.setVisible(false);
-//        loadPickup.setVisible(false);
-//        createPickup.setVisible(true);
-//    }
-
     /**
      * Sets the phone field and the area code field editable
      */
@@ -484,6 +360,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     public void onSelectPickuporDel(ActionEvent event) {
         disableAll();
         Object source = event.getSource();
+        methodSelected = true;
         if (source.equals(delivery)){
             isDelivery = true;
             parent.getCurrentOrder().setOrderType(OrderType.DELIVERY);
@@ -493,6 +370,21 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
             parent.getCurrentOrder().setOrderType(OrderType.PICKUP);
             customerInfoPaneController.highlightPickupFields();
         }
+    }
+
+    /**
+     * Whether or not a order method is selected
+     * takeout/delivery
+     */
+    public boolean isMethodSelected(){
+        return methodSelected;
+    }
+
+    /**
+     * Flashes the pickup/delivery selector
+     */
+    public void flashPickupDel(){
+        BlinkUtils.wrong(pickupDelSelectPane);
     }
 
     @FXML
@@ -545,14 +437,14 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 //            }
             //call create customer
             //CreateCustomerMessage.saveCustomer(parent.getCurrentOrder().getCustomerDetails());
-            PacketOutSaveCustomer out = new PacketOutSaveCustomer(parent.getCurrentOrder().getCustomerDetails());
-            PacketSender.sendPacket(out);
-            if (promptPreorder)
-                openPreorder();
-            else if (pizzaFirst)
-                loadSummaryPane();
-            else
-                addToCustomerPickupDel();
+//            PacketOutSaveCustomer out = new PacketOutSaveCustomer(parent.getCurrentOrder().getCustomerDetails());
+//            PacketSender.sendPacket(out);
+//            if (promptPreorder)
+//                openPreorder();
+//            else if (pizzaFirst)
+//                loadSummaryPane();
+//            else
+//                addToCustomerPickupDel();
         }
     }
 
@@ -641,8 +533,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         //confirmationPane.setVisible(false);
         orderSummaryPane.setVisible(false);
         clearErrorLabel();
-        updateAddress();
-        updateName();
+        methodSelected = false;
         phoneField.clear();
         pickup.setSelected(false);
         delivery.setSelected(false);
@@ -703,14 +594,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     }
 
-    public void loadCustomerInfo() {
-//        if (pickup.isSelected())
-//            customerName.setText(StringUtils.capitalize(parent.getCurrentOrder().getCustomerDetails().getName()));
-//        customerNumber.setText(parent.getCurrentOrder().getCustomerDetails().getPhoneNumberFormatted());
-//        if (delivery.isSelected())
-//            customerAddress.setText(parent.getCurrentOrder().getCustomerDetails().getAddress().toString());
-    }
-
 
     /**
      * Whether or not the delivery address has been checked
@@ -732,6 +615,13 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     public void openPreorder(){
         preorderPane.setVisible(true);
         preorderPaneController.setForOrder(parent.getCurrentOrder());
+    }
+
+    /**
+     * Closes the preorder pane.
+     */
+    public void closePreorder(){
+        preorderPane.setVisible(false);
     }
 
     /**
@@ -798,36 +688,17 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         pastOrders.setVisible(true);
     }
 
-    @FXML
-    public void preorder() {
-        preorderPane.setVisible(true);
+    /**
+     * Gets the {@link PreorderTimeSelectPaneController}
+     */
+    public PreorderTimeSelectPaneController getPreorderController(){
+        return preorderPaneController;
     }
 
     @FXML
     public void discounts() {
 //        discountPane.toFront();
 //        discountPane.setVisible(true);
-    }
-
-    @FXML
-    void acceptCAA(ActionEvent event) {
-        //discountPane.setVisible(false);
-    }
-
-    @FXML
-    void acceptStaff(ActionEvent event) {
-//    if(staffShiftToggle.isSelected())
-//      parent.getCurrentOrder().addStaffDiscount(true);
-//    else parent.getCurrentOrder().addStaffDiscount(false);
-//        staffPane.setVisible(false);
-//        discountPane.setVisible(false);
-//        staffShiftToggle.setText("Off Shift");
-//        staffShiftToggle.setSelected(false);
-    }
-
-    @FXML
-    void staffOrder(ActionEvent event) {
-        //staffPane.setVisible(true);
     }
 
     @Override
@@ -856,5 +727,17 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 //        if (staffShiftToggle.isSelected())
 //            staffShiftToggle.setText("On Shift");
 //        else staffShiftToggle.setText("Off Shift");
+    }
+
+    /**
+     * Called when a preorder selected is chosen
+     *
+     * @param time the time selected
+     * @param type the payment type selected
+     */
+    @Override
+    public void onPreorderSelect(LocalDateTime time, PaymentType type) {
+        parent.getCurrentOrder().setPreorderTime(time.getYear(), time.getMonth(), time.getDayOfMonth(), time.getHour(), time.getMinute());
+        closePreorder();
     }
 }

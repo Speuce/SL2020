@@ -43,6 +43,11 @@ public class PreorderTimeSelectPaneController {
      */
     private PreorderInterface parent;
 
+    /**
+     * The default 'back' behaviour method
+     */
+    private Runnable onBack;
+
     @FXML
     private void initialize(){
         paymentMethodPreorder.getItems().addAll(PaymentType.values());
@@ -65,7 +70,17 @@ public class PreorderTimeSelectPaneController {
 
     @FXML
     void backPreorder(ActionEvent event) {
-        parent.onPreorderBack();
+        if(onBack != null){
+            onBack.run();
+        }
+    }
+
+    /**
+     * Sets the default behavour when the 'back' button is hit/
+     * @param onBack the runnable
+     */
+    public void setOnBack(Runnable onBack) {
+        this.onBack = onBack;
     }
 
     @FXML

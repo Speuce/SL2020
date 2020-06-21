@@ -62,7 +62,7 @@ public class MapPaneController {
 
     @FXML
     private void initialize(){
-
+        AsynchronousTaskService.process(() -> Platform.runLater(this::enableMap));
     }
 
     /**

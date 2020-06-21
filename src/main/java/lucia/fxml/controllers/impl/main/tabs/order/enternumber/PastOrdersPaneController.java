@@ -94,4 +94,12 @@ public class PastOrdersPaneController implements PacketHandler {
             }
         }
     }
+
+    /**
+     * Closes the past orders pane.
+     */
+    public void close(){
+
+    }
+
 }

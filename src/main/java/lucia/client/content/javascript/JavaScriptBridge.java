@@ -1,5 +1,6 @@
 package main.java.lucia.client.content.javascript;
 
+import main.java.lucia.Client;
 import main.java.lucia.Zach.DeliveryAreaConvert;
 import main.java.lucia.client.content.javascript.google.GoogleGeocodeResponse;
 import main.java.lucia.fxml.controllers.ControllerMap;
@@ -54,19 +55,22 @@ public class JavaScriptBridge {
   }
 
   private void disableGeocodeError() {
-    EnterNumberPane numberPane = (EnterNumberPane) ControllerMap
-        .getController(ControllerType.ENTER_NUMBER_PANE_CONTROLLER);
-    numberPane.disableGeocodeError();
+//    EnterNumberPane numberPane = (EnterNumberPane) ControllerMap
+//        .getController(ControllerType.ENTER_NUMBER_PANE_CONTROLLER);
+//    numberPane.disableGeocodeError();
+      //TODO
   }
 
   private void enableGeocodeError(String message) {
-    EnterNumberPane numberPane = (EnterNumberPane) ControllerMap
-        .getController(ControllerType.ENTER_NUMBER_PANE_CONTROLLER);
-    if(message == null) {
-      numberPane.enableGeocodeError();
-    } else {
-      numberPane.enableGeocodeError(message);
-    }
+//    EnterNumberPane numberPane = (EnterNumberPane) ControllerMap
+//        .getController(ControllerType.ENTER_NUMBER_PANE_CONTROLLER);
+//    if(message == null) {
+//      numberPane.enableGeocodeError();
+//    } else {
+//      numberPane.enableGeocodeError(message);
+//    }
+      Client.logger.error("Geocode error: " + message);
+      //TODO
   }
 
   private void setLocation(String storeName) {

@@ -26,7 +26,7 @@ public class PacketProtocol extends Protocol{
         register(OpcodeConstants.ECHO_ONLY, PacketInEchoOnly.class, GsonTypeFactory.BASIC_GSON);
 
         register(OpcodeConstants.CUSTOMER_FOUND_OPCODE, PacketInFoundCustomer.class, GsonTypeFactory.BASIC_GSON);
-        register(OpcodeConstants.CUSTOMER_FOUND_OPCODE, PacketInFoundPastCustomerOrder.class, ItemGson.ITEM_GSON);
+        register(OpcodeConstants.FOUND_PAST_ORDER_OF_CUSTOMER_OPCODE, PacketInFoundPastCustomerOrder.class, ItemGson.ITEM_GSON);
 
         register(OpcodeConstants.EMPLOYEE_PERMISSION_DENIED, PacketInEmployeePermissionDenied.class, GsonTypeFactory.BASIC_GSON);
         register(OpcodeConstants.SET_EMPLOYEE_OPCODE, PacketInSetEmployee.class, GsonTypeFactory.BASIC_GSON);

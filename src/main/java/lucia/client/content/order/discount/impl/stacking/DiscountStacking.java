@@ -1,8 +1,8 @@
 package main.java.lucia.client.content.order.discount.impl.stacking;
 
-import main.java.lucia.client.content.order.discount.impl.CustomDiscount;
 import main.java.lucia.client.content.order.discount.impl.DiscountAttribute;
 
+import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +20,16 @@ public class DiscountStacking extends DiscountAttribute {
 
     public DiscountStacking() {
         stackableDiscounts = new HashSet<>();
+    }
+
+    /**
+     * Prints out information of this attribute
+     *
+     * @param out the {@link PrintStream} to print to.
+     */
+    @Override
+    public void printInfo(PrintStream out) {
+
     }
 
     /**

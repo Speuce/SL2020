@@ -60,7 +60,6 @@ public class DiscountGson {
         return RuntimeTypeAdapterFactory.of(DiscountTime.class)
                 .registerSubtype(TimeDaysPerWeek.class)
                 .registerSubtype(TimeEveryDay.class)
-                .registerSubtype(TimeHourRange.class)
                 .registerSubtype(TimeRange.class)
                 .registerSubtype(TimeSpecificDatesAndTimes.class)
                 .registerSubtype(TimeSpecifiedDays.class);

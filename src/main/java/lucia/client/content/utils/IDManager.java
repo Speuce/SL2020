@@ -2,6 +2,7 @@ package main.java.lucia.client.content.utils;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,7 +22,7 @@ public class IDManager {
     /**
      * Provides mappings of IDAble objects.
      */
-    private Map<Integer, IDAble> map;
+    private final Map<Integer, IDAble> map = new HashMap<>();
 
     /**
      * The Next available id
@@ -34,6 +35,7 @@ public class IDManager {
      */
     public void addMapping(IDAble idAble){
         int id = idAble.getId();
+        //System.out.println("Added mapping for: " + id);
         nextAvailID = Math.max(nextAvailID, id+1);
         map.put(id, idAble);
     }
@@ -44,7 +46,7 @@ public class IDManager {
      */
     @Nullable
     public IDAble getMapping(int id){
-        if(id < map.size()){
+        if (map.containsKey(id)) {
             return map.get(id);
         }
         return null;

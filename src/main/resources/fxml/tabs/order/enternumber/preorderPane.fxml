@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="preorderPane" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="preorderPane" prefHeight="381.0" prefWidth="775.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.lucia.fxml.controllers.impl.main.tabs.order.enternumber.PreorderTimeSelectPaneController">
    <children>
       <JFXDatePicker fx:id="calendarPreorder" defaultColor="#ae0109" layoutX="482.0" layoutY="12.0" prefHeight="31.0" prefWidth="188.0" promptText="Pick Date" />
       <Label layoutX="14.0" layoutY="10.0" prefHeight="33.0" prefWidth="110.0" text="Payment Method">
@@ -21,7 +21,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="8.0" layoutY="322.0" onAction="#backPreorder" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #800000; -fx-background-radius: 20; -fx-border-radius: 20;" text="Back" textFill="WHITE">
+      <JFXButton layoutX="450.0" layoutY="322.0" onAction="#backPreorder" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #800000; -fx-background-radius: 20; -fx-border-radius: 20;" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

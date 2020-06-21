@@ -47,6 +47,11 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
+            <JFXButton layoutX="462.0" layoutY="8.0" onAction="#openPreorder" opacity="0.84" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: #005100; -fx-background-radius: 10; -fx-border-radius: 10;" text="Pre-Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
          </children>
       </Pane>
       <fx:include fx:id="pastOrdersPane" source="pastOrdersPane.fxml" />

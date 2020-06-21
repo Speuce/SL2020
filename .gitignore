@@ -7,3 +7,5 @@ src/.idea/
 .*
 !/.gitignore
 .idea/misc.xml
+.idea/SL2020.iml
+.idea/compiler.xml

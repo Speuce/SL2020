@@ -329,7 +329,12 @@ public class PickupDeliveryPaneController extends PickupDelivery implements Cont
     EnterNumberPane enterNumberPane = (EnterNumberPane) ControllerMap.getController(ControllerType.ENTER_NUMBER_PANE_CONTROLLER);
     enterNumberPane.reset();
   }
-  public void addToCustomer() {
+
+    /**
+     * Enables this pane
+     */
+    @Override
+  public void show() {
     // TODO add to db
     menuPanes.setOpacity(1);
     menuPanes.setDisable(false);

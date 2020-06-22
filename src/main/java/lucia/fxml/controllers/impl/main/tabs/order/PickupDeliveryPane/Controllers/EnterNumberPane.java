@@ -160,8 +160,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     private TextInputControl foundStoreLabel;
     private boolean pizzaFirst = false;
 
-    // ------------------- for some reason the initialize is called only once now ----------------------
-
     @FXML
     public void initialize() {
         assert(customerInfoPaneController != null);
@@ -444,7 +442,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 //            else if (pizzaFirst)
 //                loadSummaryPane();
 //            else
-//                addToCustomerPickupDel();
+                enablePickupDelivery();
         }
     }
 
@@ -467,7 +465,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     @FXML
     public void onExit() {
         pizzaFirst = true;
-        addToCustomerPickupDel();
+        enablePickupDelivery();
     }
 
     private boolean checkValidStringPickup(String string) {
@@ -499,13 +497,9 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
         return true;
     }
 
-    @FXML
-    public void addToCustomerPickupDel() {
+    public void enablePickupDelivery() {
         disableAll();
-        //parent.setChild();
-        PickupDeliveryPaneController controller = (PickupDeliveryPaneController) ControllerMap
-                .getController(ControllerType.PICKUP_DELIVERY_PANE_CONTROLLER);
-        controller.addToCustomer();
+        parent.show();
     }
 
     public void disableAll() {
@@ -646,12 +640,6 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
     }
 
     @FXML
-    public void loadOrder() {
-        reset();
-        addToCustomerPickupDel();
-    }
-
-    @FXML
     public void clearErrorLabel() {
         //errorLabelSummary.setText(" ");
         //errorLabelCheckAddress.setText(" ");
@@ -703,7 +691,7 @@ public class EnterNumberPane implements Controller, ParentController<PickupDeliv
 
     @Override
     public void close() {
-
+        enterNumberPane.setVisible(false);
     }
 
     @Override

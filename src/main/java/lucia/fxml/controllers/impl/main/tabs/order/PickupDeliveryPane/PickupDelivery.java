@@ -66,6 +66,11 @@ public abstract class PickupDelivery {
      */
     protected abstract void onOrderChange(Order newOrder);
 
+    /**
+     * Show the pickup delivery pane
+     */
+    public abstract void show();
+
     public void updateSubtotal() {
         long price = 0;
         if(!currentOrder.isEmpty()) {

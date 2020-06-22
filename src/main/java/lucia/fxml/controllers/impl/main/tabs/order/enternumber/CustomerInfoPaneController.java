@@ -16,6 +16,7 @@ import main.java.lucia.client.content.customer.CustomerDetails;
 import main.java.lucia.client.protocol.packet.outgoing.customer.PacketOutSaveCustomer;
 import main.java.lucia.fxml.controllers.impl.main.Utils.AutoCompleteComboBoxListener;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane;
+import main.java.lucia.fxml.utils.BlinkUtils;
 import main.java.lucia.net.packet.impl.outgoing.PacketSender;
 
 /**
@@ -110,9 +111,18 @@ public class CustomerInfoPaneController {
     void submit(ActionEvent event) {
         if(!parent.isMethodSelected()){
             parent.flashPickupDel();
+            return;
+        }
+        //verify field (for pickup)
+        if(!parent.getCurrentOrder().isDelivery() && (customerNameField.getText() == null || customerNameField.getText().length() < 2)){
+            BlinkUtils.wrong(customerNameField);
+            return;
+        }else if(parent.getCurrentOrder().isDelivery()){
+            //TODO make sure address verified.
         }
         PacketOutSaveCustomer out = new PacketOutSaveCustomer(customer);
         PacketSender.sendPacket(out);
+        parent.enablePickupDelivery();
 //        if (promptPreorder)
 //            preorder();
 //        else if (pizzaFirst)
@@ -298,10 +308,4 @@ public class CustomerInfoPaneController {
         this.parent = parent;
     }
 
-    /**
-     * @return the 'submit' button
-     */
-    public JFXButton getSubmitButton(){
-        return customerInfoSubmit;
-    }
 }

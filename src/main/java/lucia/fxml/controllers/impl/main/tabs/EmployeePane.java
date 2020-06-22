@@ -18,6 +18,7 @@ import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.client.content.employee.type.Manager;
 import main.java.lucia.client.protocol.message.impl.employee.GetEmployeeMapMessage;
 import main.java.lucia.client.protocol.message.impl.employee.SetEmployeeMessage;
+import main.java.lucia.fxml.FxmlConstants;
 import main.java.lucia.fxml.controllers.ControllerMap;
 import main.java.lucia.fxml.controllers.ControllerType;
 import main.java.lucia.fxml.controllers.impl.Controller;
@@ -387,7 +388,7 @@ public class EmployeePane implements Controller {
      * @param r the color to change to
      */
     public static void setColor(Node n, Color r){
-        n.setStyle("-fx-background-color: " + BlinkUtils.getHex(r));
+        n.setStyle(FxmlConstants.CSS_BACKGROUND + BlinkUtils.getHex(r));
     }
 
     /**

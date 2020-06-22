@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import main.java.lucia.fxml.FxmlConstants;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -67,7 +68,7 @@ public class GridHighlighter {
                 return;
             }
             if (GridPane.getRowIndex(c).equals(targetIndex)) {
-                c.setStyle("-fx-background-color: "+backgroundColor+";" + BORDER_STYLE);
+                c.setStyle(FxmlConstants.CSS_BACKGROUND+backgroundColor+";" + BORDER_STYLE);
             }
         });
         selectHandler = e -> {

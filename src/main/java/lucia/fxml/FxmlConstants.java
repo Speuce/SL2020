@@ -27,6 +27,8 @@ public class FxmlConstants {
 
     public static final int LOGIN_HEIGHT = 490;
 
+    public static final String CSS_BACKGROUND = "-fx-background-color: ";
+
     public static final ImmutableList<String> IGNORED_FXML_EXCEPTIONS =
         ImmutableList.of("java.lang.IllegalStateException: pipeline already created:com.sun.prism");
 }

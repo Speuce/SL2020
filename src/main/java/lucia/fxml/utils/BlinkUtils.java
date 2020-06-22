@@ -65,8 +65,9 @@ public class BlinkUtils {
     private static String setBackgroundColor(String css, Color col){
         int ind = css.indexOf(FxmlConstants.CSS_BACKGROUND);
         if(ind > -1){
-            int colorIndex = css.indexOf("#", ind);
-            return css.substring(0, colorIndex) + getHex(col) + css.substring(colorIndex+7);
+            int colorIndex = css.indexOf(" ", ind + FxmlConstants.CSS_BACKGROUND.length() + 1);
+            String ret = css.substring(0, ind+FxmlConstants.CSS_BACKGROUND.length()) + getHex(col) + ";"+ ((colorIndex > 0) ? css.substring(colorIndex) : "");
+            return ret;
         }else{
             String ret = css;
             if (ret.endsWith(";")) {

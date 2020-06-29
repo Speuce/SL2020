@@ -157,7 +157,18 @@ public abstract class PickupDelivery {
      * @return the current {@link Order}
      */
     public Order getCurrentOrder(){
+        if(currentOrder == null)
+            return new Order(OrderType.UNSELECTED);
         return currentOrder;
+    }
+
+    /**
+     * Checks to see if the order is empty or not
+     */
+    public boolean isOrderEmpty() {
+        if(currentOrder == null)
+            return true;
+        return currentOrder.isEmpty();
     }
 
     /**

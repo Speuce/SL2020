@@ -94,6 +94,7 @@ public class CustomerDetails {
   public int getRowNum(){
     return rowNum;
    }
+
   public String getNameDelivery() {
     return String.valueOf(address);
   }

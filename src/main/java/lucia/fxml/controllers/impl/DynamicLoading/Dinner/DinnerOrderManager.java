@@ -8,6 +8,7 @@ import main.java.lucia.client.content.menu.item.descriptor.SimpleItemDescriptor;
 import main.java.lucia.client.content.menu.item.type.ItemModifiable;
 import main.java.lucia.client.content.menu.item.type.SimpleItem;
 import main.java.lucia.client.content.order.Order;
+import main.java.lucia.client.content.order.OrderType;
 
 import java.util.ArrayList;
 
@@ -28,9 +29,13 @@ public class DinnerOrderManager {
      */
     public Descriptor currentItem;
 
+    /**
+     * CURRENT ORDER instance
+     */
+    private Order currentOrder;
+
     private ItemModifiable itemModifiable; // created order item when 'Make' is clicked
     private SimpleItem simpleItem; // created order item when 'Make' is clicked
-    private Order currentOrder;
 
     private static DinnerOrderManager dinnerOrderInstance;
 
@@ -87,11 +92,10 @@ public class DinnerOrderManager {
      */
 
     public Order getCurrentOrder() {
+        if(currentOrder == null) {
+            return new Order(OrderType.UNSELECTED);
+        }
         return currentOrder;
-    }
-
-    public void setCurrentOrder(Order currentOrder) {
-        this.currentOrder = currentOrder;
     }
 
     /**

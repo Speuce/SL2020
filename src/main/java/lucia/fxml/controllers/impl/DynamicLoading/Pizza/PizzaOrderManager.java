@@ -81,7 +81,7 @@ public class  PizzaOrderManager {
     /**
      * The current order for this instance
      */
-    private Order currentOrder;
+    private Order currentPizzaOrder;
 
     /**
      * The current pickupDelivery controller instance
@@ -98,7 +98,7 @@ public class  PizzaOrderManager {
         secondHalf = null;
         crustOption = null;
         sauceOption = null;
-        currentOrder = new Order(OrderType.UNSELECTED);
+        currentPizzaOrder = null;
     }
 
     /**
@@ -163,13 +163,14 @@ public class  PizzaOrderManager {
      * When 'Make' is clicked, puts pizza in the Order system
      */
     public void addPizzaToOrder() {
+        pickupDeliveryPaneController = DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController;
+
         if(hasToppings()) {
             if (isSecondHalf() && findSize()) {
                 OrderManager orderManager = OrderManager.INSTANCE;
 
-                currentOrder.addItem(makeSecondHalf());
+                addItemToOrder(makeSecondHalf());
 
-                pickupDeliveryPaneController = DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController;
                 pickupDeliveryPaneController.getOrderViewController().updateOrderView();
 
                 DynamicLoader.dynamicLoaderInstance.clearDynamicLoaders();
@@ -177,9 +178,8 @@ public class  PizzaOrderManager {
             } else if (findSize()) {
 //                OrderManager orderManager = OrderManager.INSTANCE;
 //                Order order = new Order(OrderType.UNSELECTED); // todo
-                currentOrder.addItem(makePizza());
+                addItemToOrder(makePizza());
 
-                pickupDeliveryPaneController = DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController;
                 pickupDeliveryPaneController.getOrderViewController().updateOrderView();
                 //     orderManager.registerOrder(order);
 
@@ -187,6 +187,18 @@ public class  PizzaOrderManager {
                 resetOrderManager();
             } else System.out.println("WAITING FOR A SIZE! " + selectedSize);
         } else DynamicLoader.dynamicLoaderInstance.pizzaController.setToppingsNeed(true);
+    }
+
+    /**
+     * Adds the made pizza to the order instances
+     *
+     * @param item the made pizza
+     */
+    public void addItemToOrder(Pizza item) {
+        Order currentOrder = pickupDeliveryPaneController.getCurrentOrder();
+
+        currentOrder.addItem(item);
+        getCurrentOrder().addItem(item);
     }
 
     /**
@@ -321,16 +333,18 @@ public class  PizzaOrderManager {
      * GETTER FOR THE CURRENT ORDER
      */
     public Order getCurrentOrder() {
-        return currentOrder;
+        if(currentPizzaOrder == null)
+            return new Order(OrderType.UNSELECTED);
+        return currentPizzaOrder;
     }
 
     /**
      * Checks to see if the order is empty or not
      */
     public boolean isOrderEmpty() {
-        if(currentOrder == null)
+        if(currentPizzaOrder == null)
             return true;
-        return currentOrder.isEmpty();
+        return currentPizzaOrder.isEmpty();
     }
 //    /**
 //     * Iterated through toppings list

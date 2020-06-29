@@ -28,6 +28,7 @@ import main.java.lucia.client.content.menu.legacy.toppings.Topping;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
+import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Pizza.PizzaOrderManager;
 import main.java.lucia.fxml.controllers.impl.main.Utils.ParentController;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.PickupDeliveryPaneController;
@@ -120,37 +121,38 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
         orderColumnName = new JFXTreeTableColumn<>("Item");
         orderColumnPrice = new JFXTreeTableColumn<>("Price");
         JFXTreeTableColumn<OrderView, String> settingsColumn = new JFXTreeTableColumn<>();
+        JFXTreeTableColumn<OrderView, String> deleteColumn = new JFXTreeTableColumn<>();
 
         orderColumnName.setPrefWidth(200);
         orderColumnPrice.setPrefWidth(50);
-        settingsColumn.setPrefWidth(100);
+        settingsColumn.setPrefWidth(50);
+        deleteColumn.setPrefWidth(50);
 
         ObservableList<OrderView> orders = FXCollections.observableArrayList();
-        if(pizzaOrderManager.isOrderEmpty() && !dinnerOrderManager.isOrderEmpty())
-            orderPre = dinnerOrderManager.getCurrentOrder().getItems();
-        else if(dinnerOrderManager.isOrderEmpty() && !pizzaOrderManager.isOrderEmpty())
-            orderPre = pizzaOrderManager.getCurrentOrder().getItems();
-        else if(!pizzaOrderManager.isOrderEmpty() && !pizzaOrderManager.isOrderEmpty()) {
-            orderPre = pizzaOrderManager.getCurrentOrder().getItems();
-            orderPre.addAll(dinnerOrderManager.getCurrentOrder().getItems());
-        } else orderPre = null;
+        if(!DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController.isOrderEmpty()) {
+            orderPre = DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController.getCurrentOrder().getItems();
+        } else {
+            orderPre = null;
+            System.out.println("NO ORDERS");
+        }
 
         if(orderPre != null) {
             for (Item item : orderPre) {
-                orders.add(new OrderView(item.getName(), String.valueOf(item.getPrice())));
+                orders.add(new OrderView(item.getName(), String.valueOf(item.getPrice()), item));
             }
         }
 
-        Callback<TreeTableColumn<OrderView, String>, TreeTableCell<OrderView, String>> cellFactory =
+        Callback<TreeTableColumn<OrderView, String>, TreeTableCell<OrderView, String>> editCellFactory =
                 new Callback<TreeTableColumn<OrderView, String>, TreeTableCell<OrderView, String>>() {
             @Override
-            public TreeTableCell<OrderView, String> call(TreeTableColumn<OrderView, String> stringStringTreeTableColumn) {
-                final TreeTableCell<OrderView, String> cell = new TreeTableCell<OrderView, String>() {
+            public TreeTableCell<OrderView, String> call(TreeTableColumn<OrderView, String> stringTreeTableColumn) {
+                TreeTableCell<OrderView, String> cell = new TreeTableCell<OrderView, String>() {
 
                     final JFXButton btn = new JFXButton("Edit");
 
                     @Override
                     public void updateItem(String item, boolean empty) {
+
                         super.updateItem(item, empty);
                         if (empty) {
                             setGraphic(null);
@@ -158,7 +160,14 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
                         } else {
                             btn.setButtonType(JFXButton.ButtonType.RAISED);
                             btn.setOnAction(event -> {
-                                System.out.println("EDIT BUTTON CLICKED");
+                                try {
+                                    System.out.println("EDIT BUTTON CLICKED " +
+                                            this.getTreeTableRow().getTreeItem().getValue().currentItem.getName());
+                                }
+                                catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
                             });
                             setGraphic(btn);
                             setText(null);
@@ -169,19 +178,52 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
             }
         };
 
-        settingsColumn.setCellFactory(cellFactory);
+        Callback<TreeTableColumn<OrderView, String>, TreeTableCell<OrderView, String>> deleteCellFactory =
+                new Callback<TreeTableColumn<OrderView, String>, TreeTableCell<OrderView, String>>() {
+                    @Override
+                    public TreeTableCell<OrderView, String> call(TreeTableColumn<OrderView, String> stringStringTreeTableColumn) {
+                        final TreeTableCell<OrderView, String> cell = new TreeTableCell<OrderView, String>() {
+
+                            final JFXButton btn = new JFXButton("Delete");
+
+                            @Override
+                            public void updateItem(String item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                    setText(null);
+                                } else {
+                                    btn.setButtonType(JFXButton.ButtonType.RAISED);
+                                    btn.setOnAction(event -> {
+                                        System.out.println("DELETE BUTTON CLICKED");
+
+                                        orders.remove(finalTable.getSelectionModel().selectedItemProperty().get().getValue());
+                                    });
+                                    setGraphic(btn);
+                                    setText(null);
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+
+        settingsColumn.setCellFactory(editCellFactory);
+        deleteColumn.setCellFactory(deleteCellFactory);
         orderColumnName.setCellValueFactory(pizzaOrderViewStringCellDataFeatures ->
                 pizzaOrderViewStringCellDataFeatures.getValue().getValue().orderName);
         orderColumnPrice.setCellValueFactory(pizzaOrderViewStringCellDataFeatures ->
                 pizzaOrderViewStringCellDataFeatures.getValue().getValue().price);
 
         TreeItem<OrderView> root = new RecursiveTreeItem<OrderView>(orders, RecursiveTreeObject::getChildren);
-        finalTable.getColumns().setAll(orderColumnName, settingsColumn, orderColumnPrice);
+        finalTable.getColumns().setAll(orderColumnName, settingsColumn, deleteColumn, orderColumnPrice);
         finalTable.setRoot(root);
         finalTable.setShowRoot(false);
     }
 
     public void makeOrderViewDinner() {
+        List<Item> orderPre;
+
         dinnerColumnName = new JFXTreeTableColumn<>("Dinner");
         dinnerColumnPrice = new JFXTreeTableColumn<>("Price");
 
@@ -189,8 +231,14 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
         dinnerColumnPrice.setPrefWidth(50);
 
         ObservableList<DinnerOrderView> dinnerOrders = FXCollections.observableArrayList();
-        List<Item> dinnerOrderPre = dinnerOrderManager.getCurrentOrder().getItems();
-        for (Item item : dinnerOrderPre) {
+        if(!dinnerOrderManager.isOrderEmpty()) {
+            orderPre = dinnerOrderManager.getCurrentOrder().getItems();
+        } else {
+            orderPre = null;
+            System.out.println("NO ORDERS DINNER");
+        }
+
+        for (Item item : orderPre) {
             dinnerOrders.add(new DinnerOrderView(item.getName(), String.valueOf(item.getPrice())));
         }
 
@@ -206,6 +254,8 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
     }
 
     public void makeOrderViewPizza() {
+        List<Item> orderPre;
+
         pizzaColumnName = new JFXTreeTableColumn<>("Pizza");
         pizzaColumnPrice = new JFXTreeTableColumn<>("Price");
 
@@ -213,8 +263,15 @@ public class OrderViewController implements ParentController<PickupDeliveryPaneC
         pizzaColumnPrice.setPrefWidth(50);
 
         ObservableList<PizzaOrderView> pizzaOrders = FXCollections.observableArrayList();
-        List<Item> pizzaOrderPre = pizzaOrderManager.getCurrentOrder().getItems();
-        for (Item item : pizzaOrderPre) {
+
+        if(!pizzaOrderManager.isOrderEmpty()) {
+            orderPre = pizzaOrderManager.getCurrentOrder().getItems();
+        } else {
+            orderPre = null;
+            System.out.println("NO ORDERS PIZZA");
+        }
+
+        for (Item item : orderPre) {
             pizzaOrders.add(new PizzaOrderView(item.getName(), String.valueOf(item.getPrice())));
         }
 
@@ -597,9 +654,11 @@ class DinnerOrderView extends RecursiveTreeObject<DinnerOrderView> {
 class OrderView extends RecursiveTreeObject<OrderView> {
     StringProperty orderName;
     StringProperty price;
+    Item currentItem;
 
-    public OrderView(String name, String price) {
+    public OrderView(String name, String price, Item currentItem) {
         this.orderName = new SimpleStringProperty(name);
         this.price = new SimpleStringProperty(price);
+        this.currentItem = currentItem;
     }
 }

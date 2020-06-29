@@ -88,6 +88,15 @@
       <JFXListView prefHeight="408.0" prefWidth="350.0" />
       <JFXTabPane fx:id="orderTabPane" prefHeight="408.0" prefWidth="350.0">
          <tabs>
+            <Tab fx:id="finalTab" text="Order">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXTreeTableView fx:id="finalTable" prefHeight="372.0" prefWidth="350.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
             <Tab fx:id="pizzaTab" text="Pizza">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -102,24 +111,6 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <JFXTreeTableView fx:id="dinnerTable" prefHeight="372.0" prefWidth="350.0" stylesheets="@../../../css/orderView.css" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            <Tab fx:id="finalTab" text="Final">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <JFXTreeTableView fx:id="finalTable" prefHeight="372.0" prefWidth="350.0" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            <Tab fx:id="priceBreakDownTab" text="Price Breakdown">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <JFXTreeTableView fx:id="priceBreakdownTable" prefHeight="372.0" prefWidth="350.0" />
                      </children>
                   </AnchorPane>
               </content>

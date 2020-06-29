@@ -3,6 +3,7 @@ package main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.MakeButton;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import main.java.lucia.client.content.menu.item.Item;
+import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.manager.impl.OrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.Dinner.DinnerOrderManager;
 import main.java.lucia.fxml.controllers.impl.DynamicLoading.DynamicLoader;
@@ -38,12 +39,22 @@ public class MakeButtonListeners {
         DynamicLoader.dynamicLoaderInstance.getDinnerDynamicLoad().clearSelectedButtons();
         DynamicLoader.dynamicLoaderInstance.getDinnerDynamicLoad().clearSelectedButtonsSides();
 
-        DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
         OrderManager orderManager = OrderManager.INSTANCE;
-        Item madeItem = dinnerOrderManager.makeItem();
-
-        DinnerOrderManager.getDinnerOrderInstance().getCurrentOrder().addItem(madeItem);
+        addItemToOrder(DinnerOrderManager.getDinnerOrderInstance().makeItem());
 
     //    orderManager.registerOrder(order); NOT YET
+    }
+
+    /**
+     * Adds the made item to the order instances
+     *
+     * @param item the made pizza
+     */
+    public void addItemToOrder(Item item) {
+        Order currentOrder = DynamicLoader.dynamicLoaderInstance.pickupDeliveryPaneController.getCurrentOrder();
+        DinnerOrderManager dinnerOrderManager = DinnerOrderManager.getDinnerOrderInstance();
+
+        currentOrder.addItem(item);
+        dinnerOrderManager.getCurrentOrder().addItem(item);
     }
 }

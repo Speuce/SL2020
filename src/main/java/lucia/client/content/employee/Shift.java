@@ -4,9 +4,11 @@ import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.client.content.time.TimeFormat;
 
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Represents a shift (current or past) worked by an employee
@@ -21,64 +23,40 @@ public class Shift implements Comparable<Shift> {
     private int rowNum = -1;
 
     /**
-     * Started is a {@link ClientTime} representing the time and ClientTime that the employee logged in
-     * Ended is a {@link ClientTime} representing the time and ClientTime that the employee clocked out
+     * A list of entries within the shift, where the first line is always the start time
+     * if the size is even, the employee is not currently working
+     * if the size is odd, the employee is currently working.
      */
-    private ClientTime started;
-    private ClientTime ended;
+    private List<ClientTime> shiftEntryList;
 
     /**
      * True if the shift is still in progress (Ended will be null in this case)
      */
     private boolean inProgress;
 
-    public Shift(ClientTime started, ClientTime ended){
-        this.started = started;
-        this.ended = ended;
-        inProgress = false;
-    }
     public Shift(ClientTime started){
         inProgress = true;
-        this.started = started;
+        shiftEntryList = new LinkedList<>();
+        shiftEntryList.add(started);
     }
     public Shift(){
         this(new ClientTime(TimeFormat.FORMATTER_ISO_STANDARD, ZoneId.systemDefault()));
     }
 
-    public ClientTime getStarted() {
-        return started;
-    }
-
-    public ClientTime getEnded() {
-        return ended;
+    /**
+     * @return A list of entries within the shift, where the first line is always the start time
+     * if the size is even, the employee is not currently working
+     * if the size is odd, the employee is currently working.
+     */
+    public List<ClientTime> getShiftEntryList() {
+        return shiftEntryList;
     }
 
     /**
-     * Ends the current shift. Note that {@code inProgress} should
-     * be checked before using this method to verify that the
-     * shift is still in progress.
-     *
-     * @throws RuntimeException if the employee has already finished this shift
+     * @return the time that this given shift was started.
      */
-    public void endShift() {
-        if(!this.inProgress) {
-            this.ended = new ClientTime(TimeFormat.FORMATTER_ISO_STANDARD, ZoneId.systemDefault());
-        } else {
-            throw new RuntimeException("Employee's shift is not in progress, cannot end shift.");
-        }
-    }
-
-    /**
-     *
-     * @return {@code true} if the shift is still in progress
-     * ended will be null in this case.
-     */
-    public boolean isInProgress() {
-        return inProgress;
-    }
-
-    public void setInProgress(boolean inProgress) {
-        this.inProgress = inProgress;
+    public ClientTime getStarted(){
+        return shiftEntryList.get(0);
     }
 
     /**
@@ -88,29 +66,22 @@ public class Shift implements Comparable<Shift> {
      */
     public String getHoursWorkedStr(){
         DecimalFormat df = new DecimalFormat("#0.00");
-        if(this.inProgress){
-            long workedMins = ChronoUnit.MINUTES.between(LocalDateTime.now(), started.toLocalDate());
-            return df.format(workedMins/60.0);
-        }else{
-            long workedMins = ChronoUnit.MINUTES.between(ended.toLocalDate(), started.toLocalDate());
-            return df.format(workedMins/60.0);
-        }
+        return df.format(getMinutesWorked()/60.0);
 
     }
 
     /**
-     *
+     * Counts the entries in the shift list and calculates total worked time.
      * @return a long representing the minutes worked. Is NOT rounded.
      */
     public long getMinutesWorked(){
-        if(this.inProgress){
-            long workedMins = ChronoUnit.MINUTES.between(LocalDateTime.now(), started.toLocalDate());
-            return workedMins;
-        }else{
-            long workedMins = ChronoUnit.MINUTES.between(ended.toLocalDate(), started.toLocalDate());
-            return workedMins;
+        int mins = 0;
+        ClientTime i1, i2;
+        Iterator<ClientTime> lister = shiftEntryList.iterator();
+        while(((i1 = lister.next())!= null) && ((i2) = lister.next()) != null){
+            mins += ChronoUnit.MINUTES.between(i1.toLocalDate(), i2.toLocalDate());
         }
-
+        return mins;
     }
 
     @Override

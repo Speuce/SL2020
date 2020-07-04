@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.payment;
+package main.java.lucia.client.content.payment.cashout;
 
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
 

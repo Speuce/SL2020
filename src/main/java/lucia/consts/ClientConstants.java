@@ -31,7 +31,10 @@ public class ClientConstants {
     /**
      * The host that this client is going to run on.
      */
-    public static final String HOST = System.getProperty("host", "99.79.88.213");
+    public static final String HOST = System.getProperty("host",
+            //"99.79.88.213"
+            "192.168.0.15"
+    );
 
     /**
      * The port that this client is going to run on.

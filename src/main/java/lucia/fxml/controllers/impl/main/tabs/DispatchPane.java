@@ -51,7 +51,6 @@ public class DispatchPane implements Controller {
     @FXML
     public void initialize() {
         ControllerMap.addController(ControllerType.DISPATCH_PANE_CONTROLLER, this);
-
         Future<?> r = AsynchronousTaskService.scheduleRepeating(() -> {
             Platform.runLater(() -> load());
         }, 30000L);

@@ -1,4 +1,4 @@
-package main.java.lucia.client.content.payment;
+package main.java.lucia.client.content.payment.cashout;
 
 import main.java.lucia.client.content.employee.type.Driver;
 import main.java.lucia.client.content.employee.type.Employee;
@@ -9,7 +9,6 @@ import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.manager.impl.OrderManager;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -21,12 +20,12 @@ public class Cashout {
     /**
      * The orders in the cashout
      */
-    private List<Order> myOrders;
+    private final List<Order> myOrders;
 
     /**
      * Other transactions associated with the caashout
      */
-    private Set<CashOutOfTill> otherOuts;
+    private final List<CashOutOfTill> otherOuts;
 
     /**
      * The total non-cash tips for the cashout
@@ -95,9 +94,9 @@ public class Cashout {
     private CashOutOfTill excess;
 
 
-    public Cashout(List<Integer> orders, Set<CashOutOfTill> other, Employee e, long cashFloat){
+    public Cashout(List<Integer> orders, List<CashOutOfTill> other, Employee e, long cashFloat){
         /* Map all order ids in orders to an actual order*/
-        myOrders = orders.stream().map(id -> OrderManager.INSTANCE.getFromOrderNumber(id)).collect(Collectors.toList());
+        myOrders = orders.stream().map(OrderManager.INSTANCE::getFromOrderNumber).collect(Collectors.toList());
         this.otherOuts = other;
         this.employee = e;
         this.cashFloat = cashFloat;
@@ -150,8 +149,6 @@ public class Cashout {
             }
         }
     }
-
-
 
     /**
      * Calculates the total cash tips
@@ -245,7 +242,7 @@ public class Cashout {
         return myOrders;
     }
 
-    public Set<CashOutOfTill> getOtherOuts() {
+    public List<CashOutOfTill> getOtherOuts() {
         return otherOuts;
     }
 
@@ -261,7 +258,7 @@ public class Cashout {
         return employee;
     }
 
-    public boolean isEmployeeKeepsTips() {
+    public boolean doesEmployeeKeepsTips() {
         return employeeKeepsTips;
     }
 

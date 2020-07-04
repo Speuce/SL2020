@@ -6,8 +6,8 @@ import main.java.lucia.client.content.employee.EmployeeNote;
 import main.java.lucia.client.content.employee.ManagerNote;
 import main.java.lucia.client.content.employee.Permission;
 import main.java.lucia.client.content.employee.Shift;
-import main.java.lucia.client.content.payment.CashOutOfTill;
-import main.java.lucia.client.content.payment.Cashout;
+import main.java.lucia.client.content.payment.cashout.CashOutOfTill;
+import main.java.lucia.client.content.payment.cashout.Cashout;
 import main.java.lucia.client.content.time.ClientTime;
 import main.java.lucia.net.security.passwords.CryptographicHash;
 
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  *
  * @author Matt Kwiatkowski
  */
-public class Employee {
+public class Employee extends PermissionHolder{
 
   /**
    * The specific id of this pizza on the server.
@@ -33,16 +33,6 @@ public class Employee {
    */
   private String name;
 
-  /**
-   * Past shifts worked by the employee this is for calculating hours and pay TODO Auto Delete
-   * shifts after they have been paid.
-   */
-  private SortedSet<Shift> pastShifts;
-
-  /**
-   * The rate of pay for the employee, default == 1135
-   */
-  private long payRate;
 
   /**
    * The Employee's personal notes
@@ -60,11 +50,6 @@ public class Employee {
   private int employeeID;
 
   /**
-   * True if this employee is a server (can have a cashout)
-   */
-  private boolean server;
-
-  /**
    * The hashed password
    */
   private String password;
@@ -74,43 +59,10 @@ public class Employee {
    */
   private String address;
 
-  /**
-   * List of the orders taken by the employee today
-   */
-  private List<Integer> ordersTaken = null;
 
-  /**
-   * If the employee is currently working a shift, this won't be null
-   */
-  private Shift currentShift = null;
 
-  /**
-   * Ends the current shift if possible, else the user is informed that the shift that they
-   * attempted to end was unable to be ended since the employee was not currently working
-   */
-  public void endShift() {
-    // Instead of assert, inform the user (kos or whoever) that the employee isn't working
-    if (currentShift == null) {
-      // TODO Instead of assert, inform the user (kos or whoever) that the employee isn't working
-    } else {
-      currentShift.endShift();
-      pastShifts.add(currentShift);
-      //TODO update server
-      currentShift = null;
-    }
-  }
 
-  /**
-   * Starts a new shift if the employee is not currently working
-   */
-  public void startShift() {
-    if (currentShift != null) {
-      // TODO Instead of assert, inform the user that they are already working/started their shift
-    } else {
-      currentShift = new Shift();
-      ordersTaken = new ArrayList<>();
-    }
-  }
+
 
 
   /**
@@ -165,17 +117,8 @@ public class Employee {
     this.payRate = payRate;
   }
 
-  /**
-   * A set of the permissions that the employee has
-   */
-  private Set<Permission> employeesPermissions;
 
-  /**
-   * Cash taken out of this employee's till for various reasons
-   */
-  private Set<CashOutOfTill> outOfTills;
 
-  private static final long FLOAT = 83000L;
 
   /**
    * Creates a default employee earning minimum wage This should only be allowed by managers.
@@ -194,8 +137,6 @@ public class Employee {
     this.pastShifts = new TreeSet<>();
     this.notes = new TreeSet<>();
     this.managerNotes = new TreeSet<>();
-    this.employeesPermissions = new HashSet<>();
-    this.outOfTills = new LinkedHashSet<>();
 
     /* add employee default permissions */
     addPermission(Permission.COMPLAINT_NEW);
@@ -217,9 +158,7 @@ public class Employee {
     return getShiftsRange(from, to).stream().mapToDouble(this::getPayfromShift).sum();
   }
 
-  public Cashout createCashout() {
-    return new Cashout(ordersTaken, outOfTills, this, FLOAT);
-  }
+
 
   /**
    * PRIVATE METHOD to set the password SHOULD ONLY BE USED WITHIN THE CLASS WITH A HASHED PASSWORD
@@ -268,10 +207,12 @@ public class Employee {
     outOfTills.add(t);
   }
 
-  public Set<CashOutOfTill> getOutOfTills() {
+    /**
+     * Cash taken out of this employee's till for various reasons
+     */
+  public List<CashOutOfTill> getOutOfTills() {
     return outOfTills;
   }
-
 
   /**
    * Gets the orders that the employee has taken
@@ -347,33 +288,7 @@ public class Employee {
     managerNotes.add(e);
   }
 
-  /**
-   * Gives the employee a specific permission
-   *
-   * @param e the {@link Permission} to give the employee
-   */
-  public void addPermission(Permission e) {
-    employeesPermissions.add(e);
-  }
 
-  /**
-   * Revokes the given permission for the employee
-   *
-   * @param e the {@link Permission} to revoke
-   */
-  public void revokePermission(Permission e) {
-    employeesPermissions.remove(e);
-  }
-
-  /**
-   * Checks if the employee has the given permission
-   *
-   * @param e the {@link Permission} to check
-   * @return {@code true} if the employee has the given permission, false otherwise
-   */
-  public boolean hasPermission(Permission e) {
-    return employeesPermissions.contains(e);
-  }
 
   /**
    * Gets a list of allowable complaint actions for the employee
@@ -382,7 +297,7 @@ public class Employee {
    */
   public List<ComplaintAction> getAllowableAction() {
     List<ComplaintAction> actionList = Arrays.asList(ComplaintAction.values());
-    return actionList.stream().filter(a -> employeesPermissions.contains(a.getPermission()))
+    return actionList.stream().filter(a -> getPermissions().contains(a.getPermission()))
         .collect(Collectors.toList());
   }
 

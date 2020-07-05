@@ -9,7 +9,7 @@ import java.util.Set;
  * Any object which can hold permissions
  * @author Matthew Kwiatkowski
  */
-public class PermissionHolder {
+public abstract class PermissionHolder {
 
     /**
      * A set of the permissions that the object has

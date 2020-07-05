@@ -27,15 +27,10 @@ public class Shift implements Comparable<Shift> {
      * if the size is even, the employee is not currently working
      * if the size is odd, the employee is currently working.
      */
-    private List<ClientTime> shiftEntryList;
+    private final List<ClientTime> shiftEntryList;
 
-    /**
-     * True if the shift is still in progress (Ended will be null in this case)
-     */
-    private boolean inProgress;
 
     public Shift(ClientTime started){
-        inProgress = true;
         shiftEntryList = new LinkedList<>();
         shiftEntryList.add(started);
     }
@@ -67,7 +62,13 @@ public class Shift implements Comparable<Shift> {
     public String getHoursWorkedStr(){
         DecimalFormat df = new DecimalFormat("#0.00");
         return df.format(getMinutesWorked()/60.0);
+    }
 
+    /**
+     * Adds the current time in to the shift entires;
+     */
+    public void addEntry(){
+        shiftEntryList.add(new ClientTime(TimeFormat.FORMATTER_ISO_STANDARD, ZoneId.systemDefault()));
     }
 
     /**

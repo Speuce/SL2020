@@ -8,10 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Any object which can hold a cashout (and permissions)
+ * Any Employee which can hold a cashout (and permissions)
  * @author Matthew Kwiatkowski
  */
-public class CashoutHolder extends PermissionHolder{
+public class CashoutHolder extends Employee{
 
     /**
      * The default float given to each cashout
@@ -21,17 +21,23 @@ public class CashoutHolder extends PermissionHolder{
     /**
      * Cash taken out of this cashout for various reasons
      */
-    private List<CashOutOfTill> outOfTills;
+    private final List<CashOutOfTill> outOfTills;
 
     /**
      * List of the orders from today in this cashout
      */
-    private List<Integer> ordersTaken;
+    private final List<Integer> ordersTaken;
 
-    public CashoutHolder() {
-        super();
+    /**
+     * The name that will be displayed with the cashout.
+     */
+    private String displayName;
+
+    public CashoutHolder(String name, int employeeID, String password, long pay, String displayName) {
+        super(name, employeeID, password, pay);
         outOfTills = new LinkedList<>();
         ordersTaken = new ArrayList<>();
+        this.displayName = displayName;
     }
 
     /**
@@ -50,5 +56,12 @@ public class CashoutHolder extends PermissionHolder{
 
     public Cashout createCashout() {
         return new Cashout(ordersTaken, outOfTills, this, FLOAT);
+    }
+
+    /**
+     * @return The name that will be displayed with the cashout.
+     */
+    public String getDisplayName() {
+        return displayName;
     }
 }

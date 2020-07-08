@@ -11,12 +11,17 @@ import java.util.List;
  * Any Employee which can hold a cashout (and permissions)
  * @author Matthew Kwiatkowski
  */
-public class CashoutHolder extends Employee{
+public abstract class CashoutHolder extends Employee{
 
     /**
      * The default float given to each cashout
      */
     private static final long FLOAT = 83000L;
+
+    /**
+     * The cashout that is held today by this employee.
+     */
+    private final Cashout cashout;
 
     /**
      * Cash taken out of this cashout for various reasons
@@ -31,37 +36,34 @@ public class CashoutHolder extends Employee{
     /**
      * The name that will be displayed with the cashout.
      */
-    private String displayName;
+    private final String displayName;
 
     public CashoutHolder(String name, int employeeID, String password, long pay, String displayName) {
         super(name, employeeID, password, pay);
         outOfTills = new LinkedList<>();
         ordersTaken = new ArrayList<>();
         this.displayName = displayName;
+        cashout = new Cashout(this);
     }
 
     /**
-     * @return Cash taken out of this cashout for various reasons
+     * This is called when the employee's cashout is being re-calculates.
+     * In this method, the cashout should be modified to fit the given
+     * employee's specifications
      */
-    public List<CashOutOfTill> getOutOfTills() {
-        return outOfTills;
-    }
-
-    /**
-     * @return List of the orders from today in this cashout
-     */
-    public List<Integer> getOrdersTaken() {
-        return ordersTaken;
-    }
-
-    public Cashout createCashout() {
-        return new Cashout(ordersTaken, outOfTills, this, FLOAT);
-    }
+    public abstract void onCashoutCalc();
 
     /**
      * @return The name that will be displayed with the cashout.
      */
     public String getDisplayName() {
         return displayName;
+    }
+
+    /**
+     * Gets this employee's cashout.
+     */
+    public Cashout getCashout(){
+        return cashout;
     }
 }

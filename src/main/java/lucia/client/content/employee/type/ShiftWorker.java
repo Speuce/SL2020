@@ -2,6 +2,7 @@ package main.java.lucia.client.content.employee.type;
 
 import main.java.lucia.client.content.employee.Permission;
 import main.java.lucia.client.content.employee.Shift;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 import java.util.SortedSet;
@@ -92,5 +93,13 @@ public abstract class ShiftWorker extends PermissionHolder{
      */
     public void setPayRate(long payRate) {
         this.payRate = payRate;
+    }
+
+    /**
+     * If the employee is currently working a shift, this won't be null
+     */
+    @Nullable
+    public Shift getCurrentShift() {
+        return currentShift;
     }
 }

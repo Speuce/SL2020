@@ -12,4 +12,14 @@ public class Server extends CashoutHolder{
     public Server(String name, int employeeID, String password, long pay, String displayName) {
         super(name, employeeID, password, pay, displayName);
     }
+
+    /**
+     * This is called when the employee's cashout is being re-calculates.
+     * In this method, the cashout should be modified to fit the given
+     * employee's specifications
+     */
+    @Override
+    public void onCashoutCalc() {
+
+    }
 }

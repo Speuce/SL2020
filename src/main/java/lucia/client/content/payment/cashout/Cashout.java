@@ -1,6 +1,6 @@
 package main.java.lucia.client.content.payment.cashout;
 
-import main.java.lucia.client.content.employee.type.Driver;
+import main.java.lucia.client.content.employee.type.CashoutHolder;
 import main.java.lucia.client.content.employee.type.Employee;
 import main.java.lucia.client.content.order.Order;
 import main.java.lucia.client.content.payment.paymentmethods.PaymentMethod;
@@ -8,6 +8,7 @@ import main.java.lucia.client.content.payment.paymentmethods.PaymentType;
 import main.java.lucia.client.content.payment.paymentmethods.SimplePayment;
 import main.java.lucia.client.manager.impl.OrderManager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,11 @@ import java.util.stream.Collectors;
  * @author Matt Kwiatkowski
  */
 public class Cashout {
+
+    /**
+     * For gson. Please do not touch.
+     */
+    int rowNum = -1;
 
     /**
      * The orders in the cashout
@@ -40,7 +46,7 @@ public class Cashout {
     /**
      * The employee that this cashout is for
      */
-    private Employee employee;
+    private CashoutHolder employee;
 
     /**
      * True if the employee keeps their tips
@@ -89,26 +95,40 @@ public class Cashout {
     private long otherOut;
 
     /**
+     * The amount to be paid to the store for tip-out.
+     */
+    private long tipout;
+
+
+    /**
      * If the cashout is negative, excess will be not null
      */
     private CashOutOfTill excess;
 
 
-    public Cashout(List<Integer> orders, List<CashOutOfTill> other, Employee e, long cashFloat){
+    public Cashout(List<Integer> orders, List<CashOutOfTill> other, CashoutHolder e){
         /* Map all order ids in orders to an actual order*/
         myOrders = orders.stream().map(OrderManager.INSTANCE::getFromOrderNumber).collect(Collectors.toList());
         this.otherOuts = other;
         this.employee = e;
-        this.cashFloat = cashFloat;
-        if(e instanceof Driver){
-            employeeKeepsTips = true;
-            deliveryFee = true;
-            payCash = true;
-        }else{
-            payCash = false;
-            deliveryFee = false;
-            employeeKeepsTips = false;
-        }
+//        if(e instanceof Driver){
+//            employeeKeepsTips = true;
+//            deliveryFee = true;
+//            payCash = true;
+//        }else{
+//            payCash = false;
+//            deliveryFee = false;
+//            employeeKeepsTips = false;
+//        }
+    }
+
+    /**
+     * Constructor for employees
+     */
+    public Cashout(CashoutHolder e){
+        myOrders = new ArrayList<>();
+        this.otherOuts = new ArrayList<>();
+        this.employee = e;
     }
 
     /**
@@ -128,7 +148,7 @@ public class Cashout {
      * Calculates applicable pay in cash
      */
     public void calcPay(){
-        if(payCash){
+        if(payCash && employee.getCurrentShift() != null){
             totalPay = Math.round(employee.getPayRate()/100.0 * employee.getCurrentShift().getMinutesWorked()/60.0*100.0);
         }else{
             totalPay = 0;
@@ -219,6 +239,8 @@ public class Cashout {
      * Calculates all values
      */
     public void recalculate(){
+
+
         calcCashOut();
         //updateTips();
         calcCashTips();
@@ -226,8 +248,14 @@ public class Cashout {
         calcCashSales();
         calculateDeliveryFees();
         calcPay();
+
+
+        employee.onCashoutCalc();
+
         calcCashToStore();
         calcExcess();
+
+
     }
 
     /**
@@ -296,5 +324,34 @@ public class Cashout {
 
     public CashOutOfTill getExcess() {
         return excess;
+    }
+
+    /**
+     * Lets the employee collect delivery fees.
+     */
+    public void setCollectDriverFees(){
+        deliveryFee = true;
+    }
+
+    /**
+     * Lets the employee keep tips.
+     */
+    public void setEmployeeKeepsTips(){
+        employeeKeepsTips = true;
+    }
+
+    /**
+     * Sets the amount that the employee pays in tipout
+     * @param amt
+     */
+    public void setTipoutAmount(long amt){
+        this.tipout = amt;
+    }
+
+    /**
+     * @return the total tips earned.
+     */
+    public long getTotalTips(){
+        return cashTips + nonCashTips;
     }
 }

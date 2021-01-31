@@ -102,4 +102,12 @@ public abstract class ShiftWorker extends PermissionHolder{
     public Shift getCurrentShift() {
         return currentShift;
     }
+
+    /**
+     * Whether or not the employee is currently on shift.
+     * @return true if the employee is on shift, false otherwise.
+     */
+    public boolean isWorking(){
+        return getCurrentShift() != null;
+    }
 }

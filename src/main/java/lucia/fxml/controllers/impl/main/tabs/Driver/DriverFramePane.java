@@ -212,7 +212,7 @@ public class DriverFramePane implements Controller {
     }
 
     public void buildDrivers() {
-        testEmployee = new Driver("Zach", 0000, "pass");
+        testEmployee = new Driver("Zach", 0000, "pass", 750, "zach");
     }
 
     public void loadDeliveries() {
@@ -251,13 +251,14 @@ public class DriverFramePane implements Controller {
     public void loggedIn(Event event) {
         driverLoggedIn.toFront();
         driverCredsFrame.toBack();
-        testEmployee.loggedIn(true);
+        //testEmployee.loggedIn(true);
+        testEmployee.startShift();
         loadCheckIn();
     }
 
     @FXML
     public void loadCheckIn() {
-        if (testEmployee.isLoggedIn()) {
+        if (testEmployee.isWorking()) {
             JFXButton button = new JFXButton(testEmployee.getName());
             button.setOnMouseClicked((EventHandler<Event>) this::addToLineup);
             button.setPrefSize(360, 40);

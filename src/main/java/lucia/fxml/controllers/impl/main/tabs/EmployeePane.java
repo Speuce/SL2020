@@ -524,7 +524,7 @@ public class EmployeePane implements Controller {
      * builds/gets a test employee
      */
     private static void buildTestEmployee(){
-        testEmployee = new Manager("Matthew Kwiatkowski", 1016, "pass");
+        testEmployee = new Manager("Matthew Kwiatkowski", 1016, "pass", 1165);
         //testEmployee.addNote(new EmployeeNote("Remember to fill the line before close"));
         testEmployee.setAddress("805 Henderson Hwy");
         testEmployee.addManagerNote(new ManagerNote("Bad close yesterday.", "Kos"));

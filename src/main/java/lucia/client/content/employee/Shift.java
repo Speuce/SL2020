@@ -20,7 +20,7 @@ public class Shift implements Comparable<Shift> {
      * The specific id of this pizza on the server.
      * DO NOT SET. Let Gson do that.
      */
-    private int rowNum = -1;
+    private final int rowNum = -1;
 
     /**
      * A list of entries within the shift, where the first line is always the start time

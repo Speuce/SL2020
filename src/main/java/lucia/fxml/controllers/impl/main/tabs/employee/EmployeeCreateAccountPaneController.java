@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import main.java.lucia.client.AsynchronousTaskService;
 import main.java.lucia.client.content.employee.type.Employee;
+import main.java.lucia.client.content.employee.type.Server;
 import main.java.lucia.fxml.controllers.impl.main.tabs.EmployeePane;
 import main.java.lucia.fxml.controllers.impl.main.tabs.order.PickupDeliveryPane.Controllers.EnterNumberPane;
 import main.java.lucia.fxml.utils.BlinkUtils;
@@ -106,8 +107,14 @@ public class EmployeeCreateAccountPaneController {
     }
 
     private void create(){
-        Employee e = new Employee(employeeCreateName.getText(), Integer.parseInt(employeeCreateID.getText()),
-                employeeCreatePassword.getText(),employeeCreateServer.isSelected());
+        Employee e;
+        if(employeeCreateServer.isSelected()){
+            e = new Server(employeeCreateName.getText(), Integer.parseInt(employeeCreateID.getText()),
+                    employeeCreatePassword.getText(), 1165, employeeCreateName.getText().split(" ")[0]);
+        }else{
+            e = new Employee(employeeCreateName.getText(), Integer.parseInt(employeeCreateID.getText()),
+                    employeeCreatePassword.getText(),1165);
+        }
         //TODO send server update
         sendSaveEmployeeMessage(e);
         employeeCreateID.setStyle("-fx-background-color: #00AA00");

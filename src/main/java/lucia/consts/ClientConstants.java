@@ -33,7 +33,7 @@ public class ClientConstants {
      */
     public static final String HOST = System.getProperty("host",
             //"99.79.88.213"
-            "192.168.0.15"
+            "192.168.0.14"
     );
 
     /**
